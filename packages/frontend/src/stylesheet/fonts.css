@@ -1,0 +1,21 @@
+@font-face {
+    font-family: "Poppins";
+    src: 
+        url(../assets/fonts/Poppins-Black.ttf) format("ttf"),
+        url(../assets/fonts/Poppins-Bold.ttf) format("ttf"),
+        url(../assets/fonts/Poppins-ExtraLight.ttf) format("ttf"),
+        url(../assets/fonts/Poppins-Light.ttf) format("ttf"),
+        url(../assets/fonts/Poppins-Medium.ttf) format("ttf"),
+        url(../assets/fonts/Poppins-Regular.ttf) format("ttf");
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src:
+    url(../assets/fonts/OpenSans-VariableFont_wdth\,wght.ttf)
+}
+
+/* możesz w taki sposób szybko sprawdzić czy działa jak odpalisz stronke*/
+/* body {
+    font-family: 'Open Sans', sans-serif;
+} */
