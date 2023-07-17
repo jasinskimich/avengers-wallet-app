@@ -1,25 +1,31 @@
-const dotenv = require("dotenv");
-dotenv.config({ path: './packages/backend/.env' });
-const mongoose = require("mongoose");
 const app = require("./app");
+const mongoose = require("mongoose");
 
-const PORT = process.env.PORT || 3000
-const DB = process.env.DB_HOST
 
-const connection = mongoose.connect(DB, {
+const Port = process.env.PORT;
+
+mongoose.connect(process.env.DB_HOST, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
-connection
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(
-        `Database connection successful. Server running on port: ${PORT}`
-      );
-    });
-  })
-  .catch((error) => {
-    console.log(`Server not running. Error message: ${error.message}`);
-    process.exit(1);
-  });
+const db = mongoose.connection;
+
+db.once("open", async function () {
+  console.log("Database connection successful");
+});
+
+db.on("error", function (err) {
+  console.error("Database connection error:", err);
+  process.exit(1);
+});
+
+process.on("exit", function (code) {
+  if (code === 1) {
+    console.error("Application exited with error");
+  }
+});
+
+app.listen(Port, () => {
+  console.log(`Server running. Use our API on port: ${Port}`);
+});
