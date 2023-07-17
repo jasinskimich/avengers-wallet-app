@@ -1,3 +1,4 @@
+require("dotenv").config({ path: './packages/backend/.env' });
 const express = require('express')
 const logger = require('morgan')
 const cors = require('cors')
