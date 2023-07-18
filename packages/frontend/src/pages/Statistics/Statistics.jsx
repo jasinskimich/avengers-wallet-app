@@ -1,11 +1,11 @@
 import { Box } from "@mui/material";
 
-function Login() {
+function Statistics() {
 	return (
 		<Box>
-			<h1>Login</h1>
+			<h1>staty</h1>
 		</Box>
 	);
 }
 
-export default Login;
+export default Statistics;
