@@ -1,7 +1,6 @@
 // import React from "react";
-import { Box, AppBar, Toolbar, Container } from "@mui/material";
+import { Box, AppBar, Toolbar } from "@mui/material";
 import Navigation from "../../pages/Navigation/Navigation";
-import useAuth from "../../hooks/useAuth";
 
 function AppBarMain() {
 	return (
