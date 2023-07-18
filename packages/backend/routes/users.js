@@ -128,7 +128,7 @@ router.post('/users/signup', async (req, res, next) => {
       })
     } 
   
-    token = null;
+    // const token = null;
     await user.save()
       
     return res.json({
