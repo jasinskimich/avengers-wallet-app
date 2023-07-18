@@ -25,6 +25,15 @@ const auth = (req, res, next) => {
         next();
     })(req, res, next)
 }
+const getAllUsers = async (req, res, next) => {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (error) {
+    next(error);
+  }
+};
+router.get("/all-users", getAllUsers);
 
 router.post('/users/signup', async (req, res, next) => {
     const { email, password, name } = req.body

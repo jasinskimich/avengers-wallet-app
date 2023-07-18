@@ -5,12 +5,12 @@
     "builds": [
       {
         "src": "package.json",
-        "use": "@now/static-build",
+        "use": "@vercel/static-build",
         "config": { "distDir": "build" }
       },
       {
-        "src": "api/*.js",
-        "use": "@now/node"
+        "src": "./backend/*.js",
+        "use": "@vercel/node"
       }
     ],
     "routes": [
