@@ -52,7 +52,7 @@ router.post('/users/signup', async (req, res, next) => {
         to: email,
         from: 'walletavengersapp@gmail.com',
         subject: 'Please verify your email and registration.',
-        text: `URL to mail verifycation: /users/verify/:verificationToken, and your verificationToken is ${newUser.verificationToken}`
+        text: `URL to mail verification: /users/verify/:verificationToken, and your verificationToken is ${newUser.verificationToken}`
       }
   
       sgMail
@@ -105,6 +105,10 @@ router.post('/users/signup', async (req, res, next) => {
     const secret = process.env.SECRET
   
     const token = jwt.sign(payload, secret, { expiresIn: '1h' })
+
+    user.token = token;
+
+    await user.save()
   
     return res.json({
       status: "success",
@@ -128,7 +132,7 @@ router.post('/users/signup', async (req, res, next) => {
       })
     } 
   
-    // const token = null;
+    user.token = null;
     await user.save()
       
     return res.json({
@@ -164,7 +168,7 @@ router.post('/users/signup', async (req, res, next) => {
     })
   })
   
-  router.get('/users/verify/:verificationToken', async (req, res, next) => {
+  router.get('/api/users/verify/:verificationToken', async (req, res, next) => {
     const user = await User.findOne({ verificationToken: req.params.verificationToken });
 
     if(!user) {
@@ -220,7 +224,7 @@ router.post('/users/signup', async (req, res, next) => {
         to: email,
         from: 'walletavengersapp@gmail.com',
         subject: 'Please verify your email and registration.',
-        text: `URL to mail verifycation: /users/verify/:verificationToken, and your verificationToken is ${user.verificationToken}`
+        text: `URL to mail verification: /api/users/verify/:verificationToken, and your verificationToken is ${user.verificationToken}`
       }
   
       sgMail
