@@ -17,7 +17,7 @@ require('./config/config-passport')
 app.use(usersRouter)
 
 app.use((req, res) => {
-  res.status(404).json({ message: 'Not found' })
+  res.status(404).json({ message: 'nie dziauaaa' })
 })
 
 app.use((err, req, res, next) => {
