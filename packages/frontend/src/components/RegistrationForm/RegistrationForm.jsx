@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const RegistrationForm = () => {
   const [name, setName] = useState("");
@@ -60,6 +61,9 @@ const RegistrationForm = () => {
       <button onClick={() => handleSubmit()} type="submit">
         Register
       </button>
+      <Link to="/login">
+        <button>Login</button>
+      </Link>
     </form>
   );
 };
