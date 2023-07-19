@@ -13,6 +13,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
+    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "dotenv": "^16.3.1",
@@ -21,7 +24,13 @@
     "jsonwebtoken": "^9.0.1",
     "mongodb": "^5.7.0",
     "mongoose": "^7.3.4",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "nanoid": "^3.0.0",
+    "nodemailer": "^6.9.3",
+    "now": "^21.0.1",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.1",
+    "vercel": "^31.0.3"
   },
   "devDependencies": {
     "eslint": "^8.45.0",

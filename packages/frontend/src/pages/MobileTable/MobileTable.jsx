@@ -1,11 +1,11 @@
 import { Box } from "@mui/material";
 
-function Login() {
+function MobileTable() {
 	return (
 		<Box>
-			<h1>Login</h1>
+			<h1>Table</h1>
 		</Box>
 	);
 }
 
-export default Login;
+export default MobileTable;
