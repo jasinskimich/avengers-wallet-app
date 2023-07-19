@@ -1,0 +1,48 @@
+.modal {
+  font-family: "Open Sans";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.modal__header {
+  font-weight: 400;
+  font-size: 30px;
+}
+
+.modal__open-button {
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-color: #24cca7;
+  border: none;
+  color: white;
+  font-size: 40px;
+  font-weight: 200;
+  margin: 20px;
+}
+
+.modal__close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 20px;
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+}
+
+.modal__cancel-button {
+  font-size: 16px;
+  font-weight: 500;
+  height: 40px;
+  width: 200px;
+  border: none;
+  border: 1px solid #4a56e2;
+  border-radius: 45px;
+  background-color: white;
+}
