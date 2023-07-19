@@ -35,6 +35,25 @@ const getAllUsers = async (req, res, next) => {
 };
 router.get("/all-users", getAllUsers);
 
+const sendVerificationEmail = async (email, verificationToken) => {
+  const msg = {
+    to: email,
+    from: 'walletavengersapp@gmail.com',
+    subject: 'Please verify your email and registration.',
+    text: `URL to mail verification: ${verificationToken}`,
+    html: `<p>Click <a href="http://localhost:5000/api/users/verify/${verificationToken}"><strong>here</strong></a> to verify your email and registration.</p>`,
+  }
+
+  return sgMail
+          .send(msg)
+          .then(() => {
+            console.log('Email sent');
+          })
+          .catch(error => {
+            console.error(error);
+          })
+};
+
 router.post('/users/signup', async (req, res, next) => {
     const { email, password, name } = req.body
     const user = await User.findOne({ email })
@@ -57,28 +76,14 @@ router.post('/users/signup', async (req, res, next) => {
 
       await newUser.save();
 
-      const msg = {
-        to: email,
-        from: 'walletavengersapp@gmail.com',
-        subject: 'Please verify your email and registration.',
-        text: `URL to mail verification: /users/verify/:verificationToken, and your verificationToken is ${newUser.verificationToken}`
-      }
-  
-      sgMail
-        .send(msg)
-        .then(() => {
-          console.log('Email sent');
-        })
-        .catch(error => {
-          console.error(error);
-        })
+      await sendVerificationEmail(email, newUser.verificationToken);
   
       res.json({
         status: "success",
         code: 201,
         data: "Created",
         message: "Register complete! Check your email to confirm verification.",
-      })
+      });
     } catch (error) {
       next(error);
     }
@@ -177,7 +182,7 @@ router.post('/users/signup', async (req, res, next) => {
     })
   })
   
-  router.get('/api/users/verify/:verificationToken', async (req, res, next) => {
+  router.get('/users/verify/:verificationToken', async (req, res, next) => {
     const user = await User.findOne({ verificationToken: req.params.verificationToken });
 
     if(!user) {
@@ -190,21 +195,21 @@ router.post('/users/signup', async (req, res, next) => {
     }
 
     try {   
-      res.json({
-        status: 'success',
-        code: 200,
-        message: 'Verification successful',
-        data: 'OK',
-      })
-    } catch(error) {
-      next(error)
-    }
-  
-    if(user) {
       user.verify = true;
       user.verificationToken = "null";
-  
       await user.save();
+
+      // res.send({
+      //   status: 'success',
+      //   code: 200,
+      //   message: 'Verification successful',
+      //   data: 'OK',
+      // })
+
+      res.send('<h1>Registration Complete!</h1><p>Click <a href="http://localhost:3000/login"><strong>here</strong></a> to go to the login page.</p>')
+
+    } catch(error) {
+      next(error)
     }
   })
 
@@ -229,21 +234,7 @@ router.post('/users/signup', async (req, res, next) => {
     }
   
     if(email && user.verify === false) {
-      const msg = {
-        to: email,
-        from: 'walletavengersapp@gmail.com',
-        subject: 'Please verify your email and registration.',
-        text: `URL to mail verification: /api/users/verify/:verificationToken, and your verificationToken is ${user.verificationToken}`
-      }
-  
-      sgMail
-        .send(msg)
-        .then(() => {
-          console.log('Email sent');
-        })
-        .catch(error => {
-          console.error(error);
-        })
+      await sendVerificationEmail(email, user.verificationToken);
       
       return res.json({
         status: "success",
