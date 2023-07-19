@@ -1,6 +1,6 @@
 import "./App.css";
 import "./stylesheet/fonts.css";
-import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
+// import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
 import Layout from "./Layout";
 import { Routes, Route } from "react-router-dom";
 import Statistics from "./pages/Statistics/Statistics";
