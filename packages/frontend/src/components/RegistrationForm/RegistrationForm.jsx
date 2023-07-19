@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const RegistrationForm = () => {
   const [name, setName] = useState("");
@@ -47,19 +48,40 @@ const RegistrationForm = () => {
     <form action="">
       <div>
         <label>Email </label>
-        <input type="email" id="email" value={email} onChange={(e) => handleInputChange(e)} placeholder="Email" />
+        <input
+          type="email"
+          id="email"
+          value={email}
+          onChange={(e) => handleInputChange(e)}
+          placeholder="Email"
+        />
       </div>
       <div>
         <label>Password </label>
-        <input type="password" id="password" value={password} onChange={(e) => handleInputChange(e)} placeholder="Password" />
+        <input
+          type="password"
+          id="password"
+          value={password}
+          onChange={(e) => handleInputChange(e)}
+          placeholder="Password"
+        />
       </div>
       <div>
         <label>First Name </label>
-        <input type="text" value={name} onChange={(e) => handleInputChange(e)} id="name" placeholder="First Name" />
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => handleInputChange(e)}
+          id="name"
+          placeholder="First Name"
+        />
       </div>
       <button onClick={() => handleSubmit()} type="submit">
         Register
       </button>
+      <Link to="/login">
+        <button>Login</button>
+      </Link>
     </form>
   );
 };
