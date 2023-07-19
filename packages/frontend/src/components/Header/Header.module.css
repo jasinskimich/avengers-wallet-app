@@ -1,0 +1,80 @@
+.main {
+  display: flex;
+  justify-content: space-between;
+  height: 8vh;
+  padding: 20px;
+  background-color: #FFFFFF;
+}
+
+.wallet {
+  display: flex;
+}
+
+img {
+  width: 40px;
+  height: 40px;
+}
+
+.title {
+  font-family: poppins;
+  color: #000000;
+  font-weight: 700;
+  font-size: 30px;
+  padding-left: 20px;
+  line-height: 45px;
+}
+
+.logoutDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--main-font);
+  cursor: pointer;
+  background-color: #BDBDBD;
+}
+
+.logoutBtn {
+  background-color: #BDBDBD;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.logoutBtn:hover {
+  fill: red;
+  color: red;
+}
+
+.exitIcon {
+  width: 18px;
+  height: 18px;
+  fill: #BDBDBD;
+  transition: fill 0.2s;
+}
+.exitIcon:hover {
+  fill: var(--expense-color);
+}
+
+.exitBtn {
+  display: flex;
+  align-items: center;
+}
+
+.exitTxt {
+  color: #BDBDBD;
+  font-weight: 400;
+  font-size: 18px;
+  padding-left: 10px;
+  line-height: 26.53px;
+}
+.exitTxt:hover {
+  color: var(--expense-color);
+}
+
+.name {
+  font-family: circe;
+  color: var(--txt-inactive-form);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26.53px;
+}/*# sourceMappingURL=Header.module.css.map */
