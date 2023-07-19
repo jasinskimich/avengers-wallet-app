@@ -1,0 +1,39 @@
+.expense-form {
+  font-family: "Open Sans";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.expense-form__amount {
+  width: 170px;
+  margin-right: 40px;
+}
+
+.expense-form input {
+  font-size: 14px;
+  padding-left: 16px;
+  height: 30px;
+  border: none;
+  border-bottom: 1px solid rgb(197, 196, 196);
+  font-family: "Open Sans";
+}
+
+.expense-form__comment {
+  width: 400px;
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+.expense-form__button {
+  font-size: 16px;
+  font-weight: 500;
+  height: 40px;
+  width: 200px;
+  border: none;
+  border-bottom: 1px solid rgb(197, 196, 196);
+  border-radius: 45px;
+  background-color: #24cca7;
+  color: white;
+}
