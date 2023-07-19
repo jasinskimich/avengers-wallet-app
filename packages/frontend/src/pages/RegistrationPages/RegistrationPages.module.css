@@ -1,0 +1,71 @@
+/***************** MOBILE *****************/
+.bodyContainer {
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 500px;
+}
+.container {
+    display: none;
+}
+.registartionPagesName {
+    visibility: hidden;
+}
+.registartionIcon {
+    visibility: hidden;
+}
+
+/***************** TABLET *****************/
+@media screen and (min-width: 768px) {
+body {
+    background-color: #E7EAF2;
+    background-image: url('../../images/Ellipse2.svg'), url('../../images/Ellipse1.svg');
+    background-size: auto, 620px;
+    background-repeat: no-repeat, no-repeat;
+    background-position: right top, left bottom;
+}
+.registartionIcon {
+    visibility: visible;
+    width: 250px;
+    height: 275px;
+    
+}
+.registartionPagesName {
+    visibility: visible;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50px;
+}
+.registartionPagesNameItem {
+    font-weight: 400;
+    font-size: 30px;
+}
+.container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 50px;
+    margin-top: 60px;
+}
+}
+
+/***************** DESKTOP *****************/
+@media screen and (min-width: 1024px) {
+.bodyContainer {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        margin-bottom: 225px;
+    }
+.container {
+    flex-direction: column;
+    margin-bottom: 0px;
+    padding-top: 100px;
+}
+.registartionIcon {
+    width: 453px;
+    height: 413px;
+}
+}
