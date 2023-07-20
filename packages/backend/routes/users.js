@@ -255,4 +255,15 @@ router.post('/users/signup', async (req, res, next) => {
     }
   })
 
+  router.get(`/users/checkVerify/:email`, async (req, res, next) => {
+    const {email} = req.params;
+    const user = await User.findOne({ email })
+
+    if(user.verify===true) {
+      return res.json({ verification: true });
+    } else {
+        return res.json({ verification: false })
+    }
+  })
+
   module.exports = router
