@@ -19,6 +19,22 @@ const VerifyForm = () => {
         }
 
         try{
+            let response = await fetch(`http://localhost:5000/api/users/checkEmail/${email}`);
+            response = await response.json();
+      
+            if(response.exists===false) {
+              Notiflix.Notify.warning('Email is not exists in the database. Please write a different email.');
+              return;
+            }
+
+            let responseCheckVerify = await fetch (`http://localhost:5000/api/users/checkVerify/${email}`);
+            responseCheckVerify = await responseCheckVerify.json();
+
+            if(response.exists && responseCheckVerify.verification) {
+              Notiflix.Notify.warning('Email is exists in the database and verified.');
+              return;
+            }
+
             let result = await fetch('http://localhost:5000/api/users/verify', {
                 method: "post",
                 body: JSON.stringify({ email }),
@@ -33,8 +49,6 @@ const VerifyForm = () => {
         
                 Notiflix.Notify.info('An email verifying your registration has been sent to the email address provided in the form.')
             }
-            //zrobić powiadomenia dla errorów (maila istnieją i są zweryfikowane oraz maila, które nie istnieją), póki co wywalają się przez 
-            //"TypeError: Cannot read properties of null (reading 'verify')"
         } catch (error){
             console.error(error)
         }
