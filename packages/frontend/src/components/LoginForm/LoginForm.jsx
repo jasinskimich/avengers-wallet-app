@@ -1,28 +1,17 @@
-import React, { useState } from "react";
-import { Link, useNavigate} from "react-router-dom";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import styles from "./LoginForm/"
 
 const LoginForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-
   const navigate = useNavigate();
-  
-  const handleInputChange = (e) => {
-    const { id, value } = e.target;
-    if (id === "email") {
-      setEmail(value);
-    }
-    if (id === "password") {
-      setPassword(value);
-    }
-  };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (values, { setSubmitting, setFieldError }) => {
+    const { email, password } = values;
 
     if (!email || !password) {
-      setError("Please enter an email and password.");
+      setSubmitting(false);
       return;
     }
 
@@ -38,48 +27,55 @@ const LoginForm = () => {
       if (response.ok) {
         const data = await response.json();
         console.log("User logged in:", data);
-        setEmail("");
-        setPassword("");
-        setError("");
         
         navigate("/home");
       } else {
-        const errorData = await response.json();
-        setError(errorData.message);
+        const error = await response.json();
+        setFieldError("password", error.message);
       }
     } catch (error) {
-      setError("An error occurred. Please try again later.");
+      console.error("An error occurred. Please try again later.");
     }
+
+    setSubmitting(false);
   };
 
   return (
     <div>
-      {error && <p>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={handleInputChange}
-            placeholder="Email"
-          />
-        </div>
-        <div>
-          <label>Password</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={handleInputChange}
-            placeholder="Password"
-          />
-        </div>
-        <div>
-          <button type="submit">Login</button>
-        </div>
-      </form>
+      <h1>WALLET</h1>
+      <Formik
+        initialValues={{ email: "", password: "" }}
+        validationSchema={Yup.object({
+          email: Yup.string()
+            .email("Invalid email address")
+            .required("Email is required"),
+          password: Yup.string()
+            .min(6, "Password must be at least 6 characters")
+            .max(12, "Password must not exceed 12 characters")
+            .required("Password is required"),
+        })}
+        onSubmit={handleSubmit}
+      >
+        {({ isSubmitting }) => (
+          <Form>
+            <div>
+              <label>Email</label>
+              <Field type="email" name="email" placeholder="Email" />
+              <ErrorMessage name="email" component="div" className="error" />
+            </div>
+            <div>
+              <label>Password</label>
+              <Field type="password" name="password" placeholder="Password" />
+              <ErrorMessage name="password" component="div" className="error" />
+            </div>
+            <div>
+              <button type="submit" disabled={isSubmitting}>
+                Login
+              </button>
+            </div>
+          </Form>
+        )}
+      </Formik>
       <div>
         <Link to="/register">
           <button>Registration</button>

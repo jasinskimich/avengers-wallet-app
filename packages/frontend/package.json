@@ -11,6 +11,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "formik": "^2.4.2",
     "joi": "^17.9.2",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
@@ -30,7 +31,8 @@
     "sort-by": "^1.2.0",
     "styled-components": "^5.3.11",
     "vercel": "^31.0.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
