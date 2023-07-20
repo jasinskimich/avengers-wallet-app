@@ -244,4 +244,15 @@ router.post('/users/signup', async (req, res, next) => {
     }
   })
 
+  router.get(`/users/checkEmail/:email`, async (req, res, next) => {
+    const {email} = req.params;
+    const user = await User.findOne({ email })
+
+    if(user) {
+      return res.json({ exists: true });
+    } else {
+        return res.json({ exists: false })
+    }
+  })
+
   module.exports = router
