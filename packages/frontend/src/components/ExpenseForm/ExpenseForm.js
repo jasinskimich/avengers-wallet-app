@@ -4,6 +4,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import React from "react";
 import Select from "react-select";
+import ExpenseFormValidation from "../FormValidation/ExpenseFormValidation";
+import { Notify } from "notiflix";
 
 const ExpensesForm = () => {
   const yourDate = new Date();
@@ -11,7 +13,7 @@ const ExpensesForm = () => {
   const [selectedValue, setSelectedValue] = useState(null);
 
   const options = [
-    { value: "main-expenses", label: "Main expenses", className: "expenseOption" },
+    { value: "main-expenses", label: "Main expenses" },
     { value: "products", label: "Products" },
     { value: "car", label: "Car" },
     { value: "self-care", label: "Self care" },
@@ -50,7 +52,21 @@ const ExpensesForm = () => {
     const amount = e.target.amount.value;
     const date = e.target.date.value;
     const comment = e.target.comment.value;
-    console.log(expense, amount, date, comment);
+
+    const data = { type: "expense", expense: expense, amount: amount, date: date, comment: comment };
+
+    const { error } = ExpenseFormValidation(data);
+    if (error) {
+      if (!expense) {
+        Notify.failure("Please select the category");
+      }
+      if (!amount) {
+        Notify.failure("Please enter the amount");
+      }
+    } else {
+      const newExpense = { data };
+      console.log(newExpense);
+    }
   };
 
   return (

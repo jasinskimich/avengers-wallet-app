@@ -28,7 +28,6 @@ const ModalAddTransaction = () => {
   const [checked, setChecked] = useState(false);
   const handleToggle = () => {
     setChecked(!checked);
-    console.log(checked);
   };
 
   function openModal() {
