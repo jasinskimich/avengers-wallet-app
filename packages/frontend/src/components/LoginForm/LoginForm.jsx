@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import styles from "./LoginForm.module.css"
+import styles from "./LoginForm.module.css";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ const LoginForm = () => {
       if (response.ok) {
         const data = await response.json();
         console.log("User logged in:", data);
-        
+
         navigate("/home");
       } else {
         const error = await response.json();
@@ -67,7 +67,7 @@ const LoginForm = () => {
                 placeholder="Email"
                 id="email"
               />
-              <ErrorMessage name="email" component="div" className="error" />
+              <ErrorMessage name="email" component="div" className={styles.error} />
             </div>
             <div className={styles.inputBox}>
               <label for="password">Password</label>
@@ -78,7 +78,7 @@ const LoginForm = () => {
                 placeholder="Password"
                 id="password"
               />
-              <ErrorMessage name="password" component="div" className="error" />
+              <ErrorMessage name="password" component="div" className={styles.error} />
             </div>
             <div>
               <button
@@ -91,7 +91,7 @@ const LoginForm = () => {
             </div>
             <div>
               <Link to="/register">
-                <button>Registration</button>
+                <button className={styles.registrationButton}>Registration</button>
               </Link>
             </div>
           </Form>

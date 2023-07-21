@@ -1,20 +1,21 @@
+html {
+  background-color: #e7eaf2;
+  background-image: url("../../frontend/src/images/Ellipse2.svg"),
+    url("../../frontend/src/images/Ellipse1.svg");
+  background-size: auto, auto;
+  background-repeat: no-repeat, no-repeat;
+  background-position: right top, left bottom;
+  width: 100%;
+  height: 100%;
+}
 body {
   margin: 0;
   font-family: "Open Sans";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-html {
-    background-color: #E7EAF2;
-    background-image: url('../../frontend/src/images/Ellipse2.svg'), url('../../frontend/src/images/Ellipse1.svg');
-    background-size: auto, auto;
-    background-repeat: no-repeat, no-repeat;
-    background-position: right top, left bottom;
-    width: 100%;
-    height: 100%;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }

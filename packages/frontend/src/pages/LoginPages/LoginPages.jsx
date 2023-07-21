@@ -6,13 +6,13 @@ function Login() {
   return (
     <Box>
       <div className={styles.main}>
-        <div className={styles.container}>
+        <div className={styles.titleContainer}>
           <div className={styles.logoPicture}></div>
           <div>
             <h1 className={styles.logoTitle}>Finance App</h1>
           </div>
         </div>
-        <div>
+        <div className={styles.loginFormContainer}>
           <LoginForm />
         </div>
       </div>
