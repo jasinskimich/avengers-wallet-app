@@ -6,16 +6,22 @@ import {
   openModalLogout,
   resetState,
 } from 'redux/global/global-action';
+import { NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
-
-import { selectIsModalOpen } from 'redux/global/selectors';
-import { useAuth } from 'hooks/useAuth'
-import styles from './Header.module.scss'
-
-import { ModalLogout } from '../ModalLogout/ModalLogout';
 import { logOut, fetchCurrentUser } from 'redux/auth/authThunk';
 
-import { NavLink } from 'react-router-dom';
+import { ModalLogout } from '../ModalLogout/ModalLogout';
+import { useAuth } from 'hooks/useAuth';
+
+import IconWallet from '../../images/Wallet.svg'
+import verticalLine from '../../images/vertical-line.svg'
+import { selectIsModalOpen } from 'redux/global/selectors';
+import styles from './Header.module.scss'
+
+
+
+
+
 
 
 export const Header = () => {
@@ -37,7 +43,7 @@ export const Header = () => {
     <div className={styles.main}>
       <div className={styles.wallet}>
         <NavLink to="/">
-          <img  alt="wallet icon"></img>
+          <img src={IconWallet} alt="wallet icon"></img>
         </NavLink>
         <p className={styles.title}>Wallet</p>
       </div>
@@ -48,6 +54,8 @@ export const Header = () => {
           {matches =>
             (matches.tablet || matches.desktop) && (
               <img
+                src={verticalLine}
+                className={styles.lineSvg}
                 alt="vertical line"
               ></img>
             )
