@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCurrency } from "./operations";
+import { getCurrency } from "./currencyThunk";
 
 const initialState = { error: "null", currencies: [] };
 
