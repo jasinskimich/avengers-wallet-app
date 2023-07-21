@@ -1,0 +1,51 @@
+
+.main {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 10px;
+ justify-items: center;
+ grid-template-rows: 100vh;
+ 
+}
+.titleContainer{
+    padding-top: 120px;
+    width: 436px;
+   height: 420px;
+}
+.loginFormContainer{
+background-color: rgba(255, 255, 255, 0.625);
+width: 100%;
+
+}
+.logoPicture {
+  background-position: center;
+  background-repeat: no-repeat;
+   width: 500px; 
+  height: 400px; 
+ background-size: contain;
+}
+@media screen and (min-width: 768px) {
+  .logoPicture {
+
+    background-image: url(../../images/login-pictures/login-tablet.png);
+  }
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    .logoPicture {
+      background-image: url(../../images/login-pictures/login-tablet@2x.png);
+    }
+  }
+}
+@media screen and (min-width: 1080px) {
+  .logoPicture {
+    background-image: url(../../images/login-pictures/login-desktop.png);
+  }
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    .logoPicture {
+      background-image: url(../../images/login-pictures/login-desktop@2x.png);
+    }
+  }
+}

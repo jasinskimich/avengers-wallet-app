@@ -1,0 +1,64 @@
+.loginBox {
+  /* display: flex;
+  flex-direction: column; */
+  background-color: white;
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 533px;
+ margin: 100px auto;
+}
+
+.loginInput {
+  background-color: white;
+  padding: 8px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  width: 300px;
+  gap: 10px;
+  margin: auto;
+
+}
+.loginInput:focus {
+  outline: none;
+}
+
+.inputBox {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-bottom: 15px;
+}
+
+.error {
+  color: red;
+  margin-top: 5px;
+}
+
+.loginButton {
+  padding: 10px;
+  width: 300px;
+  background-color: #24cca7;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin: 30px auto;
+}
+.loginButton:hover{
+    background-color: white;
+    color: #24cca7;
+     box-shadow: 0 0 25px #24cca780;
+}
+.registrationButton {
+  background-color: white;
+  border: 1px solid blue;
+  width: 300px;
+  border-radius: 20px;
+  color: blue;
+  padding: 10px;
+}
+.registrationButton:hover {
+  background-color: blue;
+  color: white;
+  box-shadow: 0 0 25px rgba(0, 0, 255, 0.5);
+}
