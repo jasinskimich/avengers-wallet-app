@@ -19,13 +19,7 @@
 
 /***************** TABLET *****************/
 @media screen and (min-width: 768px) {
-body {
-    background-color: #E7EAF2;
-    background-image: url('../../images/Ellipse2.svg'), url('../../images/Ellipse1.svg');
-    background-size: auto, 620px;
-    background-repeat: no-repeat, no-repeat;
-    background-position: right top, left bottom;
-}
+
 .registartionIcon {
     visibility: visible;
     width: 250px;

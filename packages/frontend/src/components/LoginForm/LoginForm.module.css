@@ -1,0 +1,39 @@
+.loginBox{
+ display: flex;
+ flex-direction:column;
+background-color: white;
+padding: 30px;
+border-radius: 20px;
+}
+
+.loginInput {
+ background-color: white;
+  padding:8px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  width: 380px;
+  gap: 10px;
+}
+.inputBox{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-bottom: 15px;
+}
+
+.error {
+  color: red;
+  margin-top: 5px;
+}
+
+
+.loginButton {
+  padding: 10px 100px;
+  background-color:#24cca7;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+

@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import styles from "./LoginForm/"
+import styles from "./LoginForm.module.css"
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -41,7 +41,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div>
+    <div className={styles.loginBox}>
       <h1>WALLET</h1>
       <Formik
         initialValues={{ email: "", password: "" }}
@@ -58,29 +58,45 @@ const LoginForm = () => {
       >
         {({ isSubmitting }) => (
           <Form>
-            <div>
-              <label>Email</label>
-              <Field type="email" name="email" placeholder="Email" />
+            <div className={styles.inputBox}>
+              <label for="email">Email</label>
+              <Field
+                className={styles.loginInput}
+                type="email"
+                name="email"
+                placeholder="Email"
+                id="email"
+              />
               <ErrorMessage name="email" component="div" className="error" />
             </div>
-            <div>
-              <label>Password</label>
-              <Field type="password" name="password" placeholder="Password" />
+            <div className={styles.inputBox}>
+              <label for="password">Password</label>
+              <Field
+                className={styles.loginInput}
+                type="password"
+                name="password"
+                placeholder="Password"
+                id="password"
+              />
               <ErrorMessage name="password" component="div" className="error" />
             </div>
             <div>
-              <button type="submit" disabled={isSubmitting}>
+              <button
+                className={styles.loginButton}
+                type="submit"
+                disabled={isSubmitting}
+              >
                 Login
               </button>
+            </div>
+            <div>
+              <Link to="/register">
+                <button>Registration</button>
+              </Link>
             </div>
           </Form>
         )}
       </Formik>
-      <div>
-        <Link to="/register">
-          <button>Registration</button>
-        </Link>
-      </div>
     </div>
   );
 };

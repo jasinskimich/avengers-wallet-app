@@ -1,0 +1,47 @@
+
+.main {
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap :20px;
+  padding:120px 20px;
+  min-height: 380px;
+justify-items: center;
+}
+.container{
+    width: 436px;
+   height: 420px;
+}
+
+.logoPicture {
+  background-position: center;
+  background-repeat: no-repeat;
+   width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+}
+@media screen and (min-width: 768px) {
+  .logoPicture {
+
+    background-image: url(../../images/login-pictures/login-tablet.png);
+  }
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    .logoPicture {
+      background-image: url(../../images/login-pictures/login-tablet@2x.png);
+    }
+  }
+}
+@media screen and (min-width: 1080px) {
+  .logoPicture {
+    background-image: url(../../images/login-pictures/login-desktop.png);
+  }
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    .logoPicture {
+      background-image: url(../../images/login-pictures/login-desktop@2x.png);
+    }
+  }
+}
