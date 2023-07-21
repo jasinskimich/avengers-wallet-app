@@ -59,26 +59,35 @@ const LoginForm = () => {
         {({ isSubmitting }) => (
           <Form>
             <div className={styles.inputBox}>
-              <label for="email">Email</label>
+              <label>Email</label>
               <Field
                 className={styles.loginInput}
                 type="email"
                 name="email"
                 placeholder="Email"
-                id="email"
+                autoComplete="username"
               />
-              <ErrorMessage name="email" component="div" className={styles.error} />
+              <ErrorMessage
+                name="email"
+                component="div"
+                className={styles.error}
+              />
             </div>
             <div className={styles.inputBox}>
-              <label for="password">Password</label>
+              <label>Password</label>
               <Field
                 className={styles.loginInput}
                 type="password"
                 name="password"
                 placeholder="Password"
-                id="password"
+                value="true"
+                autoComplete="current-password"
               />
-              <ErrorMessage name="password" component="div" className={styles.error} />
+              <ErrorMessage
+                name="password"
+                component="div"
+                className={styles.error}
+              />
             </div>
             <div>
               <button
@@ -91,7 +100,9 @@ const LoginForm = () => {
             </div>
             <div>
               <Link to="/register">
-                <button className={styles.registrationButton}>Registration</button>
+                <button className={styles.registrationButton}>
+                  Registration
+                </button>
               </Link>
             </div>
           </Form>
