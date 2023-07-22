@@ -4,7 +4,6 @@ import SwitchCheckbox from "../SwitchCheckbox/SwitchCheckbox";
 import { useState } from "react";
 
 function ModalAddTransaction({ setOpenModal }) {
-  const [modalOpen, setModalOpen] = useState(false);
   const [checked, setChecked] = useState(false);
   const handleToggle = () => {
     setChecked(!checked);
