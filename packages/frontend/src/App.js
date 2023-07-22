@@ -7,29 +7,24 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/LoginPages/LoginPages";
 import MobileTable from "./pages/MobileTable/MobileTable";
 import RegistrationPages from "./pages/RegistrationPages/RegistrationPages";
-import ModalAddTransaction from "./components/ModalAddTransaction/ModalAddTransaction";
 import VerifyPage from "./pages/VerifyPage/VerifyPage";
 
-
-
 function App() {
-	return (
-		<div className="App">
-			<Routes>
-				Wallet App
-				<Route path="/register" element={<RegistrationPages />} />
-				<Route path="/verify" element={<VerifyPage/>} />
-				<Route path="/login" element={<Login />} />
-				<Route path="/" element={<Layout />}>
-					<Route path="/home" element={<Home />} />
-					<Route path="/statistics" element={<Statistics />} />
-					<Route path="/mobileTable" element={<MobileTable />} />
-				</Route>
-			</Routes>
-  <ModalAddTransaction />
-		</div>
-	);
-
+  return (
+    <div className="App">
+      <Routes>
+        Wallet App
+        <Route path="/register" element={<RegistrationPages />} />
+        <Route path="/verify" element={<VerifyPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Layout />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/statistics" element={<Statistics />} />
+          <Route path="/mobileTable" element={<MobileTable />} />
+        </Route>
+      </Routes>
+    </div>
+  );
 }
 
 export default App;

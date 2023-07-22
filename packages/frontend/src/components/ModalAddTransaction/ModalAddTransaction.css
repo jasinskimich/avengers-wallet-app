@@ -1,16 +1,9 @@
-.modal {
-  font-family: "Open Sans";
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-.modal__header {
+.modalHeader {
   font-weight: 400;
-  font-size: 30px;
+  font-size: 28px;
 }
 
-.modal__open-button {
+.openModalBtn {
   border-radius: 50%;
   width: 44px;
   height: 44px;
@@ -25,18 +18,57 @@
   margin: 20px;
 }
 
-.modal__close-button {
+.modalBackground {
+  top: 50%;
+  left: 50%;
+  background-color: rgba(200, 200, 200);
   position: absolute;
-  top: 0;
-  right: 0;
-  margin: 20px;
-  background-color: white;
-  border: none;
-  border-radius: 50%;
-  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.modal__cancel-button {
+.modalContainer {
+  width: 450px;
+  height: 500px;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  position: fixed;
+}
+
+.titleCloseBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.titleCloseBtn button {
+  background-color: transparent;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.modalContainer .body {
+  flex: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+.modalContainer .modalFooter {
+  flex: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContainer .modalFooter button {
   font-size: 16px;
   font-weight: 500;
   height: 40px;
@@ -45,4 +77,5 @@
   border: 1px solid #4a56e2;
   border-radius: 45px;
   background-color: white;
+  margin-bottom: 20px;
 }

@@ -29,13 +29,13 @@ const IncomeForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="income-form" method="post" action="">
-      <div>
-        <input className="income-form__amount" name="amount" type="number" min="0" placeholder="0.00"></input>
-        <DatePicker name="date" dateFormat="dd.MM.yyyy" selected={expenseDate} onChange={(date) => setExpenseDate(date)} />
+    <form onSubmit={handleSubmit} className="incomeForm" method="post" action="">
+      <div className="incomeForm__line">
+        <input className="incomeForm__amount" name="amount" type="number" min="0" placeholder="0.00"></input>
+        <DatePicker className="incomeForm__date" name="date" dateFormat="dd.MM.yyyy" selected={expenseDate} onChange={(date) => setExpenseDate(date)} />
       </div>
-      <input name="comment" className="income-form__comment" type="text" placeholder="Comment"></input>
-      <button className="income-form__button" type="submit" value="Submit">
+      <input name="comment" className="incomeForm__comment" type="text" placeholder="Comment"></input>
+      <button className="incomeForm__button" type="submit" value="Submit">
         ADD
       </button>
     </form>

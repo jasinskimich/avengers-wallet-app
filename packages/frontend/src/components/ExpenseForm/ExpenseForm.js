@@ -28,20 +28,24 @@ const ExpensesForm = () => {
       ...defaultStyles,
       color: state.isFocused ? "#ff6596" : "black",
       backgroundColor: state.isFocused ? "#FFFFFF" : "#fff1f6a2",
+      textAlign: "left",
     }),
 
     control: (defaultStyles) => ({
       ...defaultStyles,
       fontFamily: "Open Sans",
-      width: "416px",
-      height: "50px",
+      fontSize: "15px",
+      width: "365px",
+      height: "40px",
       color: "black",
       backgroundColor: "#FFFFFF",
-      paddingLeft: "10px",
+      padding: "0",
+      paddingLeft: "8px",
       border: "none",
       borderBottom: "1px solid rgb(197, 196, 196)",
       borderRadius: "0",
       boxShadow: "none",
+      textAlign: "left",
     }),
     singleValue: (defaultStyles) => ({ ...defaultStyles, color: "black" }),
   };
@@ -70,7 +74,7 @@ const ExpensesForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="expense-form" method="post" action="">
+    <form onSubmit={handleSubmit} className="expenseForm" method="post" action="">
       <Select
         placeholder="Select a category"
         name="expense"
@@ -82,12 +86,14 @@ const ExpensesForm = () => {
         options={options}
         styles={customStyles}
       />
-      <div>
-        <input className="expense-form__amount" name="amount" type="number" min="0" placeholder="0.00"></input>
-        <DatePicker name="date" dateFormat="dd.MM.yyyy" selected={expenseDate} onChange={(date) => setExpenseDate(date)} />
+      <div className="expenseForm__line">
+        <input className="expenseForm__amount" name="amount" type="number" min="0" placeholder="0.00"></input>
+        <div>
+          <DatePicker className="expenseForm__date" name="date" dateFormat="dd.MM.yyyy" selected={expenseDate} onChange={(date) => setExpenseDate(date)} />
+        </div>
       </div>
-      <input name="comment" className="expense-form__comment" type="text" placeholder="Comment"></input>
-      <button className="expense-form__button" type="submit" value="Submit">
+      <input name="comment" className="expenseForm__comment" type="text" placeholder="Comment"></input>
+      <button className="expenseForm__button" type="submit" value="Submit">
         ADD
       </button>
     </form>
