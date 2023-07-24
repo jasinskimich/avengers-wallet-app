@@ -29,8 +29,8 @@ const LoginForm = () => {
       if (response.ok) {
         const data = await response.json();
         console.log("User logged in:", data);
-
-        navigate("/home");
+        let id = data.data.user._id;
+        navigate(`/home/:${id}`);
       } else {
         const error = await response.json();
         setFieldError("password", error.message);
@@ -51,60 +51,33 @@ const LoginForm = () => {
       <Formik
         initialValues={{ email: "", password: "" }}
         validationSchema={Yup.object({
-          email: Yup.string()
-            .email("Invalid email address")
-            .required("Email is required"),
-          password: Yup.string()
-            .min(6, "Password must be at least 6 characters")
-            .max(12, "Password must not exceed 12 characters")
-            .required("Password is required"),
+          email: Yup.string().email("Invalid email address").required("Email is required"),
+          password: Yup.string().min(6, "Password must be at least 6 characters").max(12, "Password must not exceed 12 characters").required("Password is required"),
         })}
         onSubmit={handleSubmit}
       >
         {({ isSubmitting }) => (
           <Form>
             <div className={styles.inputBox}>
-              <Field
-                className={`${styles.loginInput} ${styles.loginInputEmail} `}
-                type="email"
-                name="email"
-                placeholder="Email"
-                autoComplete="username"
-              />
-              <ErrorMessage
-                name="email"
-                component="div"
-                className={styles.error}
-              />
+
+              <label>Email</label>
+              <Field className={styles.loginInput} type="email" name="email" placeholder="Email" autoComplete="username" />
+              <ErrorMessage name="email" component="div" className={styles.error} />
             </div>
             <div className={styles.inputBox}>
-              <Field
-                className={` ${styles.loginInput} ${styles.loginInputPassword}`}
-                type="password"
-                name="password"
-                placeholder="Password"
-                autoComplete="current-password"
-              />
-              <ErrorMessage
-                name="password"
-                component="div"
-                className={styles.error}
-              />
+              <label>Password</label>
+              <Field className={styles.loginInput} type="password" name="password" placeholder="Password" autoComplete="current-password" />
+              <ErrorMessage name="password" component="div" className={styles.error} />
+
             </div>
             <div>
-              <button
-                className={styles.loginButton}
-                type="submit"
-                disabled={isSubmitting}
-              >
+              <button className={styles.loginButton} type="submit" disabled={isSubmitting}>
                 Login
               </button>
             </div>
             <div>
               <Link to="/register">
-                <button className={styles.registrationButton}>
-                  Registration
-                </button>
+                <button className={styles.registrationButton}>Registration</button>
               </Link>
             </div>
           </Form>
