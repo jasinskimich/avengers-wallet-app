@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Box } from "@mui/material/";
-import { NavLink, useLocation, useParams } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { ReactComponent as Home } from "../../images/home.svg";
 import { ReactComponent as HomeActive } from "../../images/homeActive.svg";
 import { ReactComponent as Statistics } from "../../images/statistics.svg";
