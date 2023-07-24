@@ -80,7 +80,6 @@ const LoginForm = () => {
                 type="password"
                 name="password"
                 placeholder="Password"
-                value="true"
                 autoComplete="current-password"
               />
               <ErrorMessage

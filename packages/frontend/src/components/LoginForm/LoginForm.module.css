@@ -1,11 +1,40 @@
+/* ============================== mobile =========================== */
+@media screen and (min-width: 0px) and (max-width: 768px) {
+  .loginBox {
+    margin: 0px auto;
+    padding: 10px;
+  }
+  .loginButton,
+  .registrationButton,
+  .loginInput {
+    max-width: 260px;
+  }
+}
+/* ============================== Tablet =========================== */
+@media screen and (min-width: 768px) and (max-width: 1079px) {
+  .loginBox {
+    padding: 30px;
+    margin: 0px auto 200px auto;
+  }
+  .loginButton,
+  .registrationButton,
+  .loginInput {
+    max-width: 330px;
+  }
+}
+/* ======================Desktop=========================== */
+
+@media screen and (min-width: 1080px) {
+  .loginBox {
+    padding: 90px 30px;
+    margin: 80px auto;
+  }
+}
+/* ============================================================= */
 .loginBox {
-  /* display: flex;
-  flex-direction: column; */
   background-color: white;
-  padding: 30px;
   border-radius: 20px;
   max-width: 533px;
- margin: 100px auto;
 }
 
 .loginInput {
@@ -16,7 +45,6 @@
   width: 300px;
   gap: 10px;
   margin: auto;
-
 }
 .loginInput:focus {
   outline: none;
@@ -44,10 +72,10 @@
   cursor: pointer;
   margin: 30px auto;
 }
-.loginButton:hover{
-    background-color: white;
-    color: #24cca7;
-     box-shadow: 0 0 25px #24cca780;
+.loginButton:hover {
+  background-color: white;
+  color: #24cca7;
+  box-shadow: 0 0 25px #24cca780;
 }
 .registrationButton {
   background-color: white;

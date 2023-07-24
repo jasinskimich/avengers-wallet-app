@@ -1,65 +1,63 @@
 /***************** MOBILE *****************/
 .bodyContainer {
-    min-width: 320px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 500px;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 500px;
 }
 .container {
-    display: none;
+  display: none;
 }
 .registartionPagesName {
-    visibility: hidden;
+  visibility: hidden;
 }
 .registartionIcon {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 /***************** TABLET *****************/
 @media screen and (min-width: 768px) {
-
-.registartionIcon {
+  .registartionIcon {
     visibility: visible;
     width: 250px;
     height: 275px;
-    
-}
-.registartionPagesName {
+  }
+  .registartionPagesName {
     visibility: visible;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-left: 50px;
-}
-.registartionPagesNameItem {
+  }
+  .registartionPagesNameItem {
     font-weight: 400;
     font-size: 30px;
-}
-.container {
+  }
+  .container {
     display: flex;
     flex-direction: row;
     margin-bottom: 50px;
     margin-top: 60px;
-}
+  }
 }
 
 /***************** DESKTOP *****************/
 @media screen and (min-width: 1024px) {
-.bodyContainer {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-around;
-        margin-bottom: 225px;
-    }
-.container {
+  .bodyContainer {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 225px;
+  }
+  .container {
     flex-direction: column;
     margin-bottom: 0px;
     padding-top: 100px;
-}
-.registartionIcon {
+  }
+  .registartionIcon {
     width: 453px;
     height: 413px;
-}
+  }
 }

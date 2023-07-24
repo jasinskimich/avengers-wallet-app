@@ -1,44 +1,82 @@
+/* ============================== mobile =========================== */
+@media screen and (min-width: 0px) and (max-width: 768px) {
+  .main {
+    background-color: white;
+    height: 100vh;
+  }
+  .logoTitle {
+    opacity: 0;
+    margin: 0 auto;
+  }
+}
 
-.main {
-  display: grid;
-  grid-template-columns: 2fr 3fr;
-  gap: 10px;
- justify-items: center;
- grid-template-rows: 100vh;
- 
-}
-.titleContainer{
-    padding-top: 120px;
-    width: 436px;
-   height: 420px;
-}
-.loginFormContainer{
-background-color: rgba(255, 255, 255, 0.625);
-width: 100%;
+/* ============================== Tablet =========================== */
+@media screen and (min-width: 768px) and (max-width: 1080px) {
+  .main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    justify-items: center;
+    height: 100%;
+  }
 
-}
-.logoPicture {
-  background-position: center;
-  background-repeat: no-repeat;
-   width: 500px; 
-  height: 400px; 
- background-size: contain;
-}
-@media screen and (min-width: 768px) {
+  .titleContainer {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 50px;
+    margin-top: 60px;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .loginFormContainer {
+    width: 100%;
+  }
+
   .logoPicture {
-
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 260px;
+    height: 400px;
+    background-size: contain;
     background-image: url(../../images/login-pictures/login-tablet.png);
   }
-  @media screen and (min-device-pixel-ratio: 2),
-    screen and (min-resolution: 192dpi),
+
+  @media screen and (min-resolution: 192dpi),
     screen and (min-resolution: 2dppx) {
     .logoPicture {
       background-image: url(../../images/login-pictures/login-tablet@2x.png);
     }
   }
 }
+
+/* ======================Desktop=========================== */
+
 @media screen and (min-width: 1080px) {
+  .main {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    width: 100%;
+    justify-items: center;
+    grid-template-rows: 100vh;
+  }
+
+  .titleContainer {
+    margin-top: 150px;
+    width: 436px;
+    height: 420px;
+  }
+  .loginFormContainer {
+    background-color: rgba(255, 255, 255, 0.625);
+    width: 100%;
+  }
   .logoPicture {
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 435px;
+    height: 420px;
+    background-size: contain;
+
     background-image: url(../../images/login-pictures/login-desktop.png);
   }
   @media screen and (min-device-pixel-ratio: 2),
