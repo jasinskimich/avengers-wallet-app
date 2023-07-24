@@ -9,22 +9,37 @@ const IncomeForm = () => {
   const yourDate = new Date();
   const [expenseDate, setExpenseDate] = useState(yourDate);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const amount = e.target.amount.value;
     const date = e.target.date.value;
     const comment = e.target.comment.value;
 
-    const data = { type: "income", amount: amount, date: date, comment: comment };
+    const transaction = { date: date, type: "+", category: "Income", comment: comment, sum: amount };
 
-    const { error } = IncomeFormValidation(data);
+    const { error } = IncomeFormValidation(transaction);
     if (error) {
       if (!amount) {
         Notify.failure("Please enter the amount");
       }
     } else {
-      const newIncome = { data };
+      const newIncome = { transaction };
       console.log(newIncome);
+
+      try {
+        const response = await fetch("http://localhost:5000/api/finances", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ newIncome }),
+        });
+        if (response.ok) {
+          console.log(response.body);
+        }
+      } catch (error) {
+        console.error("An error occurred. Please try again later.");
+      }
     }
   };
 

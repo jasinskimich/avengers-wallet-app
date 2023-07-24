@@ -2,10 +2,11 @@ const Joi = require("joi").extend(require("@joi/date"));
 
 const IncomeFormValidation = (data) => {
   const schema = Joi.object({
-    type: Joi.string().required(),
-    amount: Joi.number().required(),
     date: Joi.date().format("DD.MM.YYYY").required(),
+    type: Joi.string().required(),
+    category: Joi.string().required(),
     comment: Joi.string().allow(""),
+    sum: Joi.number().required(),
   });
   return schema.validate(data);
 };
