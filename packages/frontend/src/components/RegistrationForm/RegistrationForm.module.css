@@ -1,0 +1,126 @@
+/* ============================== Mobile =========================== */
+@media screen and (min-width: 0px) and (max-width: 768px) {
+    .registerBox {
+        margin: 0px auto;
+        padding: 10px;
+    }
+
+    .loginButton,
+    .registrationButton {
+        max-width: 260px;
+    }
+
+    .inputWidth {
+        max-width: 300px;
+    }
+    
+    .inputWidthLast {
+        max-width: 300px;
+        padding-bottom: 10px;
+    }
+  }
+
+/* ============================== Tablet =========================== */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .registerBox {
+        padding: 30px;
+        margin: 0px auto 200px auto;
+    }
+
+    .loginButton,
+    .registrationButton {
+        max-width: 330px;
+    }
+  }
+
+/* ====================== Desktop =========================== */
+@media screen and (min-width: 1024px) {
+    .registerBox {
+        padding: 0px 40px 40px 40px;
+        margin: 80px auto;
+    }
+}
+
+/* ============================================================= */
+
+.registerBox {
+    background-color: white;
+    border-radius: 20px;
+    max-width: 533px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconMargin {
+    margin-bottom: 7px;
+    margin-left: 10px;
+}
+
+.registrationButton {
+    padding: 10px;
+    width: 300px;
+    background-color: #24cca7;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: 30px auto;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+.registrationButton:hover {
+    background-color: #60eecf;
+    color: white;
+    box-shadow: 0 0 25px #24cca780;
+    transition: 0.3s;
+}
+
+.registrationFormHeader {
+    display: flex;
+}
+
+.walletIcon {
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
+
+.inputWidth {
+    width: 410px;
+}
+
+.inputWidthLast {
+    width: 410px;
+    padding-bottom: 10px;
+}
+
+.loginButton {
+    background-color: white;
+    border: 1px solid #4A56E2;
+    width: 300px;
+    border-radius: 20px;
+    cursor: pointer;
+    color: #4A56E2;
+    padding: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+.loginButton:hover {
+    background-color: #4A56E2;
+    color: white;
+    box-shadow: 0 0 25px #4A56E2;
+    transition: 0.3s;
+}   
+
+.verifyLink {
+    font-family: 'Open Sans', sans-serif;
+    color: #24cca7;
+    text-decoration: underline;
+    text-decoration-color: #24cca7;
+    font-size: 14px;
+}

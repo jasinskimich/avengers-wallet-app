@@ -11,6 +11,7 @@ import VerifyPage from "./pages/VerifyPage/VerifyPage";
 import { useParams } from "react-router-dom";
 
 function App() {
+
   let { id } = useParams();
   return (
     <div className="App">
@@ -27,6 +28,7 @@ function App() {
       </Routes>
     </div>
   );
+
 }
 
 export default App;
