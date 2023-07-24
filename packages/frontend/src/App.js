@@ -23,7 +23,7 @@ function App() {
 					<Route path="/mobileTable" element={<MobileTable />} />
 				</Route>
 			</Routes>
-			<ModalAddTransaction />
+			
 		</div>
 	);
 
