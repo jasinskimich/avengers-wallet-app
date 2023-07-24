@@ -11,7 +11,7 @@
   }
 }
 /* ============================== Tablet =========================== */
-@media screen and (min-width: 768px) and (max-width: 1079px) {
+@media screen and (min-width: 769px) and (max-width: 1080px) {
   .loginBox {
     padding: 30px;
     margin: 0px auto 200px auto;
@@ -26,7 +26,6 @@
 
 @media screen and (min-width: 1080px) {
   .loginBox {
-    padding: 90px 30px;
     margin: 80px auto;
   }
 }
@@ -35,26 +34,41 @@
   background-color: white;
   border-radius: 20px;
   max-width: 533px;
+  padding: 30px 30px 100px 30px;
 }
-
+.loginBoxTitle {
+  padding-right: 30px;
+}
 .loginInput {
   background-color: white;
-  padding: 8px;
+  padding:8px 0px 8px 40px;
   border: none;
   border-bottom: 1px solid #ccc;
-  width: 300px;
-  gap: 10px;
-  margin: auto;
+  width: 380px;
+  margin: 0px auto;
+  font-size: 16px;
 }
 .loginInput:focus {
   outline: none;
+}
+.loginInputEmail{
+  background-image: url('../../images/email.svg'); /* Ścieżka do pliku SVG z ikoną koperty */
+  background-size: 30px; 
+  background-repeat: no-repeat;
+
+}
+.loginInputPassword{
+  background-image: url('../../images/lock.svg'); /* Ścieżka do pliku SVG z ikoną koperty */
+  background-size: 20px; 
+  background-repeat: no-repeat;
+  
+ 
 }
 
 .inputBox {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  padding-bottom: 15px;
+  margin: 40px auto;
 }
 
 .error {
@@ -70,7 +84,7 @@
   border: none;
   border-radius: 20px;
   cursor: pointer;
-  margin: 30px auto;
+  font-size: 18px;
 }
 .loginButton:hover {
   background-color: white;
@@ -84,6 +98,8 @@
   border-radius: 20px;
   color: blue;
   padding: 10px;
+  margin: 30px auto;
+  font-size: 18px;
 }
 .registrationButton:hover {
   background-color: blue;
