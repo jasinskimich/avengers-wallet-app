@@ -1,63 +1,90 @@
 /***************** MOBILE *****************/
-.bodyContainer {
-  min-width: 320px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 500px;
-}
-.container {
-  display: none;
-}
-.registartionPagesName {
-  visibility: hidden;
-}
-.registartionIcon {
-  visibility: hidden;
+@media screen and (min-width: 0px) and (max-width: 768px) {
+  .main {
+    background-color: white;
+    height: 100vh;
+  }
+  .titleContainer {
+    margin: 0 auto;
+    opacity: 0;
+  }
 }
 
 /***************** TABLET *****************/
 @media screen and (min-width: 768px) {
-  .registartionIcon {
-    visibility: visible;
-    width: 250px;
-    height: 275px;
+  .main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    justify-items: center;
+    height: 100%;
   }
-  .registartionPagesName {
-    visibility: visible;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 50px;
+  .logoPicture {
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 260px;
+    height: 400px;
+    background-size: contain;
+    background-image: url(../../images/RegistrationPageIcon.svg);
   }
-  .registartionPagesNameItem {
-    font-weight: 400;
-    font-size: 30px;
-  }
-  .container {
+  .titleContainer {
     display: flex;
     flex-direction: row;
     margin-bottom: 50px;
     margin-top: 60px;
+    align-items: center;
+    gap: 30px;
+  }
+  .registrationFormContainer {
+    width: 100%;
+  }
+  .registartionIcon {
+    max-width: 300px;
+  }
+  .logoTitle {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
   }
 }
 
 /***************** DESKTOP *****************/
 @media screen and (min-width: 1024px) {
-  .bodyContainer {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    margin-bottom: 225px;
+  .main {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    width: 100%;
+    justify-items: center;
+    grid-template-rows: 100vh;
   }
-  .container {
+  .registrationFormContainer {
+    background-color: rgba(255, 255, 255, 0.625);
+    width: 100%;
+  }
+  .titleContainer {
+    display: flex;
     flex-direction: column;
-    margin-bottom: 0px;
-    padding-top: 100px;
+    margin-top: 150px;
+    width: 436px;
+    height: 420px;
+  }
+  .logoPicture {
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 500px;
+    height: 800px;
+    background-size: contain;
+
+    /* background-image: url(../../images/RegistrationPageIcon.svg); */
   }
   .registartionIcon {
-    width: 453px;
-    height: 413px;
+    max-width: 500px;
+  }
+  .logoTitle {
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 0px;
+    padding-top: 0px;
+    font-weight: 400;
   }
 }
+
+/* poprawić css dla mobilki bo coś jest zbugowane */
