@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import styles from "./LoginForm.module.css";
+import { ReactComponent as Wallet } from "../../images/Wallet.svg";
+
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -42,7 +44,10 @@ const LoginForm = () => {
 
   return (
     <div className={styles.loginBox}>
-      <h1>WALLET</h1>
+      <h1>
+        <Wallet className={styles.loginBoxTitle} />
+        WALLET
+      </h1>
       <Formik
         initialValues={{ email: "", password: "" }}
         validationSchema={Yup.object({
@@ -59,9 +64,8 @@ const LoginForm = () => {
         {({ isSubmitting }) => (
           <Form>
             <div className={styles.inputBox}>
-              <label>Email</label>
               <Field
-                className={styles.loginInput}
+                className={`${styles.loginInput} ${styles.loginInputEmail} `}
                 type="email"
                 name="email"
                 placeholder="Email"
@@ -74,9 +78,8 @@ const LoginForm = () => {
               />
             </div>
             <div className={styles.inputBox}>
-              <label>Password</label>
               <Field
-                className={styles.loginInput}
+                className={` ${styles.loginInput} ${styles.loginInputPassword}`}
                 type="password"
                 name="password"
                 placeholder="Password"
