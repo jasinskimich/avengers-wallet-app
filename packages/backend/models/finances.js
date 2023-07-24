@@ -9,19 +9,23 @@ const userFinances = new Schema({
   },
   sum: {
     type: Number,
+    default: 0,
   },
   transactions: [
     {
-      transactionId: {
-        type: String,
+      date: {
+        type: Date,
+        default: Date.now,
       },
-      tranactionType: {
+      type: {
         type: String,
         enum: ["+", "-"],
+        required: [true, "Type is required"],
       },
-      tranactionCategory: {
+      category: {
         type: String,
         enum: [
+          "Income",
           "Main expenses",
           "Products",
           "Car",
@@ -30,20 +34,15 @@ const userFinances = new Schema({
           "Household products",
           "Education",
           "Leisure",
+          "Else",
         ],
       },
-      transactionComment: {
+      comment: {
         type: String,
       },
-      transactionSum: {
+      sum: {
         type: Number,
-      },
-      transactionDate: {
-        type: Date,
-      },
-      transactionOwner: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "user",
+        required: [true, "Transaction sum is required"],
       },
     },
   ],
