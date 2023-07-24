@@ -10,21 +10,23 @@ import RegistrationPages from "./pages/RegistrationPages/RegistrationPages";
 import VerifyPage from "./pages/VerifyPage/VerifyPage";
 
 function App() {
-  return (
-    <div className="App">
-      <Routes>
-        Wallet App
-        <Route path="/register" element={<RegistrationPages />} />
-        <Route path="/verify" element={<VerifyPage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Layout />}>
-          <Route path="/home" element={<Home />} />
-          <Route path="/statistics" element={<Statistics />} />
-          <Route path="/mobileTable" element={<MobileTable />} />
-        </Route>
-      </Routes>
-    </div>
-  );
+
+	return (
+		<div className="App">
+			<Routes>
+				<Route path="/register" element={<RegistrationPages />} />
+				<Route path="/verify" element={<VerifyPage />} />
+				<Route path="/login" element={<Login />} />
+				<Route path="/" element={<Layout />}>
+					<Route index element={<Home />} />
+					<Route path="/statistics" element={<Statistics />} />
+					<Route path="/mobileTable" element={<MobileTable />} />
+				</Route>
+			</Routes>
+			
+		</div>
+	);
+
 }
 
 export default App;
