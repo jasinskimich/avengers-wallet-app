@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Notiflix from 'notiflix';
 import css from "./RegistrationForm.module.css"
 import { Box, FormControl, InputAdornment, Input } from "@mui/material";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import LocalPostOfficeIcon from '@mui/icons-material/LocalPostOffice';
 import LockIcon from '@mui/icons-material/Lock';
 import walletIcon from "../../images/Wallet.svg"
@@ -143,7 +143,7 @@ const RegistrationForm = () => {
             required 
             startAdornment={
               <InputAdornment position="start">
-                <AccountCircleIcon sx={{ color: 'lightgrey', mr: 1, my: 0.5 }} className={css.iconMargin} />
+                <AccountBoxIcon sx={{ color: 'lightgrey', mr: 1, my: 0.5 }} className={css.iconMargin} />
               </InputAdornment>
             }
           />
