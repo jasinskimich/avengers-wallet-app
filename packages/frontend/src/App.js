@@ -10,26 +10,22 @@ import RegistrationPages from "./pages/RegistrationPages/RegistrationPages";
 import ModalAddTransaction from "./components/ModalAddTransaction/ModalAddTransaction";
 import VerifyPage from "./pages/VerifyPage/VerifyPage";
 
-
-
 function App() {
 	return (
 		<div className="App">
 			<Routes>
-				Wallet App
 				<Route path="/register" element={<RegistrationPages />} />
-				<Route path="/verify" element={<VerifyPage/>} />
+				<Route path="/verify" element={<VerifyPage />} />
 				<Route path="/login" element={<Login />} />
 				<Route path="/" element={<Layout />}>
-					<Route path="/home" element={<Home />} />
+					<Route index element={<Home />} />
 					<Route path="/statistics" element={<Statistics />} />
 					<Route path="/mobileTable" element={<MobileTable />} />
 				</Route>
 			</Routes>
-  <ModalAddTransaction />
+			<ModalAddTransaction />
 		</div>
 	);
-
 }
 
 export default App;

@@ -9,14 +9,18 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 const theme = createTheme({
 	palette: {
 		primary: {
-			main: "#FFFFFF",
+			main: "#fff",
 			secondary: "#4A56E2",
 			green: "#24CCA7",
-			red: "FF6596",
+			red: "#FF6596",
 		},
 		text: {
 			standard: "#00838f",
 			gray: "#BDBDBD",
+		},
+		button: {
+			active: "#4A56E2",
+			disactive: "#6E78E8",
 		},
 	},
 });
