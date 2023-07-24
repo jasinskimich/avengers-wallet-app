@@ -6,7 +6,7 @@ const ExpenseFormValidation = (data) => {
     expense: Joi.string().required(),
     amount: Joi.number().required(),
     date: Joi.date().format("DD.MM.YYYY").required(),
-    comment: Joi.string(),
+    comment: Joi.string().allow(""),
   });
   return schema.validate(data);
 };

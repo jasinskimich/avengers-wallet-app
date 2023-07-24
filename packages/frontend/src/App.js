@@ -7,10 +7,10 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/LoginPages/LoginPages";
 import MobileTable from "./pages/MobileTable/MobileTable";
 import RegistrationPages from "./pages/RegistrationPages/RegistrationPages";
-import ModalAddTransaction from "./components/ModalAddTransaction/ModalAddTransaction";
 import VerifyPage from "./pages/VerifyPage/VerifyPage";
 
 function App() {
+
 	return (
 		<div className="App">
 			<Routes>
@@ -26,6 +26,7 @@ function App() {
 			<ModalAddTransaction />
 		</div>
 	);
+
 }
 
 export default App;
