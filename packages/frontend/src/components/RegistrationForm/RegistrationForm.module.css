@@ -21,7 +21,7 @@
   }
 
 /* ============================== Tablet =========================== */
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+@media screen and (min-width: 768px) and (max-width: 1080px) {
     .registerBox {
         padding: 30px;
         margin: 0px auto 200px auto;
@@ -34,7 +34,7 @@
   }
 
 /* ====================== Desktop =========================== */
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1080px) {
     .registerBox {
         padding: 0px 40px 40px 40px;
         margin: 90px auto;
@@ -61,7 +61,7 @@
 .iconMarginPost {
     margin-bottom: 7px;
     margin-left: 10px;
-    margin-right: 16px;
+    margin-right: 10px;
 }
 
 .registrationButton {
