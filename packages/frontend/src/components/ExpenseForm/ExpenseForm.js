@@ -50,16 +50,16 @@ const ExpensesForm = () => {
     singleValue: (defaultStyles) => ({ ...defaultStyles, color: "black" }),
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const expense = e.target.expense.value;
     const amount = e.target.amount.value;
     const date = e.target.date.value;
     const comment = e.target.comment.value;
 
-    const data = { type: "expense", expense: expense, amount: amount, date: date, comment: comment };
+    const transaction = { date: date, type: "-", category: expense, comment: comment, sum: amount };
 
-    const { error } = ExpenseFormValidation(data);
+    const { error } = ExpenseFormValidation(transaction);
     if (error) {
       if (!expense) {
         Notify.failure("Please select the category");
@@ -68,8 +68,22 @@ const ExpensesForm = () => {
         Notify.failure("Please enter the amount");
       }
     } else {
-      const newExpense = { data };
+      const newExpense = { transaction };
       console.log(newExpense);
+      try {
+        const response = await fetch("http://localhost:5000/api/finances", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ newExpense }),
+        });
+        if (response.ok) {
+          console.log(response.body);
+        }
+      } catch (error) {
+        console.error("An error occurred. Please try again later.");
+      }
     }
   };
 
