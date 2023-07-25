@@ -3,7 +3,8 @@
   justify-content: space-between;
   height: 8vh;
   padding: 20px;
-  background-color: #FFFFFF;
+  background-color: #FFFFFF;;
+ 
 }
 
 .wallet {
@@ -39,10 +40,11 @@ img {
   cursor: pointer;
   display: flex;
   align-items: center;
-}
-.logoutBtn:hover {
-  fill: red;
-  color: red;
+
+  &:hover {
+    fill: red;
+    color: red;
+  }
 }
 
 .exitIcon {
@@ -50,9 +52,10 @@ img {
   height: 18px;
   fill: #BDBDBD;
   transition: fill 0.2s;
-}
-.exitIcon:hover {
-  fill: var(--expense-color);
+
+  &:hover {
+    fill: var(--expense-color)
+  }
 }
 
 .exitBtn {
@@ -66,9 +69,10 @@ img {
   font-size: 18px;
   padding-left: 10px;
   line-height: 26.53px;
-}
-.exitTxt:hover {
+
+&:hover{
   color: var(--expense-color);
+}
 }
 
 .name {
@@ -77,4 +81,5 @@ img {
   font-weight: 400;
   font-size: 18px;
   line-height: 26.53px;
-}/*# sourceMappingURL=Header.module.css.map */
+
+}
