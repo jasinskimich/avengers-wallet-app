@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import MediaQuery from "react-responsive";
 import { Box } from "@mui/material/";
 import { NavLink, useLocation } from "react-router-dom";
 import { ReactComponent as Home } from "../../images/home.svg";
@@ -54,16 +55,26 @@ function Navigation() {
 	}, [location]);
 
 	return (
-		<Box sx={{ display: "flex", justifyContent: "flex-start", flexDirection: "column", alignItems: "flex-start", gap: "12px", m: "40px 0px 28px 16px" }}>
-			<StyledLink to="/">
-				{home ? <HomeActive className={css.svg} /> : <Home className={css.svg} />}
-				Home
-			</StyledLink>
-			<StyledLink to="/statistics">
-				{statistic ? <StatisticsActive className={css.svg} /> : <Statistics className={css.svg} />}
-				Statistics
-			</StyledLink>
-			<StyledLink to="/mobileTable">{mobile ? <MobileTableActive className={css.svg} /> : <MobileTable className={css.svg} />}</StyledLink>
+		<Box>
+			<MediaQuery minWidth={426} maxWidth={2560}>
+				<Box sx={{ display: "flex", justifyContent: "flex-start", flexDirection: "column", alignItems: "flex-start", gap: "12px", m: "40px 0px 28px 16px" }}>
+					<StyledLink to="/">
+						{home ? <HomeActive className={css.svg} /> : <Home className={css.svg} />}
+						Home
+					</StyledLink>
+					<StyledLink to="/statistics">
+						{statistic ? <StatisticsActive className={css.svg} /> : <Statistics className={css.svg} />}
+						Statistics
+					</StyledLink>
+				</Box>
+			</MediaQuery>
+			<MediaQuery maxWidth={425}>
+				<Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "36px", my: "15px" }}>
+					<StyledLink to="/">{home ? <HomeActive className={css.svgMobile} /> : <Home className={css.svgMobile} />}</StyledLink>
+					<StyledLink to="/statistics">{statistic ? <StatisticsActive className={css.svgMobile} /> : <Statistics className={css.svgMobile} />}</StyledLink>
+					<StyledLink to="/mobileTable">{mobile ? <MobileTableActive className={css.svgMobile} /> : <MobileTable className={css.svgMobile} />}</StyledLink>
+				</Box>
+			</MediaQuery>
 		</Box>
 	);
 }

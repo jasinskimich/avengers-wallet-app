@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { nanoid } = require("nanoid");
+// const { nanoid } = require("nanoid");
 require("dotenv").config();
 
 const Finances = require("../models/finances");
@@ -36,5 +36,28 @@ const addTransaction = async (req, res, next) => {
 };
 
 router.post("/finances", addTransaction);
+
+// GET Balance sum
+const getOwnerSum = async (req, res) => {
+  try {
+    const owner = req.params.owner;
+
+    const document = await Finances.findOne({ owner });
+
+    if (!document) {
+      return res.status(404).json({ message: "Document not found" });
+    }
+
+    const sum = document.sum;
+
+    res.json({ sum });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+};
+
+router.get("/finances/sum/:owner", getOwnerSum);
+// ..............................................
 
 module.exports = router;

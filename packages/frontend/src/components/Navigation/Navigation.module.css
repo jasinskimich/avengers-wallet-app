@@ -5,4 +5,9 @@
 	width: 18px;
 }
 
-
+.svgMobile {
+	background-color: white;
+	border-radius: 15%;
+	height: 32px;
+	width: 32px;
+}
