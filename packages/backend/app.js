@@ -16,7 +16,7 @@ app.use(express.json());
 require("./config/config-passport");
 
 app.use("/api", usersRouter);
-app.use("api", financesRouter);
+app.use("/api", financesRouter);
 
 app.use((req, res) => {
   res.status(200).json({ message: "pusto i test" });
