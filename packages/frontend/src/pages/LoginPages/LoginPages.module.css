@@ -24,18 +24,13 @@
     display: flex;
     flex-direction: row;
     
-    /* margin-top: 60px; */
+    margin-top: 60px;
     align-items: center;
-    gap: 60px;
+    gap: 150px;
   }
 
   .loginFormContainer {
     width: 100%;
-  }
-
-  .logoTitle {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
   }
 
   .logoPicture {
@@ -66,19 +61,11 @@
     grid-template-rows: 100vh;
   }
 
-  .logoTitle {
-    font-family: 'Open Sans', sans-serif;
-    margin-top: 20px;
-    padding-top: 0px;
-    font-weight: 400;
-  }
-
   .titleContainer {
     margin-top: 150px;
     width: 436px;
     height: 420px;
   }
-  
   .loginFormContainer {
     background-color: rgba(255, 255, 255, 0.385);
     width: 100%;

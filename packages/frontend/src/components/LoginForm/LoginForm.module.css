@@ -1,18 +1,13 @@
 /* ============================== mobile =========================== */
 @media screen and (min-width: 0px) and (max-width: 768px) {
   .loginBox {
-    margin: 10px auto;
-    padding: 10px;
+    margin: 0px auto;
+ padding: 10px 5px 100px 5px;
   }
   .loginButton,
-  .registrationButton {
+  .registrationButton,
+  .loginInput {
     max-width: 280px;
-  }
-  .inputWidth {
-    max-width: 300px;
-  }
-  .inputWidthFirst {
-    max-width: 300px;
   }
 }
 /* ============================== Tablet =========================== */
@@ -31,8 +26,8 @@
 
 @media screen and (min-width: 1080px) {
   .loginBox {
-    padding: 0px 40px 40px 40px;
-    margin: 155px auto;
+    margin: 100px auto;
+      padding: 30px 30px 100px 30px;
   }
 }
 /* ============================================================= */
@@ -40,20 +35,22 @@
   background-color: white;
   border-radius: 20px;
   max-width: 533px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /* margin-top: 150px; */
-}
-.loginFormHeader {
-  display: flex;
+ 
 }
 .loginBoxTitle {
   padding-right: 30px;
 }
 .loginInput {
-  margin-bottom: 30px;
+  background-color: white;
+  padding:8px 0px 8px 40px;
+  border: none;
+  border-bottom: 1px solid #E0E0E0 ;
+  width: 410px;
+  height: 32px;
+  margin: 0px auto;
+  font-size: 16px;
+  color: #E0E0E0;
+  justify-items: center;
 }
 .loginInput:focus {
   outline: none;
@@ -94,71 +91,24 @@
   font-size: 18px;
 }
 .loginButton {
-  padding: 10px;
-  width: 300px;
-  background-color: #24cca7;
+background-color: #24cca7;
   color: white;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  margin: 30px auto;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 24px;
-  letter-spacing: 1px;
-  padding-bottom: 45px;
 }
 
 .loginButton:hover {
-  background-color: #60eecf;
-  color: white;
+  background-color: white;
+  color: #24cca7;
   box-shadow: 0 0 25px #24cca780;
-  transition: 0.3s;
 }
 .registrationButton {
   background-color: white;
   border: 1px solid #4A56E2;
-  width: 300px;
-  border-radius: 20px;
-  cursor: pointer;
   color: #4A56E2;
-  padding: 10px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 24px;
-  letter-spacing: 1px;
-  padding-bottom: 45px;
+  margin: 30px auto;
 }
 
 .registrationButton:hover {
   background-color: #4A56E2;
   color: white;
   box-shadow: 0 0 25px #4A56E2;
-  transition: 0.3s;
-}
-
-.walletIcon {
-  margin-right: 20px;
-  margin-bottom: 5px;
-}
-
-.inputWidthFirst {
-  width: 410px;
-  margin-bottom: 100px;
-}
-
-.inputWidth {
-    width: 410px;
-}
-
-.iconMargin {
-  margin-bottom: 7px;
-  margin-left: 10px;
-}
-
-.iconMarginPost {
-  margin-left: 10px;
-  margin-right: 16px;
-}
-
-.inputMargin {
-  margin-bottom: 10px;
 }

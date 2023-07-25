@@ -87,13 +87,12 @@ const RegistrationForm = () => {
             id="email" 
             value={email} 
             onChange={(e) => handleInputChange(e)} 
-            placeholder="E-mail"
+            placeholder="Email"
             required 
+            className="registrationInput"
             startAdornment={
               <InputAdornment position="start">
-
-                <LocalPostOfficeIcon sx={{ color: 'lightgrey', mr: 1, my: 0.5 }} className={css.iconMarginPost} />
-
+                <LocalPostOfficeIcon sx={{ color: 'lightgrey', mr: 1, my: 0.5 }} className={css.iconMargin} />
               </InputAdornment>
             }
           />
@@ -121,7 +120,7 @@ const RegistrationForm = () => {
             id="confirmPassword" 
             value={confirmPassword} 
             onChange={(e) => handleInputChange(e)} 
-            placeholder="Confirm password"
+            placeholder="Confirm Password"
             minLength={6}
             maxLength={12}
             required 
