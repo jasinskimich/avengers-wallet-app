@@ -2,12 +2,12 @@
 @media screen and (min-width: 0px) and (max-width: 768px) {
   .loginBox {
     margin: 0px auto;
-    padding: 10px;
+ padding: 10px 5px 100px 5px;
   }
   .loginButton,
   .registrationButton,
   .loginInput {
-    max-width: 240px;
+    max-width: 280px;
   }
 }
 /* ============================== Tablet =========================== */
@@ -19,14 +19,15 @@
   .loginButton,
   .registrationButton,
   .loginInput {
-    max-width: 330px;
+    max-width:410px;
   }
 }
 /* ======================Desktop=========================== */
 
 @media screen and (min-width: 1080px) {
   .loginBox {
-    margin: 80px auto;
+    margin: 100px auto;
+      padding: 30px 30px 100px 30px;
   }
 }
 /* ============================================================= */
@@ -34,7 +35,7 @@
   background-color: white;
   border-radius: 20px;
   max-width: 533px;
-  padding: 30px 30px 100px 30px;
+ 
 }
 .loginBoxTitle {
   padding-right: 30px;
@@ -43,10 +44,13 @@
   background-color: white;
   padding:8px 0px 8px 40px;
   border: none;
-  border-bottom: 1px solid #ccc;
-  width: 380px;
+  border-bottom: 1px solid #E0E0E0 ;
+  width: 410px;
+  height: 32px;
   margin: 0px auto;
   font-size: 16px;
+  color: #E0E0E0;
+  justify-items: center;
 }
 .loginInput:focus {
   outline: none;
@@ -55,6 +59,7 @@
   background-image: url('../../images/email.svg'); /* Ścieżka do pliku SVG z ikoną koperty */
   background-size: 30px; 
   background-repeat: no-repeat;
+  justify-items:center;
 
 }
 .loginInputPassword{
@@ -75,17 +80,21 @@
   color: red;
   margin-top: 5px;
 }
-
+.registrationButton,
 .loginButton {
   padding: 10px;
   width: 300px;
-  background-color: #24cca7;
-  color: white;
+  height: 50px;
   border: none;
   border-radius: 20px;
   cursor: pointer;
   font-size: 18px;
 }
+.loginButton {
+background-color: #24cca7;
+  color: white;
+}
+
 .loginButton:hover {
   background-color: white;
   color: #24cca7;
@@ -93,16 +102,13 @@
 }
 .registrationButton {
   background-color: white;
-  border: 1px solid blue;
-  width: 300px;
-  border-radius: 20px;
-  color: blue;
-  padding: 10px;
+  border: 1px solid #4A56E2;
+  color: #4A56E2;
   margin: 30px auto;
-  font-size: 18px;
 }
+
 .registrationButton:hover {
-  background-color: blue;
+  background-color: #4A56E2;
   color: white;
-  box-shadow: 0 0 25px rgba(0, 0, 255, 0.5);
+  box-shadow: 0 0 25px #4A56E2;
 }

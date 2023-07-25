@@ -71,13 +71,23 @@ const LoginForm = () => {
 
             </div>
             <div>
-              <button className={styles.loginButton} type="submit" disabled={isSubmitting}>
-                Login
+
+              <button
+                className={styles.loginButton}
+                type="submit"
+                disabled={isSubmitting}
+              >
+                LOG IN
+
               </button>
             </div>
             <div>
               <Link to="/register">
-                <button className={styles.registrationButton}>Registration</button>
+
+                <button className={styles.registrationButton}>
+                  REGISTER
+                </button>
+
               </Link>
             </div>
           </Form>
