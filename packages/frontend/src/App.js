@@ -8,11 +8,10 @@ import Login from "./pages/LoginPages/LoginPages";
 import MobileTable from "./pages/MobileTable/MobileTable";
 import RegistrationPages from "./pages/RegistrationPages/RegistrationPages";
 import VerifyPage from "./pages/VerifyPage/VerifyPage";
-import { useParams } from "react-router-dom";
 
 function App() {
 
-  let { id } = useParams();
+  
   return (
     <div className="App">
       <Routes>
@@ -21,7 +20,7 @@ function App() {
         <Route path="/verify" element={<VerifyPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Layout />}>
-          <Route path={`/home/:${id}`} element={<Home />} />
+          <Route path="/home/:owner" element={<Home />} />
           <Route path="/statistics" element={<Statistics />} />
           <Route path="/mobileTable" element={<MobileTable />} />
         </Route>
