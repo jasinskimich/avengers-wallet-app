@@ -89,9 +89,8 @@ const RegistrationForm = () => {
             onChange={(e) => handleInputChange(e)} 
             placeholder="E-mail"
             required 
-            className="registrationInput"
             startAdornment={
-              <InputAdornment>
+              <InputAdornment position="start">
                 <LocalPostOfficeIcon sx={{ color: 'lightgrey', mr: 1, my: 0.5 }} className={css.iconMarginPost} />
               </InputAdornment>
             }

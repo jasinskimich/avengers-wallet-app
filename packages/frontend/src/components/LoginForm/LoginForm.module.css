@@ -1,15 +1,17 @@
 /* ============================== mobile =========================== */
 @media screen and (min-width: 0px) and (max-width: 768px) {
   .loginBox {
-    margin: 0px auto;
+    margin: 10px auto;
     padding: 10px;
   }
   .loginButton,
-  .registrationButton,
-  .loginInput {
+  .registrationButton {
     max-width: 280px;
   }
   .inputWidth {
+    max-width: 300px;
+  }
+  .inputWidthFirst {
     max-width: 300px;
   }
 }
@@ -30,7 +32,7 @@
 @media screen and (min-width: 1080px) {
   .loginBox {
     padding: 0px 40px 40px 40px;
-    margin: 80px auto;
+    margin: 155px auto;
   }
 }
 /* ============================================================= */
@@ -42,6 +44,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  /* margin-top: 150px; */
 }
 .loginFormHeader {
   display: flex;
@@ -50,16 +53,7 @@
   padding-right: 30px;
 }
 .loginInput {
-  background-color: white;
-  padding:8px 0px 8px 40px;
-  border: none;
-  border-bottom: 1px solid #E0E0E0 ;
-  width: 410px;
-  height: 32px;
-  margin: 0px auto;
-  font-size: 16px;
-  color: #E0E0E0;
-  justify-items: center;
+  margin-bottom: 30px;
 }
 .loginInput:focus {
   outline: none;
@@ -163,4 +157,8 @@
 .iconMarginPost {
   margin-left: 10px;
   margin-right: 16px;
+}
+
+.inputMargin {
+  margin-bottom: 10px;
 }

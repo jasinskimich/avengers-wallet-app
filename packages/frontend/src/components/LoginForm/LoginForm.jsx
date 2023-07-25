@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Formik, Form, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import styles from "./LoginForm.module.css";
 import walletIcon from "../../images/Wallet.svg"
@@ -67,16 +67,12 @@ const LoginForm = () => {
                 name="email" 
                 placeholder="Email" 
                 autoComplete="username"
+                className={styles.loginInput}
                 startAdornment={
-                  <InputAdornment>
+                  <InputAdornment position="start">
                     <LocalPostOfficeIcon sx={{ color: 'lightgrey', mr: 1, my: 0.5 }} className={styles.iconMarginPost} />
                   </InputAdornment>
                 }
-              />
-              <ErrorMessage 
-                name="email" 
-                component="div" 
-                className={styles.error} 
               />
             </FormControl>
 
@@ -86,16 +82,12 @@ const LoginForm = () => {
                 name="password" 
                 placeholder="Password" 
                 autoComplete="current-password" 
+                className={styles.inputMargin}
                 startAdornment={
                   <InputAdornment position="start">
                     <LockIcon sx={{ color: 'lightgrey', mr: 1, my: 0.5 }} className={styles.iconMargin} />
                   </InputAdornment>
                 }
-              />
-              <ErrorMessage 
-                name="password" 
-                component="div" 
-                className={styles.error} 
               />
             </FormControl>
             
