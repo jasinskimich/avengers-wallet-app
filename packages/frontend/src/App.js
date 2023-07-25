@@ -10,9 +10,7 @@ import RegistrationPages from "./pages/RegistrationPages/RegistrationPages";
 import VerifyPage from "./pages/VerifyPage/VerifyPage";
 
 function App() {
-
-  
-  return (
+return (
     <div className="App">
       <Routes>
         Wallet App
@@ -27,7 +25,6 @@ function App() {
       </Routes>
     </div>
   );
-
 }
 
 export default App;
