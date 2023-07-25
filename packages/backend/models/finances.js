@@ -20,7 +20,6 @@ const userFinances = new Schema({
       type: {
         type: String,
         enum: ["+", "-"],
-        required: [true, "Type is required"],
       },
       category: {
         type: String,
@@ -42,7 +41,6 @@ const userFinances = new Schema({
       },
       sum: {
         type: Number,
-        required: [true, "Transaction sum is required"],
       },
     },
   ],

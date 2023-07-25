@@ -10,6 +10,7 @@ const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const User = require("../models/users");
+const Finances = require("../models/finances");
 
 const auth = (req, res, next) => {
   passport.authenticate("jwt", { session: false }, (err, user) => {
@@ -77,6 +78,9 @@ router.post("/users/signup", async (req, res, next) => {
     await newUser.save();
 
     await sendVerificationEmail(email, newUser.verificationToken);
+
+    const newFinances = new Finances({ owner: newUser._id, sum: 0, transactions: [] });
+    await newFinances.save();
 
     res.json({
       status: "success",
