@@ -22,19 +22,18 @@ img {
   font-size: 30px;
   padding-left: 20px;
   line-height: 45px;
+  margin-top: 0;
 }
 
 .logoutDiv {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: var(--main-font);
   cursor: pointer;
   background-color: #BDBDBD;
 }
 
 .logoutBtn {
-  background-color: #BDBDBD;
   border: none;
   cursor: pointer;
   display: flex;
