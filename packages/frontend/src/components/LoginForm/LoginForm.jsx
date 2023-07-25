@@ -30,7 +30,7 @@ const LoginForm = () => {
         const data = await response.json();
         console.log("User logged in:", data);
         let id = data.data.user._id;
-        navigate(`/home/:${id}`);
+        navigate(`/home/${id}`);
       } else {
         const error = await response.json();
         setFieldError("password", error.message);

@@ -91,7 +91,7 @@ const RegistrationForm = () => {
             required 
             className="registrationInput"
             startAdornment={
-              <InputAdornment>
+              <InputAdornment position="start">
                 <LocalPostOfficeIcon sx={{ color: 'lightgrey', mr: 1, my: 0.5 }} className={css.iconMargin} />
               </InputAdornment>
             }
