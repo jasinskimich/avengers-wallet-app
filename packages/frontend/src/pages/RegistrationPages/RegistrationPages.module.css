@@ -5,11 +5,8 @@
     height: 100vh;
   }
   .titleContainer {
-    visibility: hidden;
-  }
-  .logoTitle {
-    opacity: 0;
     margin: 0 auto;
+    opacity: 0;
   }
 }
 
@@ -33,7 +30,7 @@
   .titleContainer {
     display: flex;
     flex-direction: row;
-    margin-bottom: 70px;
+    margin-bottom: 50px;
     margin-top: 60px;
     align-items: center;
     gap: 30px;
