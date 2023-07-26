@@ -3,6 +3,7 @@ import ShowModal from "../../components/ModalAddTransaction/ShowModal";
 import Balance from "../../components/Balance/Balance";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import DashboardPage from "../../components/DashboardPage/DashboardPage";
 
 
 function Home() {
@@ -47,6 +48,7 @@ function Home() {
       <Balance balance={balance} />
       <h1>Home</h1>
       <p>Path to register or login "/register" , "/login"</p>
+      <DashboardPage />
       <ShowModal updateBalance={updateBalance} />
     </Box>
   );
