@@ -40,6 +40,7 @@ const IncomeForm = () => {
 
         if (response.ok) {
           const data = await response.json();
+          console.log(data.data);
         }
       } catch (error) {
         console.error("An error occurred. Please try again later.");
