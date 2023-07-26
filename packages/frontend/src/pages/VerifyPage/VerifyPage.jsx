@@ -1,22 +1,14 @@
 import { Box } from "@mui/material";
 import VerifyForm from "../../components/VerifyForm/VerifyForm";
-import { Link } from "react-router-dom";
+import css from './VerifyPage.module.css'
 
 function Verify() {
 	return (
-		<Box>
-			<h1>Verify</h1>
-            <VerifyForm />
-            <div>
-                <Link to="/login">
-                    Login page
-                </Link>
-            </div>
-            <div>
-                <Link to="/register">
-                    Back to register page
-                </Link>
-            </div>
+		<Box className={css.margins}>
+            <h1 className={css.verifyHeader}>Verification Page</h1>
+            <div className={css.main}>
+                <VerifyForm />
+            </div>    
 		</Box>
 	);
 }
