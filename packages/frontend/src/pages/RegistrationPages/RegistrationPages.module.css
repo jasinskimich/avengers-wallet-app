@@ -5,8 +5,11 @@
     height: 100vh;
   }
   .titleContainer {
-    margin: 0 auto;
+    visibility: hidden;
+  }
+  .logoTitle {
     opacity: 0;
+    margin: 0 auto;
   }
 }
 
@@ -30,7 +33,7 @@
   .titleContainer {
     display: flex;
     flex-direction: row;
-    margin-bottom: 50px;
+    margin-bottom: 70px;
     margin-top: 60px;
     align-items: center;
     gap: 30px;
@@ -48,7 +51,7 @@
 }
 
 /***************** DESKTOP *****************/
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1080px) {
   .main {
     display: grid;
     grid-template-columns: 2fr 3fr;
