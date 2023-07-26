@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 
 
 function Home() {
+
   const [balance, setBalance] = useState(null);
   const { owner } = useParams();
 
@@ -49,6 +50,7 @@ function Home() {
       <ShowModal updateBalance={updateBalance} />
     </Box>
   );
+
 }
 
 export default Home;
