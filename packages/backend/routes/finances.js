@@ -7,35 +7,39 @@ const Finances = require("../models/finances");
 const User = require("../models/users");
 
 const addTransaction = async (req, res, next) => {
-  let owner = req.params.id;
-  let sum = 0;
-  let transactions = [];
-  const { transaction } = req.body;
-  const user = await User.findOne({ owner });
+  let owner = req.params.owner;
+  const document = await Finances.findOne({ owner });
 
-  if (!user) {
+  if (!document) {
     return res.json({
       status: "error",
-      code: 401,
-      data: "Unauthorized",
-      message: "Not authorized",
+      code: 400,
+      data: "Bad request",
+      message: "User not found",
     });
   }
 
-  try {
-    const newTransaction = new Finances({
-      owner: owner,
-      sum: sum,
-      transactions: transactions.push(transaction),
-    });
-    newTransaction.save();
-    console.log(newTransaction);
-  } catch (error) {
-    next(error);
+  const transaction = req.body;
+
+  if (transaction.type === "+") {
+    document.sum = document.sum + transaction.sum;
+  } else {
+    document.sum = document.sum - transaction.sum;
   }
+
+  document.transactions.push(transaction);
+  document.save();
+
+  return res.json({
+    status: "success",
+    code: 200,
+    data: {
+      document,
+    },
+  });
 };
 
-router.post("/finances", addTransaction);
+router.put("/finances/:owner", addTransaction);
 
 // GET Balance sum
 const getOwnerSum = async (req, res) => {

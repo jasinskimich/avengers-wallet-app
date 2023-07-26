@@ -11,39 +11,9 @@ const userFinances = new Schema({
     type: Number,
     default: 0,
   },
-  transactions: [
-    {
-      date: {
-        type: Date,
-        default: Date.now,
-      },
-      type: {
-        type: String,
-        enum: ["+", "-"],
-      },
-      category: {
-        type: String,
-        enum: [
-          "Income",
-          "Main expenses",
-          "Products",
-          "Car",
-          "Self care",
-          "Child care",
-          "Household products",
-          "Education",
-          "Leisure",
-          "Else",
-        ],
-      },
-      comment: {
-        type: String,
-      },
-      sum: {
-        type: Number,
-      },
-    },
-  ],
+  transactions: {
+    type: Array,
+  },
 });
 
 const Finances = mongoose.model("finances", userFinances);
