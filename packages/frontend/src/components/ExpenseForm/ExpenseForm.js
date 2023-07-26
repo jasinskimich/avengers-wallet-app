@@ -21,6 +21,7 @@ const ExpensesForm = () => {
     { value: "household-products", label: "Household products" },
     { value: "education", label: "Education" },
     { value: "leisure", label: "Leisure" },
+    { value: "other", label: "Other" },
   ];
 
   const customStyles = {
@@ -57,7 +58,7 @@ const ExpensesForm = () => {
     const date = e.target.date.value;
     const comment = e.target.comment.value;
 
-    const transaction = { date: date, type: "-", category: expense, comment: comment, sum: amount };
+    const transaction = { date: date, type: "-", category: expense, comment: comment, sum: parseInt(amount) };
 
     const { error } = ExpenseFormValidation(transaction);
     if (error) {
@@ -72,7 +73,7 @@ const ExpensesForm = () => {
       console.log(newExpense);
       try {
         const response = await fetch("http://localhost:5000/api/finances", {
-          method: "POST",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
