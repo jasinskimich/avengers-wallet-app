@@ -18,8 +18,8 @@ function App() {
 				<Route path="/login" element={<Login />} />
 				<Route path="/" element={<Layout />}>
 					<Route path="/home/:owner" element={<Home />} />
-					<Route path="/statistics" element={<Statistics />} />
-					<Route path="/mobileTable" element={<MobileTable />} />
+					<Route path="/statistics/:owner" element={<Statistics />} />
+					<Route path="/mobileTable/:owner" element={<MobileTable />} />
 				</Route>
 			</Routes>
 		</div>

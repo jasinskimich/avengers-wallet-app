@@ -167,8 +167,6 @@ router.get("/users/current", auth, async (req, res, next) => {
 	const id = req.user._id;
 	const user = await User.findById(id);
 
-	console.log("tu", id);
-
 	if (!user) {
 		return res.json({
 			status: "error",

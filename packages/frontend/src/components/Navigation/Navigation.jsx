@@ -44,16 +44,15 @@ function Navigation() {
 			setHome(true);
 			setStatistic(false);
 			setMobile(false);
-		} else if (location.pathname === "/statistics") {
+		} else if (location.pathname === `/statistics/${owner}`) {
 			setHome(false);
 			setStatistic(true);
 			setMobile(false);
-		} else if (location.pathname === "/mobileTable") {
+		} else if (location.pathname === `/mobileTable/${owner}`) {
 			setHome(false);
 			setStatistic(false);
 			setMobile(true);
 		}
-		console.log(owner);
 		// eslint-disable-next-line
 	}, [location]);
 
@@ -65,7 +64,7 @@ function Navigation() {
 						{home ? <HomeActive className={css.svg} /> : <Home className={css.svg} />}
 						Home
 					</StyledLink>
-					<StyledLink to="/statistics">
+					<StyledLink to={`/statistics/${owner}`}>
 						{statistic ? <StatisticsActive className={css.svg} /> : <Statistics className={css.svg} />}
 						Statistics
 					</StyledLink>
@@ -74,8 +73,8 @@ function Navigation() {
 			<MediaQuery maxWidth={425}>
 				<Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "36px", my: "15px" }}>
 					<StyledLink to={`/home/${owner}`}>{home ? <HomeActive className={css.svgMobile} /> : <Home className={css.svgMobile} />}</StyledLink>
-					<StyledLink to="/statistics">{statistic ? <StatisticsActive className={css.svgMobile} /> : <Statistics className={css.svgMobile} />}</StyledLink>
-					<StyledLink to="/mobileTable">{mobile ? <MobileTableActive className={css.svgMobile} /> : <MobileTable className={css.svgMobile} />}</StyledLink>
+					<StyledLink to={`/statistics/${owner}`}>{statistic ? <StatisticsActive className={css.svgMobile} /> : <Statistics className={css.svgMobile} />}</StyledLink>
+					<StyledLink to={`/mobileTable/${owner}`}>{mobile ? <MobileTableActive className={css.svgMobile} /> : <MobileTable className={css.svgMobile} />}</StyledLink>
 				</Box>
 			</MediaQuery>
 		</Box>
