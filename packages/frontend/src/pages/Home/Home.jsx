@@ -4,24 +4,19 @@ import Balance from "../../components/Balance/Balance";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-
 function Home() {
-
   const [balance, setBalance] = useState(null);
   const { owner } = useParams();
 
   useEffect(() => {
     const fetchBalance = async () => {
       try {
-        let response = await fetch(
-          `http://localhost:5000/api/finances/sum/${owner}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        let response = await fetch(`http://localhost:5000/api/finances/sum/${owner}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
         if (!response.ok) {
           throw new Error("Failed to fetch balance");
@@ -39,9 +34,10 @@ function Home() {
   }, [owner]);
 
   const updateBalance = (newBalance) => {
-    console.log(newBalance)
+    console.log(newBalance);
     setBalance(newBalance);
   };
+
   return (
     <Box>
       <Balance balance={balance} />
@@ -50,7 +46,6 @@ function Home() {
       <ShowModal updateBalance={updateBalance} />
     </Box>
   );
-
 }
 
 export default Home;
