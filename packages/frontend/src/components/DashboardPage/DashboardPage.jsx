@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+// import { useEffect, useState } from "react";
+// import { useParams } from "react-router-dom";
 import css from "./DashboardPage.module.css"
 
 const DashboardPage = () => {
 
-    const [data, setData] = useState([]);
-    const { owner } = useParams();
+    // const [data, setData] = useState([]);
+    // const { owner } = useParams();
 
-    useEffect(() => {
-        fetch(
-            `http://localhost:5000/api/getFinances/${owner}`,
-        {
-        method: "GET",
-        headers: {
-            "Content-Type": "application-json",
-        }})
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data, "financesData");
-            setData(data);
-        });
-    }, [owner]);
+    // useEffect(() => {
+    //     fetch(
+    //         `http://localhost:5000/api/getFinances/${owner}`,
+    //     {
+    //     method: "GET",
+    //     headers: {
+    //         "Content-Type": "application-json",
+    //     }})
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //         console.log(data, "financesData");
+    //         setData(data);
+    //     });
+    // }, [owner]);
     
     return (
         <table className={css.financesHistory}>
