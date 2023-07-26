@@ -3,7 +3,7 @@ import IncomeForm from "../IncomeForm/IncomeForm";
 import ExpenseForm from "../ExpenseForm/ExpenseForm";
 import "./SwitchCheckbox.css";
 
-const SwitchCheckbox = ({ isOn, handleToggle, onColor }) => {
+const SwitchCheckbox = ({ isOn, handleToggle, onColor, updateBalance }) => {
   return (
     <>
       <div className="switchBox">
@@ -16,7 +16,7 @@ const SwitchCheckbox = ({ isOn, handleToggle, onColor }) => {
       </div>
       <div className="modalFormArea">
         {isOn && <ExpenseForm />}
-        {!isOn && <IncomeForm />}
+        {!isOn && <IncomeForm updateBalance={updateBalance}/>}
       </div>
     </>
   );
