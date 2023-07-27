@@ -14,6 +14,10 @@ const userFinances = new Schema({
   transactions: {
     type: Array,
   },
+  currency: {
+    type: String,
+    default: "USD"
+  }
 });
 
 const Finances = mongoose.model("finances", userFinances);

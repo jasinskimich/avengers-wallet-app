@@ -4,10 +4,9 @@ const router = express.Router();
 require("dotenv").config();
 
 const Finances = require("../models/finances");
-const User = require("../models/users");
 
 const addTransaction = async (req, res, next) => {
-  let owner = req.params.owner;
+  const owner = req.params.owner;
   const document = await Finances.findOne({ owner });
 
   if (!document) {
@@ -38,8 +37,80 @@ const addTransaction = async (req, res, next) => {
     },
   });
 };
-
 router.put("/finances/:owner", addTransaction);
+
+const validCurrencies = [
+  "PLN",
+  "USD",
+  "EUR",
+  "JPY",
+  "GBP",
+  "AUD",
+  "CAD",
+  "CHF",
+  "CNY",
+  "SEK",
+  "NZD",
+  "MXN",
+  "SGD",
+  "HKD",
+  "NOK",
+  "KRW",
+  "TRY",
+  "RUB",
+  "INR",
+  "BRL",
+  "ZAR",
+];
+
+const changeCurrency = async (req, res, next) => {
+  try {
+    const owner = req.params.owner;
+    const updatedCurrency = req.body.currency;
+
+    if (!validCurrencies.includes(updatedCurrency)) {
+      return res.json({
+        status: "error",
+        code: 400,
+        data: "Bad request",
+        message: "Invalid currency code",
+      });
+    }
+
+    const document = await Finances.findOneAndUpdate(
+      { owner },
+      { currency: `${updatedCurrency}` },
+      { new: true }
+    );
+
+    if (!document) {
+      return res.json({
+        status: "error",
+        code: 400,
+        data: "Bad request",
+        message: "User not found",
+      });
+    }
+
+    return res.json({
+      status: "success",
+      code: 200,
+      data: document,
+      message: "Currency updated successfully",
+    });
+  } catch (error) {
+    return res.json({
+      status: "error",
+      code: 500,
+      data: error.message,
+      message: "Internal server error",
+    });
+  }
+};
+
+router.put("/finances/currency/:owner", changeCurrency);
+
+
 
 // GET Balance sum
 const getOwnerSum = async (req, res) => {
@@ -61,24 +132,43 @@ const getOwnerSum = async (req, res) => {
   }
 };
 
+const getOwnerCurrency = async (req, res) => {
+  try {
+    const owner = req.params.owner;
+
+    const document = await Finances.findOne({ owner });
+
+    if (!document) {
+      return res.status(404).json({ message: "Document not found" });
+    }
+
+    const currency = document.currency;
+
+    res.json({ currency });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+};
+
 const getFinances = async (req, res, next) => {
   try {
-
     const owner = req.params.owner;
 
     const document = await Finances.findOne({ owner });
     if (!document) {
       return res.status(404).json({ message: "Document not found" });
     }
-      res.send({ status: "ok", data: document });
+    res.send({ status: "ok", data: document });
   } catch (error) {
     next(error);
   }
 };
 
 router.get("/finances/sum/:owner", getOwnerSum);
-
+router.get("/finances/currency/:owner", getOwnerCurrency);
 router.get("/getfinances/:owner", getFinances);
+
 // ..............................................
 
 module.exports = router;
