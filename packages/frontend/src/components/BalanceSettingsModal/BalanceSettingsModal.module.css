@@ -63,6 +63,8 @@
 
 .modalContainer .modalFooter button:hover {
   cursor: pointer;
+  background-color: #4A56E2;
+  color: white;
 }
 
 .modalHeader {
