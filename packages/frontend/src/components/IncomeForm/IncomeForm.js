@@ -4,10 +4,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 import IncomeFormValidation from "../FormValidation/IncomeFormValidation";
 import { Notify } from "notiflix";
+import { useParams } from "react-router-dom";
 
-const IncomeForm = () => {
+const IncomeForm = ({ updateBalance }) => {
   const yourDate = new Date();
   const [expenseDate, setExpenseDate] = useState(yourDate);
+  const { owner } = useParams();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,27 +17,36 @@ const IncomeForm = () => {
     const date = e.target.date.value;
     const comment = e.target.comment.value;
 
-    const transaction = { date: date, type: "+", category: "Income", comment: comment, sum: amount };
+    const transaction = { date: date, type: "+", category: "Income", comment: comment, sum: parseInt(amount) };
 
     const { error } = IncomeFormValidation(transaction);
+
     if (error) {
       if (!amount) {
         Notify.failure("Please enter the amount");
       }
     } else {
-      const newIncome = { transaction };
-      console.log(newIncome);
+      const newIncome = transaction;
+     
 
       try {
-        const response = await fetch("http://localhost:5000/api/finances", {
-          method: "POST",
+        const response = await fetch(`http://localhost:5000/api/finances/${owner}`, {
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ newIncome }),
+          body: JSON.stringify(newIncome),
         });
+
         if (response.ok) {
-          console.log(response.body);
+          const data = await response.json();
+
+          const ownerBalance = data.data.document.sum;
+
+          // Update the balance using the `updateBalance` function
+          updateBalance(ownerBalance);
+        } else {
+          throw new Error("Failed to update income");
         }
       } catch (error) {
         console.error("An error occurred. Please try again later.");

@@ -1,40 +1,174 @@
 const express = require("express");
 const router = express.Router();
-const { nanoid } = require("nanoid");
+// const { nanoid } = require("nanoid");
 require("dotenv").config();
 
 const Finances = require("../models/finances");
-const User = require("../models/users");
 
 const addTransaction = async (req, res, next) => {
-  let owner = req.params.id;
-  let sum = 0;
-  let transactions = [];
-  const { transaction } = req.body;
-  const user = await User.findOne({ owner });
+  const owner = req.params.owner;
+  const document = await Finances.findOne({ owner });
 
-  if (!user) {
+  if (!document) {
     return res.json({
       status: "error",
-      code: 401,
-      data: "Unauthorized",
-      message: "Not authorized",
+      code: 400,
+      data: "Bad request",
+      message: "User not found",
     });
   }
 
+  const transaction = req.body;
+
+  if (transaction.type === "+") {
+    document.sum = document.sum + transaction.sum;
+  } else {
+    document.sum = document.sum - transaction.sum;
+  }
+
+  document.transactions.push(transaction);
+  document.save();
+
+  return res.json({
+    status: "success",
+    code: 200,
+    data: {
+      document,
+    },
+  });
+};
+router.put("/finances/:owner", addTransaction);
+
+const validCurrencies = [
+  "PLN",
+  "USD",
+  "EUR",
+  "JPY",
+  "GBP",
+  "AUD",
+  "CAD",
+  "CHF",
+  "CNY",
+  "SEK",
+  "NZD",
+  "MXN",
+  "SGD",
+  "HKD",
+  "NOK",
+  "KRW",
+  "TRY",
+  "RUB",
+  "INR",
+  "BRL",
+  "ZAR",
+];
+
+const changeCurrency = async (req, res, next) => {
   try {
-    const newTransaction = new Finances({
-      owner: owner,
-      sum: sum,
-      transactions: transactions.push(transaction),
+    const owner = req.params.owner;
+    const updatedCurrency = req.body.currency;
+
+    if (!validCurrencies.includes(updatedCurrency)) {
+      return res.json({
+        status: "error",
+        code: 400,
+        data: "Bad request",
+        message: "Invalid currency code",
+      });
+    }
+
+    const document = await Finances.findOneAndUpdate(
+      { owner },
+      { currency: `${updatedCurrency}` },
+      { new: true }
+    );
+
+    if (!document) {
+      return res.json({
+        status: "error",
+        code: 400,
+        data: "Bad request",
+        message: "User not found",
+      });
+    }
+
+    return res.json({
+      status: "success",
+      code: 200,
+      data: document,
+      message: "Currency updated successfully",
     });
-    newTransaction.save();
-    console.log(newTransaction);
+  } catch (error) {
+    return res.json({
+      status: "error",
+      code: 500,
+      data: error.message,
+      message: "Internal server error",
+    });
+  }
+};
+
+router.put("/finances/currency/:owner", changeCurrency);
+
+
+
+// GET Balance sum
+const getOwnerSum = async (req, res) => {
+  try {
+    const owner = req.params.owner;
+
+    const document = await Finances.findOne({ owner });
+
+    if (!document) {
+      return res.status(404).json({ message: "Document not found" });
+    }
+
+    const sum = document.sum;
+
+    res.json({ sum });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+};
+
+const getOwnerCurrency = async (req, res) => {
+  try {
+    const owner = req.params.owner;
+
+    const document = await Finances.findOne({ owner });
+
+    if (!document) {
+      return res.status(404).json({ message: "Document not found" });
+    }
+
+    const currency = document.currency;
+
+    res.json({ currency });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+};
+
+const getFinances = async (req, res, next) => {
+  try {
+    const owner = req.params.owner;
+
+    const document = await Finances.findOne({ owner });
+    if (!document) {
+      return res.status(404).json({ message: "Document not found" });
+    }
+    res.send({ status: "ok", data: document });
   } catch (error) {
     next(error);
   }
 };
 
-router.post("/finances", addTransaction);
+router.get("/finances/sum/:owner", getOwnerSum);
+router.get("/finances/currency/:owner", getOwnerCurrency);
+router.get("/getfinances/:owner", getFinances);
+
+// ..............................................
 
 module.exports = router;

@@ -6,11 +6,13 @@ import React from "react";
 import Select from "react-select";
 import ExpenseFormValidation from "../FormValidation/ExpenseFormValidation";
 import { Notify } from "notiflix";
+import { useParams } from "react-router-dom";
 
-const ExpensesForm = () => {
+const ExpensesForm = ({ updateBalance }) => {
   const yourDate = new Date();
   const [expenseDate, setExpenseDate] = useState(yourDate);
   const [selectedValue, setSelectedValue] = useState(null);
+  const { owner } = useParams();
 
   const options = [
     { value: "main-expenses", label: "Main expenses" },
@@ -21,6 +23,7 @@ const ExpensesForm = () => {
     { value: "household-products", label: "Household products" },
     { value: "education", label: "Education" },
     { value: "leisure", label: "Leisure" },
+    { value: "other", label: "Other" },
   ];
 
   const customStyles = {
@@ -57,7 +60,7 @@ const ExpensesForm = () => {
     const date = e.target.date.value;
     const comment = e.target.comment.value;
 
-    const transaction = { date: date, type: "-", category: expense, comment: comment, sum: amount };
+    const transaction = { date: date, type: "-", category: expense, comment: comment, sum: parseInt(amount) };
 
     const { error } = ExpenseFormValidation(transaction);
     if (error) {
@@ -68,18 +71,27 @@ const ExpensesForm = () => {
         Notify.failure("Please enter the amount");
       }
     } else {
-      const newExpense = { transaction };
-      console.log(newExpense);
+      const newExpense = transaction;
+      console.log(JSON.stringify(newExpense));
+
       try {
-        const response = await fetch("http://localhost:5000/api/finances", {
-          method: "POST",
+        const response = await fetch(`http://localhost:5000/api/finances/${owner}`, {
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ newExpense }),
+          body: JSON.stringify(newExpense),
         });
+
         if (response.ok) {
-          console.log(response.body);
+          const data = await response.json();
+
+          const ownerBalance = data.data.document.sum;
+
+          // Update the balance using the `updateBalance` function
+          updateBalance(ownerBalance);
+        } else {
+          throw new Error("Failed to update income");
         }
       } catch (error) {
         console.error("An error occurred. Please try again later.");

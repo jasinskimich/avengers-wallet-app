@@ -1,41 +1,40 @@
 /* ============================== Mobile =========================== */
 @media screen and (min-width: 0px) and (max-width: 768px) {
-    .registerBox {
-        margin: 0px auto;
-        padding: 10px;
+    .verifyBox {
+        margin: 10px auto;
     }
 
-    .loginButton,
-    .registrationButton {
-        max-width: 260px;
+    .verifyButton {
+        max-width: 280px;
     }
 
     .inputWidth {
         max-width: 300px;
     }
-    
-    .inputWidthLast {
-        max-width: 300px;
-        padding-bottom: 10px;
+    .verifyForm {
+        padding-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* width: 400px; */
     }
   }
 
 /* ============================== Tablet =========================== */
 @media screen and (min-width: 768px) and (max-width: 1080px) {
-    .registerBox {
+    .verifyBox {
         padding: 30px;
         margin: 0px auto 200px auto;
     }
 
-    .loginButton,
-    .registrationButton {
+    .verifyButton {
         max-width: 330px;
     }
   }
 
 /* ====================== Desktop =========================== */
 @media screen and (min-width: 1080px) {
-    .registerBox {
+    .verifyBox {
         padding: 0px 40px 40px 40px;
         margin: 90px auto;
     }
@@ -43,7 +42,7 @@
 
 /* ============================================================= */
 
-.registerBox {
+.verifyBox {
     background-color: white;
     border-radius: 20px;
     max-width: 533px;
@@ -51,11 +50,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.iconMargin {
-    margin-bottom: 7px;
-    margin-left: 10px;
+    margin: 0px;
 }
 
 .iconMarginPost {
@@ -64,7 +59,7 @@
     margin-right: 10px;
 }
 
-.registrationButton {
+.verifyButton {
     padding: 10px;
     width: 300px;
     background-color: #24cca7;
@@ -74,18 +69,18 @@
     cursor: pointer;
     margin: 30px auto;
     font-family: 'Open Sans', sans-serif;
-    font-size: 24px;
+    font-size: 18px;
     letter-spacing: 1px;
 }
 
-.registrationButton:hover {
+.verifyButton:hover {
     background-color: #60eecf;
     color: white;
     box-shadow: 0 0 25px #24cca780;
     transition: 0.3s;
 }
 
-.registrationFormHeader {
+.verifyFormHeader {
     display: flex;
 }
 
@@ -98,35 +93,33 @@
     width: 410px;
 }
 
-.inputWidthLast {
-    width: 410px;
-    padding-bottom: 10px;
+.inputMargin {
+    margin-bottom: 10px;
 }
-
-.loginButton {
-    background-color: white;
-    border: 1px solid #4A56E2;
-    width: 300px;
-    border-radius: 20px;
-    cursor: pointer;
-    color: #4A56E2;
-    padding: 10px;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 24px;
-    letter-spacing: 1px;
-}
-
-.loginButton:hover {
-    background-color: #4A56E2;
-    color: white;
-    box-shadow: 0 0 25px #4A56E2;
-    transition: 0.3s;
-}   
 
 .verifyLink {
     font-family: 'Open Sans', sans-serif;
-    color: #24cca7;
+    color: #4A56E2;
     text-decoration: underline;
-    text-decoration-color: #24cca7;
-    font-size: 14px;
+    text-decoration-color: #4A56E2;
+    font-size: 18px;
+}
+
+.verifyLink:focus,
+.verifyLink:hover{
+    font-family: 'Open Sans', sans-serif;
+    color: #24cca8;
+    text-decoration: underline;
+    text-decoration-color: #24cca8;
+    font-size: 18px;
+}
+
+.verifyLinkSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.verifyLinkMargin {
+    margin-top: 10px;
 }
