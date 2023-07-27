@@ -27,7 +27,7 @@ const IncomeForm = ({ updateBalance }) => {
       }
     } else {
       const newIncome = transaction;
-      console.log(JSON.stringify(newIncome));
+     
 
       try {
         const response = await fetch(`http://localhost:5000/api/finances/${owner}`, {
