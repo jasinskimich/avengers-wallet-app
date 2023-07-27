@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCurrencies } from 'redux/currency/selectors';
-import { getCurrency } from '../../redux/currency/operations';
-import { CircularIndeterminate } from 'components/Spinner/CircularIndeterminate';
-import css from './Currency.module.scss';
+import { selectCurrencies } from '../../redux/currency/selectors';
+import { getCurrency } from '../../redux/currency/currencyThunk'
+// import { CircularIndeterminate } from 'components/Spinner/CircularIndeterminate';
+import css from './Currency.module.css';
 
 export const Currency = () => {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ export const Currency = () => {
     <div className={css.currencyTableWrapper}>
       <table className={css.currencyTable}>
         <div className={css.spinnerBox}>
-          <CircularIndeterminate />
+          {/* <CircularIndeterminate /> */}
         </div>
         <thead className={css.currencyTableHead}>
           <tr>

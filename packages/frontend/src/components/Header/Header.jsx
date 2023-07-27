@@ -1,6 +1,17 @@
 import React from 'react';
 import Media from 'react-media';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import {
+  closeModalLogout,
+  openModalLogout,
+  resetState,
+} from '../../redux/global/global-action';
+import { logOut, fetchCurrentUser } from '../../redux/auth/authThunk';
+import { ModalLogout } from '../ModalLogout/ModalLogout';
+import { selectIsModalOpen } from '../../redux/global/selectors';
+
 
 
 import IconWallet from '../../images/Wallet.svg'
@@ -10,6 +21,19 @@ import verticalLine from '../../images/verticalLine.svg'
 
 
 export const Header = () => {
+  const isModalLogoutOpen = useSelector(selectIsModalOpen);
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(resetState());
+    dispatch(logOut());
+    toast.success('You have been logged out');
+  };
+
+  const handleCloseModalLogout = () => {
+    dispatch(closeModalLogout());
+    dispatch(fetchCurrentUser());
+  };
+
 
   return (
     <div className={styles.main}>
@@ -37,6 +61,7 @@ export const Header = () => {
         <button
           className={styles.logoutBtn}
           type="button"
+          onClick={() => dispatch(openModalLogout())}
         >
           <svg
             className={styles.exitIcon}
@@ -56,6 +81,11 @@ export const Header = () => {
           </Media>
         </button>
       </div>
+      <ModalLogout
+        isOpen={isModalLogoutOpen}
+        onClose={handleCloseModalLogout}
+        onLogout={handleLogout}
+      />
     </div>
   );
 };
