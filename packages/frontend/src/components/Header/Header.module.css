@@ -34,6 +34,7 @@ img {
 }
 
 .logoutBtn {
+  background-color: #FFFFFF;
   border: none;
   cursor: pointer;
   display: flex;
@@ -76,4 +77,4 @@ img {
   font-weight: 400;
   font-size: 18px;
   line-height: 26.53px;
-}/*# sourceMappingURL=Header.module.css.map */
+}
