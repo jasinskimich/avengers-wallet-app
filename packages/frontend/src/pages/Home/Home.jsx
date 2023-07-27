@@ -19,20 +19,20 @@ function Home() {
           },
         });
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch balance");
-        }
+				if (!response.ok) {
+					throw new Error("Failed to fetch balance");
+				}
 
-        response = await response.json();
+				response = await response.json();
 
-        setBalance(response.sum);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+				setBalance(response.sum);
+			} catch (error) {
+				console.error(error);
+			}
+		};
 
-    fetchBalance();
-  }, [owner]);
+		fetchBalance();
+	}, [owner]);
 
   const updateBalance = (newBalance) => {
     console.log(newBalance);

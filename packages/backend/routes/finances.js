@@ -6,36 +6,38 @@ require("dotenv").config();
 const Finances = require("../models/finances");
 
 const addTransaction = async (req, res, next) => {
-  const owner = req.params.owner;
-  const document = await Finances.findOne({ owner });
 
-  if (!document) {
-    return res.json({
-      status: "error",
-      code: 400,
-      data: "Bad request",
-      message: "User not found",
-    });
-  }
+	const owner = req.params.owner;
+	const document = await Finances.findOne({ owner });
 
-  const transaction = req.body;
+	if (!document) {
+		return res.json({
+			status: "error",
+			code: 400,
+			data: "Bad request",
+			message: "User not found",
+		});
+	}
 
-  if (transaction.type === "+") {
-    document.sum = document.sum + transaction.sum;
-  } else {
-    document.sum = document.sum - transaction.sum;
-  }
+	const transaction = req.body;
 
-  document.transactions.push(transaction);
-  document.save();
+	if (transaction.type === "+") {
+		document.sum = document.sum + transaction.sum;
+	} else {
+		document.sum = document.sum - transaction.sum;
+	}
 
-  return res.json({
-    status: "success",
-    code: 200,
-    data: {
-      document,
-    },
-  });
+	document.transactions.push(transaction);
+	document.save();
+
+	return res.json({
+		status: "success",
+		code: 200,
+		data: {
+			document,
+		},
+	});
+
 };
 router.put("/finances/:owner", addTransaction);
 
@@ -114,23 +116,24 @@ router.put("/finances/currency/:owner", changeCurrency);
 
 // GET Balance sum
 const getOwnerSum = async (req, res) => {
-  try {
-    const owner = req.params.owner;
+	try {
+		const owner = req.params.owner;
 
-    const document = await Finances.findOne({ owner });
+		const document = await Finances.findOne({ owner });
 
-    if (!document) {
-      return res.status(404).json({ message: "Document not found" });
-    }
+		if (!document) {
+			return res.status(404).json({ message: "Document not found" });
+		}
 
-    const sum = document.sum;
+		const sum = document.sum;
 
-    res.json({ sum });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server Error" });
-  }
+		res.json({ sum });
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ message: "Server Error" });
+	}
 };
+
 
 const getOwnerCurrency = async (req, res) => {
   try {
@@ -152,17 +155,17 @@ const getOwnerCurrency = async (req, res) => {
 };
 
 const getFinances = async (req, res, next) => {
-  try {
-    const owner = req.params.owner;
+	try {
+		const owner = req.params.owner;
 
-    const document = await Finances.findOne({ owner });
-    if (!document) {
-      return res.status(404).json({ message: "Document not found" });
-    }
-    res.send({ status: "ok", data: document });
-  } catch (error) {
-    next(error);
-  }
+		const document = await Finances.findOne({ owner });
+		if (!document) {
+			return res.status(404).json({ message: "Document not found" });
+		}
+		res.send({ status: "ok", data: document });
+	} catch (error) {
+		next(error);
+	}
 };
 
 router.get("/finances/sum/:owner", getOwnerSum);
