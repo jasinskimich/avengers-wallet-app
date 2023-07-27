@@ -6,7 +6,7 @@ import IncomeFormValidation from "../FormValidation/IncomeFormValidation";
 import { Notify } from "notiflix";
 import { useParams } from "react-router-dom";
 
-const IncomeForm = ({updateBalance}) => {
+const IncomeForm = ({ updateBalance }) => {
   const yourDate = new Date();
   const [expenseDate, setExpenseDate] = useState(yourDate);
   const { owner } = useParams();
@@ -16,11 +16,11 @@ const IncomeForm = ({updateBalance}) => {
     const amount = e.target.amount.value;
     const date = e.target.date.value;
     const comment = e.target.comment.value;
-  
+
     const transaction = { date: date, type: "+", category: "Income", comment: comment, sum: parseInt(amount) };
-  
+
     const { error } = IncomeFormValidation(transaction);
-  
+
     if (error) {
       if (!amount) {
         Notify.failure("Please enter the amount");
@@ -28,7 +28,7 @@ const IncomeForm = ({updateBalance}) => {
     } else {
       const newIncome = transaction;
       console.log(JSON.stringify(newIncome));
-  
+
       try {
         const response = await fetch(`http://localhost:5000/api/finances/${owner}`, {
           method: "PUT",
@@ -37,25 +37,14 @@ const IncomeForm = ({updateBalance}) => {
           },
           body: JSON.stringify(newIncome),
         });
-  
+
         if (response.ok) {
-          // Fetch the updated balance using a separate GET request
-          const balanceResponse = await fetch(`http://localhost:5000/api/finances/sum/${owner}`, {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
-  
-          if (balanceResponse.ok) {
-            const balanceData = await balanceResponse.json();
-            const ownerBalance = balanceData.sum;
-  
-            // Update the balance using the `updateBalance` function
-            updateBalance(ownerBalance);
-          } else {
-            throw new Error("Failed to fetch updated balance");
-          }
+          const data = await response.json();
+
+          const ownerBalance = data.data.document.sum;
+
+          // Update the balance using the `updateBalance` function
+          updateBalance(ownerBalance);
         } else {
           throw new Error("Failed to update income");
         }

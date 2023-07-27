@@ -61,7 +61,23 @@ const getOwnerSum = async (req, res) => {
 	}
 };
 
+const getFinances = async (req, res, next) => {
+	try {
+		const owner = req.params.owner;
+
+		const document = await Finances.findOne({ owner });
+		if (!document) {
+			return res.status(404).json({ message: "Document not found" });
+		}
+		res.send({ status: "ok", data: document });
+	} catch (error) {
+		next(error);
+	}
+};
+
 router.get("/finances/sum/:owner", getOwnerSum);
+
+router.get("/getfinances/:owner", getFinances);
 // ..............................................
 
 module.exports = router;

@@ -15,8 +15,8 @@ const SwitchCheckbox = ({ isOn, handleToggle, onColor, updateBalance }) => {
         <label style={{ color: isOn && "#ff6596", fontWeight: isOn && "700" }}>Expense</label>
       </div>
       <div className="modalFormArea">
-        {isOn && <ExpenseForm />}
-        {!isOn && <IncomeForm updateBalance={updateBalance}/>}
+        {isOn && <ExpenseForm updateBalance={updateBalance} />}
+        {!isOn && <IncomeForm updateBalance={updateBalance} />}
       </div>
     </>
   );

@@ -6,11 +6,13 @@ import React from "react";
 import Select from "react-select";
 import ExpenseFormValidation from "../FormValidation/ExpenseFormValidation";
 import { Notify } from "notiflix";
+import { useParams } from "react-router-dom";
 
-const ExpensesForm = () => {
+const ExpensesForm = ({ updateBalance }) => {
   const yourDate = new Date();
   const [expenseDate, setExpenseDate] = useState(yourDate);
   const [selectedValue, setSelectedValue] = useState(null);
+  const { owner } = useParams();
 
   const options = [
     { value: "main-expenses", label: "Main expenses" },
@@ -69,18 +71,27 @@ const ExpensesForm = () => {
         Notify.failure("Please enter the amount");
       }
     } else {
-      const newExpense = { transaction };
-      console.log(newExpense);
+      const newExpense = transaction;
+      console.log(JSON.stringify(newExpense));
+
       try {
-        const response = await fetch("http://localhost:5000/api/finances", {
+        const response = await fetch(`http://localhost:5000/api/finances/${owner}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ newExpense }),
+          body: JSON.stringify(newExpense),
         });
+
         if (response.ok) {
-          console.log(response.body);
+          const data = await response.json();
+
+          const ownerBalance = data.data.document.sum;
+
+          // Update the balance using the `updateBalance` function
+          updateBalance(ownerBalance);
+        } else {
+          throw new Error("Failed to update income");
         }
       } catch (error) {
         console.error("An error occurred. Please try again later.");
