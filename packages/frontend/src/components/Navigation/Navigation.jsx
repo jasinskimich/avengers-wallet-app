@@ -24,7 +24,7 @@ function Navigation() {
 	const StyledLink = styled(NavLink)`
 		background-color: transparent;
 		color: black;
-		font-weight: 500;
+		font-weight: 400;
 		font-size: 18px;
 		text-decoration: none;
 		cursor: pointer;
@@ -33,8 +33,8 @@ function Navigation() {
 		gap: 23px;
 		align-items: center;
 		&.active {
-			font-weight: 900;
-			text-shadow: 0px 1px 4px #000000;
+			font-weight: 500;
+			text-shadow: 0px 1px 3px #000000;
 		}
 	`;
 
