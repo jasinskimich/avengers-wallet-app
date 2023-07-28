@@ -41,7 +41,7 @@ const Balance = ({ balance }) => {
     style: "currency",
     currency: currency,
   });
-
+  
   const balanceToFormat = formatter.format(balance);
   const formatedBalance = balanceToFormat.toLocaleString().replace(/,/g, " ");
 
@@ -51,13 +51,8 @@ const Balance = ({ balance }) => {
 
   return (
     <Box
-      sx={{
-        width: 395,
-        height: 80,
-        borderRadius: 8,
-        backgroundColor: "#FFFFFF",
-        marginLeft: 2,
-      }}
+    className={css.balanceBox}
+      
     >
       <p className={css.balanceTitle}>YOUR BALANCE</p>
 
