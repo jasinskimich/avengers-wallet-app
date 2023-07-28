@@ -6,7 +6,7 @@ import IncomeFormValidation from "../FormValidation/IncomeFormValidation";
 import { Notify } from "notiflix";
 import { useParams } from "react-router-dom";
 
-const IncomeForm = ({ updateBalance }) => {
+const IncomeForm = ({ updateBalance, updateTransactions }) => {
   const yourDate = new Date();
   const [expenseDate, setExpenseDate] = useState(yourDate);
   const { owner } = useParams();
@@ -17,7 +17,13 @@ const IncomeForm = ({ updateBalance }) => {
     const date = e.target.date.value;
     const comment = e.target.comment.value;
 
-    const transaction = { date: date, type: "+", category: "Income", comment: comment, sum: parseInt(amount) };
+    const transaction = {
+      date: date,
+      type: "+",
+      category: "Income",
+      comment: comment,
+      sum: parseInt(amount),
+    };
 
     const { error } = IncomeFormValidation(transaction);
 
@@ -27,22 +33,24 @@ const IncomeForm = ({ updateBalance }) => {
       }
     } else {
       const newIncome = transaction;
-     
 
       try {
-        const response = await fetch(`http://localhost:5000/api/finances/${owner}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(newIncome),
-        });
+        const response = await fetch(
+          `http://localhost:5000/api/finances/${owner}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newIncome),
+          }
+        );
 
         if (response.ok) {
           const data = await response.json();
 
           const ownerBalance = data.data.document.sum;
-
+          
           // Update the balance using the `updateBalance` function
           updateBalance(ownerBalance);
         } else {
@@ -52,15 +60,59 @@ const IncomeForm = ({ updateBalance }) => {
         console.error("An error occurred. Please try again later.");
       }
     }
+
+    try {
+      let response = await fetch(
+        `http://localhost:5000/api/finances/transactions/${owner}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch balance");
+      }
+
+      response = await response.json();
+      const newTransaction = response.transactions;
+      updateTransactions(newTransaction);
+    } catch (error) {
+      console.error("An error occurred. Please try again later.");
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="incomeForm" method="post" action="">
+    <form
+      onSubmit={handleSubmit}
+      className="incomeForm"
+      method="post"
+      action=""
+    >
       <div className="incomeForm__line">
-        <input className="incomeForm__amount" name="amount" type="number" min="0" placeholder="0.00"></input>
-        <DatePicker className="incomeForm__date" name="date" dateFormat="dd.MM.yyyy" selected={expenseDate} onChange={(date) => setExpenseDate(date)} />
+        <input
+          className="incomeForm__amount"
+          name="amount"
+          type="number"
+          min="0"
+          placeholder="0.00"
+        ></input>
+        <DatePicker
+          className="incomeForm__date"
+          name="date"
+          dateFormat="dd.MM.yyyy"
+          selected={expenseDate}
+          onChange={(date) => setExpenseDate(date)}
+        />
       </div>
-      <input name="comment" className="incomeForm__comment" type="text" placeholder="Comment"></input>
+      <input
+        name="comment"
+        className="incomeForm__comment"
+        type="text"
+        placeholder="Comment"
+      ></input>
       <button className="incomeForm__button" type="submit" value="Submit">
         ADD
       </button>
