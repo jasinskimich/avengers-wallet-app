@@ -5,7 +5,7 @@
     height: 100vh;
   }
   .titleContainer {
-    visibility: hidden;
+    display: none;
   }
   .logoTitle {
     opacity: 0;
