@@ -168,6 +168,19 @@ const getFinances = async (req, res, next) => {
 	}
 };
 
+const getTransactions = async (req, res, next) => {
+  try {
+    const owner = req.params.owner;
+    const document = await Finances.findOne({ owner });
+    if (!document) {
+			return res.status(404).json({ message: "Document not found" });
+		}
+    res.send({ status: "ok", transactions: document.transactions });
+  } catch (error) {
+		next(error);
+	}
+}
+router.get("/finances/transactions/:owner", getTransactions)
 router.get("/finances/sum/:owner", getOwnerSum);
 router.get("/finances/currency/:owner", getOwnerCurrency);
 router.get("/getfinances/:owner", getFinances);

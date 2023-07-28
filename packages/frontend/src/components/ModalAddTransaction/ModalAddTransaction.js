@@ -3,7 +3,7 @@ import "./ModalAddTransaction.css";
 import SwitchCheckbox from "../SwitchCheckbox/SwitchCheckbox";
 import { useState } from "react";
 
-function ModalAddTransaction({ setOpenModal, updateBalance }) {
+function ModalAddTransaction({ setOpenModal, updateBalance, updateTransactions }) {
   const [checked, setChecked] = useState(false);
   const handleToggle = () => {
     setChecked(!checked);
@@ -23,7 +23,7 @@ function ModalAddTransaction({ setOpenModal, updateBalance }) {
         </div>
         <div>
           <h2 className="modalHeader">Add transaction</h2>
-          <SwitchCheckbox isOn={checked} handleToggle={handleToggle} updateBalance={updateBalance}/>
+          <SwitchCheckbox isOn={checked} handleToggle={handleToggle} updateBalance={updateBalance} updateTransactions={updateTransactions}/>
           <div className="modalFooter">
             <button
               onClick={() => {
