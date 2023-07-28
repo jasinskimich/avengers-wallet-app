@@ -3,8 +3,8 @@ import { createAction, createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isModalLogoutOpen: false,
   modalType: null,
-  isModalAddTransaction: false,
-  isModalEditTransaction: false,
+  isModalAddTransactionOpen: false,
+  isModalEditTransactionOpen: false,
   transactionToEdit: [],
 };
 
@@ -24,10 +24,10 @@ const globalSlice = createSlice({
       state.modalType = action.payload;
     },
     toggleModalAddTransaction(state) {
-      state.isModalAddTransaction = !state.isModalAddTransaction;
+      state.isModalAddTransactionOpen = !state.isModalAddTransactionOpen;
     },
     toggleModalEditTransaction(state) {
-      state.isModalEditTransaction = !state.isModalEditTransaction;
+      state.isModalEditTransactionOpen = !state.isModalEditTransactionOpen;
     },
     setTransactionToEdit(state, action) {
       state.transactionToEdit = action.payload;

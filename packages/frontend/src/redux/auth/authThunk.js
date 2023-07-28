@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const apiInstance = axios.create({
   baseURL: "https://main--avengers-wallet-app.netlify.app/",
-  timeout: "8000",
+  timeout: "5000",
   mode: "cors",
 });
 

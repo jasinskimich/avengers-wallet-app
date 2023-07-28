@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
 
 import css from './ModalLogout.module.scss';
-import { resetState } from 'redux/global/global-action';
+import { resetState } from '../../redux/global/global-action';
 import { toast } from 'react-toastify';
 
 export const ModalLogout = ({ isOpen, onClose, onLogout }) => {

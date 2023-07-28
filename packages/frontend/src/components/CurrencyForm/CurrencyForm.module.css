@@ -63,4 +63,8 @@ select.round:focus {
 }
 .updateBtn:hover {
   cursor: pointer;
+  border: solid 1px white;
+  -webkit-box-shadow: -4px 12px 77px -12px rgba(21, 115, 94, 1);
+  -moz-box-shadow: -4px 12px 77px -12px rgba(21, 115, 94, 1);
+  box-shadow: -4px 12px 77px -12px rgba(21, 115, 94, 1);
 }
