@@ -22,27 +22,28 @@ img {
   font-size: 30px;
   padding-left: 20px;
   line-height: 45px;
+  margin-top: 0;
 }
 
 .logoutDiv {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: var(--main-font);
   cursor: pointer;
-  background-color: #BDBDBD;
+  background-color: #FFFFFF;
 }
 
 .logoutBtn {
-  background-color: #BDBDBD;
+  background-color: #FFFFFF;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
 }
+
 .logoutBtn:hover {
-  fill: red;
-  color: red;
+  fill: #24CCA7;
+  color: #24CCA7;
 }
 
 .exitIcon {
@@ -51,8 +52,9 @@ img {
   fill: #BDBDBD;
   transition: fill 0.2s;
 }
+
 .exitIcon:hover {
-  fill: var(--expense-color);
+  fill: #24CCA7;
 }
 
 .exitBtn {
@@ -67,14 +69,22 @@ img {
   padding-left: 10px;
   line-height: 26.53px;
 }
+
 .exitTxt:hover {
-  color: var(--expense-color);
+  color: #24CCA7;
 }
 
 .name {
   font-family: circe;
-  color: var(--txt-inactive-form);
+  color: #BDBDBD;
   font-weight: 400;
   font-size: 18px;
   line-height: 26.53px;
-}/*# sourceMappingURL=Header.module.css.map */
+}
+
+.lineSvg{
+  width: 18px;
+    height: 18px;
+    fill: #BDBDBD;
+    transition: fill 0.2s;
+}

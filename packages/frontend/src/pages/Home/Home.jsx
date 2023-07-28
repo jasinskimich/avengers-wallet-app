@@ -12,12 +12,15 @@ function Home() {
   useEffect(() => {
     const fetchBalance = async () => {
       try {
-        let response = await fetch(`http://localhost:5000/api/finances/sum/${owner}`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        let response = await fetch(
+          `http://localhost:5000/api/finances/sum/${owner}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         if (!response.ok) {
           throw new Error("Failed to fetch balance");
@@ -35,17 +38,49 @@ function Home() {
   }, [owner]);
 
   const updateBalance = (newBalance) => {
-    console.log(newBalance);
+    
     setBalance(newBalance);
   };
 
+  const [transactions, setTransactions] = useState(["adddaa"]);
+ 
+
+  useEffect(() => {
+    const fetchTransactions = async () => {
+      try {
+        let response = await fetch(
+          `http://localhost:5000/api/finances/transactions/${owner}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch balance");
+        }
+
+        response = await response.json();
+
+        setTransactions(response.transactions);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchTransactions();
+  }, [owner]);
+
+  const updateTransactions = (newTranaction) => {
+    setTransactions(newTranaction);
+  };
+  
   return (
     <Box>
       <Balance balance={balance} />
-      <h1>Home</h1>
-      <p>Path to register or login "/register" , "/login"</p>
-      <DashboardPage />
-      <ShowModal updateBalance={updateBalance} />
+      <DashboardPage transactions={transactions}/>
+      <ShowModal updateBalance={updateBalance} updateTransactions={updateTransactions} />
     </Box>
   );
 }

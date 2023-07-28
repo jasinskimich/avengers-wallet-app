@@ -8,7 +8,7 @@ import ExpenseFormValidation from "../FormValidation/ExpenseFormValidation";
 import { Notify } from "notiflix";
 import { useParams } from "react-router-dom";
 
-const ExpensesForm = ({ updateBalance }) => {
+const ExpensesForm = ({ updateBalance, updateTransactions }) => {
   const yourDate = new Date();
   const [expenseDate, setExpenseDate] = useState(yourDate);
   const [selectedValue, setSelectedValue] = useState(null);
@@ -55,12 +55,18 @@ const ExpensesForm = ({ updateBalance }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const expense = e.target.expense.value;
+    const expense = selectedValue.label;
     const amount = e.target.amount.value;
     const date = e.target.date.value;
     const comment = e.target.comment.value;
 
-    const transaction = { date: date, type: "-", category: expense, comment: comment, sum: parseInt(amount) };
+    const transaction = {
+      date: date,
+      type: "-",
+      category: expense,
+      comment: comment,
+      sum: parseInt(amount),
+    };
 
     const { error } = ExpenseFormValidation(transaction);
     if (error) {
@@ -75,13 +81,16 @@ const ExpensesForm = ({ updateBalance }) => {
       console.log(JSON.stringify(newExpense));
 
       try {
-        const response = await fetch(`http://localhost:5000/api/finances/${owner}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(newExpense),
-        });
+        const response = await fetch(
+          `http://localhost:5000/api/finances/${owner}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newExpense),
+          }
+        );
 
         if (response.ok) {
           const data = await response.json();
@@ -97,28 +106,71 @@ const ExpensesForm = ({ updateBalance }) => {
         console.error("An error occurred. Please try again later.");
       }
     }
+    try {
+      let response = await fetch(
+        `http://localhost:5000/api/finances/transactions/${owner}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch balance");
+      }
+
+      response = await response.json();
+      const newTransaction = response.transactions;
+      updateTransactions(newTransaction);
+    } catch (error) {
+      console.error("An error occurred. Please try again later.");
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="expenseForm" method="post" action="">
+    <form
+      onSubmit={handleSubmit}
+      className="expenseForm"
+      method="post"
+      action=""
+    >
       <Select
         placeholder="Select a category"
         name="expense"
         value={options.find((obj) => obj.value === selectedValue)}
         onChange={(e) => {
-          setSelectedValue(e.value);
+          setSelectedValue(e);
         }}
         className="expenseSelect"
         options={options}
         styles={customStyles}
       />
       <div className="expenseForm__line">
-        <input className="expenseForm__amount" name="amount" type="number" min="0" placeholder="0.00"></input>
+        <input
+          className="expenseForm__amount"
+          name="amount"
+          type="number"
+          min="0"
+          placeholder="0.00"
+        ></input>
         <div>
-          <DatePicker className="expenseForm__date" name="date" dateFormat="dd.MM.yyyy" selected={expenseDate} onChange={(date) => setExpenseDate(date)} />
+          <DatePicker
+            className="expenseForm__date"
+            name="date"
+            dateFormat="dd.MM.yyyy"
+            selected={expenseDate}
+            onChange={(date) => setExpenseDate(date)}
+          />
         </div>
       </div>
-      <input name="comment" className="expenseForm__comment" type="text" placeholder="Comment"></input>
+      <input
+        name="comment"
+        className="expenseForm__comment"
+        type="text"
+        placeholder="Comment"
+      ></input>
       <button className="expenseForm__button" type="submit" value="Submit">
         ADD
       </button>

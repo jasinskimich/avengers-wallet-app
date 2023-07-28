@@ -1,0 +1,299 @@
+@media screen and (min-width: 0px) and (max-width: 426px) {
+  .modalBackground {
+    top: 50%;
+    left: 50%;
+    background-color: rgba(200, 200, 200);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modalContainer {
+    width: 310px;
+    height: 310px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+
+    position: fixed;
+    bottom: 700;
+  }
+
+  .titleCloseBtn {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+    padding-top: 5px;
+  }
+
+  .titleCloseBtn button {
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+  }
+
+  .modalContainer .body {
+    flex: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7rem;
+    text-align: center;
+  }
+
+  .modalContainer .modalFooter {
+    flex: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modalContainer .modalFooter button {
+    font-size: 16px;
+    font-weight: 500;
+    height: 35px;
+    width: 150px;
+    border: none;
+    border: 1px solid #4a56e2;
+    border-radius: 45px;
+    background-color: white;
+    margin-bottom: 20px;
+  }
+
+  .modalContainer .modalFooter button:hover {
+    cursor: pointer;
+    background-color: #4a56e2;
+    color: white;
+  }
+
+  .modalHeader {
+    font-weight: 400;
+    font-size: 28px;
+    margin-top: 10px;
+  }
+
+  .currencySettingsBtn {
+    height: 25px;
+    width: 25px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .buttonContainter {
+    /* margin-left: 60px; */
+    align-items: center;
+    /* margin-top: 5px; */
+    padding: 0;
+    height: 25px;
+  }
+
+  .icon {
+    position: relative;
+  }
+}
+
+@media screen and (min-width: 426px) and (max-width: 769px) {
+  .modalBackground {
+    top: 50%;
+    left: 50%;
+    background-color: rgba(200, 200, 200);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modalContainer {
+    width: 380px;
+    height: 320px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 700;
+  }
+
+  .titleCloseBtn {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+    padding-top: 5px;
+  }
+
+  .titleCloseBtn button {
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+  }
+
+  .modalContainer .body {
+    flex: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7rem;
+    text-align: center;
+  }
+
+  .modalContainer .modalFooter {
+    flex: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modalContainer .modalFooter button {
+    font-size: 16px;
+    font-weight: 500;
+    height: 35px;
+    width: 150px;
+    border: none;
+    border: 1px solid #4a56e2;
+    border-radius: 45px;
+    background-color: white;
+    margin-bottom: 20px;
+    margin-top: 5px;
+  }
+
+  .modalContainer .modalFooter button:hover {
+    cursor: pointer;
+    background-color: #4a56e2;
+    color: white;
+  }
+
+  .modalHeader {
+    font-weight: 400;
+    font-size: 28px;
+    margin-top: 10px;
+  }
+
+  .currencySettingsBtn {
+    height: 25px;
+    width: 25px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .buttonContainter {
+    /* margin-left: 20px; */
+    align-items: center;
+    margin-top: 5px;
+    padding: 0;
+    height: 25px;
+  }
+
+  .icon {
+    position: relative;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .modalBackground {
+    top: 50%;
+    left: 50%;
+    background-color: rgba(200, 200, 200);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modalContainer {
+    width: 380px;
+    height: 320px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 700;
+  }
+
+  .titleCloseBtn {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+    padding-top: 5px;
+  }
+
+  .titleCloseBtn button {
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+  }
+
+  .modalContainer .body {
+    flex: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7rem;
+    text-align: center;
+  }
+
+  .modalContainer .modalFooter {
+    flex: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modalContainer .modalFooter button {
+    font-size: 16px;
+    font-weight: 500;
+    height: 35px;
+    width: 150px;
+    border: none;
+    border: 1px solid #4a56e2;
+    border-radius: 45px;
+    background-color: white;
+    margin-bottom: 20px;
+    margin-top: 5px;
+  }
+
+  .modalContainer .modalFooter button:hover {
+    cursor: pointer;
+    background-color: #4a56e2;
+    color: white;
+  }
+
+  .modalHeader {
+    font-weight: 400;
+    font-size: 28px;
+    margin-top: 10px;
+  }
+
+  .currencySettingsBtn {
+    height: 25px;
+    width: 25px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .buttonContainter {
+    /* margin-left: 20px; */
+    align-items: center;
+    margin-top: 5px;
+    padding: 0;
+    height: 25px;
+  }
+
+  .icon {
+    position: relative;
+  }
+}
