@@ -7,15 +7,15 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 // import { Thead, Tbody } from 'react-super-responsive-table';
 // import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
+import { ReactComponent as EditPen } from "../../images/editPen.svg";
 
 // import { useEffect, useState } from "react";
 // import { useParams } from "react-router-dom";
 // import { border } from '@mui/system';
-// import css from "./DashboardPage.module.css"
+import css from "./DashboardPage.module.css"
 
-const DashboardPage = ({transactions}) => {
-
-const reverseTransactions = [...transactions].reverse();
+const DashboardPage = ({ transactions }) => {
+  const reverseTransactions = [...transactions].reverse();
 
   return (
     <div>
@@ -74,24 +74,43 @@ const reverseTransactions = [...transactions].reverse();
                 >
                   Sum
                 </TableCell>
+                <TableCell
+                  align="left"
+                  style={{
+                    fontWeight: "900",
+                  }}
+                ></TableCell>
+                <TableCell
+                  align="left"
+                  style={{
+                    fontWeight: "900",
+                  }}
+                ></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {reverseTransactions.flatMap((info, index) => (
-                  <TableRow
-                    key={index}
-                    sx={{
-                      "&:last-child TableCell, &:last-child th": { border: 0 },
-                    }}
-                  >
-                    <TableCell align="left">{info.date}</TableCell>
-                    <TableCell align="left">{info.type}</TableCell>
-                    <TableCell align="left">{info.category}</TableCell>
-                    <TableCell align="left">{info.comment}</TableCell>
-                    <TableCell align="left">{info.sum}</TableCell>
-                  </TableRow>
-                ))
-              }
+                <TableRow
+                  key={index}
+                  sx={{
+                    "&:last-child TableCell, &:last-child th": { border: 0 },
+                  }}
+                >
+                  <TableCell align="left">{info.date}</TableCell>
+                  <TableCell align="left">{info.type}</TableCell>
+                  <TableCell align="left">{info.category}</TableCell>
+                  <TableCell align="left">{info.comment}</TableCell>
+                  <TableCell align="left">{info.sum}</TableCell>
+                  <TableCell align="left" className={css.editRow}>
+                    <button className={css.editButton}>
+                      <EditPen className={css.editIcon} />
+                    </button>
+                  </TableCell>
+                  <TableCell align="left" className={css.deleteRow}>
+                    <button className={css.deleteButton}>Delete</button>
+                  </TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </TableContainer>
