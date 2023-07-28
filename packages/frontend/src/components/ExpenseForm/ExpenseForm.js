@@ -55,7 +55,7 @@ const ExpensesForm = ({ updateBalance }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const expense = e.target.expense.value;
+    const expense = selectedValue.label;
     const amount = e.target.amount.value;
     const date = e.target.date.value;
     const comment = e.target.comment.value;
@@ -106,7 +106,7 @@ const ExpensesForm = ({ updateBalance }) => {
         name="expense"
         value={options.find((obj) => obj.value === selectedValue)}
         onChange={(e) => {
-          setSelectedValue(e.value);
+          setSelectedValue(e);
         }}
         className="expenseSelect"
         options={options}
