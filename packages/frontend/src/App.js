@@ -1,7 +1,7 @@
 import "./App.css";
 import "./stylesheet/fonts.css";
 import Layout from "./Layout";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Statistics from "./pages/Statistics/Statistics";
 import Home from "./pages/Home/Home";
 import Login from "./pages/LoginPages/LoginPages";
@@ -17,6 +17,7 @@ function App() {
 				<Route path="/register" element={<RegistrationPages />} />
 				<Route path="/verify" element={<VerifyPage />} />
 				<Route path="/login" element={<Login />} />
+				<Route path="*" element={<Navigate to="/login" />} />
 				<Route element={<Layout />}>
 					<Route path="/home/:owner" element={<Home />} />
 					<Route path="/statistics/:owner" element={<Statistics />} />

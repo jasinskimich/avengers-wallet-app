@@ -42,8 +42,6 @@ function Home() {
   return (
     <Box>
       <Balance balance={balance} />
-      <h1>Home</h1>
-      <p>Path to register or login "/register" , "/login"</p>
       <DashboardPage />
       <ShowModal updateBalance={updateBalance} />
     </Box>
