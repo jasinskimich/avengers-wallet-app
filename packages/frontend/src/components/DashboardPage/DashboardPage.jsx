@@ -25,11 +25,13 @@ const DashboardPage = ({ transactions }) => {
           style={{
             width: "700px",
             backgroundColor: "transparent",
+           
           }}
         >
           <Table sx={{ minWidTableCell: 550 }} aria-label="simple table">
-            <TableHead
+            <TableHead 
               style={{
+                
                 backgroundColor: "#FFFFFF",
               }}
             >

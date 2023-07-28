@@ -5,6 +5,9 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import DashboardPage from "../../components/DashboardPage/DashboardPage";
 
+import Navigation from "../../components/Navigation/Navigation";
+import styles from "./Home.module.css";
+
 function Home() {
   const [balance, setBalance] = useState(null);
   const { owner } = useParams();
@@ -38,12 +41,10 @@ function Home() {
   }, [owner]);
 
   const updateBalance = (newBalance) => {
-    
     setBalance(newBalance);
   };
 
   const [transactions, setTransactions] = useState(["adddaa"]);
- 
 
   useEffect(() => {
     const fetchTransactions = async () => {
@@ -75,12 +76,23 @@ function Home() {
   const updateTransactions = (newTranaction) => {
     setTransactions(newTranaction);
   };
-  
+
   return (
     <Box>
-      <Balance balance={balance} />
-      <DashboardPage transactions={transactions}/>
-      <ShowModal updateBalance={updateBalance} updateTransactions={updateTransactions} />
+      <div className={styles.container}>
+        <div className={styles.containerLeft}>
+          <Navigation />
+          <Balance balance={balance} />
+        </div>
+
+        <div className={styles.containerRight}>
+          <DashboardPage transactions={transactions} />
+          <ShowModal
+            updateBalance={updateBalance}
+            updateTransactions={updateTransactions}
+          />
+        </div>
+      </div>
     </Box>
   );
 }
