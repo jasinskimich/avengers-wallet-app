@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Circe', 'CirceBold', 'Poppins', sans-serif;
+    margin: 0 auto;
+    background-color: var(--main-bg-color);
+    color: var(--txt-main-color);
+
+    @media screen and (max-width: 768px) {
+        overflow-x: hidden;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+li {
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    text-decoration: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+img {
+    display: block;
+}
