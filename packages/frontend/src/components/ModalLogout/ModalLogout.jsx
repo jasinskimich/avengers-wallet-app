@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import 'react-toastify/dist/ReactToastify.css';
-
-import css from './ModalLogout.module.scss';
+import "react-toastify/dist/ReactToastify.css";
 import { resetState } from '../../redux/global/global-action';
 import { toast } from 'react-toastify';
+import styles from "./ModalLogout.module.css";
 
 export const ModalLogout = ({ isOpen, onClose, onLogout }) => {
   const dispatch = useDispatch();
@@ -51,28 +50,25 @@ export const ModalLogout = ({ isOpen, onClose, onLogout }) => {
   return (
     <>
       {isOpen && (
-        <div onClick={handleOverlayClick}>
-          <div >
-            <p>Are you sure, you want to log out?</p>
-            <div className={css.wrapperBtn}>
-              <button
+        <div className={styles.modalBackdrop} onClick={handleOverlayClick}>
+          <div className={styles.container}>
+            <p className={styles.modalTitle}>Are you sure, you want to log out?</p>
+            <div>
+              <button className={styles.modalButton}
                 type="button"
                 onClick={handleModalClose}
                 title="logout"
               >
                 No
               </button>
-              <button
+              <button className={styles.modalButton}
                 type="button"
                 onClick={handleLogoutClick}
               >
                 Yes
               </button>
             </div>
-            <button
-              onClick={handleModalClose}
-              title="cancel"
-            ></button>
+            
           </div>
         </div>
       )}
