@@ -38,12 +38,11 @@ function Home() {
   }, [owner]);
 
   const updateBalance = (newBalance) => {
-    
     setBalance(newBalance);
   };
 
   const [transactions, setTransactions] = useState(["adddaa"]);
- 
+  
 
   useEffect(() => {
     const fetchTransactions = async () => {
@@ -65,6 +64,7 @@ function Home() {
         response = await response.json();
 
         setTransactions(response.transactions);
+        
       } catch (error) {
         console.error(error);
       }
@@ -76,11 +76,18 @@ function Home() {
     setTransactions(newTranaction);
   };
   
+
   return (
     <Box>
       <Balance balance={balance} />
-      <DashboardPage transactions={transactions}/>
-      <ShowModal updateBalance={updateBalance} updateTransactions={updateTransactions} />
+      <DashboardPage
+        transactions={transactions}
+        
+      />
+      <ShowModal
+        updateBalance={updateBalance}
+        updateTransactions={updateTransactions}
+      />
     </Box>
   );
 }

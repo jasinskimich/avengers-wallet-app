@@ -39,7 +39,7 @@ const addTransaction = async (req, res, next) => {
 	});
 
 };
-router.put("/finances/:owner", addTransaction);
+
 
 const validCurrencies = [
   "PLN",
@@ -110,11 +110,12 @@ const changeCurrency = async (req, res, next) => {
   }
 };
 
+router.put("/finances/:owner", addTransaction);
 router.put("/finances/currency/:owner", changeCurrency);
 
 
 
-// GET Balance sum
+// ALL GET api points
 const getOwnerSum = async (req, res) => {
 	try {
 		const owner = req.params.owner;
@@ -187,4 +188,49 @@ router.get("/getfinances/:owner", getFinances);
 
 // ..............................................
 
+// DELETE
+
+
+const removeTransaction = async (req, res, next) => {
+  try {
+    const finances = await Finances.findOne({ owner: req.params.owner });
+    if (!finances) {
+      return res.status(404).json({ message: "Owner not found" });
+    }
+
+    const transaction = finances.transactions.find(
+      (t) => t._id.toString() === req.params.id
+    );
+    if (!transaction) {
+      return res.status(404).json({ message: "Transaction not found" });
+    }
+
+    await Finances.findOneAndUpdate(
+      { owner: req.params.owner },
+      {
+        $pull: { transactions: { _id: req.params.id } },
+        $inc: {
+          sum: transaction.type === "+" ? -transaction.sum : transaction.sum,
+        },
+      }
+    );
+
+    const updatedFinances = await Finances.findOne({ owner: req.params.owner });
+    if (!updatedFinances) {
+      return res.status(404).json({ message: "Owner not found" });
+    }
+
+    res.json({
+      message: "Transaction deleted",
+      deletedTransaction: transaction,
+      balance: updatedFinances.sum,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+router.delete("/finances/transactions/:owner/:id", removeTransaction);
 module.exports = router;
+
+

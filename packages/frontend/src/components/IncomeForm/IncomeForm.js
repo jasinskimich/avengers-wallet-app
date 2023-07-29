@@ -6,6 +6,7 @@ import IncomeFormValidation from "../FormValidation/IncomeFormValidation";
 import { Notify } from "notiflix";
 import { useParams } from "react-router-dom";
 
+
 const IncomeForm = ({ updateBalance, updateTransactions }) => {
   const yourDate = new Date();
   const [expenseDate, setExpenseDate] = useState(yourDate);
@@ -16,8 +17,10 @@ const IncomeForm = ({ updateBalance, updateTransactions }) => {
     const amount = e.target.amount.value;
     const date = e.target.date.value;
     const comment = e.target.comment.value;
+    
 
     const transaction = {
+      
       date: date,
       type: "+",
       category: "Income",

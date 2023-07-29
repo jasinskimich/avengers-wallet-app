@@ -5,17 +5,32 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import ShowDeleteModal from "../TransactionDeleteModal/ShowDeleteModal";
 // import { Thead, Tbody } from 'react-super-responsive-table';
 // import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import { ReactComponent as EditPen } from "../../images/editPen.svg";
+import { useState } from "react";
 
 // import { useEffect, useState } from "react";
 // import { useParams } from "react-router-dom";
 // import { border } from '@mui/system';
-import css from "./DashboardPage.module.css"
+import css from "./DashboardPage.module.css";
 
-const DashboardPage = ({ transactions }) => {
-  const reverseTransactions = [...transactions].reverse();
+const DashboardPage = ({ transactions, balance }) => {
+  const [deletedTransactions, setDeletedTransactions] = useState([]);
+
+  const updateDeleteTransactions = (deletedTransaction, newBalance) => {
+    setDeletedTransactions((prevDeletedTransactions) =>
+      prevDeletedTransactions.concat(deletedTransaction._id)
+    );
+    balance = newBalance; // Update the balance with the new balance value
+  };
+
+  const filteredTransactions = transactions.filter(
+    (transaction) => !deletedTransactions.includes(transaction._id)
+  );
+
+  let reverseTransactions = filteredTransactions.reverse();
 
   return (
     <div>
@@ -107,7 +122,10 @@ const DashboardPage = ({ transactions }) => {
                     </button>
                   </TableCell>
                   <TableCell align="left" className={css.deleteRow}>
-                    <button className={css.deleteButton}>Delete</button>
+                    <ShowDeleteModal
+                      id={info._id}
+                      updateDeleteTransactions={updateDeleteTransactions}
+                    />
                   </TableCell>
                 </TableRow>
               ))}
