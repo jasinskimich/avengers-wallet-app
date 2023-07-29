@@ -32,11 +32,9 @@ export const ModalLogout = () => {
   return (
     <div>
       <div className={css.exitSection}>
-      {/* Przycisk do otwarcia modalu */}
         <LogoutIcon sx={{ mr: 0, my: 4 }} className={css.icon} />
         <button className={css.buttonExit} onClick={() => setModalIsOpen(true)}>Exit</button>
       </div>
-      {/* Modal */}
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
