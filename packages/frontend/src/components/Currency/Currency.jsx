@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrencies } from '../../redux/currency/selectors';
-// import { getCurrency } from '../../redux/currency/currencyThunk'
+import { getCurrency } from '../../redux/currency/currencyThunk'
 // import { CircularIndeterminate } from 'components/Spinner/CircularIndeterminate';
 import css from './Currency.module.css';
 
 export const Currency = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const date = new Date();
 
   const currencyValues = () => {
@@ -13,10 +13,10 @@ export const Currency = () => {
     if (localHour !== null && date.getTime() / 1000 - localHour <= 3600) {
       return;
     }
-    // const currencies = dispatch(getCurrency());
+    const currencies = dispatch(getCurrency());
     const hasHourPassed = date.getTime() / 1000;
     localStorage.setItem('hasHourPassed', hasHourPassed);
-    // return currencies;
+    return currencies;
   };
 
   currencyValues();

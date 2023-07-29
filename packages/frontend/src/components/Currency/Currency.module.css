@@ -9,8 +9,8 @@
 body {
     font-family: 'Circe', 'CirceBold', 'Poppins', sans-serif;
     margin: 0 auto;
-    background-color: var(--main-bg-color);
-    color: var(--txt-main-color);
+    background-color: rgba(255, 255, 255, 0.4);
+    color: rgba(0, 0, 0, 1);
 
     @media screen and (max-width: 768px) {
         overflow-x: hidden;
@@ -70,15 +70,15 @@ img {
     line-height: 26.53px;
     font-weight: 700;
     font-family: 'Circe';
-    width: 280px;
     border-radius: 30px;
     justify-content: center;
     overflow: hidden;
     border-collapse: collapse;
-    background-color: #4A56E2;
+    background-color: #878dd2;
     width: 393px;
     margin-top: 32px;
     margin-left: 0;
+}
 
     /* @media screen and (min-width: 768px) {
         color: white;
@@ -113,10 +113,13 @@ img {
 
 
     .currencyTableBody {
-        background-color: var(--bg-icon-active-color);
+        background-color: rgba(74, 86, 226, 1);
         background-image: url('../../images/currency-wave-light.svg');
         background-position: bottom;
         background-repeat: no-repeat;
+        background-size: 400px;
+        background-position-y: 170px
+    }
 
         /* @media screen and (min-width: 768px) {
             background-position-y: 17px;
@@ -128,31 +131,31 @@ img {
             background-size: 400px;
             background-position-y: 170px
         } */
-    }
+    
 
 
-    th {
+    .th {
         text-align: left;
-        padding-left: 20px;
+        padding-left: 40px;
 
-        @media screen and (min-width: 1280px) {
+        /* @media screen and (min-width: 1280px) {
             padding-left: 40px;
-        }
+        } */
     }
 
-    td {
-        text-align: left;
-        padding: 12px 0px 12px 20px;
+    .td {
+        padding: 24px 0px 20px 0px;
+        text-align: center;
 
-        @media screen and (min-width: 1280px) {
+        /* @media screen and (min-width: 1280px) {
             padding: 24px 0px 20px 0px;
             text-align: center;
-        }
+        } */
     }
 
     .currencyTableBody tr:nth-child(2) td {
         padding-top: 0px;
-        padding-bottom: 55px;
+        padding-bottom: 204px;
 
         /* @media screen and (min-width: 1280px) {
             padding-top: 0px;
@@ -165,8 +168,8 @@ img {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 35px;
-        height: 35px;
+        width: 100px;
+        height: 100px;
 
         /* @media screen and (min-width: 768px) {
             width: 65px;
@@ -178,4 +181,3 @@ img {
             height: 100px;
         } */
     }
-}
