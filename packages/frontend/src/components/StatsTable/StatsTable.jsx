@@ -3,6 +3,7 @@ import Select from "react-select";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import fetchTransactionsData from "./StatsTableData";
+import "./StatsTable.css";
 
 function StatsTable() {
   const { owner } = useParams();
@@ -19,6 +20,7 @@ function StatsTable() {
   const [incomeTotal, setIncomeTotal] = useState(0);
   const [expenseTotal, setExpenseTotal] = useState(0);
   const [tableData, setTableData] = useState([]);
+  const [finalTableData, setFinalTableData] = useState([]);
 
   const monthOptions = [
     { value: "01", label: "January" },
@@ -41,6 +43,18 @@ function StatsTable() {
     { value: "2022", label: "2022" },
     { value: "2023", label: "2023" },
   ];
+
+  const categoryTable = [
+    { category: "Main expenses", sum: "0" },
+    { category: "Products", sum: "0" },
+    { category: "Car", sum: "0" },
+    { category: "Child care", sum: "0" },
+    { category: "Household products", sum: "0" },
+    { category: "Education", sum: "0" },
+    { category: "Leisure", sum: "0" },
+    { category: "Other expenses", sum: "0" },
+  ];
+
   const customStyles = {
     option: (defaultStyles, state) => ({
       ...defaultStyles,
@@ -51,17 +65,24 @@ function StatsTable() {
     control: (defaultStyles) => ({
       ...defaultStyles,
       fontFamily: "Open Sans",
-      fontSize: "15px",
+      fontSize: "18px",
       color: "black",
-      backgroundColor: "#FFFFFF",
+      backgroundColor: "none",
       padding: "0",
-      paddingLeft: "8px",
-      borderBottom: "1px solid rgb(197, 196, 196)",
-      borderRadius: "0",
+      paddingLeft: "10px",
+      paddingRight: "10px",
+      border: "2px solid black",
+      borderRadius: "30px",
       boxShadow: "none",
       textAlign: "left",
+      height: "60px",
     }),
     singleValue: (defaultStyles) => ({ ...defaultStyles, color: "black" }),
+    dropdownIndicator: (base) => ({
+      ...base,
+      color: "black",
+      minHeight: 4,
+    }),
   };
 
   useEffect(() => {
@@ -139,8 +160,8 @@ function StatsTable() {
   }, [expenseTransactions, incomeTransactions]);
 
   return (
-    <>
-      <form>
+    <div>
+      <form className="dateForm">
         <Select
           defaultValue={monthOptions.filter((option) => option.value.includes(currentMonth))}
           placeholder={currentMonth}
@@ -152,6 +173,9 @@ function StatsTable() {
           className="monthSelect"
           options={monthOptions}
           styles={customStyles}
+          components={{
+            IndicatorSeparator: () => null,
+          }}
         />
         <Select
           defaultValue={yearOptions.filter((option) => option.value.includes(currentYear))}
@@ -164,33 +188,47 @@ function StatsTable() {
           className="yearSelect"
           options={yearOptions}
           styles={customStyles}
+          components={{
+            IndicatorSeparator: () => null,
+          }}
         />
       </form>
       <div>
-        <table>
+        <table className="statsTable">
           <thead>
-            <tr>
+            <tr className="tableHeaders">
               <th>Category</th>
               <th>Sum</th>
             </tr>
           </thead>
-          <tbody>
-            {tableData.map((transaction, index) => (
-              <tr key={index}>
-                <td>{transaction.category}</td>
-                <td>{transaction.sum}</td>
-              </tr>
-            ))}
-            <tr>
-              <b>Expenses:</b> {expenseTotal}
+          <tbody className="tableBody">
+            {tableData.map((el, idx) => {
+              let color = tableData[idx] === tableData[0] ? "#FFD8D0" : tableData[idx] === tableData[1] ? "#FD9498" : tableData[idx] === tableData[2] ? "#C5BAFF" : tableData[idx] === tableData[3] ? "#6E78E8" : tableData[idx] === tableData[4] ? "#4A56E2" : tableData[idx] === tableData[5] ? "#81E1FF" : tableData[idx] === tableData[6] ? "#24CCA7" : "#00AD84";
+              let index = el.category === "Main expenses" ? (el.index = 0) : el.category === "Products" ? (el.index = 1) : el.category === "Car" ? (el.index = 2) : el.category === "Self care" ? (el.index = 3) : el.category === "Child care" ? (el.index = 4) : el.category === "Household products" ? (el.index = 5) : el.category === "Education" ? (el.index = 6) : el.category === "Leisure" ? (el.index = 7) : el.category === "Other" ? (el.index = 8) : (el.index = 10);
+
+              tableData.sort((a, b) => a.index - b.index);
+              return (
+                <tr className="tableRow" key={idx}>
+                  <td className="categoryRow">
+                    <div style={{ backgroundColor: color, width: "28px", height: "28px", borderRadius: "5px" }} className="categorySquare"></div>
+                    {el.category}
+                  </td>
+                  <td className="sumRow">{el.sum}</td>
+                </tr>
+              );
+            })}
+            <tr className="tableSummaryRow">
+              <div>Expenses:</div>
+              <div className="tableTotalExpense">{expenseTotal}</div>
             </tr>
-            <tr>
-              <b>Income:</b> {incomeTotal}
+            <tr className="tableSummaryRow">
+              <div>Income:</div>
+              <div className="tableTotalIncome">{incomeTotal}</div>
             </tr>
           </tbody>
         </table>
       </div>
-    </>
+    </div>
   );
 }
 export default StatsTable;
