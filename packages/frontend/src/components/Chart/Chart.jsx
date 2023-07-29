@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { Doughnut } from "react-chartjs-2";
-import fetchData from "../../components/Chart/ChartData";
+import fetchData from "../StatsTable/StatsTableData";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -26,7 +26,7 @@ function Chart() {
 	let statisticsSum = [];
 
 	// wynik fetcha z bazą danych
-	console.log(chartData);
+	// console.log(chartData);
 
 	// pętla dzielaca wynik fetcha na poszczególne obiekty
 	chartData.forEach((el) => {
@@ -51,17 +51,53 @@ function Chart() {
 	// przemiana statisticsSum
 	const statisticsData = Object.entries(statisticsSum).map(([category, sum]) => ({ category, sum }));
 
+	console.log(statisticsData);
+
+	const colors = statisticsData.map((el) => {
+		let color;
+		switch (el.category) {
+			case "Main expenses":
+				color = "rgba(255, 216, 208)";
+				break;
+			case "Products":
+				color = "rgb(253, 148, 152)";
+				break;
+			case "Car":
+				color = "rgb(197, 186, 255)";
+				break;
+			case "Self care":
+				color = "rgb(110, 120, 232)";
+				break;
+			case "Child care":
+				color = "rgb(74, 86, 226)";
+				break;
+			case "Household products":
+				color = "rgb(129, 225, 255)";
+				break;
+			case "Education":
+				color = "rgb(36, 204, 167)";
+				break;
+			case "Leisure":
+				color = "rgb(0, 173, 132)";
+				break;
+			case "Other":
+				color = "rgb(15, 163, 91)";
+				break;
+			default:
+				color = "rgb(254, 208, 87)";
+		}
+		return color;
+	});
+
 	// ustawienia chart.js
 	const data = {
 		// legenda która wychodzi z tablicy z kategoriami
 		labels: statisticsCategory,
 		datasets: [
 			{
-				// dane z tablicy statisticsSum
 				data: statisticsData.map((entry) => entry.sum),
-				backgroundColor: ["rgba(255, 99, 132)", "rgba(54, 162, 235, 0.2)", "rgba(255, 206, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(255, 159, 64, 0.2)"],
-				borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)", "rgba(255, 206, 86, 1)", "rgba(75, 192, 192, 1)", "rgba(153, 102, 255, 1)", "rgba(255, 159, 64, 1)"],
-				borderWidth: 1,
+				backgroundColor: colors,
+				borderWidth: 0,
 			},
 		],
 	};

@@ -1,6 +1,8 @@
 .modalHeader {
   font-weight: 400;
   font-size: 28px;
+  display: flex;
+  justify-content: center;
 }
 
 .openModalBtn {
@@ -78,4 +80,5 @@
   border-radius: 45px;
   background-color: white;
   margin-bottom: 20px;
+  cursor: pointer;
 }

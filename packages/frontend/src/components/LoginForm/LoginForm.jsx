@@ -50,6 +50,9 @@ const LoginForm = () => {
       if (loginResponse) {
         console.log("User logged in:", loginResponse);
         let id = loginResponse.data.user._id;
+
+        localStorage.setItem('authToken', loginResponse.data.token);
+
         navigate(`/home/${id}`);
   
         setEmail("");

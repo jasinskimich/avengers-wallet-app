@@ -5,7 +5,9 @@
   transform: translate(-50%, -50%);
   padding: 50px;
   border-radius: 20px;
-background-color: white;}
+  background-color: rgb(180, 180, 180);
+  box-shadow: 0px 0px 45px 24px rgba(141, 142, 152, 1);
+}
 
 .modalBackdrop {
   position: fixed;
@@ -17,12 +19,12 @@ background-color: white;}
   justify-content: center;
 }
 .modalTitle{
-     font-family: 'Open Sans', sans-serif;
-  font-size: 18px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 24px;
 }
 .modalButton{   
-  width: 80px;
-  height: 40px;
+  width: 200px;
+  height: 60px;
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -30,15 +32,52 @@ background-color: white;}
   margin:20px;
   background-color: #24cca7;
   color: white;
+  letter-spacing: 1px;
 }
 .modalButton:hover{
-    background-color: #4A56E2;
-    
+  background-color: #4A56E2;
+  color: white;
+  box-shadow: 0 0 25px #4A56E2;
+  transition: 0.3s;
 }
 .closeModalButton{
-      position: absolute;
+  position: absolute;
   top: 10px;
   right: 10px;
   font-size: 16px;
   cursor: pointer;
+}
+
+.buttonExit {
+  background-color: transparent;
+  border-width: 0px;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  color: #BDBDBD;
+  font-size: 20px;
+  padding-left: 0px;
+  padding-bottom: 3px;
+  margin-left: 0px;
+}
+
+.buttonExit:hover {
+  color: #4A56E2;
+  transition: 0.3s;
+  /* text-shadow: 0 1px 3px #4A56E2; */
+}
+
+.exitSection {
+  display: flex;
+}
+
+.icon {
+  color: #BDBDBD;
+  margin-right: 5px;
+  margin-left: 8px;
+}
+
+.icon:hover {
+  color: #4A56E2;
+  transition: 0.3s;
+  text-shadow: 0 1px 3px #4A56E2;
 }

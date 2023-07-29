@@ -1,77 +1,50 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
 import "react-toastify/dist/ReactToastify.css";
-import { resetState } from '../../redux/global/global-action';
-import { toast } from 'react-toastify';
-import styles from "./ModalLogout.module.css";
+import axios from 'axios';
+import Modal from 'react-modal';
+import css from './ModalLogout.module.css'
+import LogoutIcon from '@mui/icons-material/Logout';
 
-export const ModalLogout = ({ isOpen, onClose, onLogout }) => {
-  const dispatch = useDispatch();
+Modal.setAppElement('#root');
 
-  const handleOverlayClick = event => {
-    if (event.target === event.currentTarget) {
-      onClose();
+export const ModalLogout = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const handleLogout = () => {
+    const authToken = localStorage.getItem('authToken');
+
+    if (!authToken) {
+      console.error("Brak zdefiniowanego tokenu uwierzytelniania.");
+      return;
     }
-  };
 
-  const handleLogoutClick = () => {
-    try {
-      dispatch(resetState());
-      onLogout();
-      toast.success('You have been logged out');
-      onClose();
-    } catch (error) {
-      dispatch(resetState());
-      onClose();
-      toast.error('Something went wrong');
-    }
-  };
-
-  const handleModalClose = () => {
-    onClose();
-  };
-
-  useEffect(() => {
-    const handleKeyDown = event => {
-      if (event.code === 'Escape') {
-        handleModalClose();
+    axios.post(`http://localhost:5000/api/users/logout`, null, {
+      headers: {
+        Authorization: `Bearer ${authToken}`
       }
-    };
-
-    if (isOpen) {
-      window.addEventListener('keydown', handleKeyDown);
-      return () => {
-        window.removeEventListener('keydown', handleKeyDown);
-      };
-    }
-    // eslint-disable-next-line
-  }, [isOpen]);
+    })
+      .then((response) => {
+        setModalIsOpen(false);
+        window.location.replace('/login');
+      })
+  }
 
   return (
-    <>
-      {isOpen && (
-        <div className={styles.modalBackdrop} onClick={handleOverlayClick}>
-          <div className={styles.container}>
-            <p className={styles.modalTitle}>Are you sure, you want to log out?</p>
-            <div>
-              <button className={styles.modalButton}
-                type="button"
-                onClick={handleModalClose}
-                title="logout"
-              >
-                No
-              </button>
-              <button className={styles.modalButton}
-                type="button"
-                onClick={handleLogoutClick}
-              >
-                Yes
-              </button>
-            </div>
-            
-          </div>
-        </div>
-      )}
-    </>
+    <div>
+      <div className={css.exitSection}>
+        <LogoutIcon sx={{ mr: 0, my: 4 }} className={css.icon} />
+        <button className={css.buttonExit} onClick={() => setModalIsOpen(true)}>Exit</button>
+      </div>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+        contentLabel="Modal wylogowywania"
+        className={css.container}
+      >
+        <h2 className={css.modalTitle}>Are you sure, you want to log out?</h2>
+        <button onClick={handleLogout} className={css.modalButton}>Yes, log out</button>
+        <button onClick={() => setModalIsOpen(false)} className={css.modalButton}>No</button>
+      </Modal>
+    </div>
   );
 };
