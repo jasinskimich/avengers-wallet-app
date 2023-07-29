@@ -20,7 +20,6 @@ function StatsTable() {
   const [incomeTotal, setIncomeTotal] = useState(0);
   const [expenseTotal, setExpenseTotal] = useState(0);
   const [tableData, setTableData] = useState([]);
-  const [finalTableData, setFinalTableData] = useState([]);
 
   const monthOptions = [
     { value: "01", label: "January" },
@@ -42,17 +41,6 @@ function StatsTable() {
     { value: "2021", label: "2021" },
     { value: "2022", label: "2022" },
     { value: "2023", label: "2023" },
-  ];
-
-  const categoryTable = [
-    { category: "Main expenses", sum: "0" },
-    { category: "Products", sum: "0" },
-    { category: "Car", sum: "0" },
-    { category: "Child care", sum: "0" },
-    { category: "Household products", sum: "0" },
-    { category: "Education", sum: "0" },
-    { category: "Leisure", sum: "0" },
-    { category: "Other expenses", sum: "0" },
   ];
 
   const customStyles = {
@@ -208,7 +196,7 @@ function StatsTable() {
 
               tableData.sort((a, b) => a.index - b.index);
               return (
-                <tr className="tableRow" key={idx}>
+                <tr className="tableRow" key={index}>
                   <td className="categoryRow">
                     <div style={{ backgroundColor: color, width: "28px", height: "28px", borderRadius: "5px" }} className="categorySquare"></div>
                     {el.category}
