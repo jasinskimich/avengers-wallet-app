@@ -1,0 +1,90 @@
+.dateForm {
+  font-family: "Open Sans";
+  font-weight: 500;
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  width: 390px;
+  justify-content: space-between;
+  padding-left: 10px;
+}
+
+.monthSelect {
+  width: 170px;
+}
+.yearSelect {
+  width: 170px;
+}
+
+.statsTable {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 30px;
+  font-family: "Open Sans";
+}
+
+.tableHeaders {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  background-color: white;
+  width: 350px;
+  border-radius: 35px;
+  padding: 5px 20px;
+  margin-left: -20px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.tableBody {
+  font-family: "Open Sans";
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.tableRow {
+  display: flex;
+  width: 350px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #dcdcdf;
+}
+
+.categoryRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 10px;
+}
+
+.sumRow {
+  align-items: flex-start;
+  padding-left: 40px;
+}
+
+.tableSummaryRow {
+  font-family: "Open Sans";
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 350px;
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.tableTotalExpense {
+  color: #ff6596;
+}
+
+.tableTotalIncome {
+  color: #24cca7;
+}
