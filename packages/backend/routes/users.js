@@ -138,9 +138,11 @@ router.post("/users/login", async (req, res, next) => {
 	});
 });
 
-router.get("/users/logout", auth, async (req, res, next) => {
+router.post("/users/logout", auth, async (req, res, next) => {
 	const id = req.user._id;
 	const user = await User.findById(id);
+
+	// console.log(user)
 
 	if (!user) {
 		return res.json({
