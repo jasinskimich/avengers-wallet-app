@@ -19,7 +19,6 @@ import styles from './Header.module.css'
 import { mediaQueries } from './media'
 import verticalLine from '../../images/verticalLine.svg'
 
-
 export const Header = () => {
   const isModalLogoutOpen = useSelector(selectIsModalOpen);
   const dispatch = useDispatch();
@@ -33,7 +32,6 @@ export const Header = () => {
     dispatch(closeModalLogout());
     dispatch(fetchCurrentUser());
   };
-
 
   return (
     <div className={styles.main}>
@@ -58,7 +56,9 @@ export const Header = () => {
           }
         </Media>
 
-        <button
+        <ModalLogout/>
+
+        {/* <button
           className={styles.logoutBtn}
           type="button"
           onClick={() => dispatch(openModalLogout())}
@@ -79,13 +79,13 @@ export const Header = () => {
               )
             }
           </Media>
-        </button>
+        </button> */}
       </div>
-      <ModalLogout
+      {/* <ModalLogout
         isOpen={isModalLogoutOpen}
         onClose={handleCloseModalLogout}
         onLogout={handleLogout}
-      />
+      /> */}
     </div>
   );
 };
