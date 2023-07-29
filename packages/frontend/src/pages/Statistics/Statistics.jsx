@@ -7,14 +7,15 @@ import Navigation from "../../components/Navigation/Navigation";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function Statistics() {
-  return (
-    <Box>
-      <Navigation />
-      <StatsTable />
-      <Chart />
-      <h1>staty</h1>
-    </Box>
-  );
+	return (
+		<Box>
+			<Navigation />
+			<Box sx={{ display: "flex", m: 20 }}>
+				<Chart />
+				<StatsTable />
+			</Box>
+		</Box>
+	);
 }
 
 export default Statistics;
