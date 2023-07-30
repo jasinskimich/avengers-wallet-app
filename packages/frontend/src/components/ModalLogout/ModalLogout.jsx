@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import "react-toastify/dist/ReactToastify.css";
 import axios from 'axios';
 import Modal from 'react-modal';
 import css from './ModalLogout.module.css'
@@ -32,7 +31,7 @@ export const ModalLogout = () => {
   return (
     <div>
       <div className={css.exitSection}>
-        <LogoutIcon sx={{ mr: 0, my: 4 }} className={css.icon} />
+        <LogoutIcon sx={{ mr: 0, my: 4 } } className={css.icon} onClick={() => setModalIsOpen(true)}/>
         <button className={css.buttonExit} onClick={() => setModalIsOpen(true)}>Exit</button>
       </div>
       <Modal

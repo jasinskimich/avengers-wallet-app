@@ -28,7 +28,7 @@ const LoginForm = ({ setLoggedName }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try{
+    try {
       let response = await fetch(`http://localhost:5000/api/users/checkEmail/${email}`);
       let data = await response.json();
 
