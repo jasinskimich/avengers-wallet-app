@@ -34,7 +34,7 @@ export const Header = () => {
     };
 
     fetchName();
-  }, []);
+  }, [owner]);
 
   return (
     <div className={styles.main}>
