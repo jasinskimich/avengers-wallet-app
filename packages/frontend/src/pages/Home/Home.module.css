@@ -59,5 +59,29 @@ height: 100vh;
 }
 
 
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent; 
+}
+
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 4px;
+}
+
+
+::-webkit-scrollbar-track {
+  background-color: transparent; 
+}
+
+
+::-webkit-scrollbar-horizontal {
+  display: none;
+}
+
+
+
+
 
 
