@@ -2,7 +2,6 @@
   padding: 0;
   border: none;
   background-color: transparent;
-
 }
 
 .editButton:hover {
@@ -11,7 +10,6 @@
 .editIcon {
   height: 20px;
   width: 20px;
-  
 }
 .deleteButton {
   width: 80px;
