@@ -1,7 +1,6 @@
 import { TableContainer, TableHead, TableBody, TableRow, TableCell, Paper } from '@mui/material';
 import { Table } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
-import { ReactComponent as EditPen } from "../../images/editPen.svg";
 import ShowDeleteModal from "../TransactionDeleteModal/ShowDeleteModal";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
