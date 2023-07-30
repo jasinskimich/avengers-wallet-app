@@ -1,9 +1,11 @@
-.container {
-  height: 100vh;
+.backgroundShadow{
+height: 100vh;
      background-color: rgba(255, 255, 255, 0.385);
     width: 100%;
      backdrop-filter: blur(8px);
 }
+
+
 /* .container::after {
   content: "";
   position: absolute;
@@ -16,14 +18,26 @@
  
 } */
 
-@media screen and (min-width: 0px) and (max-width: 767px) {}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  
+}
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
+  .container {
+  display: grid;
+  width: 700px;
+  margin: 0 auto;
+  gap: 10px;
+
+  }
   
   .containerLeft {
   display: grid;
   grid-template-columns: 50% 50%;
-  gap: 10px;
+}
+.homeButtonModal{
+  text-align: end;
+  padding-bottom: 15px;
 }
 }
 
@@ -31,7 +45,7 @@
   .container {
   display: grid;
   grid-template-columns: 35% 65%;
-  gap: 10px;
+  
   }
   .containerLeft {
   border-right: 2px solid #E7EAF2;
@@ -43,4 +57,7 @@
   padding-right: 50px;
 }
 }
+
+
+
 

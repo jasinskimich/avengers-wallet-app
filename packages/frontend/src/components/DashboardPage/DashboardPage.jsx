@@ -107,6 +107,7 @@ const DashboardPage = ({ transactions, updateBalance }) => {
                     fontWeight: "900",
 		    borderRadius: "30px 0 0 30px",
                     borderBottom: "none",
+                    // marginBottom: "10px",
                   }}
                 >
                   Date

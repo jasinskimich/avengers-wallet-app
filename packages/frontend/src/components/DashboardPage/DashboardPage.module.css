@@ -31,6 +31,7 @@
 }
 .tableHead {
   background-color: white;
+  
 }
 .table {
   border-radius: 30px;
@@ -57,9 +58,11 @@
   top: 0;
   position: sticky;
   font-weight: 900;
+  
 }
 @media screen and (min-width: 768px) {
   .tableContainer{
-    max-width: 704px;
+    max-width: 700px;
+    margin-left: 15px;
   }
 }
