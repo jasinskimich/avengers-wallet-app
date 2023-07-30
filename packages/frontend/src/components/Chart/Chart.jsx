@@ -10,7 +10,7 @@ ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale);
 
 function Chart() {
 	const { owner } = useParams();
-	const [balance, setBalance] = useState(0);
+	const [balance, setBalance] = useState();
 	const [chartData, setChartData] = useState([]);
 	const [currency, setCurrency] = useState("USD");
 
@@ -167,10 +167,16 @@ function Chart() {
 		},
 	};
 
+	let updatedBalance;
+	if (balance === undefined) {
+		updatedBalance = userData.join();
+		return updatedBalance;
+	}
+
 	return (
 		<Box>
 			<Box sx={{ width: "350px" }}>
-				<Doughnut key={userData.join()} data={data} options={config} plugins={[chartText]} />
+				<Doughnut key={updatedBalance} data={data} options={config} plugins={[chartText]} />
 			</Box>
 		</Box>
 	);
