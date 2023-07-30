@@ -1,18 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ModalLogout } from '../ModalLogout/ModalLogout';
-
+import { useParams } from "react-router-dom";
 import IconWallet from '../../images/Wallet.svg'
 import styles from './Header.module.css'
 
 export const Header = () => {
   const [name, setName] = useState('');
-
+  const { owner } = useParams();
   useEffect(() => {
-    const userName = localStorage.getItem('userName');
-    if (userName) {
-      setName(userName);
-    }
+    const fetchName = async () => {
+      try {
+        let response = await fetch(
+          `http://localhost:5000/api/users/name/${owner}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch balance");
+        }
+
+        response = await response.json();
+
+        setName(response.name);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchName();
   }, []);
 
   return (
