@@ -41,7 +41,9 @@ const Balance = ({ balance }) => {
 
 	const balanceToFormat = formatter.format(balance);
 	const formatedBalance = balanceToFormat.toLocaleString().replace(/,/g, " ");
-
+const updateCurrency = (newCurrency) => {
+		setCurrency(newCurrency);
+	};
 
   return (
     <Box className={css.balanceBox}>
