@@ -1,10 +1,6 @@
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import { TableContainer, TableHead, TableBody, TableRow, TableCell, Paper } from '@mui/material';
+import { Table } from 'react-super-responsive-table';
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import ShowDeleteModal from "../TransactionDeleteModal/ShowDeleteModal";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -94,14 +90,23 @@ const DashboardPage = ({ transactions, updateBalance }) => {
         <TableContainer component={Paper} className={css.tableContainer}
           style={{
             backgroundColor: "transparent",
+	    boxShadow: "none",
+            borderRadius: "0",
           }}>
-          <Table sx={{ minWidTableCell: 550 }} aria-label="simple table">
+          <Table sx={{ minWidTableCell: 550 }} aria-label="simple table"
+	    style={{
+              borderCollapse: "collapse",
+              borderSpacing: "0",
+              border: "none",
+	    }}>
             <TableHead className={css.tableHeader}>
               <TableRow>
                 <TableCell
                   align="left"
                   style={{
                     fontWeight: "900",
+		    borderRadius: "30px 0 0 30px",
+                    borderBottom: "none",
                   }}
                 >
                   Date
@@ -110,6 +115,8 @@ const DashboardPage = ({ transactions, updateBalance }) => {
                   align="left"
                   style={{
                     fontWeight: "900",
+                    borderBottom: "none",
+                    paddingLeft: "2px",
                   }}
                 >
                   Type
@@ -118,6 +125,8 @@ const DashboardPage = ({ transactions, updateBalance }) => {
                   align="left"
                   style={{
                     fontWeight: "900",
+		    borderBottom: "none",
+
                   }}
                 >
                   Category
@@ -126,6 +135,7 @@ const DashboardPage = ({ transactions, updateBalance }) => {
                   align="left"
                   style={{
                     fontWeight: "900",
+		    borderBottom: "none",
                   }}
                 >
                   Comment
@@ -134,6 +144,7 @@ const DashboardPage = ({ transactions, updateBalance }) => {
                   align="left"
                   style={{
                     fontWeight: "900",
+		    borderBottom: "none",
                   }}
                 >
                   Sum
@@ -142,12 +153,15 @@ const DashboardPage = ({ transactions, updateBalance }) => {
                   align="left"
                   style={{
                     fontWeight: "900",
+		    borderBottom: "none",
                   }}
                 ></TableCell>
                 <TableCell
                   align="left"
                   style={{
                     fontWeight: "900",
+                    borderRadius: "0 30px 30px 0",
+		    borderBottom: "none",
                   }}
                 ></TableCell>
               </TableRow>
@@ -164,7 +178,11 @@ const DashboardPage = ({ transactions, updateBalance }) => {
                   <TableCell align="left">{info.type}</TableCell>
                   <TableCell align="left">{info.category}</TableCell>
                   <TableCell align="left">{info.comment}</TableCell>
-                  <TableCell align="left">{info.sum}</TableCell>
+                  <TableCell align="left"
+			style={{
+                      fontWeight: "900",
+                      color: info.type === "-" ? "#FF6596" : "#24CCA7"
+                    }}>{info.sum}</TableCell>
                   <TableCell align="left" className={css.editRow}>
                     <ShowEditModal
                       id={info._id}
