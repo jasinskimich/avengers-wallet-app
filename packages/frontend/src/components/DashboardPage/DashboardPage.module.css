@@ -61,6 +61,5 @@
 @media screen and (min-width: 768px) {
   .tableContainer{
     max-width: 704px;
-    margin: 15px auto;
   }
 }
