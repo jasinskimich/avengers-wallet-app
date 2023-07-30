@@ -1,8 +1,12 @@
 import { Box } from "@mui/material";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import styles from "./LoginPages.module.css";
+import React, { useState } from "react";
 
 function Login() {
+  // eslint-disable-next-line no-unused-vars
+  const [loggedName, setLoggedName] = useState("");
+  
   return (
     <Box>
       <div className={styles.main}>
@@ -14,7 +18,7 @@ function Login() {
         </div>
         
         <div className={styles.loginFormContainer}>
-          <LoginForm />
+          <LoginForm setLoggedName={setLoggedName} />
         </div>
       </div>
     </Box>

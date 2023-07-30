@@ -9,7 +9,7 @@ import walletIcon from "../../images/Wallet.svg"
 import styles from "./LoginForm.module.css";
 
 
-const LoginForm = () => {
+const LoginForm = ({ setLoggedName }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -28,7 +28,7 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try{
+    try {
       let response = await fetch(`http://localhost:5000/api/users/checkEmail/${email}`);
       let data = await response.json();
 
@@ -50,8 +50,12 @@ const LoginForm = () => {
       if (loginResponse) {
         console.log("User logged in:", loginResponse);
         let id = loginResponse.data.user._id;
+        let name = loginResponse.data.user.name;
 
         localStorage.setItem('authToken', loginResponse.data.token);
+        localStorage.setItem('userName', name)
+        
+        setLoggedName(name)
 
         navigate(`/home/${id}`);
   

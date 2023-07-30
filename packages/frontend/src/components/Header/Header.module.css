@@ -1,19 +1,15 @@
 .main {
   display: flex;
   justify-content: space-between;
-  height: 8vh;
+  height: 6vh;
   padding: 20px;
   background-color: #FFFFFF;
 }
 
-.wallet {
+.walletSection {
   display: flex;
+  align-items: center;
 }
-
-/* img {
-  width: 40px;
-  height: 40px;
-} */
 
 .title {
   font-family: poppins;
@@ -33,58 +29,24 @@
   background-color: #FFFFFF;
 }
 
-.logoutBtn {
-  background-color: #FFFFFF;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-
-.logoutBtn:hover {
-  fill: #24CCA7;
-  color: #24CCA7;
-}
-
-.exitIcon {
-  width: 18px;
-  height: 18px;
-  fill: #BDBDBD;
-  transition: fill 0.2s;
-}
-
-.exitIcon:hover {
-  fill: #24CCA7;
-}
-
-.exitBtn {
-  display: flex;
-  align-items: center;
-}
-
-.exitTxt {
-  color: #BDBDBD;
-  font-weight: 400;
-  font-size: 18px;
-  padding-left: 10px;
-  line-height: 26.53px;
-}
-
-.exitTxt:hover {
-  color: #24CCA7;
-}
-
 .name {
-  font-family: circe;
+  font-family: 'Open Sans', sans-serif;
   color: #BDBDBD;
   font-weight: 400;
-  font-size: 18px;
   line-height: 26.53px;
+  color: #BDBDBD;
+  font-size: 20px;
 }
 
-.lineSvg{
-  width: 18px;
-    height: 18px;
-    fill: #BDBDBD;
-    transition: fill 0.2s;
+.name:hover {
+  color: #24cca7;
+  transition: 0.3s;
+}
+
+.line{
+  font-size: 30px;
+  font-weight: 100;
+  margin-bottom: 5px;
+  color: #BDBDBD;
+  margin-left: 4px;
 }
