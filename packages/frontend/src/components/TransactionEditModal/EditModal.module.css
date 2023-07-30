@@ -1,0 +1,110 @@
+.editButton {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+
+.editButton:hover {
+  cursor: pointer;
+}
+.editIcon {
+  height: 20px;
+  width: 20px;
+  
+}
+
+.deleteButton {
+  width: 80px;
+  height: 35px;
+  border-radius: 35px;
+  border: none;
+  background-color: #24cca7;
+  color: white;
+}
+
+.editModalBackground {
+  top: 50%;
+  left: 50%;
+  background-color: rgba(200, 200, 200);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.editModalContainer {
+  width: 490px;
+  height: 530px;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 700;
+}
+
+.titleCloseBtn {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 10px;
+  padding-top: 5px;
+}
+.titleCloseBtn button {
+  background-color: transparent;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+.editModalHeader {
+  font-weight: 400;
+  font-size: 24px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.modalFooter {
+  flex: 20%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.modalEditButton {
+  font-size: 16px;
+  font-weight: 500;
+  height: 35px;
+  width: 150px;
+  border: none;
+  border: 1px solid #da3333;
+  border-radius: 45px;
+  background-color: white;
+  margin-bottom: 5px;
+}
+.modalEditButton:hover {
+  cursor: pointer;
+  background-color: #da3333;
+  color: white;
+  -webkit-box-shadow: 2px -2px 24px -2px rgba(152, 51, 33, 1);
+  -moz-box-shadow: 2px -2px 24px -2px rgba(152, 51, 33, 1);
+  box-shadow: 2px -2px 24px -2px rgba(152, 51, 33, 1);
+}
+
+.modalCancelButton {
+  font-size: 16px;
+  font-weight: 500;
+  height: 35px;
+  width: 120px;
+  border: none;
+  border: 1px solid #4a56e2;
+  border-radius: 45px;
+  background-color: white;
+  margin-bottom: 20px;
+}
+.modalCancelButton:hover {
+  cursor: pointer;
+  background-color: #4a56e2;
+  color: white;
+  -webkit-box-shadow: 2px -2px 24px -2px rgba(74, 86, 226, 1);
+  -moz-box-shadow: 2px -2px 24px -2px rgba(74, 86, 226, 1);
+  box-shadow: 2px -2px 24px -2px rgba(74, 86, 226, 1);
+}
