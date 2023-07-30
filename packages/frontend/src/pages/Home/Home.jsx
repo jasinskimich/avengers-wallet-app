@@ -7,6 +7,7 @@ import DashboardPage from "../../components/DashboardPage/DashboardPage";
 
 import Navigation from "../../components/Navigation/Navigation";
 import styles from "./Home.module.css";
+import { Currency } from "../../components/Currency/Currency";
 
 function Home() {
   const [balance, setBalance] = useState(null);
@@ -83,6 +84,7 @@ function Home() {
         <div className={styles.containerLeft}>
           <Navigation />
           <Balance balance={balance} />
+          <Currency/>
         </div>
 
         <div className={styles.containerRight}>
