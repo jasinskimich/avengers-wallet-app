@@ -1,0 +1,23 @@
+.container {
+  display: grid;
+  grid-template-columns: 35% 65%;
+  gap: 10px;
+}
+/* .container::after {
+  content: "";
+  position: absolute;
+  top: 100px;
+  bottom: 0;
+  width: 1px; 
+  background-color: #000; 
+  right: calc(65%);  
+ 
+} */
+.containerLeft {
+  border-right: 1px solid #000000;
+}
+.containerRight {
+  text-align: -webkit-right;
+  padding-top: 50px;
+  padding-right: 50px;
+}
