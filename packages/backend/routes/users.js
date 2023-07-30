@@ -142,27 +142,31 @@ router.post("/users/login", async (req, res, next) => {
   });
 });
 
-router.get("/users/logout", auth, async (req, res, next) => {
-  const id = req.user._id;
-  const user = await User.findById(id);
 
-  if (!user) {
-    return res.json({
-      status: "error",
-      code: 401,
-      data: "Unauthorized",
-      message: "Not authorized",
-    });
-  }
+router.post("/users/logout", auth, async (req, res, next) => {
+	const id = req.user._id;
+	const user = await User.findById(id);
 
-  user.token = null;
-  await user.save();
+	// console.log(user)
 
-  return res.json({
-    status: "success",
-    code: 204,
-    message: "Logout successful",
-  });
+	if (!user) {
+		return res.json({
+			status: "error",
+			code: 401,
+			data: "Unauthorized",
+			message: "Not authorized",
+		});
+	}
+
+	user.token = null;
+	await user.save();
+
+	return res.json({
+		status: "success",
+		code: 204,
+		message: "Logout successful",
+	});
+
 });
 
 router.get("/users/current", auth, async (req, res, next) => {
