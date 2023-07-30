@@ -10,93 +10,85 @@ import styles from "./Home.module.css";
 import { Currency } from "../../components/Currency/Currency";
 
 function Home() {
-  const [balance, setBalance] = useState(null);
-  const { owner } = useParams();
+	const [balance, setBalance] = useState(null);
+	const { owner } = useParams();
 
-  useEffect(() => {
-    const fetchBalance = async () => {
-      try {
-        let response = await fetch(
-          `http://localhost:5000/api/finances/sum/${owner}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+	useEffect(() => {
+		const fetchBalance = async () => {
+			try {
+				let response = await fetch(`http://localhost:5000/api/finances/sum/${owner}`, {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+					},
+				});
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch balance");
-        }
+				if (!response.ok) {
+					throw new Error("Failed to fetch balance");
+				}
 
-        response = await response.json();
+				response = await response.json();
 
-        setBalance(response.sum);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+				setBalance(response.sum);
+				console.log(response);
+			} catch (error) {
+				console.error(error);
+			}
+		};
 
-    fetchBalance();
-  }, [owner]);
+		fetchBalance();
+	}, [owner]);
 
-  const updateBalance = (newBalance) => {
-    setBalance(newBalance);
-  };
+	const updateBalance = (newBalance) => {
+		setBalance(newBalance);
+	};
 
-  const [transactions, setTransactions] = useState(["adddaa"]);
+	const [transactions, setTransactions] = useState(["adddaa"]);
 
-  useEffect(() => {
-    const fetchTransactions = async () => {
-      try {
-        let response = await fetch(
-          `http://localhost:5000/api/finances/transactions/${owner}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+	useEffect(() => {
+		const fetchTransactions = async () => {
+			try {
+				let response = await fetch(`http://localhost:5000/api/finances/transactions/${owner}`, {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+					},
+				});
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch balance");
-        }
+				if (!response.ok) {
+					throw new Error("Failed to fetch balance");
+				}
 
-        response = await response.json();
+				response = await response.json();
 
-        setTransactions(response.transactions);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchTransactions();
-  }, [owner]);
+				setTransactions(response.transactions);
+			} catch (error) {
+				console.error(error);
+			}
+		};
+		fetchTransactions();
+	}, [owner]);
 
-  const updateTransactions = (newTranaction) => {
-    setTransactions(newTranaction);
-  };
+	const updateTransactions = (newTranaction) => {
+		setTransactions(newTranaction);
+	};
 
-  return (
-    <Box>
-      <div className={styles.container}>
-        <div className={styles.containerLeft}>
-          <Navigation />
-          <Balance balance={balance} />
-          <Currency/>
-        </div>
+	return (
+		<Box>
+			<div className={styles.container}>
+				<div className={styles.containerLeft}>
+					<Navigation />
+					<Balance balance={balance} />
+					<Currency />
+				</div>
 
-        <div className={styles.containerRight}>
-          <DashboardPage transactions={transactions} />
-          <ShowModal
-            updateBalance={updateBalance}
-            updateTransactions={updateTransactions}
-          />
-        </div>
-      </div>
-    </Box>
-  );
+				<div className={styles.containerRight}>
+					<DashboardPage transactions={transactions} />
+					<ShowModal updateBalance={updateBalance} updateTransactions={updateTransactions} />
+				</div>
+			</div>
+		</Box>
+	);
 }
 
 export default Home;

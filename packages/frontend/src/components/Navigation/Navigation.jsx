@@ -59,7 +59,7 @@ function Navigation() {
 	return (
 		<Box>
 			<MediaQuery minWidth={426} maxWidth={2560}>
-				<Box sx={{ display: "flex", justifyContent: "flex-start", flexDirection: "column", alignItems: "flex-start", gap: "12px", m: "40px 0px 28px 16px" }}>
+				<Box sx={{ display: "flex", justifyContent: "flex-start", flexDirection: "column", alignItems: "flex-start", gap: "12px", m: "40px 0px 28px 16px", width: "200px" }}>
 					<StyledLink to={`/home/${owner}`}>
 						{home ? <HomeActive className={css.svg} /> : <Home className={css.svg} />}
 						Home
@@ -70,7 +70,7 @@ function Navigation() {
 					</StyledLink>
 				</Box>
 			</MediaQuery>
-			<MediaQuery maxWidth={425}>
+			<MediaQuery minWidth={320} maxWidth={425}>
 				<Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "36px", my: "15px" }}>
 					<StyledLink to={`/home/${owner}`}>{home ? <HomeActive className={css.svgMobile} /> : <Home className={css.svgMobile} />}</StyledLink>
 					<StyledLink to={`/statistics/${owner}`}>{statistic ? <StatisticsActive className={css.svgMobile} /> : <Statistics className={css.svgMobile} />}</StyledLink>
