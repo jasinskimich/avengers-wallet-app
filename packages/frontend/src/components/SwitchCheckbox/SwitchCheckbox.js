@@ -3,7 +3,7 @@ import IncomeForm from "../IncomeForm/IncomeForm";
 import ExpenseForm from "../ExpenseForm/ExpenseForm";
 import "./SwitchCheckbox.css";
 
-const SwitchCheckbox = ({ isOn, handleToggle, onColor, updateBalance, updateTransactions, id }) => {
+const SwitchCheckbox = ({ isOn, handleToggle, onColor, updateBalance, updateTransactions, id, setOpenModal, setOpenEditModal }) => {
   return (
     <>
       <div className="switchBox">
@@ -15,8 +15,8 @@ const SwitchCheckbox = ({ isOn, handleToggle, onColor, updateBalance, updateTran
         <label style={{ color: isOn && "#ff6596", fontWeight: isOn && "700" }}>Expense</label>
       </div>
       <div className="modalFormArea">
-        {isOn && <ExpenseForm updateBalance={updateBalance} updateTransactions={updateTransactions} id={id}/>}
-        {!isOn && <IncomeForm updateBalance={updateBalance} updateTransactions={updateTransactions} id={id}/>}
+        {isOn && <ExpenseForm setOpenEditModal={setOpenEditModal} setOpenModal={setOpenModal} updateBalance={updateBalance} updateTransactions={updateTransactions} id={id}/>}
+        {!isOn && <IncomeForm setOpenEditModal={setOpenEditModal} setOpenModal={setOpenModal} updateBalance={updateBalance} updateTransactions={updateTransactions} id={id}/>}
       </div>
     </>
   );

@@ -6,13 +6,20 @@ import IncomeFormValidation from "../FormValidation/IncomeFormValidation";
 import { Notify } from "notiflix";
 import { useParams } from "react-router-dom";
 
-const IncomeForm = ({ updateBalance, updateTransactions, id }) => {
+const IncomeForm = ({
+  updateBalance,
+  updateTransactions,
+  id,
+  setOpenModal,
+  setOpenEditModal,
+}) => {
   const yourDate = new Date();
   const [expenseDate, setExpenseDate] = useState(yourDate);
   const { owner } = useParams();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const amount = e.target.amount.value;
     const date = e.target.date.value;
     const comment = e.target.comment.value;
@@ -35,7 +42,7 @@ const IncomeForm = ({ updateBalance, updateTransactions, id }) => {
       const url = id
         ? `http://localhost:5000/api/finances/transactions/${owner}/${id}`
         : `http://localhost:5000/api/finances/${owner}`;
-        
+
       const method = id ? "PUT" : "POST";
 
       try {
@@ -60,7 +67,11 @@ const IncomeForm = ({ updateBalance, updateTransactions, id }) => {
         console.error("An error occurred during the PUT request:", error);
       }
     }
-
+    if (setOpenModal === undefined) {
+      setOpenEditModal(false);
+    } else {
+      setOpenModal(false);
+    }
   };
   return (
     <form

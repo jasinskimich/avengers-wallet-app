@@ -9,7 +9,9 @@ import { Notify } from "notiflix";
 import { useParams } from "react-router-dom";
 
 
-const ExpensesForm = ({ updateBalance, updateTransactions, id }) => {
+const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, setOpenEditModal }) => {
+
+  
   const yourDate = new Date();
   const [expenseDate, setExpenseDate] = useState(yourDate);
   const [selectedValue, setSelectedValue] = useState(null);
@@ -56,6 +58,7 @@ const ExpensesForm = ({ updateBalance, updateTransactions, id }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     const expense = selectedValue.label;
     const amount = e.target.amount.value;
     const date = e.target.date.value;
@@ -107,7 +110,11 @@ const ExpensesForm = ({ updateBalance, updateTransactions, id }) => {
         console.error("An error occurred during the PUT request:", error);
       }
     }
-    
+    if (setOpenModal === undefined) {
+      setOpenEditModal(false);
+    } else {
+      setOpenModal(false);
+    }
   };
 
   return (
@@ -152,7 +159,7 @@ const ExpensesForm = ({ updateBalance, updateTransactions, id }) => {
         type="text"
         placeholder="Comment"
       ></input>
-      <button className="expenseForm__button" type="submit" value="Submit">
+      <button  className="expenseForm__button" type="submit" value="Submit">
         ADD
       </button>
     </form>

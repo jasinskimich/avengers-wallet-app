@@ -22,7 +22,7 @@ function EditModal({ setOpenEditModal, id, updateBalance, updateTransactions }) 
           Please edit selected transaction
         </h2>
         <div>
-          <SwitchCheckbox isOn={checked} handleToggle={handleToggle} id={id} updateBalance={updateBalance} updateTransactions={updateTransactions}/>
+          <SwitchCheckbox isOn={checked} handleToggle={handleToggle} id={id} updateBalance={updateBalance} updateTransactions={updateTransactions} setOpenEditModal={setOpenEditModal}/>
         </div>
         <div className={css.modalFooter}>
           

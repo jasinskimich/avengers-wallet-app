@@ -23,7 +23,7 @@ function ModalAddTransaction({ setOpenModal, updateBalance, updateTransactions, 
         </div>
         <div>
           <h2 className="modalHeader">Add transaction</h2>
-          <SwitchCheckbox isOn={checked} handleToggle={handleToggle} updateBalance={updateBalance} updateTransactions={updateTransactions} id={id}/>
+          <SwitchCheckbox isOn={checked} setOpenModal={setOpenModal} handleToggle={handleToggle} updateBalance={updateBalance} updateTransactions={updateTransactions} id={id}/>
           <div className="modalFooter">
             <button
               onClick={() => {
