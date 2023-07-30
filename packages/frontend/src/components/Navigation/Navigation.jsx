@@ -70,7 +70,7 @@ function Navigation() {
 					</StyledLink>
 				</Box>
 			</MediaQuery>
-			<MediaQuery maxWidth={425}>
+			<MediaQuery minWidth={320} maxWidth={425}>
 				<Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "36px", my: "15px" }}>
 					<StyledLink to={`/home/${owner}`}>{home ? <HomeActive className={css.svgMobile} /> : <Home className={css.svgMobile} />}</StyledLink>
 					<StyledLink to={`/statistics/${owner}`}>{statistic ? <StatisticsActive className={css.svgMobile} /> : <Statistics className={css.svgMobile} />}</StyledLink>

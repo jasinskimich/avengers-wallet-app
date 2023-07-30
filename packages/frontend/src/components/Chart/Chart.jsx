@@ -1,11 +1,10 @@
 import { Box } from "@mui/material";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale } from "chart.js";
-
+import MediaQuery from "react-responsive";
 import { Doughnut } from "react-chartjs-2";
 import fetchData from "../StatsTable/StatsTableData";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import css from "./Chart.module.css";
 
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale);
 
@@ -147,12 +146,13 @@ function Chart() {
 		responsive: true,
 	};
 
+	// napis na środku wykresu
 	const chartText = {
 		id: "chartText",
 		beforeDatasetsDraw(chart) {
 			const { ctx } = chart;
 
-			// Perform the calculation after the chart is mounted
+			// ustalenie pozycji napisu na środku wykresu
 			const xCenter = chart.getDatasetMeta(0)?.data?.[0]?.x;
 			const yCenter = chart.getDatasetMeta(0)?.data?.[0]?.y;
 
@@ -169,7 +169,7 @@ function Chart() {
 
 	return (
 		<Box>
-			<Box className={css.chartContainer}>
+			<Box sx={{ width: "350px" }}>
 				<Doughnut key={userData.join()} data={data} options={config} plugins={[chartText]} />
 			</Box>
 		</Box>
