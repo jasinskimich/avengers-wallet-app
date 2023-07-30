@@ -55,7 +55,8 @@
 
 .tableHeader {
   background-color: #FFFFFF;
-  top: 0;
+  top:0px;
+
   position: sticky;
   font-weight: 900;
   
