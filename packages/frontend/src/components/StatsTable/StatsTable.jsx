@@ -271,7 +271,7 @@ function StatsTable() {
 							return (
 								<tr className="tableRow" key={index}>
 									<td className="categoryRow">
-										<div style={{ backgroundColor: color, width: "28px", height: "28px", borderRadius: "5px" }} className="categorySquare"></div>
+										<span style={{ backgroundColor: color, width: "28px", height: "28px", borderRadius: "5px" }} className="categorySquare"></span>
 										{el.category}
 									</td>
 									<td className="sumRow">{el.sum}</td>

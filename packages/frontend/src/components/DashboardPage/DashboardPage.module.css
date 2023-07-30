@@ -40,3 +40,27 @@
   box-shadow: none;
   width: 700px;
 }
+
+/* ================================= */
+
+.tableContainer {
+  width: 700px;
+  height: 500px;
+  background-color: transparent;
+  max-height: 5000px;
+  overflow-y: auto;
+}
+
+
+.tableHeader {
+  background-color: #FFFFFF;
+  top: 0;
+  position: sticky;
+  font-weight: 900;
+}
+@media screen and (min-width: 768px) {
+  .tableContainer{
+    max-width: 704px;
+    margin: 15px auto;
+  }
+}

@@ -82,9 +82,13 @@ function Home() {
     <Box>
       <div className={styles.container}>
         <div className={styles.containerLeft}>
+          <div>
           <Navigation />
-          <Balance balance={balance} />
-          <Currency/>
+            <Balance balance={balance} />
+            </div>
+          <div>
+            <Currency />
+            </div>
         </div>
 
         <div className={styles.containerRight}>

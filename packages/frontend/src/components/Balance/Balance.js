@@ -50,19 +50,16 @@ const Balance = ({ balance }) => {
   };
 
   return (
-    <Box
-    className={css.balanceBox}
-      
-    >
+    <Box className={css.balanceBox}>
       <p className={css.balanceTitle}>YOUR BALANCE</p>
 
       <div className={css.balanceContainer}>
-        <div>
+        <div className={css.balanceContainerItems}>
           <p className={css.balanceText}>
             {formatedBalance !== null ? formatedBalance : "Loading..."}
           </p>
+          <ShowSettingsModal updateCurrency={updateCurrency} />
         </div>
-        <ShowSettingsModal updateCurrency={updateCurrency} />
       </div>
     </Box>
   );

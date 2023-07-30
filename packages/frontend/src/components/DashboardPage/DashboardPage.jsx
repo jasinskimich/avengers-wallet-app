@@ -12,7 +12,7 @@ import { ReactComponent as EditPen } from "../../images/editPen.svg";
 // import { useEffect, useState } from "react";
 // import { useParams } from "react-router-dom";
 // import { border } from '@mui/system';
-import css from "./DashboardPage.module.css"
+import css from "./DashboardPage.module.css";
 
 const DashboardPage = ({ transactions }) => {
   const reverseTransactions = [...transactions].reverse();
@@ -20,21 +20,12 @@ const DashboardPage = ({ transactions }) => {
   return (
     <div>
       <div>
-        <TableContainer
-          component={Paper}
+        <TableContainer component={Paper} className={css.tableContainer}
           style={{
-            width: "700px",
             backgroundColor: "transparent",
-           
-          }}
-        >
+          }}>
           <Table sx={{ minWidTableCell: 550 }} aria-label="simple table">
-            <TableHead 
-              style={{
-                
-                backgroundColor: "#FFFFFF",
-              }}
-            >
+            <TableHead className={css.tableHeader}>
               <TableRow>
                 <TableCell
                   align="left"
