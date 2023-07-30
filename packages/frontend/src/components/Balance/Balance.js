@@ -41,24 +41,25 @@ const Balance = ({ balance }) => {
 
 	const balanceToFormat = formatter.format(balance);
 	const formatedBalance = balanceToFormat.toLocaleString().replace(/,/g, " ");
-
-	const updateCurrency = (newCurrency) => {
+const updateCurrency = (newCurrency) => {
 		setCurrency(newCurrency);
 	};
 
+  return (
+    <Box className={css.balanceBox}>
+      <p className={css.balanceTitle}>YOUR BALANCE</p>
 
-	return (
-		<Box className={css.balanceBox}>
-			<p className={css.balanceTitle}>YOUR BALANCE</p>
+      <div className={css.balanceContainer}>
+        <div className={css.balanceContainerItems}>
+          <p className={css.balanceText}>
+            {formatedBalance !== null ? formatedBalance : "Loading..."}
+          </p>
+          <ShowSettingsModal updateCurrency={updateCurrency} />
+        </div>
+      </div>
+    </Box>
+  );
 
-			<div className={css.balanceContainer}>
-				<div>
-					<p className={css.balanceText}>{formatedBalance !== null ? formatedBalance : "Loading..."}</p>
-				</div>
-				<ShowSettingsModal updateCurrency={updateCurrency} />
-			</div>
-		</Box>
-	);
 };
 
 export default Balance;

@@ -12,9 +12,11 @@ import css from "./DashboardPage.module.css";
 import ShowEditModal from "../TransactionEditModal/ShowEditModal";
 import React, { useMemo } from "react";
 
+
 const DashboardPage = ({ transactions, updateBalance }) => {
   const [deletedTransactions, setDeletedTransactions] = useState([]);
   const { owner } = useParams();
+
 
   useEffect(() => {
     const fetchBalance = async () => {
@@ -89,21 +91,12 @@ const DashboardPage = ({ transactions, updateBalance }) => {
   return (
     <div>
       <div>
-        <TableContainer
-          component={Paper}
+        <TableContainer component={Paper} className={css.tableContainer}
           style={{
-            width: "700px",
             backgroundColor: "transparent",
-           
-          }}
-        >
+          }}>
           <Table sx={{ minWidTableCell: 550 }} aria-label="simple table">
-            <TableHead 
-              style={{
-                
-                backgroundColor: "#FFFFFF",
-              }}
-            >
+            <TableHead className={css.tableHeader}>
               <TableRow>
                 <TableCell
                   align="left"
