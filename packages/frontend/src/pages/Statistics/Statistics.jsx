@@ -8,15 +8,18 @@ import "./Statistics.css";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function Statistics() {
-  return (
-    <Box>
-      <Navigation />
-      <div className="statsPage">
-        <Chart />
-        <StatsTable />
-      </div>
-    </Box>
-  );
+	return (
+		<Box>
+			<Box sx={{ display: "flex", justifyContent: "space-between" }}>
+				<Navigation />
+
+				<Box className="statsPage">
+					<Chart />
+					<StatsTable />
+				</Box>
+			</Box>
+		</Box>
+	);
 }
 
 export default Statistics;

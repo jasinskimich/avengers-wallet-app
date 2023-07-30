@@ -1,5 +1,5 @@
 .statsPage {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
+	display: flex;
+	justify-content: right;
+	padding: 20px;
 }
