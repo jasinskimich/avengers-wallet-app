@@ -10,6 +10,7 @@ import styles from "./Home.module.css";
 import { Currency } from "../../components/Currency/Currency";
 
 function Home() {
+
   const [balance, setBalance] = useState(null);
   const { owner } = useParams();
 
@@ -92,15 +93,20 @@ function Home() {
         </div>
 
         <div className={styles.containerRight}>
-          <DashboardPage transactions={transactions} />
+          <DashboardPage
+        transactions={transactions}
+        updateBalance={updateBalance}
+      />
           <ShowModal
-            updateBalance={updateBalance}
-            updateTransactions={updateTransactions}
-          />
+        updateBalance={updateBalance}
+        updateTransactions={updateTransactions}
+      
+      />
         </div>
       </div>
     </Box>
   );
+
 }
 
 export default Home;

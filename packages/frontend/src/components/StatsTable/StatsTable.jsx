@@ -147,6 +147,7 @@ function StatsTable() {
 		setIncomeTotal(incomeSum);
 	}, [expenseTransactions, incomeTransactions]);
 
+	
 	return (
 		<div>
 			<form className="dateForm">
