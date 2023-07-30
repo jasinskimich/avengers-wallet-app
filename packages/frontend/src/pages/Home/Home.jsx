@@ -10,6 +10,7 @@ import styles from "./Home.module.css";
 import { Currency } from "../../components/Currency/Currency";
 
 function Home() {
+
   const [balance, setBalance] = useState(null);
   const { owner } = useParams();
 
@@ -82,21 +83,30 @@ function Home() {
     <Box>
       <div className={styles.container}>
         <div className={styles.containerLeft}>
+          <div>
           <Navigation />
-          <Balance balance={balance} />
-          <Currency/>
+            <Balance balance={balance} />
+            </div>
+          <div>
+            <Currency />
+            </div>
         </div>
 
         <div className={styles.containerRight}>
-          <DashboardPage transactions={transactions} />
+          <DashboardPage
+        transactions={transactions}
+        updateBalance={updateBalance}
+      />
           <ShowModal
-            updateBalance={updateBalance}
-            updateTransactions={updateTransactions}
-          />
+        updateBalance={updateBalance}
+        updateTransactions={updateTransactions}
+      
+      />
         </div>
       </div>
     </Box>
   );
+
 }
 
 export default Home;

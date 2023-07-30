@@ -2,54 +2,111 @@ import { TableContainer, TableHead, TableBody, TableRow, TableCell, Paper } from
 import { Table } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import { ReactComponent as EditPen } from "../../images/editPen.svg";
-// import { useMediaQuery } from 'react-responsive'
-import css from "./DashboardPage.module.css"
+import ShowDeleteModal from "../TransactionDeleteModal/ShowDeleteModal";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import css from "./DashboardPage.module.css";
+import ShowEditModal from "../TransactionEditModal/ShowEditModal";
+import React, { useMemo } from "react";
 
-const DashboardPage = ({ transactions }) => {
-  const reverseTransactions = [...transactions].reverse();
-  // const isMobile = useMediaQuery({ query: '(max-width: 767px)' })
+
+const DashboardPage = ({ transactions, updateBalance }) => {
+  const [deletedTransactions, setDeletedTransactions] = useState([]);
+  const { owner } = useParams();
+
+
+  useEffect(() => {
+    const fetchBalance = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:5000/api/finances/sum/${owner}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch balance");
+        }
+
+        const data = await response.json();
+        const newBalance = data.sum;
+        updateBalance(newBalance);
+      } catch (error) {
+        console.error("An error occurred. Please try again later.");
+      }
+    };
+
+    fetchBalance();
+  }, [deletedTransactions, owner, updateBalance]);
+
+ 
   
+  const updateDeleteTransactions = (deletedTransaction, newBalance) => {
+    setDeletedTransactions((prevDeletedTransactions) =>
+      prevDeletedTransactions.concat(deletedTransaction._id)
+    );
+    updateBalance(newBalance);
+  };
+
+  const [updatedTransactions, setUpdatedTransactions] = useState([]);
+  const updateTransactions = (newTransaction) => {
+    setUpdatedTransactions(newTransaction)  
+  };
+  
+
+  const filteredTransactions = useMemo(() => {
+    const mergedTransactions = [
+      ...transactions.filter(
+        (transaction) => !deletedTransactions.includes(transaction._id)
+      ),
+      ...updatedTransactions
+    ];
+  
+    const uniqueTransactions = mergedTransactions.reduce((acc, transaction) => {
+      const existingTransaction = acc.find((t) => t._id === transaction._id);
+      if (!existingTransaction) {
+        acc.push(transaction);
+      } else if (existingTransaction && updatedTransactions.includes(transaction)) {
+        
+        Object.assign(existingTransaction, transaction);
+      }
+      return acc;
+    }, []);
+  
+   
+    return uniqueTransactions;
+  }, [transactions, deletedTransactions, updatedTransactions]);
+ 
+  const reverseTransactions = useMemo(() => {
+    return [...filteredTransactions].reverse();
+  }, [filteredTransactions]);
+
   return (
     <div>
       <div>
-        <TableContainer
-          component={Paper}
+        <TableContainer component={Paper} className={css.tableContainer}
           style={{
-            width: "700px",
             backgroundColor: "transparent",
-            boxShadow: "none",
+	    boxShadow: "none",
             borderRadius: "0",
-          }}
-        >
-          {/* {isMobile &&
-            <TableContainer
-          component={Paper}
-          style={{
-            width: "700px",
-            backgroundColor: "white",
-            boxShadow: "none",
-            borderRadius: "0",
-          }}
-            >
-             } */}
-          
+          }}>
           <Table sx={{ minWidTableCell: 550 }} aria-label="simple table"
-            style={{
+	    style={{
               borderCollapse: "collapse",
               borderSpacing: "0",
               border: "none",
-            }}>
-            <TableHead 
-              style={{
-                backgroundColor: "#FFFFFF",
-              }}
-            >
+	    }}>
+            <TableHead className={css.tableHeader}>
               <TableRow>
                 <TableCell
                   align="left"
                   style={{
                     fontWeight: "900",
-                    borderRadius: "30px 0 0 30px",
+		    borderRadius: "30px 0 0 30px",
                     borderBottom: "none",
                   }}
                 >
@@ -69,7 +126,8 @@ const DashboardPage = ({ transactions }) => {
                   align="left"
                   style={{
                     fontWeight: "900",
-                    borderBottom: "none",
+		    borderBottom: "none",
+
                   }}
                 >
                   Category
@@ -78,7 +136,7 @@ const DashboardPage = ({ transactions }) => {
                   align="left"
                   style={{
                     fontWeight: "900",
-                    borderBottom: "none",
+		    borderBottom: "none",
                   }}
                 >
                   Comment
@@ -87,7 +145,7 @@ const DashboardPage = ({ transactions }) => {
                   align="left"
                   style={{
                     fontWeight: "900",
-                    borderBottom: "none",
+		    borderBottom: "none",
                   }}
                 >
                   Sum
@@ -96,7 +154,7 @@ const DashboardPage = ({ transactions }) => {
                   align="left"
                   style={{
                     fontWeight: "900",
-                    borderBottom: "none",
+		    borderBottom: "none",
                   }}
                 ></TableCell>
                 <TableCell
@@ -104,7 +162,7 @@ const DashboardPage = ({ transactions }) => {
                   style={{
                     fontWeight: "900",
                     borderRadius: "0 30px 30px 0",
-                    borderBottom: "none",
+		    borderBottom: "none",
                   }}
                 ></TableCell>
               </TableRow>
@@ -118,23 +176,26 @@ const DashboardPage = ({ transactions }) => {
                   }}
                 >
                   <TableCell align="left">{info.date}</TableCell>
-                  <TableCell align="left">
-                    {info.type}</TableCell>
+                  <TableCell align="left">{info.type}</TableCell>
                   <TableCell align="left">{info.category}</TableCell>
                   <TableCell align="left">{info.comment}</TableCell>
                   <TableCell align="left"
-                    style={{
+			style={{
                       fontWeight: "900",
                       color: info.type === "-" ? "#FF6596" : "#24CCA7"
-                    }}>
-                    {info.sum}</TableCell>
+                    }}>{info.sum}</TableCell>
                   <TableCell align="left" className={css.editRow}>
-                    <button className={css.editButton}>
-                      <EditPen className={css.editIcon} />
-                    </button>
+                    <ShowEditModal
+                      id={info._id}
+                      updateBalance={updateBalance}
+                      updateTransactions={updateTransactions}
+                    />
                   </TableCell>
                   <TableCell align="left" className={css.deleteRow}>
-                    <button className={css.deleteButton}>Delete</button>
+                    <ShowDeleteModal
+                      id={info._id}
+                      updateDeleteTransactions={updateDeleteTransactions}
+                    />
                   </TableCell>
                 </TableRow>
               ))}

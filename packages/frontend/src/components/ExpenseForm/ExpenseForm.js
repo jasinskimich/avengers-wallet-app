@@ -8,7 +8,10 @@ import ExpenseFormValidation from "../FormValidation/ExpenseFormValidation";
 import { Notify } from "notiflix";
 import { useParams } from "react-router-dom";
 
-const ExpensesForm = ({ updateBalance, updateTransactions }) => {
+
+const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, setOpenEditModal }) => {
+
+  
   const yourDate = new Date();
   const [expenseDate, setExpenseDate] = useState(yourDate);
   const [selectedValue, setSelectedValue] = useState(null);
@@ -55,12 +58,15 @@ const ExpensesForm = ({ updateBalance, updateTransactions }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     const expense = selectedValue.label;
     const amount = e.target.amount.value;
     const date = e.target.date.value;
     const comment = e.target.comment.value;
+   
 
     const transaction = {
+      
       date: date,
       type: "-",
       category: expense,
@@ -77,55 +83,37 @@ const ExpensesForm = ({ updateBalance, updateTransactions }) => {
         Notify.failure("Please enter the amount");
       }
     } else {
-      const newExpense = transaction;
-      console.log(JSON.stringify(newExpense));
+      const url = id
+        ? `http://localhost:5000/api/finances/transactions/${owner}/${id}`
+        : `http://localhost:5000/api/finances/${owner}`;
+      const method = id ? "PUT" : "POST";
 
       try {
-        const response = await fetch(
-          `http://localhost:5000/api/finances/${owner}`,
-          {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newExpense),
-          }
-        );
+        const response = await fetch(url, {
+          method: method,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(transaction),
+        });
 
         if (response.ok) {
           const data = await response.json();
-
-          const ownerBalance = data.data.document.sum;
-
-          // Update the balance using the `updateBalance` function
+          const ownerBalance = data.data.sum;
           updateBalance(ownerBalance);
+          const newTransaction = data.data.transactions;
+          updateTransactions(newTransaction);
         } else {
           throw new Error("Failed to update income");
         }
       } catch (error) {
-        console.error("An error occurred. Please try again later.");
+        console.error("An error occurred during the PUT request:", error);
       }
     }
-    try {
-      let response = await fetch(
-        `http://localhost:5000/api/finances/transactions/${owner}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch balance");
-      }
-
-      response = await response.json();
-      const newTransaction = response.transactions;
-      updateTransactions(newTransaction);
-    } catch (error) {
-      console.error("An error occurred. Please try again later.");
+    if (setOpenModal === undefined) {
+      setOpenEditModal(false);
+    } else {
+      setOpenModal(false);
     }
   };
 
@@ -171,7 +159,7 @@ const ExpensesForm = ({ updateBalance, updateTransactions }) => {
         type="text"
         placeholder="Comment"
       ></input>
-      <button className="expenseForm__button" type="submit" value="Submit">
+      <button  className="expenseForm__button" type="submit" value="Submit">
         ADD
       </button>
     </form>

@@ -1,14 +1,54 @@
 import { Box } from "@mui/material";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale } from "chart.js";
+// import MediaQuery from "react-responsive";
 import { Doughnut } from "react-chartjs-2";
 import fetchData from "../StatsTable/StatsTableData";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale);
+
 function Chart() {
 	const { owner } = useParams();
+	const [balance, setBalance] = useState();
 	const [chartData, setChartData] = useState([]);
+	const [currency, setCurrency] = useState("USD");
 
 	useEffect(() => {
+		const fetchBalance = async () => {
+			try {
+				let response = await fetch(`http://localhost:5000/api/finances/sum/${owner}`, {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+					},
+				});
+				if (!response.ok) {
+					throw new Error("Failed to fetch balance");
+				}
+				const res = await response.json();
+				setBalance(res.sum);
+			} catch (error) {
+				console.error(error);
+			}
+		};
+		const fetchCurrency = async () => {
+			try {
+				let response = await fetch(`http://localhost:5000/api/finances/currency/${owner}`, {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+					},
+				});
+				if (!response.ok) {
+					throw new Error("Failed to fetch balance");
+				}
+				response = await response.json();
+				setCurrency(response.currency);
+			} catch (error) {
+				console.error(error);
+			}
+		};
 		const fetchChartData = async () => {
 			try {
 				const data = await fetchData(owner);
@@ -17,7 +57,10 @@ function Chart() {
 				console.error("Failed to fetch data:", error);
 			}
 		};
+
+		fetchCurrency();
 		fetchChartData();
+		fetchBalance();
 		// eslint-disable-next-line
 	}, [owner]);
 
@@ -50,8 +93,6 @@ function Chart() {
 
 	// przemiana statisticsSum
 	const statisticsData = Object.entries(statisticsSum).map(([category, sum]) => ({ category, sum }));
-
-	console.log(statisticsData);
 
 	const colors = statisticsData.map((el) => {
 		let color;
@@ -89,28 +130,53 @@ function Chart() {
 		return color;
 	});
 
-	// ustawienia chart.js
+	// tablica z sumami
+	const userData = statisticsData.map((entry) => entry.sum);
+
+	// dane dla chart.js
 	const data = {
 		// legenda która wychodzi z tablicy z kategoriami
 		labels: statisticsCategory,
-		datasets: [
-			{
-				data: statisticsData.map((entry) => entry.sum),
-				backgroundColor: colors,
-				borderWidth: 0,
-			},
-		],
+		// dane
+		datasets: [{ data: userData, backgroundColor: colors, borderWidth: 0 }],
 	};
 
+	const config = {
+		cutout: "70%",
+		responsive: true,
+	};
+
+	// napis na środku wykresu
+	const chartText = {
+		id: "chartText",
+		beforeDatasetsDraw(chart) {
+			const { ctx } = chart;
+
+			// ustalenie pozycji napisu na środku wykresu
+			const xCenter = chart.getDatasetMeta(0)?.data?.[0]?.x;
+			const yCenter = chart.getDatasetMeta(0)?.data?.[0]?.y;
+
+			if (xCenter !== undefined && yCenter !== undefined) {
+				ctx.save();
+				ctx.fillStyle = "black";
+				ctx.font = "bold 18px Arial";
+				ctx.textAlign = "center";
+				ctx.textBaseline = "middle";
+				ctx.fillText(`${currency} ${balance}`, xCenter, yCenter);
+			}
+		},
+	};
+
+	let updatedBalance;
+	if (balance === undefined) {
+		updatedBalance = userData.join();
+		return updatedBalance;
+	}
+
 	return (
-		<Box sx={{ width: 500 }}>
-			<Box className="chart-container">
-				<Doughnut
-					data={data}
-					options={{
-						plugins: {},
-					}}
-				/>
+		<Box>
+			<Box sx={{ width: "350px" }}>
+				<Doughnut key={updatedBalance} data={data} options={config} plugins={[chartText]} />
 			</Box>
 		</Box>
 	);
