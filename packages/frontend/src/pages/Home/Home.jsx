@@ -41,7 +41,7 @@ function Home() {
     setBalance(newBalance);
   };
 
-  const [transactions, setTransactions] = useState(["adddaa"]);
+  const [transactions, setTransactions] = useState([]);
   
 
   useEffect(() => {
@@ -82,11 +82,12 @@ function Home() {
       <Balance balance={balance} />
       <DashboardPage
         transactions={transactions}
-        
+        updateBalance={updateBalance}
       />
       <ShowModal
         updateBalance={updateBalance}
         updateTransactions={updateTransactions}
+      
       />
     </Box>
   );

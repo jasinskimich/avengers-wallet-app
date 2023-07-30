@@ -6,31 +6,85 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import ShowDeleteModal from "../TransactionDeleteModal/ShowDeleteModal";
-// import { Thead, Tbody } from 'react-super-responsive-table';
-// import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
-import { ReactComponent as EditPen } from "../../images/editPen.svg";
-import { useState } from "react";
-
-// import { useEffect, useState } from "react";
-// import { useParams } from "react-router-dom";
-// import { border } from '@mui/system';
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import css from "./DashboardPage.module.css";
+import ShowEditModal from "../TransactionEditModal/ShowEditModal";
+import React, { useMemo } from "react";
 
-const DashboardPage = ({ transactions, balance }) => {
+const DashboardPage = ({ transactions, updateBalance }) => {
   const [deletedTransactions, setDeletedTransactions] = useState([]);
+  const { owner } = useParams();
 
+  useEffect(() => {
+    const fetchBalance = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:5000/api/finances/sum/${owner}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch balance");
+        }
+
+        const data = await response.json();
+        const newBalance = data.sum;
+        updateBalance(newBalance);
+      } catch (error) {
+        console.error("An error occurred. Please try again later.");
+      }
+    };
+
+    fetchBalance();
+  }, [deletedTransactions, owner, updateBalance]);
+
+ 
+  
   const updateDeleteTransactions = (deletedTransaction, newBalance) => {
     setDeletedTransactions((prevDeletedTransactions) =>
       prevDeletedTransactions.concat(deletedTransaction._id)
     );
-    balance = newBalance; // Update the balance with the new balance value
+    updateBalance(newBalance);
   };
 
-  const filteredTransactions = transactions.filter(
-    (transaction) => !deletedTransactions.includes(transaction._id)
-  );
+  const [updatedTransactions, setUpdatedTransactions] = useState([]);
+  const updateTransactions = (newTransaction) => {
+    setUpdatedTransactions(newTransaction)  
+  };
+  
 
-  let reverseTransactions = filteredTransactions.reverse();
+  const filteredTransactions = useMemo(() => {
+    const mergedTransactions = [
+      ...transactions.filter(
+        (transaction) => !deletedTransactions.includes(transaction._id)
+      ),
+      ...updatedTransactions
+    ];
+  
+    const uniqueTransactions = mergedTransactions.reduce((acc, transaction) => {
+      const existingTransaction = acc.find((t) => t._id === transaction._id);
+      if (!existingTransaction) {
+        acc.push(transaction);
+      } else if (existingTransaction && updatedTransactions.includes(transaction)) {
+        
+        Object.assign(existingTransaction, transaction);
+      }
+      return acc;
+    }, []);
+  
+   
+    return uniqueTransactions;
+  }, [transactions, deletedTransactions, updatedTransactions]);
+ 
+  const reverseTransactions = useMemo(() => {
+    return [...filteredTransactions].reverse();
+  }, [filteredTransactions]);
 
   return (
     <div>
@@ -117,9 +171,11 @@ const DashboardPage = ({ transactions, balance }) => {
                   <TableCell align="left">{info.comment}</TableCell>
                   <TableCell align="left">{info.sum}</TableCell>
                   <TableCell align="left" className={css.editRow}>
-                    <button className={css.editButton}>
-                      <EditPen className={css.editIcon} />
-                    </button>
+                    <ShowEditModal
+                      id={info._id}
+                      updateBalance={updateBalance}
+                      updateTransactions={updateTransactions}
+                    />
                   </TableCell>
                   <TableCell align="left" className={css.deleteRow}>
                     <ShowDeleteModal

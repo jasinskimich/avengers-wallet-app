@@ -1,45 +1,161 @@
 const express = require("express");
 const router = express.Router();
-// const { nanoid } = require("nanoid");
 require("dotenv").config();
 
 const Finances = require("../models/finances");
 
 const addTransaction = async (req, res, next) => {
+  const owner = req.params.owner;
+  const transactionId = req.params.id;
+  const document = await Finances.findOne({ owner });
 
-	const owner = req.params.owner;
-	const document = await Finances.findOne({ owner });
+  if (!document) {
+    return res.json({
+      status: "error",
+      code: 400,
+      data: "Bad request",
+      message: "User not found",
+    });
+  }
 
-	if (!document) {
-		return res.json({
-			status: "error",
-			code: 400,
-			data: "Bad request",
-			message: "User not found",
-		});
-	}
+  const transaction = req.body;
 
-	const transaction = req.body;
+  if (transaction.type === "+") {
+    if (transactionId) {
+      // Edit + window
+      const existingTransactionIndex = document.transactions.findIndex(
+        (t) => t._id.toString() === transactionId
+      );
 
-	if (transaction.type === "+") {
-		document.sum = document.sum + transaction.sum;
-	} else {
-		document.sum = document.sum - transaction.sum;
-	}
+      if (existingTransactionIndex === -1) {
+        return res.json({
+          status: "error",
+          code: 400,
+          data: "Bad request",
+          message: "Transaction not found",
+        });
+      }
 
-	document.transactions.push(transaction);
-	document.save();
+      const existingTransaction =
+        document.transactions[existingTransactionIndex];
+      const previousTransactionSum = existingTransaction.sum;
+      const updatedTransactionSum = transaction.sum;
+      const prevoiusTransactionType = existingTransaction.type;
+      const updatedTransactionType = transaction.type;
+      const updatedTransactionDate = transaction.date; 
+      const updatedTransactionComment = transaction.comment;
+      const updatedTransactionCategory = transaction.category; 
 
-	return res.json({
-		status: "success",
-		code: 200,
-		data: {
-			document,
-		},
-	});
+      if (prevoiusTransactionType === "+") {
+        document.sum =
+          document.sum - previousTransactionSum + updatedTransactionSum;
+      } else if (prevoiusTransactionType === "-") {
+        document.sum =
+          document.sum + previousTransactionSum + updatedTransactionSum;
+      }
 
+      document.transactions = document.transactions.map(
+        (transaction, index) => {
+          if (index === existingTransactionIndex) {
+            return {
+              ...transaction,
+              date: updatedTransactionDate,
+              type: updatedTransactionType,
+              category: updatedTransactionCategory,
+              comment: updatedTransactionComment, 
+              sum: updatedTransactionSum,
+            };
+          }
+          return transaction;
+        }
+      );
+    } else {
+      
+      const newTransactionSum = transaction.sum;
+      const newTransactionDate = transaction.date; 
+      const newTransactionComment = transaction.comment; 
+
+      document.sum = document.sum + newTransactionSum;
+      document.transactions.push({
+        ...transaction,
+        date: newTransactionDate, 
+        comment: newTransactionComment, 
+        sum: newTransactionSum,
+      });
+    }
+  } else {
+    // Edit - window
+    if (transactionId) {
+      const existingTransactionIndex = document.transactions.findIndex(
+        (t) => t._id.toString() === transactionId
+      );
+
+      if (existingTransactionIndex === -1) {
+        return res.json({
+          status: "error",
+          code: 400,
+          data: "Bad request",
+          message: "Transaction not found",
+        });
+      }
+
+      const existingTransaction =
+        document.transactions[existingTransactionIndex];
+      const previousTransactionSum = existingTransaction.sum;
+      const updatedTransactionSum = transaction.sum;
+      const updatedTransactionDate = transaction.date;
+      const updatedTransactionComment = transaction.comment;
+      const prevoiusTransactionType = existingTransaction.type;
+      const updatedTransactionType = transaction.type; 
+      const updatedTransactionCategory = transaction.category; 
+
+      if (prevoiusTransactionType === "+") {
+        document.sum =
+          document.sum - previousTransactionSum - updatedTransactionSum;
+      } else if (prevoiusTransactionType === "-") {
+        document.sum =
+          document.sum + previousTransactionSum - updatedTransactionSum;
+      }
+
+      document.transactions = document.transactions.map(
+        (transaction, index) => {
+          if (index === existingTransactionIndex) {
+            return {
+              ...transaction,
+              date: updatedTransactionDate, 
+              type: updatedTransactionType, 
+              category: updatedTransactionCategory, 
+              comment: updatedTransactionComment, 
+              sum: updatedTransactionSum,
+            };
+          }
+          return transaction;
+        }
+      );
+    } else {
+      const newTransactionSum = transaction.sum;
+      const newTransactionDate = transaction.date; 
+      const newTransactionComment = transaction.comment; 
+
+      document.sum = document.sum - newTransactionSum;
+      document.transactions.push({
+        ...transaction,
+        date: newTransactionDate, 
+        comment: newTransactionComment, 
+        sum: newTransactionSum,
+      });
+    }
+  }
+
+  await document.save();
+
+  res.json({
+    status: "success",
+    code: 200,
+    data: document,
+    message: "Transaction added/updated successfully",
+  });
 };
-
 
 const validCurrencies = [
   "PLN",
@@ -110,31 +226,29 @@ const changeCurrency = async (req, res, next) => {
   }
 };
 
-router.put("/finances/:owner", addTransaction);
+router.post("/finances/:owner", addTransaction);
 router.put("/finances/currency/:owner", changeCurrency);
-
-
+router.put("/finances/transactions/:owner/:id", addTransaction);
 
 // ALL GET api points
 const getOwnerSum = async (req, res) => {
-	try {
-		const owner = req.params.owner;
+  try {
+    const owner = req.params.owner;
 
-		const document = await Finances.findOne({ owner });
+    const document = await Finances.findOne({ owner });
 
-		if (!document) {
-			return res.status(404).json({ message: "Document not found" });
-		}
+    if (!document) {
+      return res.status(404).json({ message: "Document not found" });
+    }
 
-		const sum = document.sum;
+    const sum = document.sum;
 
-		res.json({ sum });
-	} catch (error) {
-		console.error(error);
-		res.status(500).json({ message: "Server Error" });
-	}
+    res.json({ sum });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
 };
-
 
 const getOwnerCurrency = async (req, res) => {
   try {
@@ -156,17 +270,17 @@ const getOwnerCurrency = async (req, res) => {
 };
 
 const getFinances = async (req, res, next) => {
-	try {
-		const owner = req.params.owner;
+  try {
+    const owner = req.params.owner;
 
-		const document = await Finances.findOne({ owner });
-		if (!document) {
-			return res.status(404).json({ message: "Document not found" });
-		}
-		res.send({ status: "ok", data: document });
-	} catch (error) {
-		next(error);
-	}
+    const document = await Finances.findOne({ owner });
+    if (!document) {
+      return res.status(404).json({ message: "Document not found" });
+    }
+    res.send({ status: "ok", data: document });
+  } catch (error) {
+    next(error);
+  }
 };
 
 const getTransactions = async (req, res, next) => {
@@ -174,14 +288,14 @@ const getTransactions = async (req, res, next) => {
     const owner = req.params.owner;
     const document = await Finances.findOne({ owner });
     if (!document) {
-			return res.status(404).json({ message: "Document not found" });
-		}
+      return res.status(404).json({ message: "Document not found" });
+    }
     res.send({ status: "ok", transactions: document.transactions });
   } catch (error) {
-		next(error);
-	}
-}
-router.get("/finances/transactions/:owner", getTransactions)
+    next(error);
+  }
+};
+router.get("/finances/transactions/:owner", getTransactions);
 router.get("/finances/sum/:owner", getOwnerSum);
 router.get("/finances/currency/:owner", getOwnerCurrency);
 router.get("/getfinances/:owner", getFinances);
@@ -189,7 +303,6 @@ router.get("/getfinances/:owner", getFinances);
 // ..............................................
 
 // DELETE
-
 
 const removeTransaction = async (req, res, next) => {
   try {
@@ -232,5 +345,3 @@ const removeTransaction = async (req, res, next) => {
 
 router.delete("/finances/transactions/:owner/:id", removeTransaction);
 module.exports = router;
-
-

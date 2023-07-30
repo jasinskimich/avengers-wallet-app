@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ModalAddTransaction from "./ModalAddTransaction";
 
-function ShowModal({ updateBalance, updateTransactions }) {
+function ShowModal({ updateBalance, updateTransactions, id }) {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
@@ -15,7 +15,7 @@ function ShowModal({ updateBalance, updateTransactions }) {
         +
       </button>
 
-      {modalOpen && <ModalAddTransaction setOpenModal={setModalOpen} updateBalance={updateBalance} updateTransactions={updateTransactions}/>}
+      {modalOpen && <ModalAddTransaction id={id} setOpenModal={setModalOpen} updateBalance={updateBalance} updateTransactions={updateTransactions}/>}
     </>
   );
 }

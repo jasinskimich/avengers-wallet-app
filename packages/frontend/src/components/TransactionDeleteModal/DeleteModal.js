@@ -1,4 +1,5 @@
-import React from "react";import css from "./DeleteModal.module.css";
+import React from "react";
+import css from "./DeleteModal.module.css";
 import { useParams } from "react-router-dom";
 
 function DeleteModal({ setOpenDeleteModal, id, updateDeleteTransactions }) {
@@ -6,10 +7,8 @@ function DeleteModal({ setOpenDeleteModal, id, updateDeleteTransactions }) {
     setOpenDeleteModal(false);
   };
 
-
- 
   const { owner } = useParams();
- 
+
   const handleDelete = async (e) => {
     e.preventDefault();
 
@@ -26,7 +25,6 @@ function DeleteModal({ setOpenDeleteModal, id, updateDeleteTransactions }) {
 
       if (response.ok) {
         response = await response.json();
-        console.log(response);
         updateDeleteTransactions(response.deletedTransaction, response.balance);
 
         handleCloseModal();
