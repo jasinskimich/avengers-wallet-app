@@ -6,7 +6,7 @@ const IncomeFormValidation = (data) => {
     type: Joi.string().required(),
     category: Joi.string().required(),
     comment: Joi.string().allow(""),
-    sum: Joi.number().required(),
+    sum: Joi.number().precision(2).required(),
   });
   return schema.validate(data);
 };
