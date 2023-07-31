@@ -5,6 +5,7 @@ import { Doughnut } from "react-chartjs-2";
 import fetchData from "../StatsTable/StatsTableData";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import styles from "./Chart.module.css";
 
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale);
 
@@ -174,12 +175,17 @@ function Chart() {
 	}
 
 	return (
-		<Box>
-			<Box sx={{ width: "350px" }}>
-				<Doughnut key={updatedBalance} data={data} options={config} plugins={[chartText]} />
-			</Box>
-		</Box>
-	);
+    <Box>
+			<Box className={styles.statisticsContainer}>
+        <Doughnut
+          key={updatedBalance}
+          data={data}
+          options={config}
+          plugins={[chartText]}
+        />
+      </Box>
+    </Box>
+  );
 }
 
 export default Chart;
