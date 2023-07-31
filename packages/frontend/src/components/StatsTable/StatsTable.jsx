@@ -280,12 +280,12 @@ function StatsTable() {
 							);
 						})}
 						<tr className="tableSummaryRow">
-							<div>Expenses:</div>
-							<div className="tableTotalExpense">{expenseTotal}</div>
+							<td>Expenses:</td>
+							<td className="tableTotalExpense">{expenseTotal}</td>
 						</tr>
 						<tr className="tableSummaryRow">
-							<div>Income:</div>
-							<div className="tableTotalIncome">{incomeTotal}</div>
+							<td>Income:</td>
+							<td className="tableTotalIncome">{incomeTotal}</td>
 						</tr>
 					</tbody>
 				</table>
