@@ -29,6 +29,7 @@ if (prevTypeString === "+") {
             {isOn && "−"}
             {!isOn && "+"}
           </span>
+          </label>
           <label style={{ color: prevTypeString === "-" ? "#ff6596" : (isOn ? "#ff6596" : ""), fontWeight: prevTypeString === "-" ? "700" : (isOn ? "700" : "") }}>Expense</label>
 
       </div>
@@ -57,6 +58,7 @@ if (prevTypeString === "+") {
             {isOn && "−"}
             {!isOn && "+"}
           </span>
+          </label>
           <label style={{ color: prevTypeString === "+" ? "" : (isOn ? "" : "#ff6596"), fontWeight: prevTypeString === "" ? "" : (isOn ? "" : "700") }}>Expense</label>
       </div>
 

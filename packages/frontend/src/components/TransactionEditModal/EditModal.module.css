@@ -1,3 +1,4 @@
+
 .editButton {
   padding: 0;
   border: none;
@@ -13,98 +14,156 @@
   
 }
 
-.deleteButton {
-  width: 80px;
-  height: 35px;
-  border-radius: 35px;
-  border: none;
-  background-color: #24cca7;
-  color: white;
-}
-
-.editModalBackground {
-  top: 50%;
-  left: 50%;
-  background-color: rgba(200, 200, 200);
-  position: absolute;
+.editModalHeader {
+  font-weight: 400;
+  font-size: 28px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  text-align: center;
+}
+
+.openModalBtn {
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  /* position: absolute;
+  right: 0;
+  bottom: 0; */
+  background-color: #24cca7;
+  border: none;
+  color: white;
+  font-size: 40px;
+  font-weight: 200;
+  margin: 20px;
 }
 
 .editModalContainer {
-  width: 490px;
-  height: 530px;
   border-radius: 12px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  bottom: 700;
 }
 
 .titleCloseBtn {
   display: flex;
   justify-content: flex-end;
-  padding-right: 10px;
-  padding-top: 5px;
 }
+
 .titleCloseBtn button {
   background-color: transparent;
   border: none;
   font-size: 25px;
   cursor: pointer;
 }
-.editModalHeader {
-  font-weight: 400;
-  font-size: 24px;
-  margin-top: 10px;
+
+.editModalContainer .body {
+  flex: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7rem;
   text-align: center;
 }
 
-.modalFooter {
-  flex: 20%;
+.editModalContainer .modalFooter {
   display: flex;
+  justify-content: center;
   align-items: center;
-  flex-direction: column;
-}
-.modalEditButton {
-  font-size: 16px;
-  font-weight: 500;
-  height: 35px;
-  width: 150px;
-  border: none;
-  border: 1px solid #da3333;
-  border-radius: 45px;
-  background-color: white;
-  margin-bottom: 5px;
-}
-.modalEditButton:hover {
-  cursor: pointer;
-  background-color: #da3333;
-  color: white;
-  -webkit-box-shadow: 2px -2px 24px -2px rgba(152, 51, 33, 1);
-  -moz-box-shadow: 2px -2px 24px -2px rgba(152, 51, 33, 1);
-  box-shadow: 2px -2px 24px -2px rgba(152, 51, 33, 1);
 }
 
-.modalCancelButton {
+.editModalContainer .modalFooter button {
   font-size: 16px;
   font-weight: 500;
-  height: 35px;
-  width: 120px;
+  height: 40px;
+  width: 200px;
   border: none;
   border: 1px solid #4a56e2;
   border-radius: 45px;
   background-color: white;
   margin-bottom: 20px;
+
+  color: #4a56e2;
 }
-.modalCancelButton:hover {
+
+.editModalContainer .modalFooter button:hover {
   cursor: pointer;
   background-color: #4a56e2;
-  color: white;
-  -webkit-box-shadow: 2px -2px 24px -2px rgba(74, 86, 226, 1);
-  -moz-box-shadow: 2px -2px 24px -2px rgba(74, 86, 226, 1);
-  box-shadow: 2px -2px 24px -2px rgba(74, 86, 226, 1);
+  color: white
+}
+
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .editModalBackground {
+    background-color: rgba(200, 200, 200, 0);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+  }
+
+  .editModalContainer {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    box-shadow: none;
+    padding: 0px;
+    border-radius: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: -10px;
+  }
+
+  .titleCloseBtn button {
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    color: transparent;
+  }
+
+  .editModalContainer .modalFooter button {
+    margin-top: 20px;
+    width: 250px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .editModalHeader {
+    padding-bottom: 20px;
+    font-size: 32px;
+  }
+  .editModalBackground {
+    top: 50%;
+    left: 50%;
+    background-color: rgba(200, 200, 200);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .editModalContainer {
+    width: 540px;
+    min-height: 508px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: fixed;
+  }
+
+  .titleCloseBtn button {
+    color: black;
+  }
+
+  .editModalContainer .modalFooter button {
+    margin-top: 20px;
+    width: 250px;
+    height: 50px;
+    font-size: 19px;
+  }
 }
