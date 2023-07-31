@@ -4,7 +4,6 @@
   border: none;
   background-color: transparent;
 }
-
 .editButton:hover {
   cursor: pointer;
 }
@@ -20,8 +19,6 @@
   background-color: #24cca7;
   color: white;
 }
-
-
 .deleteRow {
   padding: 0;
   width: 70px;
@@ -31,7 +28,6 @@
 }
 .tableHead {
   background-color: white;
-  
 }
 .table {
   border-radius: 30px;
@@ -51,19 +47,15 @@
   max-height: 5000px;
   overflow-y: auto;
 }
-
-
-.tableHeader {
+  .tableHeader {
   background-color: #FFFFFF;
   top:0px;
-
   position: sticky;
   font-weight: 900;
-  
-}
-@media screen and (min-width: 768px) {
+} 
+  @media screen and (min-width: 768px) {
   .tableContainer{
-    max-width: 700px;
+    max-width: 680px;
     margin-left: 15px;
   }
 }

@@ -15,11 +15,13 @@ import css from "./DashboardPage.module.css";
 import ShowEditModal from "../TransactionEditModal/ShowEditModal";
 import React, { useMemo } from "react";
 import { compareAsc } from 'date-fns';
-
+import { useMediaQuery } from 'react-responsive'
 
 const DashboardPage = ({ transactions, updateBalance }) => {
   const [deletedTransactions, setDeletedTransactions] = useState([]);
   const { owner } = useParams();
+  const isMobile = useMediaQuery({query:'(max-width: 640px)'})
+  const isTabletOrBigScreen = useMediaQuery({query:'(min-width: 641px)'})
 
   useEffect(() => {
     const fetchBalance = async () => {
@@ -100,11 +102,208 @@ const DashboardPage = ({ transactions, updateBalance }) => {
     return sortedTransactions;
   }, [transactions, deletedTransactions, updatedTransactions]);
 
-
-
   return (
     <div>
       <div>
+        {isMobile && 
+        <TableContainer
+          component={Paper}
+          style={{
+            marginLeft: "2px",
+            backgroundColor: "transparent",
+            boxShadow: "none",
+          }}
+        >
+          <Table
+            sx={{ minWidTableCell: 550 }}
+            aria-label="simple table"
+              style={{
+              border: "none",
+            }}
+          >
+              {filteredTransactions.flatMap((info, index) => (
+                <div key={index} style={{
+                    backgroundColor: "#FFFFFF",
+                    borderRadius: "10px",
+                    marginBottom: "20px",  
+                    borderLeft: "solid red 10px",
+                    borderColor: info.type === "-" ? "#FF6596" : "#24CCA7",
+                }}>
+                <TableRow
+                  style={{
+                    // border: "none",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    borderBottom: "solid #DCDCDF 1px",
+                }}
+                key={index}
+                  sx={{
+                    "&:last-child TableCell, &:last-child th": { border: 0 },
+                  }}
+                  >
+                <TableCell
+                  align="left"
+                  style={{
+                    fontWeight: "900",
+                    borderBottom: "none",
+                  }}
+                >
+                  Date
+                  </TableCell>
+                    <TableCell align="left"
+                    style={{borderBottom: "none",}}>{info.date}</TableCell>
+                 </TableRow>
+                <TableRow
+                  style={{
+                    border: "none",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    borderBottom: "solid #DCDCDF 1px",
+                }}
+                key={index}
+                  sx={{
+                    "&:last-child TableCell, &:last-child th": { border: 0 },
+                  }}
+                  >
+                <TableCell
+                  align="left"
+                  style={{
+                    fontWeight: "900",
+                    borderBottom: "none",
+                  }}
+                >
+                  Type
+                  </TableCell>
+                    <TableCell align="left"
+                    style={{borderBottom: "none",}}>{info.type}</TableCell>
+                 </TableRow>
+                <TableRow
+                  style={{
+                    border: "none",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    borderBottom: "solid #DCDCDF 1px",
+                }}
+                key={index}
+                  sx={{
+                    "&:last-child TableCell, &:last-child th": { border: 0 },
+                  }}
+                  >
+                <TableCell
+                  align="left"
+                  style={{
+                    fontWeight: "900",
+                    borderBottom: "none",
+                  }}
+                >
+                  Category
+                  </TableCell>
+                    <TableCell align="left"
+                    style={{borderBottom: "none",}}>{info.category}</TableCell>
+                 </TableRow>
+                <TableRow
+                  style={{
+                    border: "none",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    borderBottom: "solid #DCDCDF 1px",
+                }}
+                key={index}
+                  sx={{
+                    "&:last-child TableCell, &:last-child th": { border: 0 },
+                  }}
+                  >
+                <TableCell
+                  align="left"
+                  style={{
+                    fontWeight: "900",
+                    borderBottom: "none",
+                  }}
+                >
+                  Comment
+                  </TableCell>
+                    <TableCell align="left"
+                    style={{borderBottom: "none",}}>{info.comment}</TableCell>
+                 </TableRow>
+                <TableRow
+                  style={{
+                    border: "none",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    borderBottom: "solid #DCDCDF 1px",
+                }}
+                key={index}
+                  sx={{
+                    "&:last-child TableCell, &:last-child th": { border: 0 },
+                  }}
+                  >
+                <TableCell
+                  align="left"
+                  style={{
+                    fontWeight: "900",
+                    borderBottom: "none",
+                  }}
+                >
+                  Sum
+                  </TableCell>
+                <TableCell align="left"style={{
+                      fontWeight: "700",
+                      borderBottom: "none",
+                      color: info.type === "-" ? "#FF6596" : "#24CCA7",
+                    }}
+                  >
+                    {info && typeof info.sum === 'number' ? info.sum.toFixed(2) : ""}
+                  </TableCell>
+                 </TableRow>
+                <TableRow
+                  style={{
+                    border: "none",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    borderBottom: "solid #DCDCDF 1px",
+                }}
+                key={index}
+                  sx={{
+                    "&:last-child TableCell, &:last-child th": { border: 0 },
+                  }}
+                >
+                  <TableCell align="left" className={css.deleteRow}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      borderBottom: "none",
+                  }}>
+                    <ShowDeleteModal
+                      id={info._id}
+                      updateDeleteTransactions={updateDeleteTransactions}
+                    />
+                  </TableCell>
+                  <TableCell align="left" className={css.editRow}
+                    style={{
+                      display: "flex",
+                      gap: "5px",
+                      marginRight: "3px",
+                      borderBottom: "none",
+                  }}>
+                    <ShowEditModal
+                      prevCategory={info.category}
+                      prevType={info.type}
+                      prevDate={info.date}
+                      prevComment={info.comment}
+                      prevSum={info.sum}
+                      id={info._id}
+                      updateBalance={updateBalance}
+                      updateTransactions={updateTransactions}
+                    />
+                    <div><p>Edit</p></div>
+                  </TableCell>
+                </TableRow>
+                </div>
+               ))}
+          </Table>
+          </TableContainer>
+        }
+        {isTabletOrBigScreen &&
         <TableContainer
           component={Paper}
           className={css.tableContainer}
@@ -131,7 +330,6 @@ const DashboardPage = ({ transactions, updateBalance }) => {
                     fontWeight: "900",
                     borderRadius: "30px 0 0 30px",
                     borderBottom: "none",
-                    // marginBottom: "10px",
                   }}
                 >
                   Date
@@ -234,7 +432,8 @@ const DashboardPage = ({ transactions, updateBalance }) => {
               ))}
             </TableBody>
           </Table>
-        </TableContainer>
+          </TableContainer>
+        }
       </div>
     </div>
   );
