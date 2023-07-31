@@ -7,11 +7,15 @@ import { Notify } from "notiflix";
 import { useParams } from "react-router-dom";
 
 const IncomeForm = ({
+  prevSum2,
+  prevComment2,
   updateBalance,
   updateTransactions,
   id,
   setOpenModal,
   setOpenEditModal,
+  prevSum,
+  prevComment
 }) => {
   const yourDate = new Date();
   const [expenseDate, setExpenseDate] = useState(yourDate);
@@ -20,7 +24,7 @@ const IncomeForm = ({
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const amount = e.target.amount.value;
+    const amount = parseFloat(e.target.amount.value);
     const date = e.target.date.value;
     const comment = e.target.comment.value;
 
@@ -29,7 +33,7 @@ const IncomeForm = ({
       type: "+",
       category: "Income",
       comment: comment,
-      sum: parseInt(amount),
+      sum: amount,
     };
 
     const { error } = IncomeFormValidation(transaction);
@@ -56,9 +60,11 @@ const IncomeForm = ({
 
         if (response.ok) {
           const data = await response.json();
+          // console.log(data);
           const ownerBalance = data.data.sum;
           updateBalance(ownerBalance);
           const newTransaction = data.data.transactions;
+          
           updateTransactions(newTransaction);
         } else {
           throw new Error("Failed to update income");
@@ -72,7 +78,28 @@ const IncomeForm = ({
     } else {
       setOpenModal(false);
     }
+
+   
+          
   };
+
+  let previousTransactionSumString, prevCommString;
+
+
+if (typeof prevSum === "undefined") {
+  previousTransactionSumString = prevSum2 ;
+  prevCommString = prevComment2;
+  
+} else {
+  previousTransactionSumString = prevSum.toString();
+  prevCommString = prevComment.toString();
+  
+}
+
+//   const previousTransactionSumString = prevSum.toString();
+// const prevCommString = prevComment.toString()
+  
+  
   return (
     <form
       onSubmit={handleSubmit}
@@ -84,14 +111,15 @@ const IncomeForm = ({
         <input
           className="incomeForm__amount"
           name="amount"
-          type="number"
+          type="text"
           min="0"
-          placeholder="0.00"
+          placeholder={previousTransactionSumString}
         ></input>
         <DatePicker
           className="incomeForm__date"
           name="date"
           dateFormat="dd.MM.yyyy"
+         
           selected={expenseDate}
           onChange={(date) => setExpenseDate(date)}
         />
@@ -100,7 +128,7 @@ const IncomeForm = ({
         name="comment"
         className="incomeForm__comment"
         type="text"
-        placeholder="Comment"
+        placeholder={prevCommString}
       ></input>
       <button className="incomeForm__button" type="submit" value="Submit">
         ADD

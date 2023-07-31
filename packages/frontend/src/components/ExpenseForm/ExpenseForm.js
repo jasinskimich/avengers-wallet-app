@@ -8,7 +8,10 @@ import ExpenseFormValidation from "../FormValidation/ExpenseFormValidation";
 import { Notify } from "notiflix";
 import { useParams } from "react-router-dom";
 
-const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, setOpenEditModal }) => {
+
+
+const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, setOpenEditModal, prevSum, prevComment, prevCategory, prevComment2, prevSum2, prevCategory2 }) => {
+
   const yourDate = new Date();
   const [expenseDate, setExpenseDate] = useState(yourDate);
   const [selectedValue, setSelectedValue] = useState(null);
@@ -53,7 +56,7 @@ const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, set
     e.preventDefault();
 
     const expense = selectedValue.label;
-    const amount = e.target.amount.value;
+    const amount = parseFloat(e.target.amount.value);
     const date = e.target.date.value;
     const comment = e.target.comment.value;
 
@@ -62,7 +65,7 @@ const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, set
       type: "-",
       category: expense,
       comment: comment,
-      sum: parseInt(amount),
+      sum: amount,
     };
 
     const { error } = ExpenseFormValidation(transaction);
@@ -106,10 +109,24 @@ const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, set
     }
   };
 
+
+  let previousTransactionSumString, prevCommString, prevCategoryString;
+
+if (typeof (prevSum && prevCategory && prevComment) === "undefined") {
+  previousTransactionSumString = prevSum2 ;
+  prevCommString = prevComment2;
+  prevCategoryString = prevCategory2;
+} else {
+  previousTransactionSumString = prevSum.toString();
+  prevCommString = prevComment.toString();
+  prevCategoryString = prevCategory.toString();
+}
+
+
   return (
     <form onSubmit={handleSubmit} className="expenseForm" method="post" action="">
       <Select
-        placeholder="Select a category"
+        placeholder={prevCategoryString}
         name="expense"
         value={options.find((obj) => obj.value === selectedValue)}
         onChange={(e) => {
@@ -123,13 +140,28 @@ const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, set
         }}
       />
       <div className="expenseForm__line">
-        <input className="expenseForm__amount" name="amount" type="number" min="0" placeholder="0.00"></input>
+
+        <input
+          className="expenseForm__amount"
+          name="amount"
+          type="text"
+          min="0"
+          placeholder={previousTransactionSumString}
+        ></input>
+
         <div>
           <DatePicker className="expenseForm__date" name="date" dateFormat="dd.MM.yyyy" selected={expenseDate} onChange={(date) => setExpenseDate(date)} />
         </div>
       </div>
-      <input name="comment" className="expenseForm__comment" type="text" placeholder="Comment"></input>
-      <button className="expenseForm__button" type="submit" value="Submit">
+
+      <input
+        name="comment"
+        className="expenseForm__comment"
+        type="text"
+        placeholder={prevCommString}
+      ></input>
+      <button  className="expenseForm__button" type="submit" value="Submit">
+
         ADD
       </button>
     </form>
