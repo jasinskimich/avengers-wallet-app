@@ -210,7 +210,7 @@ const DashboardPage = ({ transactions, updateBalance }) => {
                       color: info.type === "-" ? "#FF6596" : "#24CCA7",
                     }}
                   >
-                    {info.sum.toFixed(2)}
+                    {info && typeof info.sum === 'number' ? info.sum.toFixed(2) : ""}
                   </TableCell>
                   <TableCell align="left" className={css.editRow}>
                     <ShowEditModal
