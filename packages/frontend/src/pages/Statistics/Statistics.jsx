@@ -64,6 +64,22 @@ function Statistics() {
 					<StatsTable />
 				</Box>
 			</MediaQuery>
+			<MediaQuery minWidth={426} maxWidth={768}>
+				<Box sx={{ position: "absolute" }}>
+					<Navigation />
+				</Box>
+				<Box className={css.statsPageTablet}>
+					<Box sx={{ display: "flex", flexDirection: "row", alignItems: "flex-end", mx: 5, marginBottom: 5, gap: "15px" }}>
+						<Balance balance={balance} />
+						<Currency />
+					</Box>
+					<Box>
+						<h2>Statistics</h2>
+						<Chart />
+					</Box>
+					<StatsTable />
+				</Box>
+			</MediaQuery>
 		</Box>
 	);
 }
