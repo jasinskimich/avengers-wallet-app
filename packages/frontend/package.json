@@ -43,7 +43,8 @@
     "styled-components": "^5.3.11",
     "vercel": "^31.0.4",
     "web-vitals": "^2.1.4",
-    "yup": "^1.2.0"
+    "yup": "^1.2.0",
+    "zxcvbn": "^4.4.2"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -6,7 +6,8 @@ import { Box, FormControl, InputAdornment, Input } from "@mui/material";
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import LocalPostOfficeIcon from '@mui/icons-material/LocalPostOffice';
 import LockIcon from '@mui/icons-material/Lock';
-import walletIcon from "../../images/Wallet.svg"
+import walletIcon from "../../images/Wallet.svg";
+import PasswordStrength from "./PasswordStrength";
 
 const RegistrationForm = () => {
   const [name, setName] = useState("");
@@ -76,91 +77,108 @@ const RegistrationForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Box sx={{ '& > :not(style)': { m: 2 } }} className={css.registerBox}>
+      <Box sx={{ "& > :not(style)": { m: 2 } }} className={css.registerBox}>
         <div className={css.registrationFormHeader}>
           <img src={walletIcon} alt="wallet-icon" className={css.walletIcon} />
           <h1>Wallet</h1>
         </div>
         <FormControl variant="standard" className={css.inputWidth}>
-          <Input 
-            type="email" 
-            id="email" 
-            value={email} 
-            onChange={(e) => handleInputChange(e)} 
+          <Input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => handleInputChange(e)}
             placeholder="E-mail"
-            required 
+            required
             startAdornment={
               <InputAdornment position="start">
-
-                <LocalPostOfficeIcon sx={{ color: 'lightgrey', mr: 1, my: 0.5 }} className={css.iconMarginPost} />
-
+                <LocalPostOfficeIcon
+                  sx={{ color: "lightgrey", mr: 1, my: 0.5 }}
+                  className={css.iconMarginPost}
+                />
               </InputAdornment>
             }
           />
         </FormControl>
         <FormControl variant="standard" className={css.inputWidth}>
-          <Input 
-            type="password" 
-            id="password" 
-            value={password} 
-            onChange={(e) => handleInputChange(e)} 
+          <Input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => handleInputChange(e)}
             placeholder="Password"
             minLength={6}
             maxLength={12}
             required
             startAdornment={
               <InputAdornment position="start">
-                <LockIcon sx={{ color: 'lightgrey', mr: 1, my: 0.5 }} className={css.iconMargin} />
+                <LockIcon
+                  sx={{ color: "lightgrey", mr: 1, my: 0.5 }}
+                  className={css.iconMargin}
+                />
               </InputAdornment>
             }
           />
         </FormControl>
         <FormControl variant="standard" className={css.inputWidth}>
-          <Input 
-            type="password" 
-            id="confirmPassword" 
-            value={confirmPassword} 
-            onChange={(e) => handleInputChange(e)} 
+          <Input
+            type="password"
+            id="confirmPassword"
+            value={confirmPassword}
+            onChange={(e) => handleInputChange(e)}
             placeholder="Confirm password"
             minLength={6}
             maxLength={12}
-            required 
+            required
             startAdornment={
               <InputAdornment position="start">
-                <LockIcon sx={{ color: 'lightgrey', mr: 1, my: 0.5 }} className={css.iconMargin} />
+                <LockIcon
+                  sx={{ color: "lightgrey", mr: 1, my: 0.5 }}
+                  className={css.iconMargin}
+                />
               </InputAdornment>
             }
           />
         </FormControl>
+        <PasswordStrength password={password} />
         <FormControl variant="standard" className={css.inputWidthLast}>
-          <Input 
+          <Input
             type="text"
-            id="name" 
-            value={name} 
-            onChange={(e) => handleInputChange(e)} 
+            id="name"
+            value={name}
+            onChange={(e) => handleInputChange(e)}
             placeholder="First Name"
             minLength={1}
             maxLength={12}
             required
             startAdornment={
               <InputAdornment position="start">
-                <AccountBoxIcon sx={{ color: 'lightgrey', mr: 1, my: 0.5 }} className={css.iconMargin} />
+                <AccountBoxIcon
+                  sx={{ color: "lightgrey", mr: 1, my: 0.5 }}
+                  className={css.iconMargin}
+                />
               </InputAdornment>
             }
           />
         </FormControl>
 
-        <button variant="contained" type="submit" className={css.registrationButton}>
+        <button
+          variant="contained"
+          type="submit"
+          className={css.registrationButton}
+        >
           REGISTER
         </button>
-        
+
         <Link to="/login">
           <button className={css.loginButton}>LOG IN</button>
         </Link>
 
         <div>
           <Link to="/verify">
-            <span className={css.verifyLink}>If you didn't get an verification email click this link.</span>
+            <span className={css.verifyLink}>
+              If you didn't get an verification email click this link.
+            </span>
           </Link>
         </div>
       </Box>
