@@ -24,7 +24,7 @@ const IncomeForm = ({
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const amount = e.target.amount.value;
+    const amount = parseFloat(e.target.amount.value);
     const date = e.target.date.value;
     const comment = e.target.comment.value;
 
@@ -33,7 +33,7 @@ const IncomeForm = ({
       type: "+",
       category: "Income",
       comment: comment,
-      sum: parseInt(amount),
+      sum: amount,
     };
 
     const { error } = IncomeFormValidation(transaction);
@@ -111,7 +111,7 @@ if (typeof prevSum === "undefined") {
         <input
           className="incomeForm__amount"
           name="amount"
-          type="number"
+          type="text"
           min="0"
           placeholder={previousTransactionSumString}
         ></input>

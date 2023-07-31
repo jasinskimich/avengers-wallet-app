@@ -167,7 +167,8 @@ const DashboardPage = ({ transactions, updateBalance }) => {
                 <TableCell
                   align="left"
                   style={{
-                    fontWeight: "900",
+                    
+                    fontWeight: "800",
                     borderBottom: "none",
                   }}
                 >
@@ -205,11 +206,11 @@ const DashboardPage = ({ transactions, updateBalance }) => {
                   <TableCell
                     align="left"
                     style={{
-                      fontWeight: "900",
+                      fontWeight: "700",
                       color: info.type === "-" ? "#FF6596" : "#24CCA7",
                     }}
                   >
-                    {info.sum}
+                    {info.sum.toFixed(2)}
                   </TableCell>
                   <TableCell align="left" className={css.editRow}>
                     <ShowEditModal

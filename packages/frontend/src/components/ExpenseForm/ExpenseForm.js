@@ -60,7 +60,7 @@ const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, set
     e.preventDefault();
     
     const expense = selectedValue.label;
-    const amount = e.target.amount.value;
+    const amount = parseFloat(e.target.amount.value);
     const date = e.target.date.value;
     const comment = e.target.comment.value;
    
@@ -71,7 +71,7 @@ const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, set
       type: "-",
       category: expense,
       comment: comment,
-      sum: parseInt(amount),
+      sum: amount,
     };
 
     const { error } = ExpenseFormValidation(transaction);
@@ -153,7 +153,7 @@ if (typeof (prevSum && prevCategory && prevComment) === "undefined") {
         <input
           className="expenseForm__amount"
           name="amount"
-          type="number"
+          type="text"
           min="0"
           placeholder={previousTransactionSumString}
         ></input>
