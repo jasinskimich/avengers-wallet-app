@@ -1,25 +1,25 @@
 import React from "react";
 import zxcvbn from "zxcvbn";
-
 import "./PasswordStrength.css";
 
 const PasswordStrength = ({ password }) => {
   const testResult = zxcvbn(password);
   const num = (testResult.score * 100) / 4;
+
   const progressColor = () => {
     switch (testResult.score) {
       case 0:
-        return "#FF6596";
+        return "veryWeak";
       case 1:
-        return "#FF6596";
+        return "weak";
       case 2:
-        return "#FF6596";
+        return "weak";
       case 3:
-        return "#24CCA7";
+        return "normal";
       case 4:
-        return "#24CCA7";
+        return "strong";
       default:
-        return "none";
+        return "";
     }
   };
 
@@ -40,30 +40,15 @@ const PasswordStrength = ({ password }) => {
     }
   };
 
-  const changeProgressStyle = () => ({
-    width: "410px",
-      height: "4px",
-      position: "absolute",
-    
-   
-  });
-
-  const changePasswordColor = () => ({
-    width: `${num}%`,
-    height: "4px",
-    background: progressColor(),
-    boxShadow: "0px 1px 8px rgba(36, 204, 167, 0.5)",
-    borderRadius: "4px",
-  });
-
   return (
     <>
-      <div className="progress" style={changeProgressStyle()}>
-        <div className="progress_bar" style={changePasswordColor()}></div>
+      <div className="progress">
+        <div
+          className={`progress_bar ${progressColor()}`}
+          style={{ width: `${num}%` }}
+        ></div>
       </div>
-      <p className="text_pr" style={{ color: progressColor() }}>
-        {createPasswordLabel()}
-      </p>
+      <p className={`text_pr `}>{createPasswordLabel()}</p>
     </>
   );
 };
