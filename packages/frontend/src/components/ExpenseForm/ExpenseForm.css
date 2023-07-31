@@ -4,35 +4,21 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 350px;
-  gap: 20px;
 }
 
 .expenseForm__line {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  gap: 70px;
-}
-.expenseForm__amount {
-  width: 130px;
-}
-.expenseForm__date {
-  width: 130px;
 }
 
 .expenseForm input {
   font-size: 14px;
-  padding-left: 16px;
-  height: 30px;
+  padding-left: 10px;
+
   border: none;
   border-bottom: 1px solid rgb(197, 196, 196);
   font-family: "Open Sans";
-}
-
-.expenseForm__comment {
-  width: 350px;
-  height: 50px;
 }
 
 .expenseForm__button {
@@ -46,4 +32,88 @@
   border-radius: 45px;
   background-color: #24cca7;
   color: white;
+}
+
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .expenseForm {
+    width: 320px;
+    gap: 20px;
+    height: auto;
+  }
+
+  .expenseSelect {
+    width: 260px;
+    height: 30px;
+  }
+
+  .expenseForm input {
+    height: 30px;
+    padding-bottom: 1px;
+  }
+
+  .expenseForm__line {
+    margin-top: 5px;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .expenseForm__amount {
+    width: 250px;
+  }
+  .expenseForm__date {
+    width: 250px;
+  }
+
+  .expenseForm__comment {
+    width: 250px;
+  }
+
+  .expenseForm__button {
+    width: 250px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .expenseForm {
+    padding-top: 20px;
+    width: 500px;
+    gap: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .expenseSelect {
+    width: 460px;
+    height: 30px;
+  }
+
+  .expenseForm input {
+    height: 30px;
+    padding-bottom: 1px;
+  }
+
+  .expenseForm__line {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  .expenseForm__amount {
+    width: 200px;
+  }
+  .expenseForm__date {
+    width: 200px;
+  }
+
+  .expenseForm__comment {
+    width: 450px;
+    height: 50px;
+  }
+
+  .expenseForm__button {
+    font-size: 19px;
+    width: 250px;
+    height: 50px;
+  }
 }
