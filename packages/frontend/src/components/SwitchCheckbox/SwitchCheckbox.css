@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 35px 0px 30px 0px;
+  margin: 30px 0px 30px 0px;
 }
 
 .switchBox__checkbox {
@@ -18,17 +18,27 @@
 }
 
 .switchBox__label {
-  margin: 0px 30px 0px 24px;
+  margin: 0px 22px 0px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
   width: 70px;
   height: 30px;
-  background: rgb(236, 236, 236);
+  background: none;
+  border: 1px solid rgb(243, 242, 242);
   border-radius: 100px;
   position: relative;
   transition: background-color 0.1s;
+}
+
+.switchBox__button {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  font-weight: 200;
 }
 
 .switchBox__label .switchBox__button {
@@ -36,8 +46,9 @@
   position: absolute;
   top: 0px;
   left: 0px;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
+  margin-top: -6px;
   border-radius: 45px;
   transition: 0.2s;
   background: #24cca7;
@@ -52,14 +63,31 @@
 }
 
 .switchBox__label:active .switchBox__button {
-  width: 60px;
+  width: 40px;
 }
 
 .modalFormArea {
-  height: 240px;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
   margin: 0;
   padding: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .switchBox__label {
+    cursor: pointer;
+    width: 90px;
+    height: 40px;
+  }
+
+  .switchBox__label .switchBox__button {
+    content: "";
+    width: 50px;
+    height: 50px;
+    margin-top: -5px;
+  }
 }
