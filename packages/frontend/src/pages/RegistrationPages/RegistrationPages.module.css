@@ -1,5 +1,5 @@
 /***************** MOBILE *****************/
-@media screen and (min-width: 0px) and (max-width: 768px) {
+@media screen and (min-width: 0px) and (max-width: 767px) {
   .main {
     background-color: white;
     height: 100vh;
@@ -14,7 +14,7 @@
 }
 
 /***************** TABLET *****************/
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) and (max-width:1280px) {
   .main {
     display: grid;
     grid-template-columns: 1fr;
@@ -51,7 +51,7 @@
 }
 
 /***************** DESKTOP *****************/
-@media screen and (min-width: 1080px) {
+@media screen and (min-width: 1280px) {
   .main {
     display: grid;
     grid-template-columns: 2fr 3fr;
