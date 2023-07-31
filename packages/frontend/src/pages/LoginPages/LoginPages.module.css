@@ -1,5 +1,5 @@
 /* ============================== mobile =========================== */
-@media screen and (min-width: 0px) and (max-width: 768px) {
+@media screen and (min-width: 0px) and (max-width: 767px) {
   .main {
     background-color: white;
     height: 100vh;
@@ -11,7 +11,7 @@
 }
 
 /* ============================== Tablet =========================== */
-@media screen and (min-width: 769px) and (max-width: 1080px) {
+@media screen and (min-width: 768px) and (max-width: 1279px) {
   .main {
     display: grid;
     grid-template-columns: 1fr;
@@ -24,7 +24,7 @@
     display: flex;
     flex-direction: row;
     
-    /* margin-top: 60px; */
+  
     align-items: center;
     gap: 60px;
   }
@@ -57,7 +57,7 @@
 
 /* ======================Desktop=========================== */
 
-@media screen and (min-width: 1080px) {
+@media screen and (min-width: 1280px) {
   .main {
     display: grid;
     grid-template-columns: 2fr 3fr;

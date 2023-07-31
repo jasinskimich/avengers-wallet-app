@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale } from "chart.js";
-// import MediaQuery from "react-responsive";
+
 import { Doughnut } from "react-chartjs-2";
 import fetchData from "../StatsTable/StatsTableData";
 import { useEffect, useState } from "react";

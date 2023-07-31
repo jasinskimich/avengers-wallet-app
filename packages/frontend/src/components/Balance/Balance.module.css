@@ -1,6 +1,6 @@
 @media screen and (min-width: 0px) and (max-width: 426px) {
   .balanceBox {
-    margin: auto;
+    margin: 15px auto;
     width: 310px;
     height: 80px;
     border-radius: 30px;
@@ -43,7 +43,7 @@
 }
 @media screen and (min-width: 426px) and (max-width: 767px) {
   .balanceBox {
-    margin: 15px;
+    margin:15px auto;
     width: 336px;
     height: 80px;
     border-radius: 30px;

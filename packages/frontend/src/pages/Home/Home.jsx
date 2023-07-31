@@ -10,7 +10,6 @@ import styles from "./Home.module.css";
 import { Currency } from "../../components/Currency/Currency";
 
 function Home() {
-
   const [balance, setBalance] = useState(null);
   const { owner } = useParams();
 
@@ -83,23 +82,28 @@ const defaultComment = "Please insert comment"
 const defaultCategory = "Please select your category"
   return (
     <Box>
-      <div className={styles.container}>
-        <div className={styles.containerLeft}>
-          <div>
-          <Navigation />
-            <Balance balance={balance} />
+      <div className={styles.backgroundShadow}>
+        <div className={styles.container}>
+          <div className={styles.containerLeft}>
+            <div>
+              <Navigation />
+              <Balance balance={balance} />
             </div>
-          <div>
-            <Currency />
+            <div className={styles.containerCurrency}>
+              <Currency />
             </div>
-        </div>
 
-        <div className={styles.containerRight}>
-          <DashboardPage
-        transactions={transactions}
-        updateBalance={updateBalance}
-      />
-          <ShowModal
+          </div>
+
+          <div className={styles.containerRight}>
+            <div>
+              <DashboardPage
+                transactions={transactions}
+                updateBalance={updateBalance}
+              />
+            </div>
+            <div className={styles.homeButtonModal}>
+              <ShowModal
           prevComment2 = {defaultComment}
           prevSum2 = {defaultSum}
           prevCategory2 = {defaultCategory}
@@ -108,11 +112,13 @@ const defaultCategory = "Please select your category"
         updateTransactions={updateTransactions}
       
       />
+            </div>
+          </div>
+
         </div>
       </div>
     </Box>
   );
-
 }
 
 export default Home;
