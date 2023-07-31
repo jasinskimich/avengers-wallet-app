@@ -4,29 +4,35 @@
     margin: 10px auto;
     padding: 10px;
   }
+
   .loginButton,
   .registrationButton {
     max-width: 280px;
   }
+
   .inputWidth {
     max-width: 300px;
   }
+
   .inputWidthFirst {
     max-width: 300px;
   }
 }
+
 /* ============================== Tablet =========================== */
 @media screen and (min-width: 768px) and (max-width: 1280px) {
   .loginBox {
     padding: 30px;
     margin: 0px auto 200px auto;
   }
+
   .loginButton,
   .registrationButton,
   .loginInput {
-    max-width:410px;
+    max-width: 410px;
   }
 }
+
 /* ======================Desktop=========================== */
 
 @media screen and (min-width: 1280px) {
@@ -35,6 +41,7 @@
     margin: 155px auto;
   }
 }
+
 /* ============================================================= */
 .loginBox {
   background-color: white;
@@ -46,31 +53,39 @@
   justify-content: center;
   /* margin-top: 150px; */
 }
+
 .loginFormHeader {
   display: flex;
 }
+
 .loginBoxTitle {
   padding-right: 30px;
 }
+
 .loginInput {
   margin-bottom: 30px;
 }
+
 .loginInput:focus {
   outline: none;
 }
-.loginInputEmail{
-  background-image: url('../../images/email.svg'); /* Ścieżka do pliku SVG z ikoną koperty */
-  background-size: 30px; 
+
+.loginInputEmail {
+  background-image: url('../../images/email.svg');
+  /* Ścieżka do pliku SVG z ikoną koperty */
+  background-size: 30px;
   background-repeat: no-repeat;
-  justify-items:center;
+  justify-items: center;
 
 }
-.loginInputPassword{
-  background-image: url('../../images/lock.svg'); /* Ścieżka do pliku SVG z ikoną koperty */
-  background-size: 20px; 
+
+.loginInputPassword {
+  background-image: url('../../images/lock.svg');
+  /* Ścieżka do pliku SVG z ikoną koperty */
+  background-size: 20px;
   background-repeat: no-repeat;
-  
- 
+
+
 }
 
 .inputBox {
@@ -83,6 +98,7 @@
   color: red;
   margin-top: 5px;
 }
+
 .registrationButton,
 .loginButton {
   padding: 10px;
@@ -93,6 +109,7 @@
   cursor: pointer;
   font-size: 18px;
 }
+
 .loginButton {
   padding: 10px;
   width: 300px;
@@ -114,6 +131,7 @@
   box-shadow: 0 0 25px #24cca780;
   transition: 0.3s;
 }
+
 .registrationButton {
   background-color: white;
   border: 1px solid #4A56E2;
@@ -146,7 +164,7 @@
 }
 
 .inputWidth {
-    width: 410px;
+  width: 410px;
 }
 
 .iconMargin {
@@ -165,4 +183,12 @@
 
 .inputMargin {
   margin-bottom: 10px;
+}
+
+.verifyLink {
+  font-family: 'Open Sans', sans-serif;
+  color: #24cca7;
+  text-decoration: underline;
+  text-decoration-color: #24cca7;
+  font-size: 14px;
 }

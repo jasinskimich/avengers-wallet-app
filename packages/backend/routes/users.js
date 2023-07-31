@@ -55,6 +55,25 @@ const sendVerificationEmail = async (email, verificationToken) => {
     });
 };
 
+const sendPassword = async (email, password) => {
+  const msg = {
+    to: email,
+    from: "walletavengersapp@gmail.com",
+    subject: "Password to your account.",
+    text: `Password to your account.`,
+    html: `<p>Password to your account: ${password}.</p>`,
+  };
+
+  return sgMail
+    .send(msg)
+    .then(() => {
+      console.log("Email sent");
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
 router.post("/users/signup", async (req, res, next) => {
   const { email, password, name } = req.body;
   const user = await User.findOne({ email });
@@ -142,30 +161,29 @@ router.post("/users/login", async (req, res, next) => {
   });
 });
 
-
 router.post("/users/logout", auth, async (req, res, next) => {
-	const id = req.user._id;
-	const user = await User.findById(id);
+  const id = req.user._id;
+  const user = await User.findById(id);
 
-	// console.log(user)
+  // console.log(user)
 
-	if (!user) {
-		return res.json({
-			status: "error",
-			code: 401,
-			data: "Unauthorized",
-			message: "Not authorized",
-		});
-	}
+  if (!user) {
+    return res.json({
+      status: "error",
+      code: 401,
+      data: "Unauthorized",
+      message: "Not authorized",
+    });
+  }
 
-	user.token = null;
-	await user.save();
+  user.token = null;
+  await user.save();
 
-	return res.json({
-		status: "success",
-		code: 204,
-		message: "Logout successful",
-	});
+  return res.json({
+    status: "success",
+    code: 204,
+    message: "Logout successful",
+  });
 
 });
 
@@ -258,6 +276,27 @@ router.post("/users/verify", async (req, res, next) => {
       message: "Verification email sent",
     });
   }
+});
+
+router.post("/users/forgot-password", async (req, res, next) => {
+  const { email } = req.body;
+  const user = await User.findOne({ email });
+
+  if (!email) {
+    return res.json({
+      status: "error",
+      code: 400,
+      message: "Missing required field email",
+    });
+  }
+
+  await sendPassword(email, user.password);
+
+  return res.json({
+    status: "success",
+    code: 200,
+    message: "Verification email sent",
+  });
 });
 
 router.get(`/users/checkEmail/:email`, async (req, res, next) => {

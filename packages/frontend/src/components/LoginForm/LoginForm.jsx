@@ -32,11 +32,11 @@ const LoginForm = ({ setLoggedName }) => {
       let response = await fetch(`http://localhost:5000/api/users/checkEmail/${email}`);
       let data = await response.json();
 
-      if(!data.exists) {
+      if (!data.exists) {
         Notiflix.Notify.warning('Email or password is incorrect.');
         return;
       }
-        
+
       let result = await fetch('http://localhost:5000/api/users/login', {
         method: "post",
         body: JSON.stringify({ email, password }),
@@ -54,11 +54,11 @@ const LoginForm = ({ setLoggedName }) => {
 
         localStorage.setItem('authToken', loginResponse.data.token);
         localStorage.setItem('userName', name)
-        
+
         setLoggedName(name)
 
         navigate(`/home/${id}`);
-  
+
         setEmail("");
         setPassword("");
       } else {
@@ -77,14 +77,14 @@ const LoginForm = ({ setLoggedName }) => {
           <h1>Wallet</h1>
         </div>
         <FormControl variant="standard" className={styles.inputWidthFirst}>
-          <Input 
-            type="email" 
+          <Input
+            type="email"
             id="email"
             name="email"
-            value={email} 
-            onChange={(e) => handleInputChange(e)} 
+            value={email}
+            onChange={(e) => handleInputChange(e)}
             placeholder="E-mail"
-            required 
+            required
             className={styles.inputMarginFirst}
             startAdornment={
               <InputAdornment position="start">
@@ -94,12 +94,12 @@ const LoginForm = ({ setLoggedName }) => {
           />
         </FormControl>
         <FormControl variant="standard" className={styles.inputWidth}>
-          <Input 
-            type="password" 
-            id="password" 
+          <Input
+            type="password"
+            id="password"
             name="password"
-            value={password} 
-            onChange={(e) => handleInputChange(e)} 
+            value={password}
+            onChange={(e) => handleInputChange(e)}
             placeholder="Password"
             minLength={6}
             maxLength={12}
@@ -120,6 +120,12 @@ const LoginForm = ({ setLoggedName }) => {
         <Link to="/register">
           <button className={styles.registrationButton}>REGISTER</button>
         </Link>
+
+        <div>
+          <Link to="/forgot-password">
+            <span className={styles.verifyLink}>If you forgot the password click this link.</span>
+          </Link>
+        </div>
       </Box>
     </form>
   );

@@ -9,6 +9,7 @@ import Login from "./pages/LoginPages/LoginPages";
 import MobileTable from "./pages/MobileTable/MobileTable";
 import RegistrationPages from "./pages/RegistrationPages/RegistrationPages";
 import VerifyPage from "./pages/VerifyPage/VerifyPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage/ForgotPasswordPage"
 import { Box } from "@mui/material/";
 
 function AuthGuardedRoute({ element: Element, ...rest }) {
@@ -22,6 +23,7 @@ function App() {
       <Routes>
         <Route path="/register" element={<RegistrationPages />} />
         <Route path="/verify" element={<VerifyPage />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<Navigate to="/login" />} />
         <Route element={<AuthGuardedRoute element={Layout} />}>
