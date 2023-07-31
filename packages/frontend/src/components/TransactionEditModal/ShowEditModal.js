@@ -4,7 +4,7 @@ import EditModal from "./EditModal";
 import { ReactComponent as EditPen } from "../../images/editPen.svg";
 
 
-function ShowEditModal({id, updateBalance, updateTransactions}) {
+function ShowEditModal({id, updateBalance, updateTransactions, prevSum, prevType, prevComment,prevCategory}) {
   const [modalEditOpen, setEditModalOpen] = useState(false);
 
   return (
@@ -17,7 +17,7 @@ function ShowEditModal({id, updateBalance, updateTransactions}) {
       >
         <EditPen className={css.editIcon} />
       </button>
-      {modalEditOpen && <EditModal id={id} setOpenEditModal={setEditModalOpen} updateBalance={updateBalance} updateTransactions={updateTransactions}/>}
+      {modalEditOpen && <EditModal prevCategory={prevCategory} prevComment={prevComment} prevType={prevType} prevSum={prevSum} id={id} setOpenEditModal={setEditModalOpen} updateBalance={updateBalance} updateTransactions={updateTransactions}/>}
     </>
   );
 }
