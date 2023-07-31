@@ -136,11 +136,12 @@ const RegistrationForm = () => {
                   sx={{ color: "lightgrey", mr: 1, my: 0.5 }}
                   className={css.iconMargin}
                 />
+                <PasswordStrength password={password} />
               </InputAdornment>
             }
           />
         </FormControl>
-        <PasswordStrength password={password} />
+       
         <FormControl variant="standard" className={css.inputWidthLast}>
           <Input
             type="text"
