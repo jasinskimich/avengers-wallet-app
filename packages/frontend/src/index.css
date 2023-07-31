@@ -14,8 +14,6 @@ body {
   font-family: "Open Sans";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
- 
- 
 }
 
 code {
@@ -24,7 +22,7 @@ code {
 }
 
 @media screen and (min-width: 1280px) {
-  html{
+  html {
     overflow: hidden;
   }
 }
