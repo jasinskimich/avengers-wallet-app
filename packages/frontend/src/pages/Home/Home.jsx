@@ -78,7 +78,9 @@ function Home() {
   const updateTransactions = (newTranaction) => {
     setTransactions(newTranaction);
   };
-
+  const defaultSum = "0.00"
+const defaultComment = "Please insert comment"
+const defaultCategory = "Please select your category"
   return (
     <Box>
       <div className={styles.container}>
@@ -98,6 +100,10 @@ function Home() {
         updateBalance={updateBalance}
       />
           <ShowModal
+          prevComment2 = {defaultComment}
+          prevSum2 = {defaultSum}
+          prevCategory2 = {defaultCategory}
+          prevType2 = "+"
         updateBalance={updateBalance}
         updateTransactions={updateTransactions}
       

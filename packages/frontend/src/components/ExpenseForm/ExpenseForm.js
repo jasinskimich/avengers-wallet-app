@@ -9,7 +9,7 @@ import { Notify } from "notiflix";
 import { useParams } from "react-router-dom";
 
 
-const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, setOpenEditModal }) => {
+const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, setOpenEditModal, prevSum, prevComment, prevCategory, prevComment2, prevSum2, prevCategory2 }) => {
 
   
   const yourDate = new Date();
@@ -117,6 +117,20 @@ const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, set
     }
   };
 
+
+  let previousTransactionSumString, prevCommString, prevCategoryString;
+
+if (typeof (prevSum && prevCategory && prevComment) === "undefined") {
+  previousTransactionSumString = prevSum2 ;
+  prevCommString = prevComment2;
+  prevCategoryString = prevCategory2;
+} else {
+  previousTransactionSumString = prevSum.toString();
+  prevCommString = prevComment.toString();
+  prevCategoryString = prevCategory.toString();
+}
+
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -125,7 +139,7 @@ const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, set
       action=""
     >
       <Select
-        placeholder="Select a category"
+        placeholder={prevCategoryString}
         name="expense"
         value={options.find((obj) => obj.value === selectedValue)}
         onChange={(e) => {
@@ -141,7 +155,7 @@ const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, set
           name="amount"
           type="number"
           min="0"
-          placeholder="0.00"
+          placeholder={previousTransactionSumString}
         ></input>
         <div>
           <DatePicker
@@ -157,7 +171,7 @@ const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, set
         name="comment"
         className="expenseForm__comment"
         type="text"
-        placeholder="Comment"
+        placeholder={prevCommString}
       ></input>
       <button  className="expenseForm__button" type="submit" value="Submit">
         ADD

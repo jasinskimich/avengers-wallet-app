@@ -3,8 +3,9 @@ import css from "./EditModal.module.css";
 import { useState } from "react";
 import SwitchCheckbox from "../SwitchCheckbox/SwitchCheckbox";
 
-function EditModal({ setOpenEditModal, id, updateBalance, updateTransactions }) {
+function EditModal({ setOpenEditModal, id, updateBalance, updateTransactions, prevSum, prevType, prevComment, prevCategory }) {
     const [checked, setChecked] = useState(false);
+
   const handleToggle = () => {
     setChecked(!checked);
   };
@@ -22,7 +23,7 @@ function EditModal({ setOpenEditModal, id, updateBalance, updateTransactions }) 
           Please edit selected transaction
         </h2>
         <div>
-          <SwitchCheckbox isOn={checked} handleToggle={handleToggle} id={id} updateBalance={updateBalance} updateTransactions={updateTransactions} setOpenEditModal={setOpenEditModal}/>
+          <SwitchCheckbox prevCategory={prevCategory} prevComment={prevComment} prevType={prevType} prevSum={prevSum} isOn={checked} handleToggle={handleToggle} id={id} updateBalance={updateBalance} updateTransactions={updateTransactions} setOpenEditModal={setOpenEditModal}/>
         </div>
         <div className={css.modalFooter}>
           
