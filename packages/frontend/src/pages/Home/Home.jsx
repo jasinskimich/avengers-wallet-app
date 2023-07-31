@@ -87,7 +87,7 @@ function Home() {
               <Navigation />
               <Balance balance={balance} />
             </div>
-            <div>
+            <div className={styles.containerCurrency}>
               <Currency />
             </div>
           </div>

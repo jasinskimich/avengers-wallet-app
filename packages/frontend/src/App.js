@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 import "./stylesheet/fonts.css";
 import Layout from "./Layout";
@@ -10,22 +11,27 @@ import RegistrationPages from "./pages/RegistrationPages/RegistrationPages";
 import VerifyPage from "./pages/VerifyPage/VerifyPage";
 import { Box } from "@mui/material/";
 
+function AuthGuardedRoute({ element: Element, ...rest }) {
+  const authToken = localStorage.getItem("authToken");
+  return authToken ? <Element {...rest} /> : <Navigate to="/login" />;
+}
+
 function App() {
-	return (
-		<Box className="App">
-			<Routes>
-				<Route path="/register" element={<RegistrationPages />} />
-				<Route path="/verify" element={<VerifyPage />} />
-				<Route path="/login" element={<Login />} />
-				<Route path="*" element={<Navigate to="/login" />} />
-				<Route element={<Layout />}>
-					<Route path="/home/:owner" element={<Home />} />
-					<Route path="/statistics/:owner" element={<Statistics />} />
-					<Route path="/mobileTable/:owner" element={<MobileTable />} />
-				</Route>
-			</Routes>
-		</Box>
-	);
+  return (
+    <Box className="App">
+      <Routes>
+        <Route path="/register" element={<RegistrationPages />} />
+        <Route path="/verify" element={<VerifyPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<Navigate to="/login" />} />
+        <Route element={<AuthGuardedRoute element={Layout} />}>
+          <Route path="/home/:owner" element={<Home />} />
+          <Route path="/statistics/:owner" element={<Statistics />} />
+          <Route path="/mobileTable/:owner" element={<MobileTable />} />
+        </Route>
+      </Routes>
+    </Box>
+  );
 }
 
 export default App;

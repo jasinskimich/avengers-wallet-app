@@ -58,7 +58,7 @@ function Navigation() {
 
 	return (
 		<Box>
-			<MediaQuery minWidth={426} maxWidth={2560}>
+			<MediaQuery minWidth={768} maxWidth={2560}>
 				<Box sx={{ display: "flex", justifyContent: "flex-start", flexDirection: "column", alignItems: "flex-start", gap: "12px", m: "40px 0px 28px 16px", width: "200px" }}>
 					<StyledLink to={`/home/${owner}`}>
 						{home ? <HomeActive className={css.svg} /> : <Home className={css.svg} />}
@@ -70,8 +70,8 @@ function Navigation() {
 					</StyledLink>
 				</Box>
 			</MediaQuery>
-			<MediaQuery minWidth={320} maxWidth={425}>
-				<Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "36px", my: "15px" }}>
+			<MediaQuery minWidth={320} maxWidth={767}>
+				<Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "36px", paddingTop: "15px" }}>
 					<StyledLink to={`/home/${owner}`}>{home ? <HomeActive className={css.svgMobile} /> : <Home className={css.svgMobile} />}</StyledLink>
 					<StyledLink to={`/statistics/${owner}`}>{statistic ? <StatisticsActive className={css.svgMobile} /> : <Statistics className={css.svgMobile} />}</StyledLink>
 					<StyledLink to={`/mobileTable/${owner}`}>{mobile ? <MobileTableActive className={css.svgMobile} /> : <MobileTable className={css.svgMobile} />}</StyledLink>
