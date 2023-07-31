@@ -1,93 +1,89 @@
-.backgroundShadow{
-height: 100vh;
-     background-color: rgba(255, 255, 255, 0.385);
-    width: 100%;
-     backdrop-filter: blur(8px);
+.backgroundShadow {
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.385);
+  width: 100%;
+  backdrop-filter: blur(8px);
 }
 
 .statsPage {
-	display: flex;
-	justify-content: right;
-	margin-top: 99px;
+  display: flex;
+  justify-content: right;
+  margin-top: 99px;
 }
 .statsPageMobile {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
-.chartTitle{
-	font-family: Poppins;
-font-size: 30px;
-font-weight: 400;
-line-height: 45px;
-letter-spacing: 0em;
-text-align: left;
-
+.chartTitle {
+  font-family: Poppins;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 45px;
+  letter-spacing: 0em;
+  text-align: left;
 }
-
 
 @media screen and (min-width: 0px) and (max-width: 767px) {
-.container{
-  background-color: #E7EAF2;
- margin: 0 auto;
-}
-.containerChart{
-	margin: 0 auto;
-}
-.containerStatsTable{
-	margin: 0 auto;
-}
+  .container {
+    background-color: #e7eaf2;
+    margin: 0 auto;
+  }
+  .containerChart {
+    margin: 0 auto;
+  }
+  .containerStatsTable {
+    margin: 0 auto;
+  }
 
-  .containerCurrency{
+  .containerCurrency {
     display: none;
   }
 
-  .chartTitle{
-	margin: 0 auto;
-	width: 300px;
+  .chartTitle {
+    margin: 0 auto;
+    width: 300px;
   }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .container {
-  display: grid;
-  width: 700px;
-  margin: 0 auto;
-  gap: 10px;
-
+    display: grid;
+    width: 700px;
+    margin: 0 auto;
+    gap: 10px;
   }
-  
-  .containerLeft {
-  display: grid;
-  grid-template-columns: 50% 50%;
-}
-.containerRight {
-display: grid;
-grid-template-columns: 50% 50%;
-padding-top: 50px;
- 
-}
 
+  .containerLeft {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+  .containerRight {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding-top: 50px;
+  }
+  .containerChart {
+    margin: 0 auto;
+  }
 }
 
 @media screen and (min-width: 1280px) {
   .container {
-  display: grid;
-  grid-template-columns: 35% 65%;
-  
+    display: grid;
+    grid-template-columns: 35% 65%;
   }
   .containerLeft {
-  border-right: 2px solid #E7EAF2;
-  height: 100vh;
-}
-.containerRight {
-display: grid;
-grid-template-columns: 50% 50%;
-padding-top: 50px;
- 
-}
-.chartTitle{
-	padding-left: 50px;
-}
+    border-right: 2px solid #e7eaf2;
+    height: 100vh;
+  }
+  .containerRight {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding-top: 50px;
+  }
+  .chartTitle {
+    padding-left: 50px;
+  }
 }
