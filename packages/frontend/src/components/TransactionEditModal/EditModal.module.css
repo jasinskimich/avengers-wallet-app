@@ -12,6 +12,11 @@
   width: 20px;
 }
 
+.editIcon:hover {
+  transform: rotate(10deg);
+  fill: rgba(0, 0, 0, 0.082);
+}
+
 .editModalHeader {
   font-weight: 400;
   font-size: 28px;

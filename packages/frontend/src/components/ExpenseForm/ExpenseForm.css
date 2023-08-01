@@ -34,6 +34,12 @@
   color: white;
 }
 
+.expenseForm__button:hover {
+  -webkit-box-shadow: -4px 12px 77px -12px rgba(21, 115, 94, 1);
+  -moz-box-shadow: -4px 12px 77px -12px rgba(21, 115, 94, 1);
+  box-shadow: -4px 12px 77px -12px rgba(21, 115, 94, 1);
+}
+
 @media screen and (min-width: 0px) and (max-width: 767px) {
   .expenseForm {
     width: 320px;

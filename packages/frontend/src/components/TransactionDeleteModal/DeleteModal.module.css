@@ -7,8 +7,15 @@
   color: white;
 }
 
+.deleteButton:hover {
+  -webkit-box-shadow: -4px 12px 90px -12px rgb(9, 56, 46);
+  -moz-box-shadow: -4px 12px 90px -12px rgb(9, 56, 46);
+  box-shadow: -4px 12px 90px -12px rgb(9, 56, 46);
+  cursor: pointer;
+}
+
 .deleteModalBackground {
-  top: 40%;
+  top: 50%;
   left: 50%;
   background-color: rgba(200, 200, 200);
   position: absolute;
