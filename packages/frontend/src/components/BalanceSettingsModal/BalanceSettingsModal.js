@@ -1,9 +1,9 @@
 import React from "react";
 import css from "./BalanceSettingsModal.module.css";
-import CurrencyForm from "../CurrencyForm/CurrencyForm"
+import CurrencyForm from "../CurrencyForm/CurrencyForm";
+
 
 function BalanceSettingsModal({ setSettingsOpenModal, updateCurrency }) {
-
   const handleCloseModal = () => {
     setSettingsOpenModal(false);
   };
@@ -12,22 +12,14 @@ function BalanceSettingsModal({ setSettingsOpenModal, updateCurrency }) {
     <div className={css.modalBackground}>
       <div className={css.modalContainer}>
         <div className={css.titleCloseBtn}>
-          <button
-            onClick={handleCloseModal}
-          >
-            x
-          </button>
+          <button onClick={handleCloseModal}>x</button>
         </div>
         <h2 className={css.modalHeader}>Change your currency</h2>
-        
-        <CurrencyForm updateCurrency={updateCurrency}  handleCloseModal={handleCloseModal}/>
+
+        <CurrencyForm updateCurrency={updateCurrency} handleCloseModal={handleCloseModal} />
         <div>
           <div className={css.modalFooter}>
-            <button
-              onClick={handleCloseModal}
-            >
-              CANCEL
-            </button>
+            <button onClick={handleCloseModal}>Cancel</button>
           </div>
         </div>
       </div>
