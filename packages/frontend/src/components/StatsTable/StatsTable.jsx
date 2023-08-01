@@ -15,7 +15,6 @@ const StatsTable = ({ date, sendData }) => {
   const [expenseTotal, setExpenseTotal] = useState(0);
   const [tableData, setTableData] = useState([]);
 
-
   useEffect(() => {
     const fetchTableData = async () => {
       try {
@@ -31,7 +30,7 @@ const StatsTable = ({ date, sendData }) => {
   useEffect(() => {
     setSelectedFilter(date);
     setTableData([]);
-  }, [date]);
+  }, [date, sendData]);
 
   useEffect(() => {
     let transactionsByDate = [];
@@ -87,10 +86,9 @@ const StatsTable = ({ date, sendData }) => {
     });
     setExpenseTotal(expenseSum);
     setIncomeTotal(incomeSum);
-    const totalMonthSum = (incomeSum - expenseSum)
-    sendData(totalMonthSum)
-
-  }, [expenseTransactions, incomeTransactions, sendData ]);
+    const totalMonthSum = incomeSum - expenseSum;
+    sendData(totalMonthSum);
+  }, [expenseTransactions, incomeTransactions, sendData]);
 
   return (
     <div>
@@ -104,31 +102,10 @@ const StatsTable = ({ date, sendData }) => {
           </thead>
           <tbody className="tableBody">
             {tableData.map((el) => {
-              // poprzedni kod do koloru
-              // let color =
-              // 	tableData[idx] === tableData[0]
-              // 		? "#FFD8D0"
-              // 		: tableData[idx] === tableData[1]
-              // 		? "#FD9498"
-              // 		: tableData[idx] === tableData[2]
-              // 		? "#C5BAFF"
-              // 		: tableData[idx] === tableData[3]
-              // 		? "#6E78E8"
-              // 		: tableData[idx] === tableData[4]
-              // 		? "#4A56E2"
-              // 		: tableData[idx] === tableData[5]
-              // 		? "#81E1FF"
-              // 		: tableData[idx] === tableData[6]
-              // 		? "#24CCA7"
-              // 		: tableData[idx] === tableData[7]
-              // 		? "#00AD84"
-              // 		: "#0fa35b";
-
               let index = el.category === "Main expenses" ? (el.index = 0) : el.category === "Products" ? (el.index = 1) : el.category === "Car" ? (el.index = 2) : el.category === "Self care" ? (el.index = 3) : el.category === "Child care" ? (el.index = 4) : el.category === "Household products" ? (el.index = 5) : el.category === "Education" ? (el.index = 6) : el.category === "Leisure" ? (el.index = 7) : el.category === "Other" ? (el.index = 8) : (el.index = 10);
 
               tableData.sort((a, b) => a.index - b.index);
 
-              // nowy kod do koloru
               let color;
               switch (el.category) {
                 case "Main expenses":

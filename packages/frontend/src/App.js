@@ -9,7 +9,7 @@ import Login from "./pages/LoginPages/LoginPages";
 import MobileTable from "./pages/MobileTable/MobileTable";
 import RegistrationPages from "./pages/RegistrationPages/RegistrationPages";
 import VerifyPage from "./pages/VerifyPage/VerifyPage";
-import ResetPasswordPage from "./pages/ResetPasswordPage/ResetPasswordPage"
+import ResetPasswordPage from "./pages/ResetPasswordPage/ResetPasswordPage";
 import { Box } from "@mui/material/";
 import NewPasswordPage from "./pages/NewPasswordPage/NewPasswordPage";
 

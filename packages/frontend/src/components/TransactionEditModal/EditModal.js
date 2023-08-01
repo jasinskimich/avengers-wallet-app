@@ -3,6 +3,7 @@ import css from "./EditModal.module.css";
 import { useState } from "react";
 import SwitchCheckbox from "../SwitchCheckbox/SwitchCheckbox";
 
+
 function EditModal({ setOpenEditModal, id, updateBalance, updateTransactions, prevSum, prevType, prevComment, prevCategory }) {
     const [checked, setChecked] = useState(false);
 

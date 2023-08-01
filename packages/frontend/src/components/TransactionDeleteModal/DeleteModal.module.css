@@ -8,7 +8,7 @@
 }
 
 .deleteModalBackground {
-  top: 50%;
+  top: 40%;
   left: 50%;
   background-color: rgba(200, 200, 200);
   position: absolute;
@@ -27,6 +27,7 @@
   flex-direction: column;
   position: fixed;
   bottom: 700;
+  padding: 10px;
 }
 
 .titleCloseBtn {
@@ -41,7 +42,9 @@
   font-size: 25px;
   cursor: pointer;
 }
+
 .deleteModalHeader {
+  padding-top: 20px;
   font-weight: 400;
   font-size: 24px;
   margin-top: 10px;

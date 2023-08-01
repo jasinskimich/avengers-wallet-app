@@ -8,6 +8,7 @@ import DashboardPage from "../../components/DashboardPage/DashboardPage";
 import Navigation from "../../components/Navigation/Navigation";
 import styles from "./Home.module.css";
 import { Currency } from "../../components/Currency/Currency";
+import Notiflix from "notiflix";
 
 function Home() {
   const [balance, setBalance] = useState(null);
@@ -17,15 +18,12 @@ function Home() {
   useEffect(() => {
     const fetchBalance = async () => {
       try {
-        let response = await fetch(
-          `http://localhost:5000/api/finances/sum/${owner}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        let response = await fetch(`http://localhost:5000/api/finances/sum/${owner}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
         if (!response.ok) {
           throw new Error("Failed to fetch balance");
@@ -51,15 +49,12 @@ function Home() {
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        let response = await fetch(
-          `http://localhost:5000/api/finances/transactions/${owner}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        let response = await fetch(`http://localhost:5000/api/finances/transactions/${owner}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
         if (!response.ok) {
           throw new Error("Failed to fetch balance");
@@ -77,6 +72,7 @@ function Home() {
 
   const updateTransactions = (newTranaction) => {
     setTransactions(newTranaction);
+    Notiflix.Notify.success("Transaction successfully edited");
   };
   const defaultSum = "0.00";
   const defaultComment = "Please insert comment";
@@ -97,20 +93,10 @@ function Home() {
 
           <div className={styles.containerRight}>
             <div>
-              <DashboardPage
-                transactions={transactions}
-                updateBalance={updateBalance}
-              />
+              <DashboardPage transactions={transactions} updateBalance={updateBalance} />
             </div>
             <div className={styles.homeButtonModal}>
-              <ShowModal
-                prevComment2={defaultComment}
-                prevSum2={defaultSum}
-                prevCategory2={defaultCategory}
-                prevType2="+"
-                updateBalance={updateBalance}
-                updateTransactions={updateTransactions}
-              />
+              <ShowModal prevComment2={defaultComment} prevSum2={defaultSum} prevCategory2={defaultCategory} prevType2="+" updateBalance={updateBalance} updateTransactions={updateTransactions} />
             </div>
           </div>
         </div>

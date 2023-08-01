@@ -69,7 +69,7 @@
 .modalContainer .modalFooter button:hover {
   cursor: pointer;
   background-color: #4a56e2;
-  color: white
+  color: white;
 }
 
 @media screen and (min-width: 0px) and (max-width: 767px) {
@@ -117,10 +117,11 @@
     font-size: 32px;
   }
   .modalBackground {
-    top: 50%;
+    position: absolute;
+    top: 40%;
     left: 50%;
     background-color: rgba(200, 200, 200);
-    position: absolute;
+    transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -135,7 +136,6 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
-    position: fixed;
   }
 
   .titleCloseBtn button {
