@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import ShowSettingsModal from "../BalanceSettingsModal/ShowSettingsModal";
 import Notiflix from "notiflix";
 
+
 const Balance = ({ balance }) => {
   const [currency, setCurrency] = useState("PLN");
   const { owner } = useParams();
