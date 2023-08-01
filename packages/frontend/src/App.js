@@ -9,7 +9,9 @@ import Login from "./pages/LoginPages/LoginPages";
 import MobileTable from "./pages/MobileTable/MobileTable";
 import RegistrationPages from "./pages/RegistrationPages/RegistrationPages";
 import VerifyPage from "./pages/VerifyPage/VerifyPage";
+import ResetPasswordPage from "./pages/ResetPasswordPage/ResetPasswordPage"
 import { Box } from "@mui/material/";
+import NewPasswordPage from "./pages/NewPasswordPage/NewPasswordPage";
 
 function AuthGuardedRoute({ element: Element, ...rest }) {
   const authToken = localStorage.getItem("authToken");
@@ -27,6 +29,8 @@ function App() {
       <Routes>
         <Route path="/register" element={<RegistrationPages />} />
         <Route path="/verify" element={<VerifyPage />} />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
+        <Route path="/reset-password/:resetToken" element={<NewPasswordPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<Navigate to="/login" />} />
         <Route element={<AuthGuardedRoute element={Layout} />}>
