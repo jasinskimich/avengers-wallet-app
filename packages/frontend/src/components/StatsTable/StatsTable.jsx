@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import fetchTransactionsData from "./StatsTableData";
 import "./StatsTable.css";
 
-const StatsTable = ({ date }) => {
+const StatsTable = ({ date, sendData }) => {
   const { owner } = useParams();
 
   const [selectedFilter, setSelectedFilter] = useState();
@@ -14,6 +14,7 @@ const StatsTable = ({ date }) => {
   const [incomeTotal, setIncomeTotal] = useState(0);
   const [expenseTotal, setExpenseTotal] = useState(0);
   const [tableData, setTableData] = useState([]);
+
 
   useEffect(() => {
     const fetchTableData = async () => {
@@ -86,7 +87,10 @@ const StatsTable = ({ date }) => {
     });
     setExpenseTotal(expenseSum);
     setIncomeTotal(incomeSum);
-  }, [expenseTransactions, incomeTransactions]);
+    const totalMonthSum = (incomeSum - expenseSum)
+    sendData(totalMonthSum)
+
+  }, [expenseTransactions, incomeTransactions, sendData ]);
 
   return (
     <div>

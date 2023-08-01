@@ -2,16 +2,22 @@ import React from "react";
 import Select from "react-select";
 import { useEffect, useState } from "react";
 import StatsTable from "../StatsTable/StatsTable";
-import Chart from "../Chart/Chart";
+import ChartComponent from "../Chart/Chart";
 import "./Stats.css";
 
 const Stats = () => {
   const currentDate = new Date();
-  const currentMonth = currentDate.getMonth() + 1;
+  let currentMonth = (currentDate.getMonth() + 1).toString();
+  currentMonth = currentMonth.padStart(2, '0');
   const currentYear = currentDate.getFullYear();
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
   const [selectedYear, setSelectedYear] = useState(currentYear);
   const [selectedFilter, setSelectedFilter] = useState(`${currentMonth}.${currentYear}`);
+  const [monthBalance, setMonthBalance] = useState('0');
+
+  const handleData = (receivedData) => {
+    setMonthBalance(receivedData);
+  };
 
   const monthOptions = [
     { value: "01", label: "January" },
@@ -109,8 +115,8 @@ const Stats = () => {
         </form>
       </div>
       <div className="statsBox">
-        <Chart date={selectedFilter} />
-        <StatsTable date={selectedFilter} />
+        <ChartComponent date={selectedFilter} receivedData={monthBalance}/>
+        <StatsTable date={selectedFilter} sendData={handleData}/>
       </div>
     </div>
   );
