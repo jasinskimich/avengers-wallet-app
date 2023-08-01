@@ -5,16 +5,13 @@ import "react-datepicker/dist/react-datepicker.css";
 import React from "react";
 import Select from "react-select";
 import ExpenseFormValidation from "../FormValidation/ExpenseFormValidation";
-import { Notify } from "notiflix";
+import Notiflix from "notiflix";
 import { useParams } from "react-router-dom";
 
-
-
 const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, setOpenEditModal, prevSum, prevComment, prevCategory, prevComment2, prevSum2, prevCategory2 }) => {
-
   const yourDate = new Date();
   const [expenseDate, setExpenseDate] = useState(yourDate);
-  const [selectedValue, setSelectedValue] = useState(null);
+  const [selectedValue, setSelectedValue] = useState();
   const { owner } = useParams();
 
   const options = [
@@ -55,8 +52,8 @@ const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, set
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const expense = selectedValue.label;
-    const amount = parseFloat(e.target.amount.value);
+    const expense = selectedValue ? selectedValue.label : prevCategory;
+    const amount = e.target.amount.value ? parseFloat(e.target.amount.value) : prevSum;
     const date = e.target.date.value;
     const comment = e.target.comment.value;
 
@@ -71,10 +68,10 @@ const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, set
     const { error } = ExpenseFormValidation(transaction);
     if (error) {
       if (!expense) {
-        Notify.failure("Please select the category");
+        Notiflix.Notify.failure("Please select the category");
       }
       if (!amount) {
-        Notify.failure("Please enter the amount");
+        Notiflix.Notify.failure("Please enter the amount");
       }
     } else {
       const url = id ? `http://localhost:5000/api/finances/transactions/${owner}/${id}` : `http://localhost:5000/api/finances/${owner}`;
@@ -95,6 +92,7 @@ const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, set
           updateBalance(ownerBalance);
           const newTransaction = data.data.transactions;
           updateTransactions(newTransaction);
+          Notiflix.Notify.success("Transaction saved");
         } else {
           throw new Error("Failed to update income");
         }
@@ -109,19 +107,17 @@ const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, set
     }
   };
 
-
   let previousTransactionSumString, prevCommString, prevCategoryString;
 
-if (typeof (prevSum && prevCategory && prevComment) === "undefined") {
-  previousTransactionSumString = prevSum2 ;
-  prevCommString = prevComment2;
-  prevCategoryString = prevCategory2;
-} else {
-  previousTransactionSumString = prevSum.toString();
-  prevCommString = prevComment.toString();
-  prevCategoryString = prevCategory.toString();
-}
-
+  if (typeof (prevSum && prevCategory && prevComment) === "undefined") {
+    previousTransactionSumString = prevSum2;
+    prevCommString = prevComment2;
+    prevCategoryString = prevCategory2;
+  } else {
+    previousTransactionSumString = prevSum.toString();
+    prevCommString = prevComment.toString();
+    prevCategoryString = prevCategory.toString();
+  }
 
   return (
     <form onSubmit={handleSubmit} className="expenseForm" method="post" action="">
@@ -140,28 +136,15 @@ if (typeof (prevSum && prevCategory && prevComment) === "undefined") {
         }}
       />
       <div className="expenseForm__line">
-
-        <input
-          className="expenseForm__amount"
-          name="amount"
-          type="text"
-          min="0"
-          placeholder={previousTransactionSumString}
-        ></input>
+        <input className="expenseForm__amount" name="amount" type="text" min="0" placeholder={previousTransactionSumString}></input>
 
         <div>
           <DatePicker className="expenseForm__date" name="date" dateFormat="dd.MM.yyyy" selected={expenseDate} onChange={(date) => setExpenseDate(date)} />
         </div>
       </div>
 
-      <input
-        name="comment"
-        className="expenseForm__comment"
-        type="text"
-        placeholder={prevCommString}
-      ></input>
-      <button  className="expenseForm__button" type="submit" value="Submit">
-
+      <input name="comment" className="expenseForm__comment" type="text" placeholder={prevCommString}></input>
+      <button className="expenseForm__button" type="submit" value="Submit">
         ADD
       </button>
     </form>
