@@ -83,6 +83,11 @@
     background-color: white;
     cursor: pointer;
     padding: 0;
+    transition: transform .7s ease-in-out;
+  }
+
+  .currencySettingsBtn:hover {
+    transform: rotate(180deg);
   }
 
   .buttonContainter {
@@ -186,6 +191,11 @@
     background-color: white;
     cursor: pointer;
     padding: 0;
+    transition: transform .7s ease-in-out;
+  }
+
+  .currencySettingsBtn:hover {
+    transform: rotate(180deg);
   }
 
   .buttonContainter {
@@ -288,6 +298,10 @@
     background-color: white;
     cursor: pointer;
     padding: 0;
+    transition: transform .7s ease-in-out;
+  }
+  .currencySettingsBtn:hover {
+    transform: rotate(180deg);
   }
 
   .buttonContainter {
