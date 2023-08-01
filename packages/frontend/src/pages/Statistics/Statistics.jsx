@@ -17,12 +17,14 @@ function Statistics() {
   useEffect(() => {
     const fetchBalance = async () => {
       try {
+
         let response = await fetch(`http://localhost:5000/api/finances/sum/${owner}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
         });
+
 
         if (!response.ok) {
           throw new Error("Failed to fetch balance");
@@ -40,6 +42,7 @@ function Statistics() {
   }, [owner]);
 
   return (
+
     <Box>
       <MediaQuery minWidth={769} maxWidth={2560}>
         <Navigation />

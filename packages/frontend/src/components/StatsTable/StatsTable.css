@@ -35,7 +35,7 @@
   width: 350px;
   border-radius: 35px;
   padding: 5px 20px;
-  margin-left: -20px;
+  margin-left: -25px;
   font-weight: 500;
   font-size: 18px;
 }
@@ -87,4 +87,60 @@
 
 .tableTotalIncome {
   color: #24cca7;
+}
+
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .dateForm {
+    display: grid;
+    grid-column: auto;
+    gap: 15px;
+    width: 280px;
+    margin: 0 auto;
+  }
+  .monthSelect {
+    width: 280px;
+  }
+  .yearSelect {
+    width: 280px;
+  }
+  .statsTable {
+    width: 280px;
+    margin: 0 auto;
+  }
+  .tableHeaders {
+    width: 250px;
+  }
+  .tableRow {
+    width: 280px;
+  }
+  .tableSummaryRow {
+    width: 230px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .dateForm {
+    width: 336px;
+    margin-top: 20px;
+  }
+  .monthSelect {
+    width: 160px;
+  }
+  .yearSelect {
+    width: 160px;
+  }
+  .statsTable {
+    width: 336px;
+  }
+  .tableHeaders {
+    width: 300px;
+  }
+  .tableRow {
+    width: 336px;
+  }
+  .tableSummaryRow {
+    width: 300px;
+  }
+}
+@media screen and (min-width: 1280px) {
 }

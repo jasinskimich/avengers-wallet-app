@@ -25,6 +25,7 @@ export const ModalLogout = () => {
       .then((response) => {
         setModalIsOpen(false);
         window.location.replace('/login');
+        localStorage.setItem('authToken', null);
       })
   }
 

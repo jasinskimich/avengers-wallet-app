@@ -13,7 +13,12 @@ import { Box } from "@mui/material/";
 
 function AuthGuardedRoute({ element: Element, ...rest }) {
   const authToken = localStorage.getItem("authToken");
-  return authToken ? <Element {...rest} /> : <Navigate to="/login" />;
+
+  if (authToken && authToken !== "null") {
+    return <Element {...rest} />;
+  } else {
+    return <Navigate to="/login" />;
+  }
 }
 
 function App() {

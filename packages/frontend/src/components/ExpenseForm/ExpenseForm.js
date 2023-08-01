@@ -9,9 +9,9 @@ import { Notify } from "notiflix";
 import { useParams } from "react-router-dom";
 
 
+
 const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, setOpenEditModal, prevSum, prevComment, prevCategory, prevComment2, prevSum2, prevCategory2 }) => {
 
-  
   const yourDate = new Date();
   const [expenseDate, setExpenseDate] = useState(yourDate);
   const [selectedValue, setSelectedValue] = useState(null);
@@ -41,12 +41,8 @@ const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, set
       ...defaultStyles,
       fontFamily: "Open Sans",
       fontSize: "15px",
-      width: "365px",
-      height: "40px",
       color: "black",
       backgroundColor: "#FFFFFF",
-      padding: "0",
-      paddingLeft: "8px",
       border: "none",
       borderBottom: "1px solid rgb(197, 196, 196)",
       borderRadius: "0",
@@ -58,15 +54,13 @@ const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, set
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const expense = selectedValue.label;
     const amount = parseFloat(e.target.amount.value);
     const date = e.target.date.value;
     const comment = e.target.comment.value;
-   
 
     const transaction = {
-      
       date: date,
       type: "-",
       category: expense,
@@ -83,9 +77,7 @@ const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, set
         Notify.failure("Please enter the amount");
       }
     } else {
-      const url = id
-        ? `http://localhost:5000/api/finances/transactions/${owner}/${id}`
-        : `http://localhost:5000/api/finances/${owner}`;
+      const url = id ? `http://localhost:5000/api/finances/transactions/${owner}/${id}` : `http://localhost:5000/api/finances/${owner}`;
       const method = id ? "PUT" : "POST";
 
       try {
@@ -132,12 +124,7 @@ if (typeof (prevSum && prevCategory && prevComment) === "undefined") {
 
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="expenseForm"
-      method="post"
-      action=""
-    >
+    <form onSubmit={handleSubmit} className="expenseForm" method="post" action="">
       <Select
         placeholder={prevCategoryString}
         name="expense"
@@ -148,8 +135,12 @@ if (typeof (prevSum && prevCategory && prevComment) === "undefined") {
         className="expenseSelect"
         options={options}
         styles={customStyles}
+        components={{
+          IndicatorSeparator: () => null,
+        }}
       />
       <div className="expenseForm__line">
+
         <input
           className="expenseForm__amount"
           name="amount"
@@ -157,16 +148,12 @@ if (typeof (prevSum && prevCategory && prevComment) === "undefined") {
           min="0"
           placeholder={previousTransactionSumString}
         ></input>
+
         <div>
-          <DatePicker
-            className="expenseForm__date"
-            name="date"
-            dateFormat="dd.MM.yyyy"
-            selected={expenseDate}
-            onChange={(date) => setExpenseDate(date)}
-          />
+          <DatePicker className="expenseForm__date" name="date" dateFormat="dd.MM.yyyy" selected={expenseDate} onChange={(date) => setExpenseDate(date)} />
         </div>
       </div>
+
       <input
         name="comment"
         className="expenseForm__comment"
@@ -174,6 +161,7 @@ if (typeof (prevSum && prevCategory && prevComment) === "undefined") {
         placeholder={prevCommString}
       ></input>
       <button  className="expenseForm__button" type="submit" value="Submit">
+
         ADD
       </button>
     </form>
