@@ -217,7 +217,7 @@ const Chart = ({ date = "08.2023" }) => {
       updatedBalance = userData.join();
       setBalance(updatedBalance);
     }
-  }, [chartData, incomeTotal, expenseTotal]);
+  }, [chartData, incomeTotal, expenseTotal, balance, category, currency]);
 
   return (
     <>
