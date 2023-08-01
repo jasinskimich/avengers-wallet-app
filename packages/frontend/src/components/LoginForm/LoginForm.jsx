@@ -47,7 +47,7 @@ const LoginForm = ({ setLoggedName }) => {
       let loginResponse = await result.json();
       console.warn(loginResponse);
 
-      if (loginResponse) {
+      if (loginResponse?.data?.user?._id) {
         console.log("User logged in:", loginResponse);
         let id = loginResponse.data.user._id;
         let name = loginResponse.data.user.name;
@@ -62,7 +62,7 @@ const LoginForm = ({ setLoggedName }) => {
         setEmail("");
         setPassword("");
       } else {
-        console.error(loginResponse);
+        Notiflix.Notify.warning('Email or password is incorrect.');
       }
     } catch (error) {
       console.error(error);
@@ -120,6 +120,12 @@ const LoginForm = ({ setLoggedName }) => {
         <Link to="/register">
           <button className={styles.registrationButton}>REGISTER</button>
         </Link>
+
+        <div>
+          <Link to="/reset-password">
+            <span className={styles.verifyLink}>Forgot Password?</span>
+          </Link>
+        </div>
       </Box>
     </form>
   );

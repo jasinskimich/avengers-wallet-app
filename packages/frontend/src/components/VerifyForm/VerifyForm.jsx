@@ -92,15 +92,15 @@ const VerifyForm = () => {
 
           <div className={css.verifyLinkSection}>
             <div>
-            <Link to="/login" className={css.verifyLink}>
-              Login page
-            </Link>
+              <Link to="/login" className={css.verifyLink}>
+                Login page
+              </Link>
             </div>
 
             <div className={css.verifyLinkMargin}>
-            <Link to="/register" className={css.verifyLink}>
-              Back to register page
-            </Link>
+              <Link to="/register" className={css.verifyLink}>
+                Back to register page
+              </Link>
             </div>
           </div>
         </Box>

@@ -166,3 +166,11 @@
 .inputMargin {
   margin-bottom: 10px;
 }
+
+.verifyLink {
+  font-family: 'Open Sans', sans-serif;
+  color: #24cca7;
+  text-decoration: underline;
+  text-decoration-color: #24cca7;
+  font-size: 14px;
+}

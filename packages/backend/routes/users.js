@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const passport = require("passport");
 const { nanoid } = require("nanoid");
 require("dotenv").config();
+const crypto = require('crypto');
 
 const sgMail = require("@sendgrid/mail");
 
@@ -54,6 +55,91 @@ const sendVerificationEmail = async (email, verificationToken) => {
       console.error(error);
     });
 };
+
+const sendPasswordResetEmail = async (email) => {
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    throw new Error('User not found');
+  }
+
+  const resetToken = crypto.randomBytes(32).toString('hex');
+  user.token = resetToken;
+  await user.save();
+
+  const msg = {
+    to: email,
+    from: "walletavengersapp@gmail.com",
+    subject: "Reset Your Password",
+    text: `Click on the link to reset your password: http://localhost:3000/reset-password/${resetToken}`,
+    html: `<p>Click <a href="http://localhost:3000/reset-password/${resetToken}"><strong>here</strong></a> to reset your password.</p>`,
+  };
+
+  return sgMail.send(msg);
+};
+
+router.post("/users/forgot-password", async (req, res, next) => {
+  const { email } = req.body;
+
+  if (!email) {
+    return res.json({
+      status: "error",
+      code: 400,
+      message: "Missing required field email",
+    });
+  }
+
+  try {
+    await sendPasswordResetEmail(email);
+
+    return res.json({
+      status: "success",
+      code: 200,
+      message: "Password reset email sent",
+    });
+  } catch (error) {
+    console.error(error);
+    return res.json({
+      status: "error",
+      code: 500,
+      message: "Failed to send password reset email",
+    });
+  }
+});
+
+router.post("/users/reset-password/:resetToken", async (req, res, next) => {
+  const resetToken = req.params.resetToken;
+  const newPassword = req.body.password;
+
+  try {
+    const user = await User.findOne({ token: resetToken });
+
+    if (!user) {
+      return res.json({
+        status: "error",
+        code: 404,
+        message: "Password reset token is invalid or expired",
+      });
+    }
+
+    user.setPassword(newPassword)
+    user.token = null;
+    await user.save();
+
+    return res.json({
+      status: "success",
+      code: 200,
+      message: "Password has been reset",
+    });
+  } catch (error) {
+    console.error(error);
+    return res.json({
+      status: "error",
+      code: 500,
+      message: "An error occurred while resetting your password",
+    });
+  }
+});
 
 router.post("/users/signup", async (req, res, next) => {
   const { email, password, name } = req.body;
@@ -147,8 +233,6 @@ router.post("/users/logout", auth, async (req, res, next) => {
 	const id = req.user._id;
 	const user = await User.findById(id);
 
-	// console.log(user)
-
 	if (!user) {
 		return res.json({
 			status: "error",
@@ -213,13 +297,6 @@ router.get("/users/verify/:verificationToken", async (req, res, next) => {
     user.verify = true;
     user.verificationToken = "null";
     await user.save();
-
-    // res.send({
-    //   status: 'success',
-    //   code: 200,
-    //   message: 'Verification successful',
-    //   data: 'OK',
-    // })
 
     res.send(
       '<h1>Registration Complete!</h1><p>Click <a href="http://localhost:3000/login"><strong>here</strong></a> to go to the login page.</p>'
