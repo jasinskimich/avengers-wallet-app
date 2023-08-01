@@ -11,6 +11,7 @@ import { Currency } from "../../components/Currency/Currency";
 
 function Home() {
   const [balance, setBalance] = useState(null);
+
   const { owner } = useParams();
 
   useEffect(() => {
