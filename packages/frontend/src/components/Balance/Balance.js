@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ShowSettingsModal from "../BalanceSettingsModal/ShowSettingsModal";
 
+
 const Balance = ({ balance }) => {
 	const [currency, setCurrency] = useState("PLN");
 	const { owner } = useParams();

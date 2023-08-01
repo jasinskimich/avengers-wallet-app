@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import css from "./BalanceSettingsModal.module.css";
 import CurrencyForm from "../CurrencyForm/CurrencyForm"
 
@@ -7,6 +7,20 @@ function BalanceSettingsModal({ setSettingsOpenModal, updateCurrency }) {
   const handleCloseModal = () => {
     setSettingsOpenModal(false);
   };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Escape") {
+      handleCloseModal();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  },);
 
   return (
     <div className={css.modalBackground}>

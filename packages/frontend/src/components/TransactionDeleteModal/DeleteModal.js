@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import css from "./DeleteModal.module.css";
 import { useParams } from "react-router-dom";
+import Modal from "react-modal";
+
+Modal.setAppElement("#root");
 
 function DeleteModal({ setOpenDeleteModal, id, updateDeleteTransactions }) {
   const handleCloseModal = () => {
@@ -35,6 +38,20 @@ function DeleteModal({ setOpenDeleteModal, id, updateDeleteTransactions }) {
       console.error("An error occurred. Please try again later.");
     }
   };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Escape") {
+      handleCloseModal();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  },);
 
   return (
     <div className={css.deleteModalBackground}>
