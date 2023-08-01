@@ -1,55 +1,66 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register, logIn, logOut, fetchCurrentUser } from "./authThunk";
+import {
+  signup,
+  signin,
+  signout,
+  refreshTokens,
+  currentUser,
+} from "./authThunk";
 
 const initialState = {
-  token: null,
-  error: null,
+  user: { id: null, firstName: null, email: null, wallets: [] },
+  accessToken: null,
   isLoggedIn: false,
   isRefreshing: false,
-  message: "",
 };
 
-export const authSlice = createSlice({
+const authSlice = createSlice({
   name: "auth",
   initialState,
-  extraReducers: {
-    [register.fulfilled](state, { payload }) {
-      state.user = payload.user;
-      state.token = payload.token;
-      state.isLoggedIn = false;
-    },
-    [register.rejected](state, { payload }) {
-      state.error = payload;
-    },
-    [logIn.fulfilled](state, { payload }) {
-      state.user = payload.user;
-      state.token = payload.token;
+  extraReducers: (builder) => {
+    builder.addCase(signup.fulfilled, (state, action) => {
+      state.user = action.payload.user;
+      state.accessToken = action.payload.accessToken;
       state.isLoggedIn = true;
-    },
-    [logIn.rejected](state, { payload }) {
-      state.error = payload;
-    },
-    [logOut.fulfilled](state) {
-      state.token = null;
-      state.isLoggedIn = false;
-      state.isRefreshing = false;
-    },
-    [logOut.rejected](state, { payload }) {
-      state.error = payload;
-    },
-    [fetchCurrentUser.pending](state) {
-      state.isRefreshing = true;
-    },
-    [fetchCurrentUser.fulfilled](state, { payload }) {
-      state.message = payload.messaage;
-      state.user = payload.user;
+    });
+    builder.addCase(signin.fulfilled, (state, action) => {
+      state.user = action.payload.user;
+      state.accessToken = action.payload.accessToken;
       state.isLoggedIn = true;
-      state.isRefreshing = false;
-    },
-    [fetchCurrentUser.rejected](state) {
-      state.isRefreshing = false;
-      state.isLoggedIn = false;
-    },
+    });
+    builder
+      .addCase(signout.fulfilled, (state) => {
+        state.user = { id: null, name: null, email: null, wallets: [] };
+        state.accessToken = null;
+        state.isLoggedIn = false;
+      })
+      .addCase(signout.rejected, (state) => {
+        state.user = { id: null, name: null, email: null, wallets: [] };
+        state.accessToken = null;
+        state.isLoggedIn = false;
+      });
+    builder
+      .addCase(refreshTokens.pending, (state) => {
+        state.isRefreshing = true;
+      })
+      .addCase(refreshTokens.fulfilled, (state, action) => {
+        state.accessToken = action.payload.accessToken; // sprawdzić czy to potrzebne?
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+      })
+      .addCase(refreshTokens.rejected, (state) => {
+        state.isLoggedIn = false;
+        state.isRefreshing = false;
+      });
+    builder
+      .addCase(currentUser.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.isLoggedIn = true;
+      })
+      .addCase(currentUser.rejected, (state) => {
+        state.user = { id: null, name: null, email: null };
+        state.isLoggedIn = false;
+      });
   },
 });
 

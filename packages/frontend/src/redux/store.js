@@ -1,9 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { authReducer } from "./auth/authSlice";
 import storage from "redux-persist/lib/storage";
-import { persistStore, persistReducer } from "redux-persist";
-import { globalReducer } from "./global/global-action";
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
 import { currencyReducer } from "./currency/currencySlice";
+import { modalReducer } from "./modal/modalSlice";
+import { walletReducer } from "./wallet/walletSlice";
+import { chartReducer } from "./chart/chartSlice.js";
 
 
 const persistToken = {
@@ -24,13 +35,18 @@ const persistCurrency = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(persistToken, authReducer),
-    global: globalReducer,
     currency: persistReducer(persistCurrency, currencyReducer),
+    modal: modalReducer,
+    wallet: walletReducer,
+    chart: chartReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: false,
+      serializableCheck: {
+        ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
     }),
+  devTools: process.env.NODE_ENV === "development",
 });
 
 export const persistor = persistStore(store);
