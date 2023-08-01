@@ -34,7 +34,7 @@ function Navigation() {
 		align-items: center;
 		&.active {
 			font-weight: 500;
-			text-shadow: 0px 1px 3px #000000;
+			text-shadow: 0px 1px 1px #000000;
 		}
 	`;
 
