@@ -8,12 +8,14 @@ import "./Stats.css";
 const Stats = () => {
   const currentDate = new Date();
   let currentMonth = (currentDate.getMonth() + 1).toString();
-  currentMonth = currentMonth.padStart(2, '0');
+  currentMonth = currentMonth.padStart(2, "0");
   const currentYear = currentDate.getFullYear();
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
   const [selectedYear, setSelectedYear] = useState(currentYear);
-  const [selectedFilter, setSelectedFilter] = useState(`${currentMonth}.${currentYear}`);
-  const [monthBalance, setMonthBalance] = useState('0');
+  const [selectedFilter, setSelectedFilter] = useState(
+    `${currentMonth}.${currentYear}`
+  );
+  const [monthBalance, setMonthBalance] = useState("0");
 
   const handleData = (receivedData) => {
     setMonthBalance(receivedData);
@@ -76,47 +78,54 @@ const Stats = () => {
     setSelectedFilter(filterValue);
   }, [selectedMonth, selectedYear]);
 
-  
-
   return (
-    <div className="statsDate">
-      <div className="dateFormBox">
-        <form className="dateForm">
-          <Select
-            defaultValue={monthOptions.filter((option) => option.value.includes(currentMonth))}
-            placeholder={currentMonth}
-            name="month"
-            value={monthOptions.find((obj) => obj.value === selectedMonth)}
-            onChange={(e) => {
-              setSelectedMonth(e.value);
-            }}
-            className="monthSelect"
-            options={monthOptions}
-            styles={customStyles}
-            components={{
-              IndicatorSeparator: () => null,
-            }}
-          />
-          <Select
-            defaultValue={yearOptions.filter((option) => option.value.includes(currentYear))}
-            placeholder={currentYear}
-            name="year"
-            value={yearOptions.find((obj) => obj.value === selectedYear)}
-            onChange={(e) => {
-              setSelectedYear(e.value);
-            }}
-            className="yearSelect"
-            options={yearOptions}
-            styles={customStyles}
-            components={{
-              IndicatorSeparator: () => null,
-            }}
-          />
-        </form>
+    <div className="containerStats">
+      <div className="chartContainer">
+        <ChartComponent date={selectedFilter} receivedData={monthBalance} />
       </div>
-      <div className="statsBox">
-        <ChartComponent date={selectedFilter} receivedData={monthBalance}/>
-        <StatsTable date={selectedFilter} sendData={handleData}/>
+      <div className="statsDate">
+        <div className="dateFormBox">
+          <form className="dateForm">
+            <Select
+              defaultValue={monthOptions.filter((option) =>
+                option.value.includes(currentMonth)
+              )}
+              placeholder={currentMonth}
+              name="month"
+              value={monthOptions.find((obj) => obj.value === selectedMonth)}
+              onChange={(e) => {
+                setSelectedMonth(e.value);
+              }}
+              className="monthSelect"
+              options={monthOptions}
+              styles={customStyles}
+              components={{
+                IndicatorSeparator: () => null,
+              }}
+            />
+            <Select
+              defaultValue={yearOptions.filter((option) =>
+                option.value.includes(currentYear)
+              )}
+              placeholder={currentYear}
+              name="year"
+              value={yearOptions.find((obj) => obj.value === selectedYear)}
+              onChange={(e) => {
+                setSelectedYear(e.value);
+              }}
+              className="yearSelect"
+              options={yearOptions}
+              styles={customStyles}
+              components={{
+                IndicatorSeparator: () => null,
+              }}
+            />
+          </form>
+        </div>
+
+        <div className="statsBox">
+          <StatsTable date={selectedFilter} sendData={handleData} />
+        </div>
       </div>
     </div>
   );
