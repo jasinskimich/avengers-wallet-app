@@ -131,6 +131,7 @@
 .currencyTableBody {
   background-color: rgba(74, 86, 226, 1);
   background-image: url("../../images/currency-wave-light.svg");
+  background-repeat: no-repeat;
   background-position: bottom;
   background-position-y: 17px;
   background-position-x: 2px;
@@ -170,6 +171,7 @@
   }
 
   .currencyTableBody{
+    background-repeat: no-repeat;
     background-size: 400px;
     background-position-y: 170px
   }
