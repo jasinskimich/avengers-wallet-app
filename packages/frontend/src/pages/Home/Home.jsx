@@ -18,12 +18,15 @@ function Home() {
   useEffect(() => {
     const fetchBalance = async () => {
       try {
-        let response = await fetch(`http://localhost:5000/api/finances/sum/${owner}`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        let response = await fetch(
+          `http://localhost:5000/api/finances/sum/${owner}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         if (!response.ok) {
           throw new Error("Failed to fetch balance");
@@ -49,12 +52,15 @@ function Home() {
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        let response = await fetch(`http://localhost:5000/api/finances/transactions/${owner}`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        let response = await fetch(
+          `http://localhost:5000/api/finances/transactions/${owner}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         if (!response.ok) {
           throw new Error("Failed to fetch balance");
@@ -93,10 +99,20 @@ function Home() {
 
           <div className={styles.containerRight}>
             <div>
-              <DashboardPage transactions={transactions} updateBalance={updateBalance} />
+              <DashboardPage
+                transactions={transactions}
+                updateBalance={updateBalance}
+              />
             </div>
             <div className={styles.homeButtonModal}>
-              <ShowModal prevComment2={defaultComment} prevSum2={defaultSum} prevCategory2={defaultCategory} prevType2="+" updateBalance={updateBalance} updateTransactions={updateTransactions} />
+              <ShowModal
+                prevComment2={defaultComment}
+                prevSum2={defaultSum}
+                prevCategory2={defaultCategory}
+                prevType2="+"
+                updateBalance={updateBalance}
+                updateTransactions={updateTransactions}
+              />
             </div>
           </div>
         </div>
