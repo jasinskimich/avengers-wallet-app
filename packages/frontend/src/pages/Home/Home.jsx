@@ -53,7 +53,7 @@ function Home() {
     const fetchTransactions = async () => {
       try {
         let response = await fetch(
-          `hhttps://avengers-wallet-app.onrender.com/api/finances/transactions/${owner}`,
+          `https://avengers-wallet-app.onrender.com/api/finances/transactions/${owner}`,
           {
             method: "GET",
             headers: {
