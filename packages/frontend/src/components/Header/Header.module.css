@@ -1,3 +1,23 @@
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .line{
+    display: none;
+  }
+
+  .name {
+    margin-right: 10px;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .line{
+    display: none;
+  }
+
+  .name {
+    margin-right: 10px;
+  }
+}
+
 .main {
   display: flex;
   justify-content: space-between;
