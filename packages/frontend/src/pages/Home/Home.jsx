@@ -98,12 +98,6 @@ function Home() {
           </div>
 
           <div className={styles.containerRight}>
-            <div>
-              <DashboardPage
-                transactions={transactions}
-                updateBalance={updateBalance}
-              />
-            </div>
             <div className={styles.homeButtonModal}>
               <ShowModal
                 prevComment2={defaultComment}
@@ -112,6 +106,12 @@ function Home() {
                 prevType2="+"
                 updateBalance={updateBalance}
                 updateTransactions={updateTransactions}
+              />
+            </div>
+            <div className={styles.dashboardContainer}>
+              <DashboardPage
+                transactions={transactions}
+                updateBalance={updateBalance}
               />
             </div>
           </div>
