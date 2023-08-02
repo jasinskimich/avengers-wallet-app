@@ -145,6 +145,10 @@
 }
 
 @media screen and (min-width: 1280px){
+
+  .currencyTableRow{ 
+    padding-top: 10px;
+  }
   .currencyTable{
     width: 393px;
     margin-top: 32px;
@@ -165,7 +169,7 @@
 }
 
 .currencyTableBody tr:nth-child(2) td {
-  padding-top: 0px;
+  padding-top: 10px;
   padding-bottom: 204px;
 }
 }

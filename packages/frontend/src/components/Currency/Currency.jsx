@@ -37,7 +37,7 @@ export const Currency = () => {
           </tr>
         </thead>
         <tbody className={css.currencyTableBody}>
-          <tr>
+          <tr >
             <td>USD</td>
             <td>000</td>
             <td>000</td>
@@ -61,10 +61,10 @@ export const Currency = () => {
           </tr>
         </thead>
         <tbody className={css.currencyTableBody}>
-          <tr>
-            <td>USD</td>
-            <td>{values[0].ask}</td>
-            <td>{values[0].bid}</td>
+          <tr >
+            <td className={css.currencyTableRow}>USD</td>
+            <td className={css.currencyTableRow}>{values[0].ask}</td>
+            <td className={css.currencyTableRow}>{values[0].bid}</td>
           </tr>
           <tr>
             <td>EUR</td>
