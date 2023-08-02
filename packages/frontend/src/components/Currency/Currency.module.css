@@ -8,7 +8,9 @@
   line-height: 26.53px;
   font-weight: 700;
   font-family: Arial, Helvetica, sans-serif;
-  width: 280px;
+  margin: 30px auto;
+  max-width: 426px;
+  width: 90%;
   border-radius: 30px;
   justify-content: center;
   overflow: hidden;
@@ -50,12 +52,16 @@
     line-height: 26.53px;
     font-weight: 700;
     font-family: Arial, Helvetica, sans-serif;
-    width: 280px;
+    max-width: 500px;
+    width: 90%;
     border-radius: 30px;
     justify-content: center;
     overflow: hidden;
     border-collapse: collapse;
     background-color: #878dd2;
+    margin:30px auto;
+    
+
   }
 
   .currencyTableHead {
@@ -103,7 +109,8 @@
     background-color: #878dd2;
     width: 336px;
     height: 191px;
-    margin-left: 30px;
+    margin: 0 auto;
+
   }
 
 
