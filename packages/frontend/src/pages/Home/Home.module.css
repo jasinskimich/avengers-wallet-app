@@ -9,9 +9,10 @@ height: 100vh;
 .container{
   background-color: #E7EAF2;
   padding: 0 20px 0 15px;
-  /* max-width: 400px; */
+ 
 }
   .containerCurrency{
+    
     display: none;
   }
 }
@@ -21,11 +22,15 @@ height: 100vh;
   display: grid;
   width: 700px;
   margin: 0 auto;
-  gap: 10px;
+  gap: 30px;
   }
   .containerLeft {
   display: grid;
   grid-template-columns: 50% 50%;
+  gap: 15px;
+}
+.containerCurrency{
+  padding-top: 40px;
 }
 .homeButtonModal{
   text-align: end;
