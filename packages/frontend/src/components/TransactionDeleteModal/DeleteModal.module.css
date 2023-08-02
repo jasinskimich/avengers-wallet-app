@@ -50,35 +50,42 @@
   cursor: pointer;
 } */
 
-
-
 @media screen and (min-width: 0px) and (max-width: 767px) {
   .deleteModalHeader {
-    padding-top: 170px;
+    padding: 10px;
     font-weight: 400;
     font-size: 24px;
     margin-top: 10px;
     text-align: center;
+    word-wrap: normal;
   }
   .deleteModalBackground {
     background-color: white;
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
   }
 
+  .deleteModalCenter {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   .deleteModalContainer {
-    height: 100%;
+    height: 30%;
     box-shadow: none;
-    padding: 0px;
+    padding: 10px;
     border-radius: 0px;
     display: flex;
     gap: 30px;
     flex-direction: column;
-    justify-content: flex-start;
-    margin-left: -10px;
+    align-items: center;
   }
 
   .titleCloseBtn button {
@@ -141,7 +148,7 @@
   }
 }
 
-@media screen and (min-width: 767px)  {
+@media screen and (min-width: 767px) {
   .deleteModalHeader {
     padding-top: 10px;
     font-weight: 400;
@@ -150,13 +157,21 @@
     text-align: center;
   }
   .deleteModalBackground {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     background-color: rgba(200, 200, 200);
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .deleteModalCenter {
+    height: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .deleteModalContainer {
@@ -200,7 +215,6 @@
     border: 1px solid #da3333;
     border-radius: 45px;
     background-color: white;
-  
   }
   .modalDeleteButton:hover {
     cursor: pointer;
@@ -229,6 +243,4 @@
     -moz-box-shadow: 2px -2px 24px -2px rgba(74, 86, 226, 1);
     box-shadow: 2px -2px 24px -2px rgba(74, 86, 226, 1);
   }
-
-
 }

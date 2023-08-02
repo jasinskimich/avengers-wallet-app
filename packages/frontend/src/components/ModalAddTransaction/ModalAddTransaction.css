@@ -38,15 +38,6 @@
   cursor: pointer;
 }
 
-.modalContainer .body {
-  flex: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.7rem;
-  text-align: center;
-}
-
 .modalContainer .modalFooter {
   display: flex;
   justify-content: center;
@@ -75,26 +66,25 @@
 @media screen and (min-width: 0px) and (max-width: 767px) {
   .modalBackground {
     background-color: rgba(200, 200, 200, 0);
-    position: fixed;
-    top: 0;
-    left: 0;
+    position: absolute;
+    top: 0px;
+    left: 0px;
     width: 100%;
     height: 100vh;
+    overflow: hidden;
   }
 
   .modalContainer {
-    position: absolute;
-    top: 0%;
-    left: 0%;
+    position: fixed;
     width: 100%;
-    height: 100%;
+    height: 89vh;
+    padding: 2px;
     box-shadow: none;
     padding: 0px;
     border-radius: 0px;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin-left: -10px;
+    justify-content: center;
+    align-items: flex-start;
   }
 
   .titleCloseBtn button {
@@ -116,12 +106,20 @@
     padding-bottom: 20px;
     font-size: 32px;
   }
-  .modalBackground {
+  .modalBox {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.582);
     position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .modalBackground {
+    z-index: 1;
     top: 40%;
     left: 50%;
     background-color: rgba(200, 200, 200);
-    transform: translate(-50%, -50%);
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -135,7 +133,9 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     flex-direction: column;
+    position: fixed;
     padding: 20px;
+    bottom: 700;
   }
 
   .titleCloseBtn button {
