@@ -6,6 +6,8 @@
 }
 
 .openModalBtn {
+  padding: 0;
+  margin: 0;
   border-radius: 50%;
   width: 44px;
   height: 44px;
@@ -118,13 +120,14 @@
   }
   .modalBackground {
     position: absolute;
-    top: 40%;
+    top: -1600%;
     left: 50%;
     background-color: rgba(200, 200, 200);
     transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 5000;
   }
 
   .modalContainer {
@@ -136,6 +139,48 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
+    z-index: 5000;
+  }
+
+  .titleCloseBtn button {
+    color: black;
+  }
+
+  .modalContainer .modalFooter button {
+    margin-top: 20px;
+    width: 250px;
+    height: 50px;
+    font-size: 19px;
+  }
+}
+
+@media screen and (min-width: 1279px) {
+  .modalHeader {
+    padding-bottom: 20px;
+    font-size: 32px;
+  }
+  .modalBackground {
+    position: absolute;
+    top: -1600%;
+    left: 20%;
+    background-color: rgba(200, 200, 200);
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5000;
+  }
+
+  .modalContainer {
+    width: 540px;
+    min-height: 508px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    z-index: 5000;
   }
 
   .titleCloseBtn button {

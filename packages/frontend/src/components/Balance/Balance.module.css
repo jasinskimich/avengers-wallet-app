@@ -1,7 +1,7 @@
 @media screen and (min-width: 0px) and (max-width: 426px) {
   .balanceBox {
     margin: 15px auto;
-    width: 310px;
+    width: 285px;
     height: 80px;
     border-radius: 30px;
     background-color: white;
@@ -38,10 +38,10 @@
     text-align: left;
     /* padding-top: 6px; */
     text-shadow: 1.5px 2px 3px rgba(209, 209, 216, 1);
-    width: 250px;
+    width: 235px;
   }
 }
-@media screen and (min-width: 426px) and (max-width: 767px) {
+@media screen and (min-width: 426px) and (max-width: 768px) {
   .balanceBox {
     margin:15px auto;
     width: 336px;
