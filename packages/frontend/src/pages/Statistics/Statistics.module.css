@@ -58,6 +58,7 @@
   .containerLeft {
     display: grid;
     grid-template-columns: 50% 50%;
+    
   }
   .containerRight {
   
@@ -72,6 +73,7 @@
   .container {
     display: grid;
     grid-template-columns: 35% 65%;
+    padding-left: 20px;
   }
   .containerLeft {
     border-right: 2px solid #e7eaf2;

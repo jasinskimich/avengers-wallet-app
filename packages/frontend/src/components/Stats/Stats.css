@@ -7,3 +7,11 @@
 .chartContainer{
     margin: 0 auto;
 }
+
+@media screen and (min-width: 0px) and (max-width: 767px) {
+.containerStats{
+    display: grid;
+    grid-template-columns: 1fr;
+   
+}
+}
