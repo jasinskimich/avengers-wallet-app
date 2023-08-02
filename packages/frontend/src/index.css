@@ -1,14 +1,19 @@
 html {
   background-color: #e7eaf2;
+
+
+  /* width: 100vh; */
+  /* height: 100vh; */
+}
+@media screen and (min-width: 768px){
+  html{
   background-image: url("../../frontend/src/images/Ellipse2.svg"),
     url("../../frontend/src/images/Ellipse1.svg");
   background-size: auto, auto;
   background-repeat: no-repeat, no-repeat;
   background-position: right top, left bottom;
+}}
 
-  /* width: 100vh; */
-  /* height: 100vh; */
-}
 body {
   margin: 0 auto;
   font-family: "Open Sans";
