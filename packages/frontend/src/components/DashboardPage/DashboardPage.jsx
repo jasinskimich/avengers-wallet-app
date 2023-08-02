@@ -88,32 +88,28 @@ const DashboardPage = ({ transactions, updateBalance }) => {
               boxShadow: "none",
             }}
           >
-            <Table
+            {filteredTransactions.flatMap((info, index) => (
+              <Table
+              key={index}
               sx={{ minWidTableCell: 550 }}
               aria-label="simple table"
               style={{
                 border: "none",
+                backgroundColor: "#FFFFFF",
+                borderRadius: "10px",
+                marginBottom: "20px",
+                borderLeft: "solid red 10px",
+                borderColor: info.type === "-" ? "#FF6596" : "#24CCA7",
               }}
-            >
-              {filteredTransactions.flatMap((info, index) => (
-                <div
-                  key={index}
-                  style={{
-                    backgroundColor: "#FFFFFF",
-                    borderRadius: "10px",
-                    marginBottom: "20px",
-                    borderLeft: "solid red 10px",
-                    borderColor: info.type === "-" ? "#FF6596" : "#24CCA7",
-                  }}
-                >
+              >
+                <TableBody>
                   <TableRow
                     style={{
-                      // border: "none",
                       display: "flex",
                       justifyContent: "space-between",
+                      border: "none",
                       borderBottom: "solid #DCDCDF 1px",
                     }}
-                    key={index}
                     sx={{
                       "&:last-child TableCell, &:last-child th": { border: 0 },
                     }}
@@ -138,7 +134,6 @@ const DashboardPage = ({ transactions, updateBalance }) => {
                       justifyContent: "space-between",
                       borderBottom: "solid #DCDCDF 1px",
                     }}
-                    key={index}
                     sx={{
                       "&:last-child TableCell, &:last-child th": { border: 0 },
                     }}
@@ -163,7 +158,6 @@ const DashboardPage = ({ transactions, updateBalance }) => {
                       justifyContent: "space-between",
                       borderBottom: "solid #DCDCDF 1px",
                     }}
-                    key={index}
                     sx={{
                       "&:last-child TableCell, &:last-child th": { border: 0 },
                     }}
@@ -188,7 +182,6 @@ const DashboardPage = ({ transactions, updateBalance }) => {
                       justifyContent: "space-between",
                       borderBottom: "solid #DCDCDF 1px",
                     }}
-                    key={index}
                     sx={{
                       "&:last-child TableCell, &:last-child th": { border: 0 },
                     }}
@@ -213,7 +206,6 @@ const DashboardPage = ({ transactions, updateBalance }) => {
                       justifyContent: "space-between",
                       borderBottom: "solid #DCDCDF 1px",
                     }}
-                    key={index}
                     sx={{
                       "&:last-child TableCell, &:last-child th": { border: 0 },
                     }}
@@ -243,9 +235,8 @@ const DashboardPage = ({ transactions, updateBalance }) => {
                       border: "none",
                       display: "flex",
                       justifyContent: "space-between",
-                      borderBottom: "solid #DCDCDF 1px",
+                      borderBottom: "none",
                     }}
-                    key={index}
                     sx={{
                       "&:last-child TableCell, &:last-child th": { border: 0 },
                     }}
@@ -276,10 +267,10 @@ const DashboardPage = ({ transactions, updateBalance }) => {
                         <p>Edit</p>
                       </div>
                     </TableCell>
-                  </TableRow>
-                </div>
+                </TableRow>
+                </TableBody>
+              </Table>
               ))}
-            </Table>
           </TableContainer>
         )}
         {isTabletOrBigScreen && (
