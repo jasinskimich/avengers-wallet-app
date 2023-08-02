@@ -5,31 +5,41 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ShowSettingsModal from "../BalanceSettingsModal/ShowSettingsModal";
 import Notiflix from "notiflix";
+import { Loader } from "../Loader/Loader";
 
 
 const Balance = ({ balance }) => {
   const [currency, setCurrency] = useState("PLN");
+  const [loading, setLoading] = useState(true);
   const { owner } = useParams();
 
   useEffect(() => {
     const fetchCurrency = async () => {
       try {
-        let response = await fetch(`https://avengers-wallet-app.onrender.com/api/finances/currency/${owner}`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        // Simulating a 2-second loading delay using setTimeout
+        setTimeout(async () => {
+          let response = await fetch(
+            `https://avengers-wallet-app.onrender.com/api/finances/currency/${owner}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch balance");
-        }
+          if (!response.ok) {
+            throw new Error("Failed to fetch balance");
+          }
 
-        response = await response.json();
+          response = await response.json();
 
-        setCurrency(response.currency);
+          setCurrency(response.currency);
+          setLoading(false);
+        }, 2000);
       } catch (error) {
         console.error(error);
+        setLoading(false);
       }
     };
 
@@ -54,7 +64,13 @@ const Balance = ({ balance }) => {
 
       <div className={css.balanceContainer}>
         <div className={css.balanceContainerItems}>
-          <p className={css.balanceText}>{formatedBalance !== null ? formatedBalance : "Loading..."}</p>
+          {loading ? (
+            <Loader />
+          ) : (
+            <p className={css.balanceText}>
+              {formatedBalance !== null ? formatedBalance : "Loading..."}
+            </p>
+          )}
           <ShowSettingsModal updateCurrency={updateCurrency} />
         </div>
       </div>

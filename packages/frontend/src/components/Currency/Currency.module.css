@@ -43,6 +43,15 @@
   padding-top: 0px;
   padding-bottom: 55px;
 }
+
+.loaderBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 35px;
+  height: 35px;
+}
 }
 
 @media screen and (min-width: 426px) and (max-width: 767px){
@@ -142,6 +151,11 @@
   padding-top: 0px;
   padding-bottom: 55px;
 }
+
+.loaderBox{
+    width: 65px;
+    height: 65px;
+  }
 }
 
 @media screen and (min-width: 1280px){
@@ -172,5 +186,10 @@
   padding-top: 10px;
   padding-bottom: 204px;
 }
+
+.loaderBox{
+    width: 100px;
+    height: 100px;
+  }
 }
 
