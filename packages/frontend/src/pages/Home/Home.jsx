@@ -19,7 +19,7 @@ function Home() {
     const fetchBalance = async () => {
       try {
         let response = await fetch(
-          `http://localhost:5000/api/finances/sum/${owner}`,
+          `https://avengers-wallet-app.onrender.com/api/finances/sum/${owner}`,
           {
             method: "GET",
             headers: {
@@ -53,7 +53,7 @@ function Home() {
     const fetchTransactions = async () => {
       try {
         let response = await fetch(
-          `http://localhost:5000/api/finances/transactions/${owner}`,
+          `https://avengers-wallet-app.onrender.com/api/finances/transactions/${owner}`,
           {
             method: "GET",
             headers: {

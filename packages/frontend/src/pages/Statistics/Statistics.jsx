@@ -19,7 +19,7 @@ function Statistics() {
     const fetchBalance = async () => {
       try {
 
-        let response = await fetch(`http://localhost:5000/api/finances/sum/${owner}`, {
+        let response = await fetch(`https://avengers-wallet-app.onrender.com/api/finances/sum/${owner}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

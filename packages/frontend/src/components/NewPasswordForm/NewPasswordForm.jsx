@@ -36,7 +36,7 @@ const NewPasswordForm = () => {
     }
 
     try {
-      let result = await fetch(`http://localhost:5000/api/users/reset-password/${resetToken}`, {
+      let result = await fetch(`https://avengers-wallet-app.onrender.com/api/users/reset-password/${resetToken}`, {
         method: "post",
         body: JSON.stringify({ password }),
         headers: {

@@ -29,7 +29,7 @@ const LoginForm = ({ setLoggedName }) => {
     e.preventDefault();
 
     try {
-      let response = await fetch(`http://localhost:5000/api/users/checkEmail/${email}`);
+      let response = await fetch(`https://avengers-wallet-app.onrender.com/api/users/checkEmail/${email}`);
       let data = await response.json();
 
       if(!data.exists) {
@@ -37,7 +37,7 @@ const LoginForm = ({ setLoggedName }) => {
         return;
       }
         
-      let result = await fetch('http://localhost:5000/api/users/login', {
+      let result = await fetch('https://avengers-wallet-app.onrender.com/api/users/login', {
         method: "post",
         body: JSON.stringify({ email, password }),
         headers: {

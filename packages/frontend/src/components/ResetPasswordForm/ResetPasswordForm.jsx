@@ -24,7 +24,7 @@ const ResetPasswordForm = () => {
         }
 
         try {
-            let response = await fetch(`http://localhost:5000/api/users/checkEmail/${email}`);
+            let response = await fetch(`https://avengers-wallet-app.onrender.com/api/users/checkEmail/${email}`);
             response = await response.json();
 
             if (response.exists === false) {
@@ -32,7 +32,7 @@ const ResetPasswordForm = () => {
                 return;
             }
 
-            let result = await fetch('http://localhost:5000/api/users/forgot-password', {
+            let result = await fetch('hhttps://avengers-wallet-app.onrender.com/api/users/forgot-password', {
                 method: "post",
                 body: JSON.stringify({ email }),
                 headers: {

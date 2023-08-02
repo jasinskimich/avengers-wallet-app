@@ -18,7 +18,7 @@ const ChartComponent = ({ date, receivedData }) => {
     const fetchTransactions = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/getfinances/${owner}`,
+          `https://avengers-wallet-app.onrender.com/api/getfinances/${owner}`,
           {
             method: "GET",
             headers: {

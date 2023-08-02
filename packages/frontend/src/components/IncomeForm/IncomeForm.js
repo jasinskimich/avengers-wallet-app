@@ -33,7 +33,7 @@ const IncomeForm = ({ prevSum2, prevComment2, updateBalance, updateTransactions,
         Notiflix.Notify.failure("Please enter the amount");
       }
     } else {
-      const url = id ? `http://localhost:5000/api/finances/transactions/${owner}/${id}` : `http://localhost:5000/api/finances/${owner}`;
+      const url = id ? `https://avengers-wallet-app.onrender.com/api/finances/transactions/${owner}/${id}` : `https://avengers-wallet-app.onrender.com/api/finances/${owner}`;
 
       const method = id ? "PUT" : "POST";
 
