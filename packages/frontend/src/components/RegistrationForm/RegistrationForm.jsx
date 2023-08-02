@@ -45,7 +45,7 @@ const RegistrationForm = () => {
     }
 
     try{
-      let response = await fetch(`http://localhost:5000/api/users/checkEmail/${email}`);
+      let response = await fetch(`https://avengers-wallet-app.onrender.com/api/users/checkEmail/${email}`);
       response = await response.json();
 
       if(response.exists) {
@@ -53,7 +53,7 @@ const RegistrationForm = () => {
         return;
       }
       
-      let result = await fetch('http://localhost:5000/api/users/signup', {
+      let result = await fetch('hhttps://avengers-wallet-app.onrender.com/api/users/signup', {
         method: "post",
         body: JSON.stringify({ name, email, password }),
         headers: {

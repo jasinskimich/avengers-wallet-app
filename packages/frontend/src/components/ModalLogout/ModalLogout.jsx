@@ -18,7 +18,7 @@ export const ModalLogout = () => {
     }
 
     axios
-      .post(`http://localhost:5000/api/users/logout`, null, {
+      .post(`https://avengers-wallet-app.onrender.com/api/users/logout`, null, {
         headers: {
           Authorization: `Bearer ${authToken}`,
         },

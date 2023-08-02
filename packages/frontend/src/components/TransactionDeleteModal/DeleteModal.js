@@ -17,7 +17,7 @@ function DeleteModal({ setOpenDeleteModal, id, updateDeleteTransactions }) {
 
     try {
       let response = await fetch(
-        `http://localhost:5000/api/finances/transactions/${owner}/${id}`,
+        `https://avengers-wallet-app.onrender.com/api/finances/transactions/${owner}/${id}`,
         {
           method: "DELETE",
           headers: {

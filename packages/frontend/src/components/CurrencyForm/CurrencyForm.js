@@ -11,7 +11,7 @@ const CurrencyForm = ({ updateCurrency, handleCloseModal }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/finances/currency/${owner}`,
+        `https://avengers-wallet-app.onrender.com/api/finances/currency/${owner}`,
         {
           method: "PUT",
           headers: {

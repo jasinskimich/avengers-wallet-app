@@ -24,7 +24,7 @@ const VerifyForm = () => {
         }
 
         try{
-            let response = await fetch(`http://localhost:5000/api/users/checkEmail/${email}`);
+            let response = await fetch(`https://avengers-wallet-app.onrender.com/api/users/checkEmail/${email}`);
             response = await response.json();
       
             if(response.exists===false) {
@@ -32,7 +32,7 @@ const VerifyForm = () => {
               return;
             }
 
-            let responseCheckVerify = await fetch (`http://localhost:5000/api/users/checkVerify/${email}`);
+            let responseCheckVerify = await fetch (`https://avengers-wallet-app.onrender.com/api/users/checkVerify/${email}`);
             responseCheckVerify = await responseCheckVerify.json();
 
             if(response.exists && responseCheckVerify.verification) {
@@ -40,7 +40,7 @@ const VerifyForm = () => {
               return;
             }
 
-            let result = await fetch('http://localhost:5000/api/users/verify', {
+            let result = await fetch('hhttps://avengers-wallet-app.onrender.com/api/users/verify', {
                 method: "post",
                 body: JSON.stringify({ email }),
                 headers: {

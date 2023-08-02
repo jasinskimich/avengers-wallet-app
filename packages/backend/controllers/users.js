@@ -30,7 +30,7 @@ const sendVerificationEmail = async (email, verificationToken) => {
       from: "walletavengersapp@gmail.com",
       subject: "Please verify your email and registration.",
       text: `URL to mail verification: ${verificationToken}`,
-      html: `<p>Click <a href="http://localhost:5000/api/users/verify/${verificationToken}"><strong>here</strong></a> to verify your email and registration.</p>`,
+      html: `<p>Click <a href="https://avengers-wallet-app.onrender.com/api/users/verify/${verificationToken}"><strong>here</strong></a> to verify your email and registration.</p>`,
 };
   
 return sgMail

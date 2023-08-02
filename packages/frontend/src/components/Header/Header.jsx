@@ -12,7 +12,7 @@ export const Header = () => {
     const fetchName = async () => {
       try {
         let response = await fetch(
-          `http://localhost:5000/api/users/name/${owner}`,
+          `https://avengers-wallet-app.onrender.com/api/users/name/${owner}`,
           {
             method: "GET",
             headers: {
