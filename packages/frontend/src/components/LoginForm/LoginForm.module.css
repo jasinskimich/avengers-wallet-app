@@ -164,10 +164,18 @@
   margin-bottom: 30px;
 }
 
+a {
+  text-decoration: none;
+}
+
 .verifyLink {
   font-family: "Open Sans", sans-serif;
   color: #24cca7;
+
+  font-size: 14px;
+}
+
+.verifyLink:hover {
   text-decoration: underline;
   text-decoration-color: #24cca7;
-  font-size: 14px;
 }
