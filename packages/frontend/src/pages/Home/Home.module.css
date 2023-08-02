@@ -20,6 +20,7 @@
     position: sticky;
     top: 85vh;
     right: 10vh;
+    z-index: 999;
   }
 }
 
@@ -45,6 +46,7 @@
     position: sticky;
     top: 85vh;
     right: 10vh;
+    z-index: 999;
   }
 }
 
