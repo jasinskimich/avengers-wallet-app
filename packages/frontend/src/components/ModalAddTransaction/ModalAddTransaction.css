@@ -74,7 +74,7 @@
   color: white;
 }
 
-@media screen and (min-width: 0px) and (max-width: 767px) {
+@media screen and (min-width: 0px) and (max-width: 641px) {
   .modalBackground {
     background-color: rgba(200, 200, 200, 0);
     position: fixed;
@@ -111,16 +111,109 @@
     margin-top: 20px;
     width: 250px;
   }
+  .openModalBtn {
+    padding: 0;
+    margin: 0;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    /* position: absolute;
+    right: 0;
+    bottom: 0; */
+    background-color: #24cca7;
+    border: none;
+    color: white;
+    font-size: 40px;
+    font-weight: 200;
+    margin: 20px;
+    
+  }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 641px) and (max-width: 768px) {
+  .modalBackground {
+    background-color: rgba(200, 200, 200, 0);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+  }
+
+  .modalContainer {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    box-shadow: none;
+    padding: 0px;
+    border-radius: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: -10px;
+  }
+
+  .titleCloseBtn button {
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    color: transparent;
+  }
+
+  .modalContainer .modalFooter button {
+    margin-top: 20px;
+    width: 250px;
+  }
+  .openModalBtn {
+    padding: 0;
+    margin: 0;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    /* position: absolute;
+    right: 0;
+    bottom: 0; */
+    background-color: #24cca7;
+    border: none;
+    color: white;
+    font-size: 40px;
+    font-weight: 200;
+    margin: 20px;
+    position: absolute;
+    right: 45%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+
+  .openModalBtn {
+    padding: 0;
+    margin: 0;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    /* position: absolute;
+    right: 0;
+    bottom: 0; */
+    background-color: #24cca7;
+    border: none;
+    color: white;
+    font-size: 40px;
+    font-weight: 200;
+    margin: 20px;
+    position: absolute;
+    right: 45%;
+  }
   .modalHeader {
     padding-bottom: 20px;
     font-size: 32px;
   }
   .modalBackground {
     position: absolute;
-    top: -1600%;
+    top: -235px;
     left: 50%;
     background-color: rgba(200, 200, 200);
     transform: translate(-50%, -50%);
@@ -161,7 +254,7 @@
   }
   .modalBackground {
     position: absolute;
-    top: -1600%;
+    top: -235px;
     left: 20%;
     background-color: rgba(200, 200, 200);
     transform: translate(-50%, -50%);
@@ -192,5 +285,22 @@
     width: 250px;
     height: 50px;
     font-size: 19px;
+  }
+  .openModalBtn {
+    padding: 0;
+    margin: 0;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    /* position: absolute;
+    right: 0;
+    bottom: 0; */
+    background-color: #24cca7;
+    border: none;
+    color: white;
+    font-size: 40px;
+    font-weight: 200;
+    margin: 20px;
+   
   }
 }

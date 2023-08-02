@@ -42,10 +42,10 @@
   .homeButtonModal {
     height: 1px;
     text-align: end;
-    padding-bottom: 15px;
+    
     position: sticky;
     top: 85vh;
-    right: 10vh;
+    right: 50vh;
     z-index: 999;
   }
 }
@@ -54,7 +54,7 @@
   .homeButtonModal {
     height: 1px;
     text-align: end;
-    padding-bottom: 15px;
+    
     position: sticky;
     top: 85vh;
     right: 10vh;
