@@ -1,22 +1,4 @@
-@media screen and (min-width: 0px) and (max-width: 767px) {
-  .line{
-    display: none;
-  }
 
-  .name {
-    margin-right: 10px;
-  }
-}
-
-@media screen and (min-width: 0px) and (max-width: 767px) {
-  .line{
-    display: none;
-  }
-
-  .name {
-    margin-right: 10px;
-  }
-}
 
 .main {
   display: flex;
@@ -69,4 +51,22 @@
   margin-bottom: 5px;
   color: #BDBDBD;
   margin-left: 4px;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .title{
+    font-size: 30px;
+  }
+  .line {
+    display: none;
+  }
+
+  .name {
+    margin-right: 10px;
+    
+  }
+  .walletIcon{
+    width: 40px;
+    height: 40px;
+  }
+
 }

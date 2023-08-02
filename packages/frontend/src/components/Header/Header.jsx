@@ -40,7 +40,7 @@ export const Header = () => {
     <div className={styles.main}>
       <div className={styles.walletSection}>
         <NavLink to="/">
-          <img src={IconWallet} alt="wallet icon"></img>
+          <img className={styles.walletIcon} src={IconWallet} alt="wallet icon"></img>
         </NavLink>
         <span className={styles.title}>Wallet</span>
       </div>
