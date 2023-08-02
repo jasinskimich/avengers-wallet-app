@@ -39,7 +39,7 @@ export const Header = () => {
   return (
     <div className={styles.main}>
       <div className={styles.walletSection}>
-        <NavLink to={`/home/${owner}`}>
+      <NavLink to={`/home/${owner}`}>
           <img src={IconWallet} alt="wallet icon"></img>
         </NavLink>
         <span className={styles.title}>Wallet</span>
