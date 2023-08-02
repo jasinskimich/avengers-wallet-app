@@ -36,7 +36,7 @@ const Balance = ({ balance }) => {
 
           setCurrency(response.currency);
           setLoading(false);
-        }, 2000);
+        }, 0);
       } catch (error) {
         console.error(error);
         setLoading(false);

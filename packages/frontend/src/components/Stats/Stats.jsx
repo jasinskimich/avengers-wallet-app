@@ -81,6 +81,7 @@ const Stats = () => {
   return (
     <div className="containerStats">
       <div className="chartContainer">
+        <h2 className="statisticsTitle">Statistics</h2>
         <ChartComponent date={selectedFilter} receivedData={monthBalance} />
       </div>
       <div className="statsDate">
