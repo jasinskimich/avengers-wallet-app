@@ -84,6 +84,7 @@ const LoginForm = ({ setLoggedName }) => {
             value={email} 
             onChange={(e) => handleInputChange(e)} 
             placeholder="E-mail"
+            autoComplete="userName"
             required 
             className={styles.inputMarginFirst}
             startAdornment={
@@ -103,6 +104,7 @@ const LoginForm = ({ setLoggedName }) => {
             placeholder="Password"
             minLength={6}
             maxLength={12}
+            autoComplete="current-password"
             required
             className={styles.inputMargin}
             startAdornment={
