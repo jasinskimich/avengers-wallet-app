@@ -53,7 +53,7 @@ const RegistrationForm = () => {
         return;
       }
       
-      let result = await fetch('hhttps://avengers-wallet-app.onrender.com/api/users/signup', {
+      let result = await fetch('https://avengers-wallet-app.onrender.com/api/users/signup', {
         method: "post",
         body: JSON.stringify({ name, email, password }),
         headers: {

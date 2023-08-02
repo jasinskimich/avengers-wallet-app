@@ -40,7 +40,7 @@ const VerifyForm = () => {
               return;
             }
 
-            let result = await fetch('hhttps://avengers-wallet-app.onrender.com/api/users/verify', {
+            let result = await fetch('https://avengers-wallet-app.onrender.com/api/users/verify', {
                 method: "post",
                 body: JSON.stringify({ email }),
                 headers: {
