@@ -14,7 +14,7 @@
   cursor: pointer;
 }
 
-.deleteModalBackground {
+/* .deleteModalBackground {
   top: 50%;
   left: 50%;
   background-color: rgba(200, 200, 200);
@@ -22,9 +22,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
-.deleteModalContainer {
+/* .deleteModalContainer {
   width: 310px;
   height: 310px;
   border-radius: 12px;
@@ -35,71 +35,200 @@
   position: fixed;
   bottom: 700;
   padding: 10px;
-}
+} */
 
-.titleCloseBtn {
+/* .titleCloseBtn {
   display: flex;
   justify-content: flex-end;
   padding-right: 10px;
   padding-top: 5px;
-}
-.titleCloseBtn button {
+} */
+/* .titleCloseBtn button {
   background-color: transparent;
   border: none;
   font-size: 25px;
   cursor: pointer;
+} */
+
+
+
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .deleteModalHeader {
+    padding-top: 170px;
+    font-weight: 400;
+    font-size: 24px;
+    margin-top: 10px;
+    text-align: center;
+  }
+  .deleteModalBackground {
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+  }
+
+  .deleteModalContainer {
+    height: 100%;
+    box-shadow: none;
+    padding: 0px;
+    border-radius: 0px;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: -10px;
+  }
+
+  .titleCloseBtn button {
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    color: transparent;
+  }
+
+  .deleteModalContainer .modalFooter button {
+    margin-top: 20px;
+    width: 250px;
+  }
+
+  .modalFooter {
+    flex: 20%;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+  }
+  .modalDeleteButton {
+    font-size: 16px;
+    font-weight: 500;
+    height: 45px;
+    width: 150px;
+    border: none;
+    border: 1px solid #da3333;
+    border-radius: 45px;
+    background-color: white;
+    margin-bottom: 20px;
+  }
+  .modalDeleteButton:hover {
+    cursor: pointer;
+    background-color: #da3333;
+    color: white;
+    -webkit-box-shadow: 2px -2px 24px -2px rgba(152, 51, 33, 1);
+    -moz-box-shadow: 2px -2px 24px -2px rgba(152, 51, 33, 1);
+    box-shadow: 2px -2px 24px -2px rgba(152, 51, 33, 1);
+  }
+  .modalCancelButton {
+    font-size: 16px;
+    font-weight: 500;
+    height: 45px;
+    width: 150px;
+    border: none;
+    border: 1px solid #4a56e2;
+    border-radius: 45px;
+    background-color: white;
+    margin-bottom: 20px;
+  }
+  .modalCancelButton:hover {
+    cursor: pointer;
+    background-color: #4a56e2;
+    color: white;
+    -webkit-box-shadow: 2px -2px 24px -2px rgba(74, 86, 226, 1);
+    -moz-box-shadow: 2px -2px 24px -2px rgba(74, 86, 226, 1);
+    box-shadow: 2px -2px 24px -2px rgba(74, 86, 226, 1);
+  }
 }
 
-.deleteModalHeader {
-  padding-top: 20px;
-  font-weight: 400;
-  font-size: 24px;
-  margin-top: 10px;
-  text-align: center;
-}
+@media screen and (min-width: 767px)  {
+  .deleteModalHeader {
+    padding-top: 10px;
+    font-weight: 400;
+    font-size: 24px;
+    margin-top: 10px;
+    text-align: center;
+  }
+  .deleteModalBackground {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: rgba(200, 200, 200);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-.modalFooter {
-  flex: 20%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.modalDeleteButton {
-  font-size: 16px;
-  font-weight: 500;
-  height: 45px;
-  width: 150px;
-  border: none;
-  border: 1px solid #da3333;
-  border-radius: 45px;
-  background-color: white;
-  margin-bottom: 20px;
-}
-.modalDeleteButton:hover {
-  cursor: pointer;
-  background-color: #da3333;
-  color: white;
-  -webkit-box-shadow: 2px -2px 24px -2px rgba(152, 51, 33, 1);
-  -moz-box-shadow: 2px -2px 24px -2px rgba(152, 51, 33, 1);
-  box-shadow: 2px -2px 24px -2px rgba(152, 51, 33, 1);
-}
-.modalCancelButton {
-  font-size: 16px;
-  font-weight: 500;
-  height: 45px;
-  width: 150px;
-  border: none;
-  border: 1px solid #4a56e2;
-  border-radius: 45px;
-  background-color: white;
-  margin-bottom: 20px;
-}
-.modalCancelButton:hover {
-  cursor: pointer;
-  background-color: #4a56e2;
-  color: white;
-  -webkit-box-shadow: 2px -2px 24px -2px rgba(74, 86, 226, 1);
-  -moz-box-shadow: 2px -2px 24px -2px rgba(74, 86, 226, 1);
-  box-shadow: 2px -2px 24px -2px rgba(74, 86, 226, 1);
+  .deleteModalContainer {
+    width: 540px;
+    min-height: 200px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: fixed;
+  }
+
+  .titleCloseBtn button {
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    color: transparent;
+  }
+
+  .deleteModalContainer .modalFooter button {
+    margin-top: 20px;
+    width: 250px;
+  }
+
+  .modalFooter {
+    flex: 20%;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+  }
+  .modalDeleteButton {
+    font-size: 16px;
+    font-weight: 500;
+    height: 45px;
+    width: 150px;
+    border: none;
+    border: 1px solid #da3333;
+    border-radius: 45px;
+    background-color: white;
+  
+  }
+  .modalDeleteButton:hover {
+    cursor: pointer;
+    background-color: #da3333;
+    color: white;
+    -webkit-box-shadow: 2px -2px 24px -2px rgba(152, 51, 33, 1);
+    -moz-box-shadow: 2px -2px 24px -2px rgba(152, 51, 33, 1);
+    box-shadow: 2px -2px 24px -2px rgba(152, 51, 33, 1);
+  }
+  .modalCancelButton {
+    font-size: 16px;
+    font-weight: 500;
+    height: 45px;
+    width: 150px;
+    border: none;
+    border: 1px solid #4a56e2;
+    border-radius: 45px;
+    background-color: white;
+    margin-bottom: 20px;
+  }
+  .modalCancelButton:hover {
+    cursor: pointer;
+    background-color: #4a56e2;
+    color: white;
+    -webkit-box-shadow: 2px -2px 24px -2px rgba(74, 86, 226, 1);
+    -moz-box-shadow: 2px -2px 24px -2px rgba(74, 86, 226, 1);
+    box-shadow: 2px -2px 24px -2px rgba(74, 86, 226, 1);
+  }
+
+
 }

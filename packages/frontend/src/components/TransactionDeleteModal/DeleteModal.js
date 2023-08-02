@@ -51,28 +51,39 @@ function DeleteModal({ setOpenDeleteModal, id, updateDeleteTransactions }) {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  },);
+  });
 
   return (
-    <div className={css.deleteModalBackground}>
-      <div className={css.deleteModalContainer}>
-        <div className={css.titleCloseBtn}>
-          <button onClick={handleCloseModal}>x</button>
-        </div>
-        <h2 className={css.deleteModalHeader}>
-          Are you sure you want to delete this item?
-        </h2>
+    <Modal
+      isOpen={true}
+      onRequestClose={handleCloseModal}
+      className={css.deleteModalBackground}
+      overlayClassName={css.editModalOverlay}
+    >
+      <div className={css.deleteModalBackground}>
+        <div className={css.deleteModalContainer}>
+          <div className={css.titleCloseBtn}>
+            <button onClick={handleCloseModal}>x</button>
+            <h2 className={css.deleteModalHeader}>
+            Are you sure you want to delete this item?
+          </h2>
+          </div>
+          
 
-        <div className={css.modalFooter}>
-          <button onClick={handleDelete} className={css.modalDeleteButton}>
-            DELETE
-          </button>
-          <button onClick={handleCloseModal} className={css.modalCancelButton}>
-            CANCEL
-          </button>
+          <div className={css.modalFooter}>
+            <button onClick={handleDelete} className={css.modalDeleteButton}>
+              DELETE
+            </button>
+            <button
+              onClick={handleCloseModal}
+              className={css.modalCancelButton}
+            >
+              CANCEL
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </Modal>
   );
 }
 

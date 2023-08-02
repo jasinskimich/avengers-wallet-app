@@ -19,10 +19,10 @@ function EditModal({ setOpenEditModal, id, updateBalance, updateTransactions, pr
 
   return (
     <Modal
-      isOpen={true} // Display the modal when `isOpen` is true
-      onRequestClose={handleCloseModal} // Close the modal when the overlay is clicked or ESC key is pressed
-      className={css.editModalBackground} // Your custom class for modal styles
-      overlayClassName={css.editModalOverlay} // Your custom class for overlay styles
+      isOpen={true} 
+      onRequestClose={handleCloseModal} 
+      className={css.editModalBackground} 
+      overlayClassName={css.editModalOverlay} 
     >
       <div className={css.editModalBackground}>
         <div className={css.editModalContainer}>
