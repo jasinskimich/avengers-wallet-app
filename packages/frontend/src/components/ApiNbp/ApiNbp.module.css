@@ -5,6 +5,8 @@
   background-color: white;
   border-radius: 50px;
   font-weight: 700;
+  max-width: 400px;
+  margin-top: 30px;
 }
 
 .chartWrapper {
