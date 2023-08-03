@@ -1,4 +1,10 @@
-
+.statisticsTitle {
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 30px
+    ;
+}
 .containerStats{
     display: grid;
     grid-template-columns: 50% 50%;

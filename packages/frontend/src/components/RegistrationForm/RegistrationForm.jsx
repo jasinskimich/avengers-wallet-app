@@ -109,6 +109,7 @@ const RegistrationForm = () => {
             placeholder="Password"
             minLength={6}
             maxLength={12}
+            autoComplete="newPassword"
             required
             startAdornment={
               <InputAdornment position="start">
@@ -129,6 +130,7 @@ const RegistrationForm = () => {
             placeholder="Confirm password"
             minLength={6}
             maxLength={12}
+            autoComplete="newPassword"
             required
             startAdornment={
               <InputAdornment position="start">
@@ -141,7 +143,7 @@ const RegistrationForm = () => {
             }
           />
         </FormControl>
-       
+
         <FormControl variant="standard" className={css.inputWidthLast}>
           <Input
             type="text"
