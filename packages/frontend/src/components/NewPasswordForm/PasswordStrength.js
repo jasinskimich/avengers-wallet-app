@@ -47,8 +47,8 @@ const PasswordStrength = ({ password }) => {
           className={`progressBar ${progressColor()}`}
           style={{ width: `${num}%` }}
         ></div>
+        <p className={`labelText`}>{createPasswordLabel()}</p>
       </div>
-      <p className={`labelText`}>{createPasswordLabel()}</p>
     </>
   );
 };
