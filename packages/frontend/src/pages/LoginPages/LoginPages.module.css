@@ -4,6 +4,7 @@
     background-color: white;
     height: 100vh;
   }
+
   .logoTitle {
     opacity: 0;
     margin: 0 auto;
@@ -84,6 +85,7 @@
     width: 100%;
      backdrop-filter: blur(8px);
   }
+  
   .logoPicture {
     background-position: center;
     background-repeat: no-repeat;
@@ -93,6 +95,7 @@
 
     background-image: url(../../images/login-pictures/login-desktop.png);
   }
+  
   @media screen and (min-device-pixel-ratio: 2),
     screen and (min-resolution: 192dpi),
     screen and (min-resolution: 2dppx) {

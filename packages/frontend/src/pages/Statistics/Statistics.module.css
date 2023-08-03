@@ -10,12 +10,14 @@
   justify-content: right;
   margin-top: 99px;
 }
+
 .statsPageMobile {
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
 }
+
 .chartTitle {
   font-family: Poppins;
   font-size: 30px;
@@ -30,9 +32,11 @@
     background-color: #e7eaf2;
     margin: 0 auto;
   }
+
   .containerChart {
     margin: 0 auto;
   }
+
   .containerStatsTable {
     margin: 0 auto;
   }
@@ -61,13 +65,16 @@
       gap: 15px;
 
   }
+
   .containerRight {
   
     padding-top: 50px;
   }
+
   .containerChart {
     margin: 0 auto;
   }
+
   .containerCurrency{
   padding-top: 40px;
 }
@@ -79,13 +86,16 @@
     grid-template-columns: 35% 65%;
     padding-left: 20px;
   }
+
   .containerLeft {
     border-right: 2px solid #e7eaf2;
     height: 100vh;
   }
+
   .containerRight {
     padding-top: 50px;
   }
+  
   .chartTitle {
     padding-left: 50px;
   }
