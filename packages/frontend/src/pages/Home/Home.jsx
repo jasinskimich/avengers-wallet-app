@@ -1,14 +1,13 @@
-import { Box } from "@mui/material";
-import ShowModal from "../../components/ModalAddTransaction/ShowModal";
-import Balance from "../../components/Balance/Balance";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import DashboardPage from "../../components/DashboardPage/DashboardPage";
-
-import Navigation from "../../components/Navigation/Navigation";
-import styles from "./Home.module.css";
-import { Currency } from "../../components/Currency/Currency";
+import { Box } from "@mui/material";
 import Notiflix from "notiflix";
+import ShowModal from "../../components/ModalAddTransaction/ShowModal";
+import Balance from "../../components/Balance/Balance";
+import DashboardPage from "../../components/DashboardPage/DashboardPage";
+import Navigation from "../../components/Navigation/Navigation";
+import { Currency } from "../../components/Currency/Currency";
+import styles from "./Home.module.css";
 
 function Home() {
   const [balance, setBalance] = useState(null);

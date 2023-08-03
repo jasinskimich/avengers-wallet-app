@@ -1,13 +1,12 @@
-import { Box } from "@mui/material";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-// import MediaQuery from "react-responsive";
-import Navigation from "../../components/Navigation/Navigation";
-import css from "./Statistics.module.css";
-import Balance from "../../components/Balance/Balance";
-import { Currency } from "../../components/Currency/Currency";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Box } from "@mui/material";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import Navigation from "../../components/Navigation/Navigation";
+import Balance from "../../components/Balance/Balance";
+import { Currency } from "../../components/Currency/Currency";
 import Stats from "../../components/Stats/Stats";
+import css from "./Statistics.module.css";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 

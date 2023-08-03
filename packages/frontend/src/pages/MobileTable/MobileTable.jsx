@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
-import Navigation from "../../components/Navigation/Navigation";
 import {Currency} from '../../components/Currency/Currency'
+import Navigation from "../../components/Navigation/Navigation";
 
 function MobileTable() {
 	return (
