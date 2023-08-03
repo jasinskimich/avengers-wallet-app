@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
-
 @media screen and (min-width: 0px) and (max-width: 426px){
   .currencyTable {
     color: white;
@@ -117,7 +116,6 @@
     width: 336px;
     height: 191px;
     margin: 0 auto;
-
   }
 
   .currencyTableHead {
@@ -156,7 +154,6 @@
 }
 
 @media screen and (min-width: 1280px){
-
   .currencyTableRow{ 
     padding-top: 10px;
   }
@@ -172,20 +169,20 @@
     background-position-y: 170px
   }
 
-.th{
-  padding-left: 40px;
-}
-.td{
-  padding: 24px 0px 20px 0px;
-  text-align: center;
-}
+  .th{
+    padding-left: 40px;
+  }
+  .td{
+    padding: 24px 0px 20px 0px;
+    text-align: center;
+  }
 
-.currencyTableBody tr:nth-child(2) td {
-  padding-top: 10px;
-  padding-bottom: 204px;
-}
+  .currencyTableBody tr:nth-child(2) td {
+    padding-top: 10px;
+    padding-bottom: 204px;
+  }
 
-.loaderBox{
+  .loaderBox{
     width: 100px;
     height: 100px;
   }

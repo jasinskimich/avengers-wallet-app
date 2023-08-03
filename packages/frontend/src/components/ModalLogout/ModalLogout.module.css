@@ -72,28 +72,29 @@
   transition: 0.3s;
   text-shadow: 0 1px 3px #4A56E2;
 }
+
 @media screen and (min-width: 0px) and (max-width: 767px) {
   .buttonExit {
     display: none;
   }
   .modalButton{   
-  height: 40px;
-  font-size: 18px;
-  margin:10px;
-}
+    height: 40px;
+    font-size: 18px;
+    margin:10px;
+  }
 
-.modalTitle{
-  font-weight: 700;
-  font-size: 28px;
-  display: flex;
-  justify-content: center;
-}
-.container{
-  position: absolute; 
-  top: 50%;
-  left: 50%;
-  padding: 10px 30px 30px 30px;
-  max-width: 480px;
-  text-align: center;
-}
+  .modalTitle{
+    font-weight: 700;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+  }
+  .container{
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    padding: 10px 30px 30px 30px;
+    max-width: 480px;
+    text-align: center;
+  }
 }

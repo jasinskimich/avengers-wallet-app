@@ -71,7 +71,6 @@
   border-radius: 45px;
   background-color: white;
   margin-bottom: 20px;
-
   color: #4a56e2;
 }
 
@@ -129,6 +128,7 @@
     padding-bottom: 20px;
     font-size: 32px;
   }
+
   .editModalBackground {
     position: absolute;
     top: 45%;

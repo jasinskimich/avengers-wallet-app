@@ -27,16 +27,17 @@
     display: flex;
     align-items: center;
   }
+
 .balanceContainerItems{
     display: flex;
     align-items: center;
   }
+
   .balanceText {
     font-size: 30px;
     font-weight: 700;
     margin: 0;
     text-align: left;
-    /* padding-top: 6px; */
     text-shadow: 1.5px 2px 3px rgba(209, 209, 216, 1);
     width: 235px;
   }
@@ -49,6 +50,7 @@
     border-radius: 30px;
     background-color: white;
   }
+
   .balanceTitle {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 11px;
@@ -69,10 +71,12 @@
     display: flex;
     align-items: center;
   }
+
 .balanceContainerItems{
     display: flex;
     align-items: center;
   }
+
   .balanceText {
     font-size: 30px;
     font-weight: 700;
@@ -87,8 +91,8 @@
    .balanceContainerItems{
     display: flex;
     align-items: center;
-    
   }
+
   .balanceBox {
     margin: 0 auto;
     width: 336px;
@@ -96,8 +100,8 @@
     border-radius: 30px;
     background-color: white;
     margin-top: 50px;
-    
   }
+
   .balanceTitle {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 11px;
@@ -130,16 +134,17 @@
   }
 }
 @media screen and (min-width: 1280px) {
-  
   .balanceText{
     width: 325px;
   }
+
   .balanceContainerItems{
     display: flex;
     align-items: center;
   }
+
   .balanceBox {
-  margin-left: 0px;
+    margin-left: 0px;
     width: 395px;
 }
 }

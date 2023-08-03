@@ -203,7 +203,6 @@
   }
 
   .buttonContainter {
-    /* margin-left: 20px; */
     align-items: center;
     margin-top: 5px;
     padding: 0;
@@ -224,6 +223,7 @@
     top: 0;
     left: 0;
   }
+
   .modalBackground {
     z-index: 1;
     top: 40%;
@@ -312,6 +312,7 @@
     padding: 0;
     transition: transform 0.7s ease-in-out;
   }
+  
   .currencySettingsBtn:hover {
     transform: rotate(180deg);
   }

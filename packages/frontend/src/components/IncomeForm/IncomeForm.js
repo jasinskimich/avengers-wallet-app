@@ -79,9 +79,6 @@ const IncomeForm = ({ prevSum2, prevComment2, updateBalance, updateTransactions,
     prevCommString = prevComment.toString();
   }
 
-  //   const previousTransactionSumString = prevSum.toString();
-  // const prevCommString = prevComment.toString()
-
   return (
     <form onSubmit={handleSubmit} className="incomeForm" method="post" action="">
       <div className="incomeForm__line">

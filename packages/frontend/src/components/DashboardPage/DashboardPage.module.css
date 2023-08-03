@@ -51,12 +51,14 @@
   max-height: 5000px;
   overflow-y: auto;
 }
+
 .tableHeader {
   background-color: #ffffff;
   top: 0px;
   position: sticky;
   font-weight: 900;
 }
+
 @media screen and (min-width: 768px) {
   .tableContainer {
     max-width: 980px;

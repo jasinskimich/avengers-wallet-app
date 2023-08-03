@@ -100,26 +100,31 @@
     width: 280px;
     margin: 0 auto;
   }
+
   .monthSelect {
     width: 280px;
   }
+
   .yearSelect {
     width: 280px;
   }
+
   .statsTable {
     width: 280px;
     margin: 0 auto;
   }
+
   .tableHeaders {
     width: 240px;
   }
+
   .tableRow {
     width: 240px;
     margin: 0 auto;
   }
+
   .tableSummaryRow {
     width: 240px;
-    
   }
 }
 
@@ -128,24 +133,31 @@
     width: 336px;
     margin-top: 20px;
   }
+
   .monthSelect {
     width: 150px;
   }
+
   .yearSelect {
     width: 150px;
   }
+
   .statsTable {
     width: 336px;
   }
+
   .tableHeaders {
     width: 300px;
   }
+
   .tableRow {
     width: 300px;
   }
+
   .tableSummaryRow {
     width: 300px;
   }
 }
+
 @media screen and (min-width: 1280px) {
 }
