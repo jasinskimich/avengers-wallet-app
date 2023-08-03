@@ -7,7 +7,7 @@ import DashboardPage from "../../components/DashboardPage/DashboardPage";
 import EuroChart from "../../components/ApiNbp/ApiNbp";
 import Navigation from "../../components/Navigation/Navigation";
 import styles from "./Home.module.css";
-import { Currency } from "../../components/Currency/Currency";
+// import { Currency } from "../../components/Currency/Currency";
 import Notiflix from "notiflix";
 
 
