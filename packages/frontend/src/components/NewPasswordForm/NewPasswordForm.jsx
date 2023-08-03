@@ -3,9 +3,9 @@ import { useParams, Link } from "react-router-dom";
 import Notiflix from "notiflix";
 import { Box, FormControl, InputAdornment, Input } from "@mui/material";
 import LockIcon from "@mui/icons-material/Lock";
-import css from "./NewPasswordForm.module.css";
 import walletIcon from "../../images/Wallet.svg";
 import PasswordStrength from "./PasswordStrength";
+import css from "./NewPasswordForm.module.css";
 
 const NewPasswordForm = () => {
   const { resetToken } = useParams();

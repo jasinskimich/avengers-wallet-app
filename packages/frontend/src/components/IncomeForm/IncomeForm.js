@@ -1,10 +1,10 @@
-import "./IncomeForm.css";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
-import IncomeFormValidation from "../FormValidation/IncomeFormValidation";
 import { useParams } from "react-router-dom";
+import DatePicker from "react-datepicker";
 import Notiflix from "notiflix";
+import "react-datepicker/dist/react-datepicker.css";
+import IncomeFormValidation from "../FormValidation/IncomeFormValidation";
+import "./IncomeForm.css";
 
 const IncomeForm = ({ prevSum2, prevComment2, updateBalance, updateTransactions, id, setOpenModal, setOpenEditModal, prevSum, prevComment }) => {
   const yourDate = new Date();

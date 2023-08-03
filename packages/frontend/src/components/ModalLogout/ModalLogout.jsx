@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Modal from "react-modal";
-import css from "./ModalLogout.module.css";
-import LogoutIcon from "@mui/icons-material/Logout";
 import Notiflix from "notiflix";
+import LogoutIcon from "@mui/icons-material/Logout";
+import css from "./ModalLogout.module.css";
 
 Modal.setAppElement("#root");
 

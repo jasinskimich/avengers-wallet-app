@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from "react-router-dom";
 import { NavLink } from 'react-router-dom';
 import { ModalLogout } from '../ModalLogout/ModalLogout';
-import { useParams } from "react-router-dom";
 import IconWallet from '../../images/Wallet.svg'
 import styles from './Header.module.css'
 

@@ -1,12 +1,11 @@
-import { useState } from "react";
-import "./ExpenseForm.css";
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import Notiflix from "notiflix";
+import Select from "react-select";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import React from "react";
-import Select from "react-select";
 import ExpenseFormValidation from "../FormValidation/ExpenseFormValidation";
-import Notiflix from "notiflix";
-import { useParams } from "react-router-dom";
+import "./ExpenseForm.css";
 
 const ExpensesForm = ({ updateBalance, updateTransactions, id, setOpenModal, setOpenEditModal, prevSum, prevComment, prevCategory, prevComment2, prevSum2, prevCategory2 }) => {
   const yourDate = new Date();

@@ -1,7 +1,6 @@
-import React from "react";
-import "./ModalAddTransaction.css";
+import React, { useState } from "react";
 import SwitchCheckbox from "../SwitchCheckbox/SwitchCheckbox";
-import { useState } from "react";
+import "./ModalAddTransaction.css";
 
 function ModalAddTransaction({ prevCategory2, prevSum2, prevComment2, setOpenModal, updateBalance, updateTransactions, id, prevType2 }) {
   const [checked, setChecked] = useState(false);

@@ -1,8 +1,8 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { Box } from "@mui/material";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import styles from "./Chart.module.css";
 
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale);

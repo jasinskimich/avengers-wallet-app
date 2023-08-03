@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
+import { NavLink, useLocation, useParams } from "react-router-dom";
 import MediaQuery from "react-responsive";
 import { Box } from "@mui/material/";
-import { NavLink, useLocation, useParams } from "react-router-dom";
 import { ReactComponent as Home } from "../../images/home.svg";
 import { ReactComponent as HomeActive } from "../../images/homeActive.svg";
 import { ReactComponent as Statistics } from "../../images/statistics.svg";
 import { ReactComponent as StatisticsActive } from "../../images/statisticsActive.svg";
 import { ReactComponent as MobileTable } from "../../images/mobileTable.svg";
 import { ReactComponent as MobileTableActive } from "../../images/mobileTableActive.svg";
-import css from "../Navigation/Navigation.module.css";
 import styled from "@emotion/styled";
+import css from "../Navigation/Navigation.module.css";
 
 function Navigation() {
 	//hooks

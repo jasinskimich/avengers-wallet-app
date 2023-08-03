@@ -1,15 +1,14 @@
-import { TableContainer, TableHead, TableBody, TableRow, TableCell, Paper } from "@mui/material";
+import React, { useMemo, useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 import { Table } from "react-super-responsive-table";
+import { TableContainer, TableHead, TableBody, TableRow, TableCell, Paper } from "@mui/material";
+import Notiflix from "notiflix";
+import { compareAsc } from "date-fns";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import ShowDeleteModal from "../TransactionDeleteModal/ShowDeleteModal";
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import css from "./DashboardPage.module.css";
 import ShowEditModal from "../TransactionEditModal/ShowEditModal";
-import React, { useMemo } from "react";
-import { compareAsc } from "date-fns";
-import { useMediaQuery } from "react-responsive";
-import Notiflix from "notiflix";
+import css from "./DashboardPage.module.css";
 
 const DashboardPage = ({ transactions, updateBalance }) => {
   const [deletedTransactions, setDeletedTransactions] = useState([]);

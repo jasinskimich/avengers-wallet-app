@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Notiflix from "notiflix";
+import { Link } from "react-router-dom";
 import { Box, FormControl, InputAdornment, Input } from "@mui/material";
 import LocalPostOfficeIcon from '@mui/icons-material/LocalPostOffice';
+import Notiflix from "notiflix";
 import walletIcon from "../../images/Wallet.svg"
-import { Link } from "react-router-dom";
 import css from "./VerifyForm.module.css"
 
 const VerifyForm = () => {
