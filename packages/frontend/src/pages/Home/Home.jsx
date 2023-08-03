@@ -4,11 +4,12 @@ import Balance from "../../components/Balance/Balance";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import DashboardPage from "../../components/DashboardPage/DashboardPage";
-
+import EuroChart from "../../components/ApiNbp/ApiNbp";
 import Navigation from "../../components/Navigation/Navigation";
 import styles from "./Home.module.css";
-import { Currency } from "../../components/Currency/Currency";
+// import { Currency } from "../../components/Currency/Currency";
 import Notiflix from "notiflix";
+
 
 function Home() {
   const [balance, setBalance] = useState(null);
@@ -93,7 +94,8 @@ function Home() {
               <Balance balance={balance} />
             </div>
             <div className={styles.containerCurrency}>
-              <Currency />
+              {/* <Currency /> */}
+              <EuroChart />
             </div>
           </div>
 
