@@ -1,11 +1,8 @@
-import React from "react";
-import css from "./ModalAddTransaction.module.css";
-import SwitchCheckbox from "../SwitchCheckbox/SwitchCheckbox";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { Header } from "../Header/Header";
-import { useEffect } from "react";
-
+import SwitchCheckbox from "../SwitchCheckbox/SwitchCheckbox";
+import css from "./ModalAddTransaction.module.css";
 
 function ModalAddTransaction({
   prevCategory2,

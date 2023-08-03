@@ -25,7 +25,7 @@ export const Currency = () => {
   useEffect(() => {
     setTimeout(() => {
       currencyValues();
-    }, 0); // Simulating a 2-second delay
+    }, 0);
   }, );
 
   const values = useSelector(selectCurrencies);

@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import css from "./BalanceSettingsModal.module.css";
-import CurrencyForm from "../CurrencyForm/CurrencyForm";
 import Modal from "react-modal";
+import CurrencyForm from "../CurrencyForm/CurrencyForm";
 import { Header } from "../Header/Header";
+import css from "./BalanceSettingsModal.module.css";
+
 function BalanceSettingsModal({ setSettingsOpenModal, updateCurrency }) {
   const handleCloseModal = () => {
     setSettingsOpenModal(false);

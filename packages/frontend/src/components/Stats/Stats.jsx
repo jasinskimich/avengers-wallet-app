@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
-import { useEffect, useState } from "react";
 import StatsTable from "../StatsTable/StatsTable";
 import ChartComponent from "../Chart/Chart";
 import "./Stats.css";

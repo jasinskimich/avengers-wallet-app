@@ -1,9 +1,8 @@
-import React from "react";
-import css from "./EditModal.module.css";
-import { useState } from "react";
-import SwitchCheckbox from "../SwitchCheckbox/SwitchCheckbox";
+import React, { useState } from "react";
 import Modal from "react-modal";
+import SwitchCheckbox from "../SwitchCheckbox/SwitchCheckbox";
 import { Header } from "../Header/Header";
+import css from "./EditModal.module.css";
 
 Modal.setAppElement("#root");
 

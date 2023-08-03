@@ -1,11 +1,10 @@
-import React from "react";
-import css from "./Balance.module.css";
-import Box from "@mui/material/Box";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import ShowSettingsModal from "../BalanceSettingsModal/ShowSettingsModal";
+import Box from "@mui/material/Box";
 import Notiflix from "notiflix";
+import ShowSettingsModal from "../BalanceSettingsModal/ShowSettingsModal";
 import { Loader } from "../Loader/Loader";
+import css from "./Balance.module.css";
 
 
 const Balance = ({ balance }) => {
@@ -16,7 +15,6 @@ const Balance = ({ balance }) => {
   useEffect(() => {
     const fetchCurrency = async () => {
       try {
-        // Simulating a 2-second loading delay using setTimeout
         setTimeout(async () => {
           let response = await fetch(
             `https://avengers-wallet-app.onrender.com/api/finances/currency/${owner}`,
