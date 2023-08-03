@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ModalAddTransaction from "./ModalAddTransaction";
+import css from "./ModalAddTransaction.module.css";
 
 function ShowModal({ updateBalance, updateTransactions, id, prevType2, prevComment2, prevSum2, prevCategory2 }) {
   const [modalOpen, setModalOpen] = useState(false);
@@ -27,7 +28,7 @@ function ShowModal({ updateBalance, updateTransactions, id, prevType2, prevComme
   return (
     <>
       <button
-        className="openModalBtn"
+        className={css.openModalBtn}
         onClick={() => {
           setModalOpen(true);
         }}

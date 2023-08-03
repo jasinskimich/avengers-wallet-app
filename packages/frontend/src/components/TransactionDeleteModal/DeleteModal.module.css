@@ -50,13 +50,21 @@
   cursor: pointer;
 } */
 
-
-
 @media screen and (min-width: 0px) and (max-width: 767px) {
+
   .headerModalDelete{
     opacity: 1;
   }
+
+  .textContainer {
+    width: 200px;
+    height: 200px;
+    margin: 40px auto;
+
+
+  }
   .deleteModalHeader {
+    padding-top: 170px;
     font-weight: 400;
     font-size: 24px;
     margin-top: 10px;
@@ -143,7 +151,7 @@
   }
 }
 
-@media screen and (min-width: 767px)  {
+@media screen and (min-width: 767px) {
   .deleteModalHeader {
     padding-top: 10px;
     font-weight: 400;
@@ -204,7 +212,6 @@
     border: 1px solid #da3333;
     border-radius: 45px;
     background-color: white;
-  
   }
   .modalDeleteButton:hover {
     cursor: pointer;
@@ -233,6 +240,4 @@
     -moz-box-shadow: 2px -2px 24px -2px rgba(74, 86, 226, 1);
     box-shadow: 2px -2px 24px -2px rgba(74, 86, 226, 1);
   }
-
-
 }
