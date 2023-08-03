@@ -1,0 +1,26 @@
+
+.chartContainer {
+  display: block;
+  margin-left: -50px;
+}
+
+.chartWrapper {
+  max-width: 450px;
+  width: 100%;
+   
+}
+@media screen and (min-width: 0px) and (max-width: 768px) { 
+
+.chartContainer {
+  display: block;
+margin: 0px auto;
+}
+
+.chartWrapper {
+  max-width: 450px;
+  width: 100%;
+ 
+  
+}
+
+}
