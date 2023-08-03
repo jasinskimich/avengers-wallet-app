@@ -93,9 +93,7 @@
   }
 
   .buttonContainter {
-    /* margin-left: 60px; */
     align-items: center;
-    /* margin-top: 5px; */
     padding: 0;
     height: 25px;
   }
@@ -319,14 +317,9 @@
   }
 
   .buttonContainter {
-    /* margin-left: 20px; */
     align-items: center;
     margin-top: 5px;
     padding: 0;
     height: 25px;
   }
-
-  /* .icon {
-    position: relative;
-  } */
 }

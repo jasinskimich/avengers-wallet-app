@@ -14,42 +14,6 @@
   cursor: pointer;
 }
 
-/* .deleteModalBackground {
-  top: 50%;
-  left: 50%;
-  background-color: rgba(200, 200, 200);
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-
-/* .deleteModalContainer {
-  width: 310px;
-  height: 310px;
-  border-radius: 12px;
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  bottom: 700;
-  padding: 10px;
-} */
-
-/* .titleCloseBtn {
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 10px;
-  padding-top: 5px;
-} */
-/* .titleCloseBtn button {
-  background-color: transparent;
-  border: none;
-  font-size: 25px;
-  cursor: pointer;
-} */
-
 @media screen and (min-width: 0px) and (max-width: 767px) {
   .deleteModalHeader {
     padding: 10px;
@@ -104,7 +68,6 @@
   .modalFooter {
     flex: 20%;
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     flex-direction: column;
   }

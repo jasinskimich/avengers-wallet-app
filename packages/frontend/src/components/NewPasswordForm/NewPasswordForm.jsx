@@ -99,7 +99,9 @@ const NewPasswordForm = () => {
             required
             startAdornment={
               <InputAdornment position="start">
-                <LockIcon sx={{ color: "lightgrey", mr: 1, my: 0.5 }} className={css.iconMargin} />
+                <LockIcon 
+                  sx={{ color: "lightgrey", mr: 1, my: 0.5 }} 
+                  className={css.iconMargin} />
                 <PasswordStrength password={password} />
               </InputAdornment>
             }

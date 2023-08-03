@@ -4,13 +4,16 @@
     margin: 10px auto;
     padding: 10px;
   }
+
   .loginButton,
   .registrationButton {
     max-width: 280px;
   }
+
   .inputWidth {
     max-width: 300px;
   }
+
   .inputWidthFirst {
     max-width: 300px;
   }
@@ -21,6 +24,7 @@
     padding: 30px;
     margin: 0px auto 200px auto;
   }
+
   .loginButton,
   .registrationButton,
   .loginInput {
@@ -44,43 +48,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* margin-top: 150px; */
 }
+
 .loginFormHeader {
   display: flex;
   font-size: 22px;
 }
-.loginBoxTitle {
-  padding-right: 30px;
-}
-.loginInput {
-  margin-bottom: 30px;
-}
-.loginInput:focus {
-  outline: none;
-}
-.loginInputEmail {
-  background-image: url("../../images/email.svg"); /* Ścieżka do pliku SVG z ikoną koperty */
-  background-size: 30px;
-  background-repeat: no-repeat;
-  justify-items: center;
-}
-.loginInputPassword {
-  background-image: url("../../images/lock.svg"); /* Ścieżka do pliku SVG z ikoną koperty */
-  background-size: 20px;
-  background-repeat: no-repeat;
-}
 
-.inputBox {
-  display: flex;
-  flex-direction: column;
-  margin: 40px auto;
-}
-
-.error {
-  color: red;
-  margin-top: 5px;
-}
 .registrationButton,
 .loginButton {
   padding: 10px;
@@ -91,6 +65,7 @@
   cursor: pointer;
   font-size: 18px;
 }
+
 .loginButton {
   padding: 10px;
   width: 300px;
@@ -111,6 +86,7 @@
   box-shadow: 0 0 25px #24cca780;
   transition: 0.3s;
 }
+
 .registrationButton {
   background-color: white;
   border: 1px solid #4a56e2;
@@ -171,7 +147,6 @@ a {
 .verifyLink {
   font-family: "Open Sans", sans-serif;
   color: #24cca7;
-
   font-size: 14px;
 }
 

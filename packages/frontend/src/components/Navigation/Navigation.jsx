@@ -12,14 +12,11 @@ import styled from "@emotion/styled";
 import css from "../Navigation/Navigation.module.css";
 
 function Navigation() {
-	//hooks
 	const [home, setHome] = useState(false);
 	const [statistic, setStatistic] = useState(false);
 	const [mobile, setMobile] = useState(false);
 	const location = useLocation();
 	const { owner } = useParams();
-
-	// style for StyledLink button
 
 	const StyledLink = styled(NavLink)`
 		background-color: transparent;
@@ -37,8 +34,7 @@ function Navigation() {
 			text-shadow: 0px 1px 1px #000000;
 		}
 	`;
-
-	// set state for active button
+	
 	useEffect(() => {
 		if (location.pathname === `/home/${owner}`) {
 			setHome(true);

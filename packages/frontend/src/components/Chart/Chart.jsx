@@ -172,14 +172,14 @@ const chartText = {
 
 return (
     <Box>
-			<Box className={styles.statisticsContainer}>
-        <Doughnut
-          key={balance}
-          data={data}
-          options={config}
-          plugins={[chartText]}
-        />
-      </Box>
+		<Box className={styles.statisticsContainer}>
+			<Doughnut
+			key={balance}
+			data={data}
+			options={config}
+			plugins={[chartText]}
+			/>
+      	</Box>
     </Box>
   );
 };

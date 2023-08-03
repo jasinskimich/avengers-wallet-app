@@ -2,60 +2,60 @@
 
 
 @media screen and (min-width: 0px) and (max-width: 426px){
-.currencyTable {
-  color: white;
-  font-size: 16px;
-  line-height: 26.53px;
-  font-weight: 400;
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 30px auto;
-  max-width: 426px;
-  width: 90%;
-  border-radius: 30px;
-  justify-content: center;
-  overflow: hidden;
-  border-collapse: collapse;
-  background-color: #878dd2;
-}
+  .currencyTable {
+    color: white;
+    font-size: 16px;
+    line-height: 26.53px;
+    font-weight: 400;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 30px auto;
+    max-width: 426px;
+    width: 90%;
+    border-radius: 30px;
+    justify-content: center;
+    overflow: hidden;
+    border-collapse: collapse;
+    background-color: #878dd2;
+  }
 
-.currencyTableHead {
-  height: 50px;
-}
+  .currencyTableHead {
+    height: 50px;
+  }
 
-.currencyTableBody {
-  background-color: rgba(74, 86, 226, 1);
-  background-image: url("../../images/currency-wave-light.svg");
-  background-position: bottom;
-  background-repeat: no-repeat;
-}
+  .currencyTableBody {
+    background-color: rgba(74, 86, 226, 1);
+    background-image: url("../../images/currency-wave-light.svg");
+    background-position: bottom;
+    background-repeat: no-repeat;
+  }
 
-.th {
-  text-align: left;
-  padding-left: 20px;
-}
+  .th {
+    text-align: left;
+    padding-left: 20px;
+  }
 
-.td {
-  text-align: left;
-  padding: 12px 0px 12px 20px;
-}
+  .td {
+    text-align: left;
+    padding: 12px 0px 12px 20px;
+  }
 
-.currencyTableBody tr:nth-child(2) td {
-  padding-top: 0px;
-  padding-bottom: 55px;
-}
+  .currencyTableBody tr:nth-child(2) td {
+    padding-top: 0px;
+    padding-bottom: 55px;
+  }
 
-.loaderBox {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 35px;
-  height: 35px;
-}
+  .loaderBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35px;
+    height: 35px;
+  }
 }
 
 @media screen and (min-width: 426px) and (max-width: 767px){
-.currencyTable {
+  .currencyTable {
     color: white;
     font-size: 16px;
     line-height: 26.53px;
@@ -69,8 +69,6 @@
     border-collapse: collapse;
     background-color: #878dd2;
     margin:30px auto;
-    
-
   }
 
   .currencyTableHead {
@@ -122,41 +120,39 @@
 
   }
 
-
-
-.currencyTableHead {
-  height: 50px;
-}
-
-.currencyTableBody {
-  background-color: rgba(74, 86, 226, 1);
-  background-image: url("../../images/currency-wave-light.svg");
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-position-y: 17px;
-  background-position-x: 2px;
-  background-size: 371px;
-}
-
-.th {
-  text-align: left;
-  padding-left: 40px;
-}
-
-.td {
-  padding: 24px 0px 20px 0px;
-  text-align: center;
-}
-
-.currencyTableBody tr:nth-child(2) td {
-  padding-top: 0px;
-  padding-bottom: 55px;
-}
-
-.loaderBox{
-    width: 65px;
-    height: 65px;
+  .currencyTableHead {
+    height: 50px;
   }
+
+  .currencyTableBody {
+    background-color: rgba(74, 86, 226, 1);
+    background-image: url("../../images/currency-wave-light.svg");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-position-y: 17px;
+    background-position-x: 2px;
+    background-size: 371px;
+  }
+
+  .th {
+    text-align: left;
+    padding-left: 40px;
+  }
+
+  .td {
+    padding: 24px 0px 20px 0px;
+    text-align: center;
+  }
+
+  .currencyTableBody tr:nth-child(2) td {
+    padding-top: 0px;
+    padding-bottom: 55px;
+  }
+
+  .loaderBox{
+      width: 65px;
+      height: 65px;
+    }
 }
 
 @media screen and (min-width: 1280px){
