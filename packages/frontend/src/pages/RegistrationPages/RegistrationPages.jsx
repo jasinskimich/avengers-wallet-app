@@ -1,8 +1,8 @@
 import React from "react";
-import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
-import css from "./RegistrationPages.module.css";
 import { Box } from "@mui/material";
+import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
 import RegistrationPageIcon from "../../images/RegistrationPageIcon.svg";
+import css from "./RegistrationPages.module.css";
 
 const RegistrationPages = () => {
   return (

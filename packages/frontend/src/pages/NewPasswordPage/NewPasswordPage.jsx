@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@mui/material";
-import css from "./NewPasswordPage.module.css"
 import NewPasswordForm from "../../components/NewPasswordForm/NewPasswordForm";
+import css from "./NewPasswordPage.module.css"
 
 const NewPasswordPage = () => {
   return (
