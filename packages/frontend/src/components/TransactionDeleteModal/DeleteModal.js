@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import css from "./DeleteModal.module.css";
 import { useParams } from "react-router-dom";
 import Modal from "react-modal";
+import Layout from "../../Layout";
 
 Modal.setAppElement("#root");
 
@@ -62,13 +63,18 @@ function DeleteModal({ setOpenDeleteModal, id, updateDeleteTransactions }) {
     >
       <div className={css.deleteModalBackground}>
         <div className={css.deleteModalContainer}>
+          <div className={css.headerModalDelete}>
+            <Layout />
+          </div>
           <div className={css.titleCloseBtn}>
             <button onClick={handleCloseModal}>x</button>
+
             <div className={css.textContainer}>
               <p className={css.deleteModalHeader}>
                 Are you sure you want to delete this item?
               </p>
             </div>
+
           </div>
 
           <div className={css.modalFooter}>

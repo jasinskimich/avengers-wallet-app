@@ -51,10 +51,16 @@
 } */
 
 @media screen and (min-width: 0px) and (max-width: 767px) {
+
+  .headerModalDelete{
+    opacity: 1;
+  }
+
   .textContainer {
     width: 200px;
     height: 200px;
     margin: 40px auto;
+
 
   }
   .deleteModalHeader {
@@ -173,9 +179,10 @@
     flex-direction: column;
     padding: 20px;
     position: fixed;
-    
   }
-
+.headerModalDelete{
+  display: none;
+}
   .titleCloseBtn button {
     background-color: transparent;
     border: none;
