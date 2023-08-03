@@ -1,10 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { authReducer } from "./auth/authSlice";
 import storage from "redux-persist/lib/storage";
+import { authReducer } from "./auth/authSlice";
 import { persistStore, persistReducer } from "redux-persist";
 import { globalReducer } from "./global/global-action";
 import { currencyReducer } from "./currency/currencySlice";
-
 
 const persistToken = {
   key: "auth",
