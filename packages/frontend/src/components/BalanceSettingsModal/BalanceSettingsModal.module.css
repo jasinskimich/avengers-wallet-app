@@ -1,22 +1,24 @@
 @media screen and (min-width: 0px) and (max-width: 426px) {
+  
   .modalBackground {
-    top: 20%;
-    left: 50%;
+    width: 100%;
+    height: 140%;
     background-color: rgba(200, 200, 200);
     position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
     z-index: 1;
+    overflow: hidden;
   }
 
   .modalContainer {
-    width: 310px;
-    height: 310px;
-    border-radius: 12px;
+    width: 100%;
+    height: 140%;
+    border-radius: none;
     background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -83,7 +85,7 @@
     background-color: white;
     cursor: pointer;
     padding: 0;
-    transition: transform .7s ease-in-out;
+    transition: transform 0.7s ease-in-out;
   }
 
   .currencySettingsBtn:hover {
@@ -106,22 +108,26 @@
 @media screen and (min-width: 426px) and (max-width: 769px) {
   .modalBackground {
     z-index: 1;
-    top: 40%;
-    left: 50%;
+    width: 100%;
+    height: 140%;
+    background-color: rgba(200, 200, 200);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
     background-color: rgba(200, 200, 200);
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    overflow: hidden;
   }
 
   .modalContainer {
-    width: 380px;
-    height: 320px;
-    border-radius: 12px;
+    width: 100%;
+    height: 140%;
+    border-radius: none;
     background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -191,7 +197,7 @@
     background-color: white;
     cursor: pointer;
     padding: 0;
-    transition: transform .7s ease-in-out;
+    transition: transform 0.7s ease-in-out;
   }
 
   .currencySettingsBtn:hover {
@@ -212,6 +218,14 @@
 }
 
 @media screen and (min-width: 769px) {
+  .modalBox {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.582);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
   .modalBackground {
     z-index: 1;
     top: 40%;
@@ -298,7 +312,7 @@
     background-color: white;
     cursor: pointer;
     padding: 0;
-    transition: transform .7s ease-in-out;
+    transition: transform 0.7s ease-in-out;
   }
   .currencySettingsBtn:hover {
     transform: rotate(180deg);
