@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import css from "./DeleteModal.module.css";
 import { useParams } from "react-router-dom";
 import Modal from "react-modal";
 import Layout from "../../Layout";
+import css from "./DeleteModal.module.css";
 
 Modal.setAppElement("#root");
 

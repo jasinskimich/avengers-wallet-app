@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useParams } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
+import { Table } from "react-super-responsive-table";
 import {
   TableContainer,
   TableHead,
@@ -8,13 +10,11 @@ import {
   TableCell,
   Paper,
 } from "@mui/material";
-import { Table } from "react-super-responsive-table";
-import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
+import { compareAsc } from "date-fns";
+import Notiflix from "notiflix";
 import ShowDeleteModal from "../TransactionDeleteModal/ShowDeleteModal";
 import ShowEditModal from "../TransactionEditModal/ShowEditModal";
-import { compareAsc } from "date-fns";
-import { useMediaQuery } from "react-responsive";
-import Notiflix from "notiflix";
+import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import css from "./DashboardPage.module.css";
 
 const DashboardPage = ({ transactions, updateBalance }) => {

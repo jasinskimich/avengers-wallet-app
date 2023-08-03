@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import css from "./EditModal.module.css";
 import EditModal from "./EditModal";
 import { ReactComponent as EditPen } from "../../images/editPen.svg";
-
+import css from "./EditModal.module.css";
 
 function ShowEditModal({id, updateBalance, updateTransactions, prevSum, prevType, prevComment,prevCategory}) {
   const [modalEditOpen, setEditModalOpen] = useState(false);

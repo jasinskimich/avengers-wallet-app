@@ -4,9 +4,11 @@
     background-color: white;
     height: 100vh;
   }
+
   .titleContainer {
     display: none;
   }
+
   .logoTitle {
     opacity: 0;
     margin: 0 auto;
@@ -22,6 +24,7 @@
     justify-items: center;
     height: 100%;
   }
+
   .logoPicture {
     background-position: center;
     background-repeat: no-repeat;
@@ -30,6 +33,7 @@
     background-size: contain;
     background-image: url(../../images/RegistrationPageIcon.svg);
   }
+  
   .titleContainer {
     display: flex;
     flex-direction: row;
@@ -38,12 +42,15 @@
     align-items: center;
     gap: 30px;
   }
+
   .registrationFormContainer {
     width: 100%;
   }
+
   .registartionIcon {
     max-width: 300px;
   }
+
   .logoTitle {
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
@@ -59,10 +66,12 @@
     justify-items: center;
     grid-template-rows: 100vh;
   }
+
   .registrationFormContainer {
     background-color: rgba(255, 255, 255, 0.625);
     width: 100%;
   }
+
   .titleContainer {
     display: flex;
     flex-direction: column;
@@ -70,18 +79,19 @@
     width: 436px;
     height: 420px;
   }
+
   .logoPicture {
     background-position: center;
     background-repeat: no-repeat;
     width: 500px;
     height: 800px;
     background-size: contain;
-
-    /* background-image: url(../../images/RegistrationPageIcon.svg); */
   }
+
   .registartionIcon {
     max-width: 500px;
   }
+
   .logoTitle {
     font-family: 'Open Sans', sans-serif;
     margin-top: 0px;
@@ -89,5 +99,3 @@
     font-weight: 400;
   }
 }
-
-/* poprawić css dla mobilki bo coś jest zbugowane */

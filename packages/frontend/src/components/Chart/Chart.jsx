@@ -1,8 +1,8 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { Box } from "@mui/material";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import styles from "./Chart.module.css";
 
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale);
@@ -70,17 +70,14 @@ const ChartComponent = ({ date, receivedData }) => {
   let statisticsSum = [];
 
   transactions.forEach((el) => {
-	// wyodrębnienie category i sum z obiektów
 	let category = el.category;
 	let sum = el.sum;
 
-	// tworzenie tablicy statisticsCategory dla poszczególnych kategorii
 	statisticsCategory.push(category);
 	const uniqueCategory = new Set(statisticsCategory);
 	const combinedCategory = Array.from(uniqueCategory);
 	statisticsCategory = combinedCategory;
 
-	// warunek który sprawdza czy dana kategoria istnieje. Jeżeli tak to sumuje sumy
 	if (statisticsSum[category]) {
 		statisticsSum[category] += sum;
 	} else {
@@ -129,9 +126,8 @@ const colors = statisticsData.map((el) => {
 const userData = statisticsData.map((entry) => entry.sum);
 
 const data = {
-	// legenda która wychodzi z tablicy z kategoriami
 	labels: statisticsCategory,
-	// dane
+
 	datasets: [{ data: userData, backgroundColor: colors, borderWidth: 0 }],
 };
 
@@ -154,7 +150,6 @@ const chartText = {
 	beforeDatasetsDraw(chart) {
 		const { ctx } = chart;
 
-		// ustalenie pozycji napisu na środku wykresu
 		const xCenter = chart.getDatasetMeta(0)?.data?.[0]?.x;
 		const yCenter = chart.getDatasetMeta(0)?.data?.[0]?.y;
 
@@ -172,14 +167,14 @@ const chartText = {
 
 return (
     <Box>
-			<Box className={styles.statisticsContainer}>
-        <Doughnut
-          key={balance}
-          data={data}
-          options={config}
-          plugins={[chartText]}
-        />
-      </Box>
+		<Box className={styles.statisticsContainer}>
+			<Doughnut
+			key={balance}
+			data={data}
+			options={config}
+			plugins={[chartText]}
+			/>
+      	</Box>
     </Box>
   );
 };

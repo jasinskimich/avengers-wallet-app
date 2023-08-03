@@ -1,5 +1,5 @@
-import { useParams } from "react-router-dom";
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import css from "./CurrencyForm.module.css";
 
 const CurrencyForm = ({ updateCurrency, handleCloseModal }) => {
@@ -17,7 +17,7 @@ const CurrencyForm = ({ updateCurrency, handleCloseModal }) => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ currency }), // Pass the currency as an object
+          body: JSON.stringify({ currency }),
         }
       );
 

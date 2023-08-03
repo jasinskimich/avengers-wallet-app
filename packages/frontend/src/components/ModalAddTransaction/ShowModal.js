@@ -9,7 +9,6 @@ function ShowModal({ updateBalance, updateTransactions, id, prevType2, prevComme
     setModalOpen(false);
   };
 
-  // Event listener to close the modal with ESC key
   const handleKeyDown = (event) => {
     if (event.key === "Escape") {
       handleCloseModal();

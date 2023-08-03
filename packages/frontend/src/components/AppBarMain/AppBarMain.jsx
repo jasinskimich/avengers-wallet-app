@@ -1,5 +1,5 @@
-import { Box, AppBar, Toolbar, Typography, Divider, Button } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import { Box, AppBar, Toolbar, Typography, Divider, Button } from "@mui/material";
 import exit from "../../images/exit.svg";
 
 function AppBarMain() {

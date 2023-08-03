@@ -11,9 +11,6 @@
   border-radius: 50%;
   width: 44px;
   height: 44px;
-  /* position: absolute;
-  right: 0;
-  bottom: 0; */
   background-color: #24cca7;
   border: none;
   color: white;
@@ -75,10 +72,6 @@
 }
 
 @media screen and (min-width: 0px) and (max-width: 641px) {
-
-  .backgroundModalComponent {
-    
-  }
   .modalHeader {
     font-weight: 400;
     font-size: 28px;
@@ -112,7 +105,6 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    
   }
 
   .titleCloseBtn button {
@@ -127,15 +119,13 @@
     margin-top: 20px;
     width: 250px;
   }
+
   .openModalBtn {
     padding: 0;
     margin: 0;
     border-radius: 50%;
     width: 44px;
     height: 44px;
-    /* position: absolute;
-    right: 0;
-    bottom: 0; */
     background-color: #24cca7;
     border: none;
     color: white;
@@ -146,10 +136,6 @@
 }
 
 @media screen and (min-width: 641px) and (max-width: 768px) {
-
-  .backgroundModalComponent {
-    
-  }
   .modalHeader {
     font-weight: 400;
     font-size: 28px;
@@ -157,6 +143,7 @@
     justify-content: center;
     margin-top: 100px;
   }
+
   .headerConatiner {
     position: relative;
     z-index: 2;
@@ -204,9 +191,6 @@
     border-radius: 50%;
     width: 44px;
     height: 44px;
-    /* position: absolute;
-    right: 0;
-    bottom: 0; */
     background-color: #24cca7;
     border: none;
     color: white;
@@ -230,9 +214,6 @@
     border-radius: 50%;
     width: 44px;
     height: 44px;
-    /* position: absolute;
-    right: 0;
-    bottom: 0; */
     background-color: #24cca7;
     border: none;
     color: white;
@@ -287,10 +268,12 @@
   .headerConatiner {
     display: none;
    }
+
   .modalHeader {
     padding-bottom: 20px;
     font-size: 32px;
   }
+
   .modalBackground {
     position: absolute;
     top: 380px;
@@ -302,7 +285,6 @@
     align-items: center;
     z-index: 5000;
   }
-
 
   .modalContainer {
     width: 540px;
@@ -332,9 +314,6 @@
     border-radius: 50%;
     width: 44px;
     height: 44px;
-    /* position: absolute;
-    right: 0;
-    bottom: 0; */
     background-color: #24cca7;
     border: none;
     color: white;

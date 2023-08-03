@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import css from "./DeleteModal.module.css";
 import DeleteModal from "./DeleteModal";
+import css from "./DeleteModal.module.css";
 
 function ShowDeleteModal({id, updateDeleteTransactions}) {
   const [modalDeleteOpen, setDeleteModalOpen] = useState(false);

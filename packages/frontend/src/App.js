@@ -1,8 +1,7 @@
 import React from "react";
-import "./App.css";
-import "./stylesheet/fonts.css";
-import Layout from "./Layout";
 import { Routes, Route, Navigate } from "react-router-dom";
+import { Box } from "@mui/material/";
+import Layout from "./Layout";
 import Statistics from "./pages/Statistics/Statistics";
 import Home from "./pages/Home/Home";
 import Login from "./pages/LoginPages/LoginPages";
@@ -10,8 +9,9 @@ import MobileTable from "./pages/MobileTable/MobileTable";
 import RegistrationPages from "./pages/RegistrationPages/RegistrationPages";
 import VerifyPage from "./pages/VerifyPage/VerifyPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage/ResetPasswordPage";
-import { Box } from "@mui/material/";
 import NewPasswordPage from "./pages/NewPasswordPage/NewPasswordPage";
+import "./App.css";
+import "./stylesheet/fonts.css";
 
 function AuthGuardedRoute({ element: Element, ...rest }) {
   const authToken = localStorage.getItem("authToken");

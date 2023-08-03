@@ -1,13 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Notiflix from 'notiflix';
-import { useState } from "react";
 import { Box, FormControl, InputAdornment, Input } from "@mui/material";
 import LockIcon from '@mui/icons-material/Lock';
 import LocalPostOfficeIcon from '@mui/icons-material/LocalPostOffice';
+import Notiflix from 'notiflix';
 import walletIcon from "../../images/Wallet.svg"
 import styles from "./LoginForm.module.css";
-
 
 const LoginForm = ({ setLoggedName }) => {
   const [email, setEmail] = useState("");
