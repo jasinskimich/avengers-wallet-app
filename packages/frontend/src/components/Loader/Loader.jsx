@@ -11,4 +11,4 @@ export const Loader = () => (
     width={100}
     visible={true}
   />
-);
+); 
