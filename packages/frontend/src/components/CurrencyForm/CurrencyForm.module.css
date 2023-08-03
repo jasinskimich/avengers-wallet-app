@@ -8,7 +8,6 @@
 }
 
 select {
-  /* styling */
   background-color: white;
   border: thin solid blue;
   border-radius: 4px;
@@ -16,9 +15,6 @@ select {
   font: inherit;
   line-height: 1.5em;
   padding: 0.5em 3.5em 0.5em 1em;
-
-  /* reset */
-
   margin: 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -61,6 +57,7 @@ select.round:focus {
   background-color: #24cca7;
   color: white;
 }
+
 .updateBtn:hover {
   cursor: pointer;
   border: solid 1px white;

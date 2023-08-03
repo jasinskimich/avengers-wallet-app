@@ -46,9 +46,11 @@
     flex-direction: column;
     gap: 20px;
   }
+
   .incomeForm__amount {
     width: 250px;
   }
+
   .incomeForm__date {
     width: 250px;
     justify-self: flex-start;
@@ -79,9 +81,11 @@
     flex-direction: row;
     gap: 40px;
   }
+
   .incomeForm__amount {
     width: 200px;
   }
+  
   .incomeForm__date {
     width: 200px;
     justify-self: flex-start;
