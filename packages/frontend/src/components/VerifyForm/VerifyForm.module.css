@@ -96,21 +96,20 @@
     margin-bottom: 10px;
 }
 
+a {
+    text-decoration: none;
+}
+
 .verifyLink {
     font-family: 'Open Sans', sans-serif;
-    color: #4A56E2;
-    text-decoration: underline;
-    text-decoration-color: #4A56E2;
+    color: #24cca8;
     font-size: 18px;
 }
 
 .verifyLink:focus,
 .verifyLink:hover{
-    font-family: 'Open Sans', sans-serif;
-    color: #24cca8;
     text-decoration: underline;
     text-decoration-color: #24cca8;
-    font-size: 18px;
 }
 
 .verifyLinkSection {
