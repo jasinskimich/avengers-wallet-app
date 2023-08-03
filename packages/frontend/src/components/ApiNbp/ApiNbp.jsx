@@ -52,7 +52,7 @@ const EuroChart = () => {
   }, []);
 
   const customTickFormatter = (tick) => {
-    return format(new Date(tick), "dd.MM");
+    return format(new Date(tick), "dd");
   };
 
   return (

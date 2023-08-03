@@ -1,12 +1,16 @@
 
 .chartContainer {
   display: block;
-  margin-left: -50px;
+  /* margin-left: -50px; */
+  background-color: white;
+  border-radius: 50px;
+  font-weight: 700;
 }
 
 .chartWrapper {
   max-width: 450px;
   width: 100%;
+  margin-left: -20px;
    
 }
 @media screen and (min-width: 0px) and (max-width: 768px) { 
