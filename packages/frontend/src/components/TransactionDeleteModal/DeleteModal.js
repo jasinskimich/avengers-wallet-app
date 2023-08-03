@@ -64,11 +64,12 @@ function DeleteModal({ setOpenDeleteModal, id, updateDeleteTransactions }) {
         <div className={css.deleteModalContainer}>
           <div className={css.titleCloseBtn}>
             <button onClick={handleCloseModal}>x</button>
-            <h2 className={css.deleteModalHeader}>
-            Are you sure you want to delete this item?
-          </h2>
+            <div className={css.textContainer}>
+              <p className={css.deleteModalHeader}>
+                Are you sure you want to delete this item?
+              </p>
+            </div>
           </div>
-          
 
           <div className={css.modalFooter}>
             <button onClick={handleDelete} className={css.modalDeleteButton}>
