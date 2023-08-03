@@ -1,11 +1,9 @@
-
-
 .main {
   display: flex;
   justify-content: space-between;
   height: 6vh;
   padding: 20px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .walletSection {
@@ -28,15 +26,15 @@
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .name {
-  font-family: 'Open Sans', sans-serif;
-  color: #BDBDBD;
+  font-family: "Open Sans", sans-serif;
+  color: #bdbdbd;
   font-weight: 400;
   line-height: 26.53px;
-  color: #BDBDBD;
+  color: #bdbdbd;
   font-size: 20px;
 }
 
@@ -45,15 +43,15 @@
   transition: 0.3s;
 }
 
-.line{
+.line {
   font-size: 30px;
   font-weight: 100;
   margin-bottom: 5px;
-  color: #BDBDBD;
+  color: #bdbdbd;
   margin-left: 4px;
 }
 @media screen and (min-width: 0px) and (max-width: 767px) {
-  .title{
+  .title {
     font-size: 30px;
   }
   .line {
@@ -62,11 +60,9 @@
 
   .name {
     margin-right: 10px;
-    
   }
-  .walletIcon{
+  .walletIcon {
     width: 40px;
     height: 40px;
   }
-
 }
