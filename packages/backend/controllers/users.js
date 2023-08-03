@@ -58,8 +58,8 @@ const sendPasswordResetEmail = async (email) => {
       to: email,
       from: "walletavengersapp@gmail.com",
       subject: "Reset Your Password",
-      text: `Click on the link to reset your password: http://localhost:3000/reset-password/${resetToken}`,
-      html: `<p>Click <a href="http://localhost:3000/reset-password/${resetToken}"><strong>here</strong></a> to reset your password.</p>`,
+      text: `Click on the link to reset your password: http://avengers-wallet-app.onrender.com/reset-password/${resetToken}`,
+      html: `<p>Click <a href="http://avengers-wallet-app.onrender.com/reset-password/${resetToken}"><strong>here</strong></a> to reset your password.</p>`,
     };
   
     return sgMail.send(msg);
@@ -284,7 +284,7 @@ const verifyUser = async (req, res, next) => {
       await user.save();
   
       res.send(
-        '<h1>Registration Complete!</h1><p>Click <a href="http://localhost:3000/login"><strong>here</strong></a> to go to the login page.</p>'
+        `<h1>Registration Complete!</h1><p>Click <a href="http://avengers-wallet-app.onrender.com/login"><strong>here</strong></a> to go to the login page.</p>`
       );
     } catch (error) {
       next(error);
