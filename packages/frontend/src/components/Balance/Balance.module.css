@@ -95,7 +95,7 @@
     height: 80px;
     border-radius: 30px;
     background-color: white;
-    margin-top: 50px;
+    margin-top: 145px;
     
   }
   .balanceTitle {
@@ -130,7 +130,9 @@
   }
 }
 @media screen and (min-width: 1280px) {
-  
+  .balanceBox {
+    margin-top: 45px;
+  }
   .balanceText{
     width: 325px;
   }

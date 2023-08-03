@@ -20,7 +20,7 @@ const EuroChart = () => {
     const fetchEuroData = async () => {
       try {
         const response = await fetch(
-          "http://api.nbp.pl/api/exchangerates/rates/a/eur/last/5/"
+          "https://api.nbp.pl/api/exchangerates/rates/a/eur/last/5/"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch data");
@@ -35,7 +35,7 @@ const EuroChart = () => {
     const fetchUsdData = async () => {
       try {
         const response = await fetch(
-          "http://api.nbp.pl/api/exchangerates/rates/a/usd/last/5/"
+          "https://api.nbp.pl/api/exchangerates/rates/a/usd/last/5/"
         );
         if (!response.ok) {
           throw new Error("Failed to fetch data");
