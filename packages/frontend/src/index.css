@@ -1,10 +1,7 @@
 html {
   background-color: #e7eaf2;
-
-
-  /* width: 100vh; */
-  /* height: 100vh; */
 }
+
 @media screen and (min-width: 768px){
   html{
   background-image: url("../../frontend/src/images/Ellipse2.svg"),
