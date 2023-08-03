@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Modal from "react-modal";
-import { Header } from "../Header/Header";
 import css from "./DeleteModal.module.css";
 
 Modal.setAppElement("#root");
@@ -17,12 +16,15 @@ function DeleteModal({ setOpenDeleteModal, id, updateDeleteTransactions }) {
     e.preventDefault();
 
     try {
-      let response = await fetch(`https://avengers-wallet-app.onrender.com/api/finances/transactions/${owner}/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      let response = await fetch(
+        `https://avengers-wallet-app.onrender.com/api/finances/transactions/${owner}/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (response.ok) {
         response = await response.json();
@@ -52,31 +54,39 @@ function DeleteModal({ setOpenDeleteModal, id, updateDeleteTransactions }) {
   });
 
   return (
-    <>
-      <Modal isOpen={true} onRequestClose={handleCloseModal} className={css.deleteModalBackground} overlayClassName={css.editModalOverlay}>
-        <Header />
-        <div className={css.deleteModalBackground}>
-          <div className={css.deleteModalCenter}>
-            <div className={css.deleteModalContainer}>
-              <div className={css.titleCloseBtn}>
-                <button onClick={handleCloseModal}>x</button>
-                <h2 className={css.deleteModalHeader}>Are you sure you want to delete this item?</h2>
-              </div>
-
-              <div className={css.modalFooter}>
-                <button onClick={handleDelete} className={css.modalDeleteButton}>
-                  DELETE
-                </button>
-                <button onClick={handleCloseModal} className={css.modalCancelButton}>
-                  CANCEL
-                </button>
-              </div>
+    <Modal
+      isOpen={true}
+      onRequestClose={handleCloseModal}
+      className={css.deleteModalBackground}
+      overlayClassName={css.editModalOverlay}
+    >
+      <div className={css.deleteModalBackground}>
+        <div className={css.deleteModalContainer}>
+          <div className={css.titleCloseBtn}>
+            <button onClick={handleCloseModal}>x</button>
+            <div className={css.textContainer}>
+              <p className={css.deleteModalHeader}>
+                Are you sure you want to delete this item?
+              </p>
             </div>
           </div>
+
+          <div className={css.modalFooter}>
+            <button onClick={handleDelete} className={css.modalDeleteButton}>
+              DELETE
+            </button>
+            <button
+              onClick={handleCloseModal}
+              className={css.modalCancelButton}
+            >
+              CANCEL
+            </button>
+          </div>
         </div>
-      </Modal>
-    </>
+      </div>
+    </Modal>
   );
 }
+
 
 export default DeleteModal;
