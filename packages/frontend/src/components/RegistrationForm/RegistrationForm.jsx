@@ -8,12 +8,14 @@ import LocalPostOfficeIcon from '@mui/icons-material/LocalPostOffice';
 import LockIcon from '@mui/icons-material/Lock';
 import walletIcon from "../../images/Wallet.svg";
 import PasswordStrength from "./PasswordStrength";
+import Loader from "../Loader/Loader";
 
 const RegistrationForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -33,6 +35,7 @@ const RegistrationForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(false);
 
     if (!email || !name || !password || !confirmPassword) {
       Notiflix.Notify.warning('Email, password or name is empty, please complete the missing content.')
@@ -41,6 +44,7 @@ const RegistrationForm = () => {
 
     if (password !== confirmPassword) {
       Notiflix.Notify.warning('Passwords do not match, please try again.');
+      setIsLoading(true);
       return;
     }
 
@@ -50,6 +54,7 @@ const RegistrationForm = () => {
 
       if(response.exists) {
         Notiflix.Notify.warning('Email already exists in the database. Please use a different email.');
+        setIsLoading(true);
         return;
       }
       
@@ -61,7 +66,7 @@ const RegistrationForm = () => {
         }
       })
       result = await result.json();
-      console.warn(result);
+     
       if (result) {
         setName("");
         setEmail("");
@@ -165,7 +170,10 @@ const RegistrationForm = () => {
           />
         </FormControl>
 
-        <button
+  
+        {isLoading ? (
+          <>
+             <button
           variant="contained"
           type="submit"
           className={css.registrationButton}
@@ -176,7 +184,10 @@ const RegistrationForm = () => {
         <Link to="/login">
           <button className={css.loginButton}>LOG IN</button>
         </Link>
-
+          </>
+        ) : (
+          <Loader />
+        )}
         <div>
           <Link to="/verify">
             <span className={css.verifyLink}>
