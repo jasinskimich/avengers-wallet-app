@@ -8,7 +8,7 @@ import LocalPostOfficeIcon from '@mui/icons-material/LocalPostOffice';
 import LockIcon from '@mui/icons-material/Lock';
 import walletIcon from "../../images/Wallet.svg";
 import PasswordStrength from "./PasswordStrength";
-import Loader from "../Loader/Loader";
+import Loader from "../LoaderSpinner/Loader";
 
 const RegistrationForm = () => {
   const [name, setName] = useState("");
