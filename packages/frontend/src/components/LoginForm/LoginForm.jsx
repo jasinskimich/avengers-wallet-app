@@ -7,7 +7,7 @@ import LockIcon from "@mui/icons-material/Lock";
 import LocalPostOfficeIcon from "@mui/icons-material/LocalPostOffice";
 import walletIcon from "../../images/Wallet.svg";
 import styles from "./LoginForm.module.css";
-import Loader from "../Loader/Loader";
+import Loader from "../LoaderSpinner/Loader";
 
 const LoginForm = ({ setLoggedName }) => {
   const [email, setEmail] = useState("");
