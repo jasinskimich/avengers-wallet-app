@@ -4,10 +4,11 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import Navigation from "../../components/Navigation/Navigation";
 import css from "./Statistics.module.css";
 import Balance from "../../components/Balance/Balance";
-import { Currency } from "../../components/Currency/Currency";
+// import { Currency } from "../../components/Currency/Currency";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Stats from "../../components/Stats/Stats";
+import EuroChart from "../../components/ApiNbp/ApiNbp";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -89,7 +90,8 @@ function Statistics() {
               <Balance balance={balance} />
             </div>
             <div className={css.containerCurrency}>
-              <Currency />
+              {/* <Currency /> */}
+              <EuroChart />
             </div>
           </div>
 
