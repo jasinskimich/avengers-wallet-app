@@ -48,7 +48,7 @@ const IncomeForm = ({ prevSum2, prevComment2, updateBalance, updateTransactions,
 
         if (response.ok) {
           const data = await response.json();
-          // console.log(data);
+          
           const ownerBalance = data.data.sum;
           updateBalance(ownerBalance);
           const newTransaction = data.data.transactions;

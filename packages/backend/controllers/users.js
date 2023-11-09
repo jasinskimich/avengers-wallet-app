@@ -199,7 +199,7 @@ const logIn = async (req, res, next) => {
   
     const secret = process.env.SECRET;
   
-    const token = jwt.sign(payload, secret, { expiresIn: "1h" });
+    const token = jwt.sign(payload, secret, { expiresIn: "30d" });
   
     user.token = token;
   
@@ -336,7 +336,7 @@ const checkEmail = async (req, res, next) => {
 const getUserName = async (req, res, next) => {
     try {
       const id = req.params.id;
-      console.log(id);
+      
       const document = await User.findOne({ _id: id });
   
       if (!document) {
